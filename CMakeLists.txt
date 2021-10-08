@@ -18,4 +18,4 @@ if (DEFINED MSVC_VERSION)
     endif()
 endif()
 
-add_subdirectory(Examples)
+add_subdirectory(Applications)
