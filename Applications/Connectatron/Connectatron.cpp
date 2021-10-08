@@ -252,17 +252,17 @@ enum class WireProtocol
     //https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
     //https://en.wikipedia.org/wiki/Fast_Ethernet#100BASE-T1
     MIN_VERSION_Ethernet,
-    Ethernet__10BASE__T, //10 Mbps
+    Ethernet__10BASE___T, //10 Mbps
     //Ethernet__10BASE__T1S, //10 Mbps (short distance ~15 meters)
     //Ethernet__10BASE__T1L, //10 Mbps (long distance ~1000 meters)
     //NOTE: not getting into cable details at the moment
-    Ethernet__100BASE__T, //100 Mbps "Fast Ethernet"
-    Ethernet__1000BASE__T, //1 Gbps "Gigabit Ethernet"
-    Ethernet__2_5GBASE__T, //2.5 Gbps
-    Ethernet__5GBASE__T, //5 Gbps
-    Ethernet__10GBASE__T, //10 Gbps
-    Ethernet__25GBASE__T, //25 Gbps
-    Ethernet__40GBASE__T, //40 Gbps
+    Ethernet__100BASE___T, //100 Mbps "Fast Ethernet"
+    Ethernet__1000BASE___T, //1 Gbps "Gigabit Ethernet"
+    Ethernet__2_5GBASE___T, //2.5 Gbps
+    Ethernet__5GBASE___T, //5 Gbps
+    Ethernet__10GBASE___T, //10 Gbps
+    Ethernet__25GBASE___T, //25 Gbps
+    Ethernet__40GBASE___T, //40 Gbps
     MAX_VERSION_Ethernet,
 
     // Other
