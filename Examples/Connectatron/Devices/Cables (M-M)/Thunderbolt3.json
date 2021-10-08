@@ -1,0 +1,16 @@
+{
+    "Name": "Thunderbolt 3",
+    "Females": [
+        
+    ],
+    "Males": [
+        {
+            "Name": "USB-C",
+            "PinType": "USB-C"
+        },
+        {
+            "Name": "USB-C",
+            "PinType": "USB-C"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "Name": "USBC to DP",
+    "Females": [
+        {
+            "Name": "DP",
+            "PinType": "DisplayPort"
+        }
+    ],
+    "Males": [
+        {
+            "Name": "USB-C",
+            "PinType": "USB-C"
+        }
+    ]
+}

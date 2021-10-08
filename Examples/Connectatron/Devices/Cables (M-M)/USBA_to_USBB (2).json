@@ -1,0 +1,26 @@
+{
+    "Name": "USBA to USBB",
+    "Females": [
+        
+    ],
+    "Males": [
+        {
+            "Name": "USB-A",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0"
+            ]
+        },
+        {
+            "Name": "USB-B",
+            "PinType": "USB-B",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0"
+            ]
+        }
+    ]
+}

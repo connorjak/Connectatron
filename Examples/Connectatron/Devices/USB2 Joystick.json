@@ -1,0 +1,15 @@
+{
+    "Name": "USB2 Joystick",
+    "Females": [
+        
+    ],
+    "Males": [
+        {
+            "Name": "USB-A",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 2.0"
+            ]
+        }
+    ]
+}

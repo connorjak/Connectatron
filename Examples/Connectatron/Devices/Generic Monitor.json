@@ -1,0 +1,21 @@
+{
+    "Name": "Generic Monitor",
+    "Females": [
+        {
+            "Name": "DisplayPort",
+            "PinType": "DisplayPort",
+            "Protocols": [
+                "DisplayPort 1.2a"
+            ]
+        },
+        {
+            "Name": "HDMI",
+            "PinType": "HDMI",
+            "Protocols": [
+                "HDMI"
+            ]
+        }
+    ],
+    "Males": [
+    ]
+}

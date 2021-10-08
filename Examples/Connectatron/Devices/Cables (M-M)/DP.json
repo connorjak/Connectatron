@@ -1,0 +1,16 @@
+{
+    "Name": "DP",
+    "Females": [
+        
+    ],
+    "Males": [
+        {
+            "Name": "DP",
+            "PinType": "DisplayPort"
+        },
+        {
+            "Name": "DP",
+            "PinType": "DisplayPort"
+        }
+    ]
+}

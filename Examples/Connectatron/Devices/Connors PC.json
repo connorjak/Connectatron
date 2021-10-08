@@ -1,0 +1,112 @@
+{
+    "Name": "Connors PC (WIP)",
+    "Females": [
+        {
+            "Name": "Rear Panel USBC 1",
+            "PinType": "USB-C",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g",
+                "USB 3 20g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 1",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 2",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 3",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 4",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 5",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g"
+            ]
+        },
+        {
+            "Name": "Rear Panel USB-A 6",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g"
+            ]
+        },
+        {
+            "Name": "Rear Panel Ethernet 1",
+            "PinType": "RJ45",
+            "Protocols": [
+                "Ethernet"
+            ]
+        },
+        {
+            "Name": "Rear Panel Ethernet 2",
+            "PinType": "RJ45",
+            "Protocols": [
+                "Ethernet"
+            ]
+        },
+        {
+            "Name": "Rear Panel Audio",
+            "PinType": "Audio3.5mm",
+            "Protocols": [
+                "AnalogAudio"
+            ]
+        },
+        {
+            "Name": "Rear Panel Mic",
+            "PinType": "Audio3.5mm",
+            "Protocols": [
+                "AnalogAudio"
+            ]
+        }
+    ],
+    "Males": [
+        
+    ]
+}

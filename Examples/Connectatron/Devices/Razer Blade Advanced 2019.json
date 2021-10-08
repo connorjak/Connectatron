@@ -1,0 +1,98 @@
+{
+    "Name": "Razer Blade 15\" Advanced (2019)",
+    "Females": [
+        {
+            "Name": "Thunderbolt 3",
+            "PinType": "USB-C",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g",
+                "USB 3 20g",
+                "Thunderbolt 3",
+                "PCIe 1.0 x1",
+                "PCIe 1.0 x2",
+                "PCIe 1.0 x4",
+                "PCIe 2.0 x1",
+                "PCIe 2.0 x2",
+                "PCIe 2.0 x4",
+                "PCIe 3.0 x1",
+                "PCIe 3.0 x2",
+                "PCIe 3.0 x4",
+                "DisplayPort 1.0",
+                "DisplayPort 1.1",
+                "DisplayPort 1.2",
+                "DisplayPort 1.2a",
+                "DisplayPort 1.3",
+                "DisplayPort 1.4",
+                "DisplayPort 1.4a",
+                "DC Power"
+            ]
+        },
+        {
+            "Name": "USB-A 1",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "USB-A 2",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "USB-A 3",
+            "PinType": "USB-A",
+            "Protocols": [
+                "USB 1.0",
+                "USB 1.1",
+                "USB 2.0",
+                "USB 3 5g",
+                "USB 3 10g"
+            ]
+        },
+        {
+            "Name": "Mini Displayport",
+            "PinType": "Mini DisplayPort",
+            "Protocols": [
+                "DisplayPort 1.0",
+                "DisplayPort 1.1",
+                "DisplayPort 1.2",
+                "DisplayPort 1.2a",
+                "DisplayPort 1.3",
+                "DisplayPort 1.4",
+                "DisplayPort 1.4a"
+            ]
+        },
+        {
+            "Name": "HDMI",
+            "PinType": "HDMI",
+            "Protocols": [
+                "HDMI 2.0b"
+            ]
+        },
+        {
+            "Name": "Audio/Mic Combo",
+            "PinType": "Audio3.5mm",
+            "Protocols": [
+                "AnalogAudio"
+            ]
+        }
+    ],
+    "Males": [
+        
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "Name": "ASUS Zenscreen",
+    "Females": [
+        {
+            "Name": "Display / Power",
+            "PinType": "USB-C",
+            "Protocols": [
+                "DC Power",
+                "DisplayPort 1.0",
+                "DisplayPort 1.1",
+                "DisplayPort 1.2",
+                "DisplayPort 1.2a"
+            ]
+        }
+    ],
+    "Males": [
+    ]
+}
