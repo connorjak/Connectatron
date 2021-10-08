@@ -31,7 +31,7 @@ using std::set;
 
 enum Color { RED = 2, BLUE = 4, GREEN = 8 };
 
-static fs::path DevicesPath = "../../../../Examples/Connectatron/Devices";
+static fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
 
 static inline ImRect ImGui_GetItemRect()
 {
