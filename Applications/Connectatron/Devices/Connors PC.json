@@ -81,14 +81,18 @@
             "Name": "Rear Panel Ethernet 1",
             "PinType": "RJ45",
             "Protocols": [
-                "Ethernet"
+                "Ethernet 10BASE-T",
+                "Ethernet 100BASE-T",
+                "Ethernet 1000BASE-T"
             ]
         },
         {
             "Name": "Rear Panel Ethernet 2",
             "PinType": "RJ45",
             "Protocols": [
-                "Ethernet"
+                "Ethernet 10BASE-T",
+                "Ethernet 100BASE-T",
+                "Ethernet 1000BASE-T"
             ]
         },
         {
