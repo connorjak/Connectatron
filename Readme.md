@@ -1,3 +1,11 @@
+# Connectatron
+
+Documentation TODO.
+
+Was forked from https://github.com/connorjak/imgui-node-editor.
+
+--- 
+
 # Node Editor in ImGui
 
 [![Appveyor status](https://ci.appveyor.com/api/projects/status/lm0io3m8mv7avacp/branch/master?svg=true)](https://ci.appveyor.com/project/thedmd/imgui-node-editor/branch/master)
