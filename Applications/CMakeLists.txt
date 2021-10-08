@@ -12,11 +12,11 @@ macro(add_example name)
     if (WIN32)
         set(_Example_Type WIN32)
 
-        set(ApplicationIcon ${CMAKE_SOURCE_DIR}/Examples/Common/Support/Icon.ico)
+        set(ApplicationIcon ${CMAKE_SOURCE_DIR}/Applications/Common/Support/Icon.ico)
         file(TO_NATIVE_PATH "${ApplicationIcon}" ApplicationIcon)
         string(REPLACE "\\" "\\\\" ApplicationIcon "${ApplicationIcon}")
         configure_file(
-            ${CMAKE_SOURCE_DIR}/Examples/Common/Support/Resource.rc.in
+            ${CMAKE_SOURCE_DIR}/Applications/Common/Support/Resource.rc.in
             ${CMAKE_CURRENT_BINARY_DIR}/Resource.rc
         )
         set(_Example_Resources

@@ -3,8 +3,8 @@ if (TARGET blueprint-utilities)
     return()
 endif()
 
-set(_blueprint-utilities_SourceDir ${CMAKE_SOURCE_DIR}/Examples/Common/BlueprintUtilities)
-set(_blueprint-utilities_BinaryDir ${CMAKE_BINARY_DIR}/Examples/Common/BlueprintUtilities)
+set(_blueprint-utilities_SourceDir ${CMAKE_SOURCE_DIR}/Applications/Common/BlueprintUtilities)
+set(_blueprint-utilities_BinaryDir ${CMAKE_BINARY_DIR}/Applications/Common/BlueprintUtilities)
 
 add_subdirectory(${_blueprint-utilities_SourceDir} ${_blueprint-utilities_BinaryDir})
 
