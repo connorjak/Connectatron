@@ -5,7 +5,7 @@ Connectatron is a node editor for planning and analyzing networks of devices.
 Connectatron uses standards-compliant terminology to enable the user to specify a device's connectors and their capabilities. When using the node editor, physical compatibility between connectors is enforced, and protocols are compared across connections (WIP) to ensure electrical/software compatibility.
 
 I built this in an effort to make a better way to do things like:
-- Check if I have enough 5gbps USB 3 ports to support a certain VR setup.
+- Check if I have enough 5Gbps USB 3 ports to support a certain VR setup.
 - Plan out complicated KVM switch setups with multiple monitors.
 - Make a packing list for my laptop + peripherals in certain configurations so I don't forget any adapters.
 - See if new computer hardware I'm about to buy is compatible with existing hardware.
