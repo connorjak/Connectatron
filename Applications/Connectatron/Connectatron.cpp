@@ -740,6 +740,12 @@ static Node* SpawnNodeFromJSON(const json& device)
     auto name = device["Name"].get<string>();
     s_Nodes.emplace_back(GetNextId(), name.c_str(), ImColor(255, 128, 128));
 
+    if (device.find("SavedPos") != device.end())
+    {
+        s_Nodes.back().SavedPosition.x = device["SavedPos"][0].get<float>();
+        s_Nodes.back().SavedPosition.y = device["SavedPos"][1].get<float>();
+    }
+
     // Parse Females
     for (const auto& female : device["Females"])
     {
@@ -835,6 +841,10 @@ static json SerializeDeviceToJSON(const Node& node)
 
     device["Name"] = node.Name;
 
+    auto pos = ed::GetNodePosition(node.ID);
+    device["SavedPos"][0] = pos.x;
+    device["SavedPos"][1] = pos.y;
+    
     // Parse Females
     device["Females"] = json::array();
     auto& j_Females = device["Females"];
@@ -938,7 +948,9 @@ static void LoadProjectFromFile(fs::path filepath)
 
     for (const auto& device : Devices)
     {
-        SpawnNodeFromJSON(device);
+        auto node = SpawnNodeFromJSON(device);
+
+        ed::SetNodePosition(node->ID, node->SavedPosition);
     }
     //TODO pin connections
 }
