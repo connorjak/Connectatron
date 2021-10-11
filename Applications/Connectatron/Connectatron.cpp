@@ -995,13 +995,16 @@ static json SerializeLinkToJSON(const Link& link)
 
 
     vector<Pin>* males = &startNode->Males;
-    //auto start_pin_loc = std::find(males->begin(), males->end(), startPin) - males->begin();
-    //TODO BREAKING fix this
-    auto start_pin_loc = 0;
+    // Find index of pin that matches id with the one we have a pointer to
+    auto start_pin_loc = std::find_if(males->begin(), males->end(),
+        [startPin](const Pin& pin) { return startPin->ID == pin.ID; })
+        - males->begin();
 
     vector<Pin>* females = &endNode->Females;
-    //auto end_pin_loc = std::find(females->begin(), females->end(), endPin) - females->begin();
-    auto end_pin_loc = 0;
+    // Find index of pin that matches id with the one we have a pointer to
+    auto end_pin_loc = std::find_if(females->begin(), females->end(), 
+        [endPin](const Pin& pin) { return endPin->ID == pin.ID; }) 
+        - females->begin();
     connect[2] = int(start_pin_loc);
     connect[3] = int(end_pin_loc);
 
