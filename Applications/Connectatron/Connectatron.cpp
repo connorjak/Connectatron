@@ -834,6 +834,15 @@ static Node* SpawnNodeFromJSON(const json& device)
     return &s_Nodes.back();
 }
 
+static Node* SpawnLinkFromJSON(const json& connect)
+{
+    //TODO BREAKING PinID is a pointer, not an integer!
+    s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+
+
+    s_Links.back().Color = GetIconColor(startPin->Type);
+}
+
 //TODO save position in project?
 static json SerializeDeviceToJSON(const Node& node)
 {
@@ -917,6 +926,21 @@ static json SerializeDeviceToJSON(const Node& node)
     return device;
 }
 
+static json SerializeLinkToJSON(const Link& link)
+{
+    json connect;
+    /*connect.push_back(link.);
+    auto endPinId = connect[1].get<int>();
+    s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+
+    auto startPin = FindPin(startPinId);
+    auto endPin = FindPin(endPinId);
+
+    s_Links.back().Color = GetIconColor(startPin->Type);*/
+
+    return connect;
+}
+
 static void SaveProjectToFile(fs::path filepath)
 {
     std::ofstream o(filepath);
@@ -929,7 +953,14 @@ static void SaveProjectToFile(fs::path filepath)
     {
         devices.push_back(SerializeDeviceToJSON(node));
     }
-    //TODO pin connections
+
+    project["Links"] = json::array();
+    auto& connects = project["Links"];
+
+    for (const auto& link : s_Links)
+    {
+        connects.push_back(SerializeLinkToJSON(link));
+    }
 
     o << project;
     o.close();
@@ -952,7 +983,12 @@ static void LoadProjectFromFile(fs::path filepath)
 
         ed::SetNodePosition(node->ID, node->SavedPosition);
     }
-    //TODO pin connections
+
+    const auto& Connects = project["Links"];
+    for (const auto& connect : Connects)
+    {
+        auto link = SpawnLinkFromJSON(connect);
+    }
 }
 
 void BuildNodes()
