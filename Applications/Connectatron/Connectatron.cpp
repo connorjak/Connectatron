@@ -23,12 +23,15 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <memory>
 
 using namespace nlohmann;
 namespace fs = std::filesystem;
 using std::string;
 using std::vector;
 using std::set;
+using std::shared_ptr;
+using std::make_shared;
 
 // placeholder for UUID
 using NotUUID = int;
@@ -388,7 +391,7 @@ struct Node;
 struct Pin
 {
     ed::PinId   ID;
-    ::Node* Node;
+    ::shared_ptr<Node> Node;
     std::string Name;
     // Physical connector type
     PinType     Type;
@@ -466,8 +469,8 @@ static NotUUID Generate_NotUUID()
 
 
 static const int            s_PinIconSize = 24;
-static std::vector<Node>    s_Nodes;
-static std::map<NotUUID, Node*>    s_IdNodes;
+static std::vector<shared_ptr<Node>>    s_Nodes;
+static std::map<NotUUID, shared_ptr<Node>>    s_IdNodes;
 static std::vector<Link>    s_Links;
 static ImTextureID          s_HeaderBackground = nullptr;
 //static ImTextureID          s_SampleImage = nullptr;
@@ -631,11 +634,11 @@ static void UpdateTouch()
     }
 }
 
-static Node* FindNode(ed::NodeId id)
+static shared_ptr<Node> FindNode(ed::NodeId id)
 {
-    for (auto& node : s_Nodes)
-        if (node.ID == id)
-            return &node;
+    for (auto node : s_Nodes)
+        if (node->ID == id)
+            return node;
 
     return nullptr;
 }
@@ -654,13 +657,13 @@ static Pin* FindPin(ed::PinId id)
     if (!id)
         return nullptr;
 
-    for (auto& node : s_Nodes)
+    for (auto node : s_Nodes)
     {
-        for (auto& pin : node.Females)
+        for (auto& pin : node->Females)
             if (pin.ID == id)
                 return &pin;
 
-        for (auto& pin : node.Males)
+        for (auto& pin : node->Males)
             if (pin.ID == id)
                 return &pin;
     }
@@ -704,7 +707,7 @@ static bool CanCreateLink(Pin* a, Pin* b)
 //        color, rounding);
 //};
 
-static void BuildNode(Node* node)
+static void BuildNode(shared_ptr<Node> node)
 {
     for (auto& female : node->Females)
     {
@@ -752,10 +755,10 @@ static json GetJSONFromFile(fs::path filepath)
 
 //TODO error handling (probably just wrap in try/catch when called)
 //TODO load position in project?
-static Node* SpawnNodeFromJSON(const json& device)
+static shared_ptr<Node> SpawnNodeFromJSON(const json& device)
 {
     auto name = device["Name"].get<string>();
-    s_Nodes.emplace_back(GetNextId(), name.c_str(), ImColor(255, 128, 128));
+    auto new_node = s_Nodes.emplace_back(new Node(GetNextId(), name.c_str(), ImColor(255, 128, 128)));
 
     NotUUID id = -1;
     if (device.find("ID") != device.end())
@@ -766,12 +769,12 @@ static Node* SpawnNodeFromJSON(const json& device)
     {
         id = Generate_NotUUID();
     }
-    s_Nodes.back().persistentID = id;
+    new_node->persistentID = id;
 
     if (device.find("SavedPos") != device.end())
     {
-        s_Nodes.back().SavedPosition.x = device["SavedPos"][0].get<float>();
-        s_Nodes.back().SavedPosition.y = device["SavedPos"][1].get<float>();
+        new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
+        new_node->SavedPosition.y = device["SavedPos"][1].get<float>();
     }
 
     // Parse Females
@@ -802,16 +805,16 @@ static Node* SpawnNodeFromJSON(const json& device)
             if (female.find("Description") != female.end())
             {
                 auto description = female["Description"].get<string>();
-                s_Nodes.back().Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
             }
             else
             {
-                s_Nodes.back().Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
             }
         }
         else
         {
-            s_Nodes.back().Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+            new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
         }
     }
 
@@ -844,24 +847,24 @@ static Node* SpawnNodeFromJSON(const json& device)
             if (male.find("Description") != male.end())
             {
                 auto description = male["Description"].get<string>();
-                s_Nodes.back().Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
             }
             else
             {
-                s_Nodes.back().Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
             }
         }
         else
         {
-            s_Nodes.back().Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+            new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
         }
     }
 
-    BuildNode(&s_Nodes.back());
+    BuildNode(new_node);
 
-    s_IdNodes[id] = &s_Nodes.back();
+    s_IdNodes[id] = new_node;
 
-    return &s_Nodes.back();
+    return new_node;
 }
 
 static Link* SpawnLinkFromJSON(const json& connect)
@@ -884,11 +887,11 @@ static Link* SpawnLinkFromJSON(const json& connect)
     return &s_Links.back();
 }
 
-static json SerializeDeviceToJSON(const Node& node)
+static json SerializeDeviceToJSON(const shared_ptr<Node> node)
 {
     json device;
 
-    device["Name"] = node.Name;
+    device["Name"] = node->Name;
 
     /*NotUUID id = -1;
     if (device.find("ID") != device.end())
@@ -899,16 +902,16 @@ static json SerializeDeviceToJSON(const Node& node)
     {
         id = Generate_NotUUID();
     }*/
-    device["ID"] = node.persistentID;
+    device["ID"] = node->persistentID;
 
-    auto pos = ed::GetNodePosition(node.ID);
+    auto pos = ed::GetNodePosition(node->ID);
     device["SavedPos"][0] = pos.x;
     device["SavedPos"][1] = pos.y;
     
     // Parse Females
     device["Females"] = json::array();
     auto& j_Females = device["Females"];
-    for (const auto& female : node.Females)
+    for (const auto& female : node->Females)
     {
         auto& j_female = j_Females.emplace_back(json::object());
         j_female["Name"] = female.Name;
@@ -943,7 +946,7 @@ static json SerializeDeviceToJSON(const Node& node)
     // Parse Males
     device["Males"] = json::array();
     auto& j_Males = device["Males"];
-    for (const auto& male : node.Males)
+    for (const auto& male : node->Males)
     {
         auto& j_male = j_Males.emplace_back(json::object());
         j_male["Name"] = male.Name;
@@ -1058,8 +1061,8 @@ static void LoadProjectFromFile(fs::path filepath)
 
 void BuildNodes()
 {
-    for (auto& node : s_Nodes)
-        BuildNode(&node);
+    for (auto node : s_Nodes)
+        BuildNode(node);
 }
 
 const char* Application_GetName()
@@ -1287,10 +1290,10 @@ void ShowLeftPane(float paneWidth)
     ImGui::Indent();
     for (auto& node : s_Nodes)
     {
-        ImGui::PushID(node.ID.AsPointer());
+        ImGui::PushID(node->ID.AsPointer());
         auto start = ImGui::GetCursorScreenPos();
 
-        if (const auto progress = GetTouchProgress(node.ID))
+        if (const auto progress = GetTouchProgress(node->ID))
         {
             ImGui::GetWindowDrawList()->AddLine(
                 start + ImVec2(-8, 0),
@@ -1298,25 +1301,25 @@ void ShowLeftPane(float paneWidth)
                 IM_COL32(255, 0, 0, 255 - (int)(255 * progress)), 4.0f);
         }
 
-        bool isSelected = std::find(selectedNodes.begin(), selectedNodes.end(), node.ID) != selectedNodes.end();
-        if (ImGui::Selectable((node.Name + "##" + std::to_string(reinterpret_cast<uintptr_t>(node.ID.AsPointer()))).c_str(), &isSelected))
+        bool isSelected = std::find(selectedNodes.begin(), selectedNodes.end(), node->ID) != selectedNodes.end();
+        if (ImGui::Selectable((node->Name + "##" + std::to_string(reinterpret_cast<uintptr_t>(node->ID.AsPointer()))).c_str(), &isSelected))
         {
             if (io.KeyCtrl)
             {
                 if (isSelected)
-                    ed::SelectNode(node.ID, true);
+                    ed::SelectNode(node->ID, true);
                 else
-                    ed::DeselectNode(node.ID);
+                    ed::DeselectNode(node->ID);
             }
             else
-                ed::SelectNode(node.ID, false);
+                ed::SelectNode(node->ID, false);
 
             ed::NavigateToSelection();
         }
-        if (ImGui::IsItemHovered() && !node.State.empty())
-            ImGui::SetTooltip("State: %s", node.State.c_str());
+        if (ImGui::IsItemHovered() && !node->State.empty())
+            ImGui::SetTooltip("State: %s", node->State.c_str());
 
-        auto id = std::string("(") + std::to_string(reinterpret_cast<uintptr_t>(node.ID.AsPointer())) + ")";
+        auto id = std::string("(") + std::to_string(reinterpret_cast<uintptr_t>(node->ID.AsPointer())) + ")";
         auto textSize = ImGui::CalcTextSize(id.c_str(), nullptr);
         auto iconPanelPos = start + ImVec2(
             paneWidth - ImGui::GetStyle().FramePadding.x - ImGui::GetStyle().IndentSpacing - saveIconWidth - restoreIconWidth - ImGui::GetStyle().ItemInnerSpacing.x * 1,
@@ -1328,10 +1331,10 @@ void ShowLeftPane(float paneWidth)
         auto drawList = ImGui::GetWindowDrawList();
         ImGui::SetCursorScreenPos(iconPanelPos);
         ImGui::SetItemAllowOverlap();
-        if (node.SavedState.empty())
+        if (node->SavedState.empty())
         {
             if (ImGui::InvisibleButton("save", ImVec2((float)saveIconWidth, (float)saveIconHeight)))
-                node.SavedState = node.State;
+                node->SavedState = node->State;
 
             if (ImGui::IsItemActive())
                 drawList->AddImage(s_SaveIcon, ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 96));
@@ -1348,13 +1351,13 @@ void ShowLeftPane(float paneWidth)
 
         ImGui::SameLine(0, ImGui::GetStyle().ItemInnerSpacing.x);
         ImGui::SetItemAllowOverlap();
-        if (!node.SavedState.empty())
+        if (!node->SavedState.empty())
         {
             if (ImGui::InvisibleButton("restore", ImVec2((float)restoreIconWidth, (float)restoreIconHeight)))
             {
-                node.State = node.SavedState;
-                ed::RestoreNodeState(node.ID);
-                node.SavedState.clear();
+                node->State = node->SavedState;
+                ed::RestoreNodeState(node->ID);
+                node->SavedState.clear();
             }
 
             if (ImGui::IsItemActive())
@@ -1453,29 +1456,29 @@ void Application_Frame()
 
         for (auto& node : s_Nodes)
         {
-            if (node.Type != NodeType::Blueprint && node.Type != NodeType::Simple)
+            if (node->Type != NodeType::Blueprint && node->Type != NodeType::Simple)
                 continue;
 
-            const auto isSimple = node.Type == NodeType::Simple;
+            const auto isSimple = node->Type == NodeType::Simple;
 
             /*bool hasOutputDelegates = false;
-            for (auto& male : node.Males)
+            for (auto& male : node->Males)
                 if (male.Type == PinType::Delegate)
                     hasOutputDelegates = true;*/
 
-            builder.Begin(node.ID);
+            builder.Begin(node->ID);
             if (!isSimple)
             {
-                builder.Header(node.Color);
+                builder.Header(node->Color);
                 ImGui::Spring(0);
-                ImGui::TextUnformatted(node.Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::Spring(1);
                 ImGui::Dummy(ImVec2(0, 28));
                 //if (hasOutputDelegates)
                 //{
                 //    ImGui::BeginVertical("delegates", ImVec2(0, 28));
                 //    ImGui::Spring(1, 0);
-                //    for (auto& male : node.Males)
+                //    for (auto& male : node->Males)
                 //    {
                 //        if (male.Type != PinType::Delegate)
                 //            continue;
@@ -1511,7 +1514,7 @@ void Application_Frame()
                 builder.EndHeader();
             }
 
-            for (auto& female : node.Females)
+            for (auto& female : node->Females)
             {
                 auto alpha = ImGui::GetStyle().Alpha;
                 if (newLinkPin && !CanCreateLink(newLinkPin, &female) && &female != newLinkPin)
@@ -1540,11 +1543,11 @@ void Application_Frame()
                 builder.Middle();
 
                 ImGui::Spring(1, 0);
-                ImGui::TextUnformatted(node.Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::Spring(1, 0);
             }
 
-            for (auto& male : node.Males)
+            for (auto& male : node->Males)
             {
                 /*if (!isSimple && male.Type == PinType::Delegate)
                     continue;*/
@@ -1591,7 +1594,7 @@ void Application_Frame()
 
         for (auto& node : s_Nodes)
         {
-            if (node.Type != NodeType::Tree)
+            if (node->Type != NodeType::Tree)
                 continue;
 
             const float rounding = 5.0f;
@@ -1611,17 +1614,17 @@ void Application_Frame()
             ed::PushStyleVar(ed::StyleVar_LinkStrength, 0.0f);
             ed::PushStyleVar(ed::StyleVar_PinBorderWidth, 1.0f);
             ed::PushStyleVar(ed::StyleVar_PinRadius, 5.0f);
-            ed::BeginNode(node.ID);
+            ed::BeginNode(node->ID);
 
-            ImGui::BeginVertical(node.ID.AsPointer());
+            ImGui::BeginVertical(node->ID.AsPointer());
             ImGui::BeginHorizontal("inputs");
             ImGui::Spring(0, padding * 2);
 
             ImRect inputsRect;
             int inputAlpha = 200;
-            if (!node.Females.empty())
+            if (!node->Females.empty())
             {
-                auto& pin = node.Females[0];
+                auto& pin = node->Females[0];
                 ImGui::Dummy(ImVec2(0, padding));
                 ImGui::Spring(1, 0);
                 inputsRect = ImGui_GetItemRect();
@@ -1650,7 +1653,7 @@ void Application_Frame()
             ImGui::BeginVertical("content", ImVec2(0.0f, 0.0f));
             ImGui::Dummy(ImVec2(160, 0));
             ImGui::Spring(1);
-            ImGui::TextUnformatted(node.Name.c_str());
+            ImGui::TextUnformatted(node->Name.c_str());
             ImGui::Spring(1);
             ImGui::EndVertical();
             auto contentRect = ImGui_GetItemRect();
@@ -1663,9 +1666,9 @@ void Application_Frame()
 
             ImRect outputsRect;
             int outputAlpha = 200;
-            if (!node.Males.empty())
+            if (!node->Males.empty())
             {
-                auto& pin = node.Males[0];
+                auto& pin = node->Males[0];
                 ImGui::Dummy(ImVec2(0, padding));
                 ImGui::Spring(1, 0);
                 outputsRect = ImGui_GetItemRect();
@@ -1692,7 +1695,7 @@ void Application_Frame()
             ed::PopStyleVar(7);
             ed::PopStyleColor(4);
 
-            auto drawList = ed::GetNodeBackgroundDrawList(node.ID);
+            auto drawList = ed::GetNodeBackgroundDrawList(node->ID);
 
             //const auto fringeScale = ImGui::GetStyle().AntiAliasFringeScale;
             //const auto unitSize    = 1.0f / fringeScale;
@@ -1728,7 +1731,7 @@ void Application_Frame()
 
         for (auto& node : s_Nodes)
         {
-            if (node.Type != NodeType::Houdini)
+            if (node->Type != NodeType::Houdini)
                 continue;
 
             const float rounding = 10.0f;
@@ -1749,17 +1752,17 @@ void Application_Frame()
             ed::PushStyleVar(ed::StyleVar_LinkStrength, 0.0f);
             ed::PushStyleVar(ed::StyleVar_PinBorderWidth, 1.0f);
             ed::PushStyleVar(ed::StyleVar_PinRadius, 6.0f);
-            ed::BeginNode(node.ID);
+            ed::BeginNode(node->ID);
 
-            ImGui::BeginVertical(node.ID.AsPointer());
-            if (!node.Females.empty())
+            ImGui::BeginVertical(node->ID.AsPointer());
+            if (!node->Females.empty())
             {
                 ImGui::BeginHorizontal("inputs");
                 ImGui::Spring(1, 0);
 
                 ImRect inputsRect;
                 int inputAlpha = 200;
-                for (auto& pin : node.Females)
+                for (auto& pin : node->Females)
                 {
                     ImGui::Dummy(ImVec2(padding, padding));
                     inputsRect = ImGui_GetItemRect();
@@ -1798,7 +1801,7 @@ void Application_Frame()
             ImGui::Dummy(ImVec2(160, 0));
             ImGui::Spring(1);
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
-            ImGui::TextUnformatted(node.Name.c_str());
+            ImGui::TextUnformatted(node->Name.c_str());
             ImGui::PopStyleColor();
             ImGui::Spring(1);
             ImGui::EndVertical();
@@ -1807,14 +1810,14 @@ void Application_Frame()
             ImGui::Spring(1, padding);
             ImGui::EndHorizontal();
 
-            if (!node.Males.empty())
+            if (!node->Males.empty())
             {
                 ImGui::BeginHorizontal("outputs");
                 ImGui::Spring(1, 0);
 
                 ImRect outputsRect;
                 int outputAlpha = 200;
-                for (auto& pin : node.Males)
+                for (auto& pin : node->Males)
                 {
                     ImGui::Dummy(ImVec2(padding, padding));
                     outputsRect = ImGui_GetItemRect();
@@ -1849,7 +1852,7 @@ void Application_Frame()
             ed::PopStyleVar(7);
             ed::PopStyleColor(4);
 
-            auto drawList = ed::GetNodeBackgroundDrawList(node.ID);
+            auto drawList = ed::GetNodeBackgroundDrawList(node->ID);
 
             //const auto fringeScale = ImGui::GetStyle().AntiAliasFringeScale;
             //const auto unitSize    = 1.0f / fringeScale;
@@ -1885,7 +1888,7 @@ void Application_Frame()
 
         for (auto& node : s_Nodes)
         {
-            if (node.Type != NodeType::Comment)
+            if (node->Type != NodeType::Comment)
                 continue;
 
             const float commentAlpha = 0.75f;
@@ -1893,22 +1896,22 @@ void Application_Frame()
             ImGui::PushStyleVar(ImGuiStyleVar_Alpha, commentAlpha);
             ed::PushStyleColor(ed::StyleColor_NodeBg, ImColor(255, 255, 255, 64));
             ed::PushStyleColor(ed::StyleColor_NodeBorder, ImColor(255, 255, 255, 64));
-            ed::BeginNode(node.ID);
-            ImGui::PushID(node.ID.AsPointer());
+            ed::BeginNode(node->ID);
+            ImGui::PushID(node->ID.AsPointer());
             ImGui::BeginVertical("content");
             ImGui::BeginHorizontal("horizontal");
             ImGui::Spring(1);
-            ImGui::TextUnformatted(node.Name.c_str());
+            ImGui::TextUnformatted(node->Name.c_str());
             ImGui::Spring(1);
             ImGui::EndHorizontal();
-            ed::Group(node.Size);
+            ed::Group(node->Size);
             ImGui::EndVertical();
             ImGui::PopID();
             ed::EndNode();
             ed::PopStyleColor(2);
             ImGui::PopStyleVar();
 
-            if (ed::BeginGroupHint(node.ID))
+            if (ed::BeginGroupHint(node->ID))
             {
                 //auto alpha   = static_cast<int>(commentAlpha * ImGui::GetStyle().Alpha * 255);
                 auto bgAlpha = static_cast<int>(ImGui::GetStyle().Alpha * 255);
@@ -1920,7 +1923,7 @@ void Application_Frame()
 
                 ImGui::SetCursorScreenPos(min - ImVec2(-8, ImGui::GetTextLineHeightWithSpacing() + 4));
                 ImGui::BeginGroup();
-                ImGui::TextUnformatted(node.Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::EndGroup();
 
                 auto drawList = ed::GetHintBackgroundDrawList();
@@ -2056,7 +2059,7 @@ void Application_Frame()
                 {
                     if (ed::AcceptDeletedItem())
                     {
-                        auto id = std::find_if(s_Nodes.begin(), s_Nodes.end(), [nodeId](auto& node) { return node.ID == nodeId; });
+                        auto id = std::find_if(s_Nodes.begin(), s_Nodes.end(), [nodeId](auto& node) { return node->ID == nodeId; });
                         if (id != s_Nodes.end())
                             s_Nodes.erase(id);
                     }
@@ -2188,7 +2191,7 @@ void Application_Frame()
         //auto drawList = ImGui::GetWindowDrawList();
         //drawList->AddCircleFilled(ImGui::GetMousePosOnOpeningCurrentPopup(), 10.0f, 0xFFFF00FF);
 
-        Node* node = nullptr;
+        shared_ptr<Node> node;
 
 
         ImGui::Text("Devices");
