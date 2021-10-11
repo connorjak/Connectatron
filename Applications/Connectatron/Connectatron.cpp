@@ -22,6 +22,7 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <random>
 
 using namespace nlohmann;
 namespace fs = std::filesystem;
@@ -448,9 +449,23 @@ struct Link
     }
 };
 
+// placeholder for UUID
+using NotUUID = int;
+
+static std::random_device dev;
+static std::mt19937 rng(dev());
+
+static NotUUID Generate_NotUUID()
+{
+    std::uniform_int_distribution<std::mt19937::result_type> distPosInt(1, 2147483646); 
+
+    return distPosInt(rng);
+}
+
 
 static const int            s_PinIconSize = 24;
 static std::vector<Node>    s_Nodes;
+static std::map<NotUUID, Node*>    s_IdNodes;
 static std::vector<Link>    s_Links;
 static ImTextureID          s_HeaderBackground = nullptr;
 //static ImTextureID          s_SampleImage = nullptr;
@@ -836,6 +851,7 @@ static Node* SpawnNodeFromJSON(const json& device)
 
 static Node* SpawnLinkFromJSON(const json& connect)
 {
+
     //TODO BREAKING PinID is a pointer, not an integer!
     s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
 
