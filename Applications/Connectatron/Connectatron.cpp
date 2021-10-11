@@ -31,7 +31,8 @@ using std::set;
 
 enum Color { RED = 2, BLUE = 4, GREEN = 8 };
 
-static fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
+const fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
+const fs::path ProjectsPath = "../../../../Applications/Connectatron/Projects";
 
 static inline ImRect ImGui_GetItemRect()
 {
@@ -722,18 +723,23 @@ static void EnumName_Symbol2Underscore(std::string& symboled)
     ReplaceAll(symboled, ".", "_");
 }
 
-//TODO error handling (probably just wrap in try/catch when called)
-static Node* SpawnNodeFromJSON(fs::path filepath)
+static json GetJSONFromFile(fs::path filepath)
 {
     std::ifstream i(filepath);
-    json device;
-    i >> device;
+    json js;
+    i >> js;
+    return js;
+}
 
+//TODO error handling (probably just wrap in try/catch when called)
+//TODO load position in project?
+static Node* SpawnNodeFromJSON(const json& device)
+{
     auto name = device["Name"].get<string>();
     s_Nodes.emplace_back(GetNextId(), name.c_str(), ImColor(255, 128, 128));
 
     // Parse Females
-    for (auto female : device["Females"])
+    for (const auto& female : device["Females"])
     {
         auto in_name = female["Name"].get<string>();
 
@@ -743,7 +749,7 @@ static Node* SpawnNodeFromJSON(fs::path filepath)
         auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
         auto in_pintype = parsed_pintype.value();
 
-        //Can have just pintype, or pintype+protocols, or pintype+protocols+description //TODO maybe IsFemale as well?
+        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
         if (female.find("Protocols") != female.end())
         {
             set<WireProtocol> protocols;
@@ -775,7 +781,7 @@ static Node* SpawnNodeFromJSON(fs::path filepath)
 
 
     // Parse Males
-    for (auto male : device["Males"])
+    for (const auto& male : device["Males"])
     {
         auto in_name = male["Name"].get<string>();
 
@@ -818,6 +824,121 @@ static Node* SpawnNodeFromJSON(fs::path filepath)
     BuildNode(&s_Nodes.back());
 
     return &s_Nodes.back();
+}
+
+//TODO save position in project?
+static json SerializeDeviceToJSON(const Node& node)
+{
+    json device;
+
+    device["Name"] = node.Name;
+
+    // Parse Females
+    device["Females"] = json::array();
+    auto& j_Females = device["Females"];
+    for (const auto& female : node.Females)
+    {
+        auto& j_female = j_Females.emplace_back(json::object());
+        j_female["Name"] = female.Name;
+
+        auto pintype = female.Type;
+        auto pintype_str = string(magic_enum::enum_name(pintype));
+        EnumName_Underscore2Symbol(pintype_str);
+        j_female["PinType"] = pintype_str;
+
+        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
+        if (female.Protocols.size() != 0)
+        {
+            j_female["Protocols"] = json::array();
+            auto& j_Protocols = j_female["Protocols"];
+            for (auto protocol : female.Protocols)
+            {
+                auto protocol_string = string(magic_enum::enum_name(protocol));
+                EnumName_Underscore2Symbol(protocol_string);
+
+                j_Protocols.push_back(protocol_string);
+                //TODO handle "sets" of protocols, like the backcompat variables?
+            }
+        }
+
+        if (female.ExtraInfo.size() != 0)
+        {
+            j_female["Description"] = female.ExtraInfo;
+        }
+    }
+
+
+    // Parse Males
+    device["Males"] = json::array();
+    auto& j_Males = device["Males"];
+    for (const auto& male : node.Males)
+    {
+        auto& j_male = j_Males.emplace_back(json::object());
+        j_male["Name"] = male.Name;
+
+        auto pintype = male.Type;
+        auto pintype_str = string(magic_enum::enum_name(pintype));
+        EnumName_Underscore2Symbol(pintype_str);
+        j_male["PinType"] = pintype_str;
+
+        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
+        if (male.Protocols.size() != 0)
+        {
+            j_male["Protocols"] = json::array();
+            auto& j_Protocols = j_male["Protocols"];
+            for (auto protocol : male.Protocols)
+            {
+                auto protocol_string = string(magic_enum::enum_name(protocol));
+                EnumName_Underscore2Symbol(protocol_string);
+
+                j_Protocols.push_back(protocol_string);
+                //TODO handle "sets" of protocols, like the backcompat variables?
+            }
+        }
+
+        if (male.ExtraInfo.size() != 0)
+        {
+            j_male["Description"] = male.ExtraInfo;
+        }
+    }
+
+    return device;
+}
+
+static void SaveProjectToFile(fs::path filepath)
+{
+    std::ofstream o(filepath);
+    json project;
+
+    project["Devices"] = json::array();
+    auto& devices = project["Devices"];
+
+    for (const auto& node : s_Nodes)
+    {
+        devices.push_back(SerializeDeviceToJSON(node));
+    }
+    //TODO pin connections
+
+    o << project;
+    o.close();
+}
+
+static void LoadProjectFromFile(fs::path filepath)
+{
+    std::ifstream i(filepath);
+    json project;
+    i >> project;
+
+    s_Nodes.clear();
+    s_Links.clear();
+
+    const auto& Devices = project["Devices"];
+
+    for (const auto& device : Devices)
+    {
+        SpawnNodeFromJSON(device);
+    }
+    //TODO pin connections
 }
 
 void BuildNodes()
@@ -993,6 +1114,15 @@ void ShowStyleEditor(bool* show = nullptr)
 void ShowLeftPane(float paneWidth)
 {
     auto& io = ImGui::GetIO();
+
+    if (ImGui::Button("Save Project"))
+    {
+        SaveProjectToFile(ProjectsPath / "test.con");
+    }
+    if (ImGui::Button("Load Project"))
+    {
+        LoadProjectFromFile(ProjectsPath / "test.con");
+    }
 
     ImGui::BeginChild("Selection", ImVec2(paneWidth, 0));
 
@@ -1953,7 +2083,8 @@ void Application_Frame()
         {
             if(devicePath.path().extension() == ".json")
                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(devicePath.path());
+                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+            //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
         }
         /*if (ImGui::MenuItem("Random Wait"))
             node = SpawnTreeTask2Node();
@@ -1974,7 +2105,7 @@ void Application_Frame()
         {
             if (devicePath.path().extension() == ".json")
                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(devicePath.path());
+                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
         }
 
         ImGui::Separator();
@@ -1985,7 +2116,7 @@ void Application_Frame()
         {
             if (devicePath.path().extension() == ".json")
                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(devicePath.path());
+                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
         }
 
 
