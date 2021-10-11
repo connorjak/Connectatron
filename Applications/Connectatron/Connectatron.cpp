@@ -30,6 +30,9 @@ using std::string;
 using std::vector;
 using std::set;
 
+// placeholder for UUID
+using NotUUID = int;
+
 enum Color { RED = 2, BLUE = 4, GREEN = 8 };
 
 const fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
@@ -416,6 +419,7 @@ struct Pin
 struct Node
 {
     ed::NodeId ID;
+    NotUUID persistentID;
     std::string Name;
     std::vector<Pin> Females;
     std::vector<Pin> Males;
@@ -429,7 +433,7 @@ struct Node
     std::string SavedState;
 
     Node(int id, const char* name, ImColor color = ImColor(255, 255, 255)) :
-        ID(id), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0), SavedPosition(0, 0)
+        ID(id), persistentID(-1), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0), SavedPosition(0, 0)
     {
     }
 };
@@ -449,15 +453,13 @@ struct Link
     }
 };
 
-// placeholder for UUID
-using NotUUID = int;
 
 static std::random_device dev;
 static std::mt19937 rng(dev());
 
 static NotUUID Generate_NotUUID()
 {
-    std::uniform_int_distribution<std::mt19937::result_type> distPosInt(1, 2147483646); 
+    std::uniform_int_distribution<std::mt19937::result_type> distPosInt(1, 100000); //2147483647 
 
     return distPosInt(rng);
 }
@@ -755,6 +757,17 @@ static Node* SpawnNodeFromJSON(const json& device)
     auto name = device["Name"].get<string>();
     s_Nodes.emplace_back(GetNextId(), name.c_str(), ImColor(255, 128, 128));
 
+    NotUUID id = -1;
+    if (device.find("ID") != device.end())
+    {
+        id = device["ID"].get<int>();
+    }
+    else
+    {
+        id = Generate_NotUUID();
+    }
+    s_Nodes.back().persistentID = id;
+
     if (device.find("SavedPos") != device.end())
     {
         s_Nodes.back().SavedPosition.x = device["SavedPos"][0].get<float>();
@@ -846,25 +859,47 @@ static Node* SpawnNodeFromJSON(const json& device)
 
     BuildNode(&s_Nodes.back());
 
+    s_IdNodes[id] = &s_Nodes.back();
+
     return &s_Nodes.back();
 }
 
-static Node* SpawnLinkFromJSON(const json& connect)
+static Link* SpawnLinkFromJSON(const json& connect)
 {
+    auto start_p_id = connect[0].get<int>();
+    auto end_p_id = connect[1].get<int>();
 
-    //TODO BREAKING PinID is a pointer, not an integer!
+    auto start_pin_loc = connect[2].get<int>();
+    auto end_pin_loc = connect[3].get<int>();
+
+    auto startNode = s_IdNodes.at(start_p_id);
+    auto endNode = s_IdNodes.at(end_p_id);
+    auto startPinId = startNode->Males[start_pin_loc].ID;
+    auto endPinId = endNode->Females[end_pin_loc].ID;
+
     s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
 
+    s_Links.back().Color = GetIconColor(startNode->Males[start_pin_loc].Type);
 
-    s_Links.back().Color = GetIconColor(startPin->Type);
+    return &s_Links.back();
 }
 
-//TODO save position in project?
 static json SerializeDeviceToJSON(const Node& node)
 {
     json device;
 
     device["Name"] = node.Name;
+
+    /*NotUUID id = -1;
+    if (device.find("ID") != device.end())
+    {
+        id = device["ID"].get<int>();
+    }
+    else
+    {
+        id = Generate_NotUUID();
+    }*/
+    device["ID"] = node.persistentID;
 
     auto pos = ed::GetNodePosition(node.ID);
     device["SavedPos"][0] = pos.x;
@@ -945,14 +980,27 @@ static json SerializeDeviceToJSON(const Node& node)
 static json SerializeLinkToJSON(const Link& link)
 {
     json connect;
-    /*connect.push_back(link.);
-    auto endPinId = connect[1].get<int>();
-    s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
 
-    auto startPin = FindPin(startPinId);
-    auto endPin = FindPin(endPinId);
+    auto startPin = FindPin(link.StartPinID);
+    auto endPin = FindPin(link.EndPinID);
+    auto startNode = startPin->Node;
+    auto endNode = endPin->Node;
+    auto start_p_id = startNode->persistentID;
+    auto end_p_id = endNode->persistentID;
+    connect[0] = start_p_id;
+    connect[1] = end_p_id;
 
-    s_Links.back().Color = GetIconColor(startPin->Type);*/
+
+    vector<Pin>* males = &startNode->Males;
+    //auto start_pin_loc = std::find(males->begin(), males->end(), startPin) - males->begin();
+    //TODO BREAKING fix this
+    auto start_pin_loc = 0;
+
+    vector<Pin>* females = &endNode->Females;
+    //auto end_pin_loc = std::find(females->begin(), females->end(), endPin) - females->begin();
+    auto end_pin_loc = 0;
+    connect[2] = int(start_pin_loc);
+    connect[3] = int(end_pin_loc);
 
     return connect;
 }
@@ -989,6 +1037,7 @@ static void LoadProjectFromFile(fs::path filepath)
     i >> project;
 
     s_Nodes.clear();
+    s_IdNodes.clear();
     s_Links.clear();
 
     const auto& Devices = project["Devices"];
