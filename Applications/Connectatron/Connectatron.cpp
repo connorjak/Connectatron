@@ -122,6 +122,7 @@ enum class WireProtocol
     // Power
     DC__Power,
     AC__Power,
+    //https://en.wikipedia.org/wiki/NEMA_connector
 
     // Analog Single-Wire
     GenericAnalog, //Not sure if we actually need to specify protocols here
@@ -247,6 +248,13 @@ enum class WireProtocol
     NVMe__1_3,
     NVMe__1_4,
     NVMe__2_0,
+    //https://en.wikipedia.org/wiki/SD_card
+    SD__DefaultSpeed,
+    SD__HighSpeed,
+    SD__UHS___I,
+    SD__UHS___II,
+    SD__UHS___III,
+    SD__Express,
 
     // Ethernet
     //https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
@@ -308,6 +316,8 @@ enum class PinType
     Molex,
     SATA__Power,
     SATA__Power__Slimline,
+    // https://en.wikipedia.org/wiki/NEMA_connector
+    //TODO NEMA connectors
 
     // USB
     USB___A,
@@ -342,6 +352,10 @@ enum class PinType
     SATA,
     Micro__SATA,
     eSATA,
+    //https://en.wikipedia.org/wiki/SD_card
+    SD,
+    miniSD,
+    microSD,
     SFF___8639,
     RJ45, //AKA 8P8C
 
