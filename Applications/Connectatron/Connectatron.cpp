@@ -38,8 +38,16 @@ using NotUUID = int;
 
 enum Color { RED = 2, BLUE = 4, GREEN = 8 };
 
+//#define IS_SHIPPING
+
+#ifdef IS_SHIPPING
+const fs::path DevicesPath = "Devices";
+const fs::path ProjectsPath = "Projects";
+#else
 const fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
 const fs::path ProjectsPath = "../../../../Applications/Connectatron/Projects";
+#endif
+
 
 static inline ImRect ImGui_GetItemRect()
 {
