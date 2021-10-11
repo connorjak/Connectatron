@@ -1,5 +1,7 @@
 # Connectatron
 
+See status on [releases](https://github.com/connorjak/Connectatron/releases).
+
 Documentation TODO.
 
 Was forked from https://github.com/connorjak/imgui-node-editor.
