@@ -11,7 +11,7 @@ I built this in an effort to make a better way to do things like:
 - See if new computer hardware I'm about to buy is compatible with existing hardware.
 - Document the connections between devices in my current setup.
 
-Defining your own devices is quick and easy through a simple JSON format, and making an editor program for device editing would be very straightforward. Hopefully, if this application gains traction, device manufacturers can supply a device configuration file that is readable by Connectatron. No more diving through manuals to find out if a USB port is USB 3.1 Gen 2 or USB 3.2 Gen 1!
+Defining your own devices (`/Devices`) is quick and easy through a simple JSON format, and making an editor program for device editing would be very straightforward. Hopefully, if this application gains traction, device manufacturers can supply a device configuration file that is readable by Connectatron. No more diving through manuals to find out if a USB port is USB 3.1 Gen 2 or USB 3.2 Gen 1!
 
 See status on [releases](https://github.com/connorjak/Connectatron/releases).
 
