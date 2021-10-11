@@ -421,12 +421,14 @@ struct Node
     ImColor Color;
     NodeType Type;
     ImVec2 Size;
+    // Position saved in project file
+    ImVec2 SavedPosition;
 
     std::string State;
     std::string SavedState;
 
     Node(int id, const char* name, ImColor color = ImColor(255, 255, 255)) :
-        ID(id), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0)
+        ID(id), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0), SavedPosition(0, 0)
     {
     }
 };
