@@ -1106,8 +1106,6 @@ void Application_Initialize()
     m_Editor = ed::CreateEditor(&config);
     ed::SetCurrentEditor(m_Editor);
 
-    Node* node;
-
     //NOTE: we can add example nodes here if needed
 
     ed::NavigateToContent();

@@ -1,5 +1,3 @@
-set(CMAKE_CXX_STANDARD 17)
-
 add_example(Connectatron
     Connectatron.cpp
 )
