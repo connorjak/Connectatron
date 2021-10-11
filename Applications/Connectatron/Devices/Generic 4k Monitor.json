@@ -1,5 +1,5 @@
 {
-    "Name": "Generic Monitor",
+    "Name": "Generic 4k Monitor",
     "Females": [
         {
             "Name": "DisplayPort",
@@ -12,7 +12,7 @@
             "Name": "HDMI",
             "PinType": "HDMI",
             "Protocols": [
-                "HDMI"
+                "HDMI 2.0b"
             ]
         }
     ],
