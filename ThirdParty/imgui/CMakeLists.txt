@@ -5,6 +5,7 @@ set(_imgui_Sources
     imgui_demo.cpp
     imgui_draw.cpp
     imgui_widgets.cpp
+    imgui_tables.cpp
     imconfig.h
     imgui.h
     imgui_internal.h
