@@ -43,8 +43,8 @@ using NotUUID = int;
 const fs::path DevicesPath = "Devices";
 const fs::path ProjectsPath = "Projects";
 #else
-const fs::path DevicesPath = "../../../../Applications/Connectatron/Devices";
-const fs::path ProjectsPath = "../../../../Applications/Connectatron/Projects";
+const fs::path DevicesPath = "../../../../../Applications/Connectatron/Devices";
+const fs::path ProjectsPath = "../../../../../Applications/Connectatron/Projects";
 #endif
 
 
@@ -487,121 +487,7 @@ struct NodeIdLess
 #define IM_COLOR_MAGENTA    ImColor(218, 0, 183)
 #define IM_COLOR_GREEN      ImColor(147, 226, 74)
 
-ImColor CN_GetIconColor(PinType type)
-{
-    switch (type)
-    {
-    default:
 
-        //Power
-    case PinType::DC__Power__Barrel:          return ImColor(255, 255, 255);
-    case PinType::Molex:                    return ImColor(255, 255, 255);
-    case PinType::SATA__Power:               return ImColor(255, 255, 255);
-    case PinType::SATA__Power__Slimline:      return ImColor(255, 255, 255);
-                                            
-        //USB                               
-    case PinType::USB___A:                       return IM_COLOR_BLUE;
-    case PinType::USB___B:                       return IM_COLOR_BLUE;
-    case PinType::USB___B__SuperSpeed:          return IM_COLOR_BLUE;
-    case PinType::USB___C:                       return IM_COLOR_BLUE;
-    case PinType::USB__Mini___A:                return IM_COLOR_BLUE;
-    case PinType::USB__Mini___B:                return IM_COLOR_BLUE;
-    case PinType::USB__Mini___AB:               return IM_COLOR_BLUE;
-    case PinType::USB__Micro___A:               return IM_COLOR_BLUE;
-    case PinType::USB__Micro___B:               return IM_COLOR_BLUE;
-    case PinType::USB__Micro___AB:              return IM_COLOR_BLUE;
-    case PinType::USB__Micro___B__SuperSpeed:  return IM_COLOR_BLUE;
-                                            
-        //Display                           
-    case PinType::DisplayPort:              return IM_COLOR_MAGENTA;
-    case PinType::Mini__DisplayPort:          return IM_COLOR_MAGENTA;
-    case PinType::HDMI:                     return IM_COLOR_MAGENTA;
-    case PinType::Mini__HDMI:                 return IM_COLOR_MAGENTA;
-    case PinType::Micro__HDMI:                return IM_COLOR_MAGENTA;
-    case PinType::DVI:                      return IM_COLOR_MAGENTA;
-    case PinType::VGA:                      return IM_COLOR_MAGENTA;
-                                            
-        //Audio                             
-    case PinType::Audio3_5mm:               return IM_COLOR_GREEN;
-    case PinType::XLR:                      return IM_COLOR_GREEN;
-                                            
-        //Other                             
-    case PinType::SATA:                     return IM_COLOR_RED;
-    case PinType::Micro__SATA:                return IM_COLOR_RED;
-    case PinType::eSATA:                    return IM_COLOR_RED;
-    case PinType::RJ45:                     return IM_COLOR_RED;
-    }
-};
-
-void CN_DrawPinIcon(const Pin& pin, bool connected, int alpha)
-{
-    //Set to a default in case the PinType is not supported (somehow)
-    IconType iconType = IconType::Square;
-    ImColor  color = GetIconColor(pin.Type);
-    color.Value.w = alpha / 255.0f;
-    switch (pin.Type)
-    {
-    
-    //Power
-    case PinType::DC__Power__Barrel:          iconType = IconType::Flow; break;
-    case PinType::Molex:                    iconType = IconType::Flow; break;
-    case PinType::SATA__Power:               iconType = IconType::Flow; break;
-    case PinType::SATA__Power__Slimline:      iconType = IconType::Flow; break;
-    
-    //USB                                   
-    case PinType::USB___A:                           iconType = IconType::Circle; break;
-    case PinType::USB___B:                           iconType = IconType::Circle; break;
-    case PinType::USB___B__SuperSpeed:              iconType = IconType::Circle; break;
-    case PinType::USB___C:                           iconType = IconType::Circle; break;
-    case PinType::USB__Mini___A:                    iconType = IconType::Circle; break;
-    case PinType::USB__Mini___B:                    iconType = IconType::Circle; break;
-    case PinType::USB__Mini___AB:                   iconType = IconType::Circle; break;
-    case PinType::USB__Micro___A:                   iconType = IconType::Circle; break;
-    case PinType::USB__Micro___B:                   iconType = IconType::Circle; break;
-    case PinType::USB__Micro___AB:                  iconType = IconType::Circle; break;
-    case PinType::USB__Micro___B__SuperSpeed:      iconType = IconType::Circle; break;
-
-    //Display                               
-    case PinType::DisplayPort:              iconType = IconType::Grid; break;
-    case PinType::Mini__DisplayPort:          iconType = IconType::Grid; break;
-    case PinType::HDMI:                     iconType = IconType::Grid; break;
-    case PinType::Mini__HDMI:                 iconType = IconType::Grid; break;
-    case PinType::Micro__HDMI:                iconType = IconType::Grid; break;
-    case PinType::DVI:                      iconType = IconType::Grid; break;
-    case PinType::VGA:                      iconType = IconType::Grid; break;
-                                            
-    //Audio                                 
-    case PinType::Audio3_5mm:               iconType = IconType::Diamond; break;
-    case PinType::XLR:                      iconType = IconType::Diamond; break;
-                                            
-    //Other                                 
-    case PinType::SATA:                     iconType = IconType::Circle; break;
-    case PinType::Micro__SATA:                iconType = IconType::Circle; break;
-    case PinType::eSATA:                    iconType = IconType::Circle; break;
-    case PinType::RJ45:                     iconType = IconType::Circle; break;
-
-    default:
-        throw std::runtime_error(std::string("Unhandled PinType ") + std::string(magic_enum::enum_name(pin.Type)));
-        return;
-    }
-
-    ax::Widgets::Icon(ImVec2(s_PinIconSize, s_PinIconSize), iconType, connected, color, ImColor(32, 32, 32, alpha));
-};
-
-static void CN_BuildNode(shared_ptr<Node> node)
-{
-    for (auto& female : node->Females)
-    {
-        female.Node = node;
-        female.Kind = PinKind::Input;
-    }
-
-    for (auto& male : node->Males)
-    {
-        male.Node = node;
-        male.Kind = PinKind::Output;
-    }
-}
 
 //https://stackoverflow.com/a/24315631/11502722
 void ReplaceAll(std::string& str, const std::string& from, const std::string& to) {
@@ -632,140 +518,6 @@ static json GetJSONFromFile(fs::path filepath)
     json js;
     i >> js;
     return js;
-}
-
-//TODO error handling (probably just wrap in try/catch when called)
-//TODO load position in project?
-static shared_ptr<Node> SpawnNodeFromJSON(const json& device)
-{
-    auto name = device["Name"].get<string>();
-    auto new_node = s_Nodes.emplace_back(new Node(GetNextId(), name.c_str(), ImColor(255, 128, 128)));
-
-    NotUUID id = -1;
-    if (device.find("ID") != device.end())
-    {
-        id = device["ID"].get<int>();
-    }
-    else
-    {
-        id = Generate_NotUUID();
-    }
-    new_node->persistentID = id;
-
-    if (device.find("SavedPos") != device.end())
-    {
-        new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
-        new_node->SavedPosition.y = device["SavedPos"][1].get<float>();
-    }
-
-    // Parse Females
-    for (const auto& female : device["Females"])
-    {
-        auto in_name = female["Name"].get<string>();
-
-        auto pintype_string = female["PinType"].get<string>();
-        EnumName_Symbol2Underscore(pintype_string);
-
-        auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-        auto in_pintype = parsed_pintype.value();
-
-        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-        if (female.find("Protocols") != female.end())
-        {
-            set<WireProtocol> protocols;
-            for (auto protocol : female["Protocols"])
-            {
-                auto protocol_string = protocol.get<string>();
-                EnumName_Symbol2Underscore(protocol_string);
-
-                auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                protocols.insert(parsed_protocol.value());
-                //TODO handle "sets" of protocols, like the backcompat variables?
-            }
-
-            if (female.find("Description") != female.end())
-            {
-                auto description = female["Description"].get<string>();
-                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-            }
-            else
-            {
-                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-            }
-        }
-        else
-        {
-            new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
-        }
-    }
-
-
-    // Parse Males
-    for (const auto& male : device["Males"])
-    {
-        auto in_name = male["Name"].get<string>();
-
-        auto pintype_string = male["PinType"].get<string>();
-        EnumName_Symbol2Underscore(pintype_string);
-
-        auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-        auto in_pintype = parsed_pintype.value();
-
-        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-        if (male.find("Protocols") != male.end())
-        {
-            set<WireProtocol> protocols;
-            for (auto protocol : male["Protocols"])
-            {
-                auto protocol_string = protocol.get<string>();
-                EnumName_Symbol2Underscore(protocol_string);
-
-                auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                protocols.insert(parsed_protocol.value());
-                //TODO handle "sets" of protocols, like the backcompat variables?
-            }
-
-            if (male.find("Description") != male.end())
-            {
-                auto description = male["Description"].get<string>();
-                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-            }
-            else
-            {
-                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-            }
-        }
-        else
-        {
-            new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
-        }
-    }
-
-    BuildNode(new_node);
-
-    s_IdNodes[id] = new_node;
-
-    return new_node;
-}
-
-static Link* SpawnLinkFromJSON(const json& connect)
-{
-    auto start_p_id = connect[0].get<int>();
-    auto end_p_id = connect[1].get<int>();
-
-    auto start_pin_loc = connect[2].get<int>();
-    auto end_pin_loc = connect[3].get<int>();
-
-    auto startNode = s_IdNodes.at(start_p_id);
-    auto endNode = s_IdNodes.at(end_p_id);
-    auto startPinId = startNode->Males[start_pin_loc].ID;
-    auto endPinId = endNode->Females[end_pin_loc].ID;
-
-    s_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
-
-    s_Links.back().Color = GetIconColor(startNode->Males[start_pin_loc].Type);
-
-    return &s_Links.back();
 }
 
 static json SerializeDeviceToJSON(const shared_ptr<Node> node)
@@ -861,88 +613,6 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node)
     return device;
 }
 
-static json SerializeLinkToJSON(const Link& link)
-{
-    json connect;
-
-    auto startPin = FindPin(link.StartPinID);
-    auto endPin = FindPin(link.EndPinID);
-    auto startNode = startPin->Node;
-    auto endNode = endPin->Node;
-    auto start_p_id = startNode->persistentID;
-    auto end_p_id = endNode->persistentID;
-    connect[0] = start_p_id;
-    connect[1] = end_p_id;
-
-
-    vector<Pin>* males = &startNode->Males;
-    // Find index of pin that matches id with the one we have a pointer to
-    auto start_pin_loc = std::find_if(males->begin(), males->end(),
-        [startPin](const Pin& pin) { return startPin->ID == pin.ID; })
-        - males->begin();
-
-    vector<Pin>* females = &endNode->Females;
-    // Find index of pin that matches id with the one we have a pointer to
-    auto end_pin_loc = std::find_if(females->begin(), females->end(), 
-        [endPin](const Pin& pin) { return endPin->ID == pin.ID; }) 
-        - females->begin();
-    connect[2] = int(start_pin_loc);
-    connect[3] = int(end_pin_loc);
-
-    return connect;
-}
-
-static void SaveProjectToFile(fs::path filepath)
-{
-    std::ofstream o(filepath);
-    json project;
-
-    project["Devices"] = json::array();
-    auto& devices = project["Devices"];
-
-    for (const auto& node : s_Nodes)
-    {
-        devices.push_back(SerializeDeviceToJSON(node));
-    }
-
-    project["Links"] = json::array();
-    auto& connects = project["Links"];
-
-    for (const auto& link : s_Links)
-    {
-        connects.push_back(SerializeLinkToJSON(link));
-    }
-
-    o << project;
-    o.close();
-}
-
-static void LoadProjectFromFile(fs::path filepath)
-{
-    std::ifstream i(filepath);
-    json project;
-    i >> project;
-
-    s_Nodes.clear();
-    s_IdNodes.clear();
-    s_Links.clear();
-
-    const auto& Devices = project["Devices"];
-
-    for (const auto& device : Devices)
-    {
-        auto node = SpawnNodeFromJSON(device);
-
-        ed::SetNodePosition(node->ID, node->SavedPosition);
-    }
-
-    const auto& Connects = project["Links"];
-    for (const auto& connect : Connects)
-    {
-        auto link = SpawnLinkFromJSON(connect);
-    }
-}
-
 static bool Splitter(bool split_vertically, float thickness, float* size1, float* size2, float min_size1, float min_size2, float splitter_long_axis_size = -1.0f)
 {
     using namespace ImGui;
@@ -999,11 +669,11 @@ struct Example:
         }
     }
 
-    Node* FindNode(ed::NodeId id)
+    shared_ptr<Node> FindNode(ed::NodeId id)
     {
         for (auto& node : m_Nodes)
-            if (node.ID == id)
-                return &node;
+            if (node->ID == id)
+                return node;
 
         return nullptr;
     }
@@ -1024,11 +694,11 @@ struct Example:
 
         for (auto& node : m_Nodes)
         {
-            for (auto& pin : node.Inputs)
+            for (auto& pin : node->Females)
                 if (pin.ID == id)
                     return &pin;
 
-            for (auto& pin : node.Outputs)
+            for (auto& pin : node->Males)
                 if (pin.ID == id)
                     return &pin;
         }
@@ -1072,228 +742,35 @@ struct Example:
     //        color, rounding);
     //};
 
-    void BuildNode(Node* node)
+    void BuildNode(shared_ptr<Node> node)
     {
-        for (auto& input : node->Inputs)
+        for (auto& female : node->Females)
         {
-            input.Node = node;
-            input.Kind = PinKind::Input;
+            female.Node = node;
+            female.Kind = PinKind::Input;
         }
 
-        for (auto& output : node->Outputs)
+        for (auto& male : node->Males)
         {
-            output.Node = node;
-            output.Kind = PinKind::Output;
+            male.Node = node;
+            male.Kind = PinKind::Output;
         }
     }
 
-    Node* SpawnInputActionNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "InputAction Fire", ImColor(255, 128, 128));
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Delegate);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Pressed", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Released", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnBranchNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Branch");
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Condition", PinType::Bool);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "True", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "False", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnDoNNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Do N");
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Enter", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "N", PinType::Int);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Reset", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Exit", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Counter", PinType::Int);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnOutputActionNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "OutputAction");
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Sample", PinType::Float);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Condition", PinType::Bool);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Event", PinType::Delegate);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnPrintStringNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Print String");
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "In String", PinType::String);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnMessageNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "", ImColor(128, 195, 248));
-        m_Nodes.back().Type = NodeType::Simple;
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Message", PinType::String);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnSetTimerNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Set Timer", ImColor(128, 195, 248));
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Object", PinType::Object);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Function Name", PinType::Function);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Time", PinType::Float);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Looping", PinType::Bool);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnLessNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "<", ImColor(128, 195, 248));
-        m_Nodes.back().Type = NodeType::Simple;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Float);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Float);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Float);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnWeirdNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "o.O", ImColor(128, 195, 248));
-        m_Nodes.back().Type = NodeType::Simple;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Float);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Float);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Float);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnTraceByChannelNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Single Line Trace by Channel", ImColor(255, 128, 64));
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Start", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "End", PinType::Int);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Trace Channel", PinType::Float);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Trace Complex", PinType::Bool);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Actors to Ignore", PinType::Int);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Draw Debug Type", PinType::Bool);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "Ignore Self", PinType::Bool);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Out Hit", PinType::Float);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "Return Value", PinType::Bool);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnTreeSequenceNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Sequence");
-        m_Nodes.back().Type = NodeType::Tree;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnTreeTaskNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Move To");
-        m_Nodes.back().Type = NodeType::Tree;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnTreeTask2Node()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Random Wait");
-        m_Nodes.back().Type = NodeType::Tree;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnComment()
+    //TODO support saving comments
+    /*Node* SpawnComment()
     {
         m_Nodes.emplace_back(GetNextId(), "Test Comment");
         m_Nodes.back().Type = NodeType::Comment;
         m_Nodes.back().Size = ImVec2(300, 200);
 
         return &m_Nodes.back();
-    }
-
-    Node* SpawnHoudiniTransformNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Transform");
-        m_Nodes.back().Type = NodeType::Houdini;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
-
-    Node* SpawnHoudiniGroupNode()
-    {
-        m_Nodes.emplace_back(GetNextId(), "Group");
-        m_Nodes.back().Type = NodeType::Houdini;
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Inputs.emplace_back(GetNextId(), "", PinType::Flow);
-        m_Nodes.back().Outputs.emplace_back(GetNextId(), "", PinType::Flow);
-
-        BuildNode(&m_Nodes.back());
-
-        return &m_Nodes.back();
-    }
+    }*/
 
     void BuildNodes()
     {
-        for (auto& node : m_Nodes)
-            BuildNode(&node);
+        for (auto node : m_Nodes)
+            BuildNode(node);
     }
 
     void OnStart() override
@@ -1335,36 +812,9 @@ struct Example:
         m_Editor = ed::CreateEditor(&config);
         ed::SetCurrentEditor(m_Editor);
 
-        Node* node;
-        node = SpawnInputActionNode();      ed::SetNodePosition(node->ID, ImVec2(-252, 220));
-        node = SpawnBranchNode();           ed::SetNodePosition(node->ID, ImVec2(-300, 351));
-        node = SpawnDoNNode();              ed::SetNodePosition(node->ID, ImVec2(-238, 504));
-        node = SpawnOutputActionNode();     ed::SetNodePosition(node->ID, ImVec2(71, 80));
-        node = SpawnSetTimerNode();         ed::SetNodePosition(node->ID, ImVec2(168, 316));
-
-        node = SpawnTreeSequenceNode();     ed::SetNodePosition(node->ID, ImVec2(1028, 329));
-        node = SpawnTreeTaskNode();         ed::SetNodePosition(node->ID, ImVec2(1204, 458));
-        node = SpawnTreeTask2Node();        ed::SetNodePosition(node->ID, ImVec2(868, 538));
-
-        node = SpawnComment();              ed::SetNodePosition(node->ID, ImVec2(112, 576)); ed::SetGroupSize(node->ID, ImVec2(384, 154));
-        node = SpawnComment();              ed::SetNodePosition(node->ID, ImVec2(800, 224)); ed::SetGroupSize(node->ID, ImVec2(640, 400));
-
-        node = SpawnLessNode();             ed::SetNodePosition(node->ID, ImVec2(366, 652));
-        node = SpawnWeirdNode();            ed::SetNodePosition(node->ID, ImVec2(144, 652));
-        node = SpawnMessageNode();          ed::SetNodePosition(node->ID, ImVec2(-348, 698));
-        node = SpawnPrintStringNode();      ed::SetNodePosition(node->ID, ImVec2(-69, 652));
-
-        node = SpawnHoudiniTransformNode(); ed::SetNodePosition(node->ID, ImVec2(500, -70));
-        node = SpawnHoudiniGroupNode();     ed::SetNodePosition(node->ID, ImVec2(500, 42));
-
         ed::NavigateToContent();
 
         BuildNodes();
-
-        m_Links.push_back(Link(GetNextLinkId(), m_Nodes[5].Outputs[0].ID, m_Nodes[6].Inputs[0].ID));
-        m_Links.push_back(Link(GetNextLinkId(), m_Nodes[5].Outputs[0].ID, m_Nodes[7].Inputs[0].ID));
-
-        m_Links.push_back(Link(GetNextLinkId(), m_Nodes[14].Outputs[0].ID, m_Nodes[15].Inputs[0].ID));
 
         m_HeaderBackground = LoadTexture("data/BlueprintBackground.png");
         m_SaveIcon         = LoadTexture("data/ic_save_white_24dp.png");
@@ -1400,39 +850,318 @@ struct Example:
     {
         switch (type)
         {
-            default:
-            case PinType::Flow:     return ImColor(255, 255, 255);
-            case PinType::Bool:     return ImColor(220,  48,  48);
-            case PinType::Int:      return ImColor( 68, 201, 156);
-            case PinType::Float:    return ImColor(147, 226,  74);
-            case PinType::String:   return ImColor(124,  21, 153);
-            case PinType::Object:   return ImColor( 51, 150, 215);
-            case PinType::Function: return ImColor(218,   0, 183);
-            case PinType::Delegate: return ImColor(255,  48,  48);
+        default:
+
+            //Power
+        case PinType::DC__Power__Barrel:          return ImColor(255, 255, 255);
+        case PinType::Molex:                    return ImColor(255, 255, 255);
+        case PinType::SATA__Power:               return ImColor(255, 255, 255);
+        case PinType::SATA__Power__Slimline:      return ImColor(255, 255, 255);
+
+            //USB                               
+        case PinType::USB___A:                       return IM_COLOR_BLUE;
+        case PinType::USB___B:                       return IM_COLOR_BLUE;
+        case PinType::USB___B__SuperSpeed:          return IM_COLOR_BLUE;
+        case PinType::USB___C:                       return IM_COLOR_BLUE;
+        case PinType::USB__Mini___A:                return IM_COLOR_BLUE;
+        case PinType::USB__Mini___B:                return IM_COLOR_BLUE;
+        case PinType::USB__Mini___AB:               return IM_COLOR_BLUE;
+        case PinType::USB__Micro___A:               return IM_COLOR_BLUE;
+        case PinType::USB__Micro___B:               return IM_COLOR_BLUE;
+        case PinType::USB__Micro___AB:              return IM_COLOR_BLUE;
+        case PinType::USB__Micro___B__SuperSpeed:  return IM_COLOR_BLUE;
+
+            //Display                           
+        case PinType::DisplayPort:              return IM_COLOR_MAGENTA;
+        case PinType::Mini__DisplayPort:          return IM_COLOR_MAGENTA;
+        case PinType::HDMI:                     return IM_COLOR_MAGENTA;
+        case PinType::Mini__HDMI:                 return IM_COLOR_MAGENTA;
+        case PinType::Micro__HDMI:                return IM_COLOR_MAGENTA;
+        case PinType::DVI:                      return IM_COLOR_MAGENTA;
+        case PinType::VGA:                      return IM_COLOR_MAGENTA;
+
+            //Audio                             
+        case PinType::Audio3_5mm:               return IM_COLOR_GREEN;
+        case PinType::XLR:                      return IM_COLOR_GREEN;
+
+            //Other                             
+        case PinType::SATA:                     return IM_COLOR_RED;
+        case PinType::Micro__SATA:                return IM_COLOR_RED;
+        case PinType::eSATA:                    return IM_COLOR_RED;
+        case PinType::RJ45:                     return IM_COLOR_RED;
         }
     };
 
     void DrawPinIcon(const Pin& pin, bool connected, int alpha)
     {
-        IconType iconType;
+        //Set to a default in case the PinType is not supported (somehow)
+        IconType iconType = IconType::Square;
         ImColor  color = GetIconColor(pin.Type);
         color.Value.w = alpha / 255.0f;
         switch (pin.Type)
         {
-            case PinType::Flow:     iconType = IconType::Flow;   break;
-            case PinType::Bool:     iconType = IconType::Circle; break;
-            case PinType::Int:      iconType = IconType::Circle; break;
-            case PinType::Float:    iconType = IconType::Circle; break;
-            case PinType::String:   iconType = IconType::Circle; break;
-            case PinType::Object:   iconType = IconType::Circle; break;
-            case PinType::Function: iconType = IconType::Circle; break;
-            case PinType::Delegate: iconType = IconType::Square; break;
-            default:
-                return;
+
+            //Power
+        case PinType::DC__Power__Barrel:          iconType = IconType::Flow; break;
+        case PinType::Molex:                    iconType = IconType::Flow; break;
+        case PinType::SATA__Power:               iconType = IconType::Flow; break;
+        case PinType::SATA__Power__Slimline:      iconType = IconType::Flow; break;
+
+            //USB                                   
+        case PinType::USB___A:                           iconType = IconType::Circle; break;
+        case PinType::USB___B:                           iconType = IconType::Circle; break;
+        case PinType::USB___B__SuperSpeed:              iconType = IconType::Circle; break;
+        case PinType::USB___C:                           iconType = IconType::Circle; break;
+        case PinType::USB__Mini___A:                    iconType = IconType::Circle; break;
+        case PinType::USB__Mini___B:                    iconType = IconType::Circle; break;
+        case PinType::USB__Mini___AB:                   iconType = IconType::Circle; break;
+        case PinType::USB__Micro___A:                   iconType = IconType::Circle; break;
+        case PinType::USB__Micro___B:                   iconType = IconType::Circle; break;
+        case PinType::USB__Micro___AB:                  iconType = IconType::Circle; break;
+        case PinType::USB__Micro___B__SuperSpeed:      iconType = IconType::Circle; break;
+
+            //Display                               
+        case PinType::DisplayPort:              iconType = IconType::Grid; break;
+        case PinType::Mini__DisplayPort:          iconType = IconType::Grid; break;
+        case PinType::HDMI:                     iconType = IconType::Grid; break;
+        case PinType::Mini__HDMI:                 iconType = IconType::Grid; break;
+        case PinType::Micro__HDMI:                iconType = IconType::Grid; break;
+        case PinType::DVI:                      iconType = IconType::Grid; break;
+        case PinType::VGA:                      iconType = IconType::Grid; break;
+
+            //Audio                                 
+        case PinType::Audio3_5mm:               iconType = IconType::Diamond; break;
+        case PinType::XLR:                      iconType = IconType::Diamond; break;
+
+            //Other                                 
+        case PinType::SATA:                     iconType = IconType::Circle; break;
+        case PinType::Micro__SATA:                iconType = IconType::Circle; break;
+        case PinType::eSATA:                    iconType = IconType::Circle; break;
+        case PinType::RJ45:                     iconType = IconType::Circle; break;
+
+        default:
+            throw std::runtime_error(std::string("Unhandled PinType ") + std::string(magic_enum::enum_name(pin.Type)));
+            return;
         }
 
-        ax::Widgets::Icon(ImVec2(static_cast<float>(m_PinIconSize), static_cast<float>(m_PinIconSize)), iconType, connected, color, ImColor(32, 32, 32, alpha));
+        ax::Widgets::Icon(ImVec2(m_PinIconSize, m_PinIconSize), iconType, connected, color, ImColor(32, 32, 32, alpha));
     };
+
+    //TODO error handling (probably just wrap in try/catch when called)
+//TODO load position in project?
+    shared_ptr<Node> SpawnNodeFromJSON(const json& device)
+    {
+        auto name = device["Name"].get<string>();
+        auto new_node = m_Nodes.emplace_back(new Node(GetNextId(), name.c_str(), ImColor(255, 128, 128)));
+
+        NotUUID id = -1;
+        if (device.find("ID") != device.end())
+        {
+            id = device["ID"].get<int>();
+        }
+        else
+        {
+            id = Generate_NotUUID();
+        }
+        new_node->persistentID = id;
+
+        if (device.find("SavedPos") != device.end())
+        {
+            new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
+            new_node->SavedPosition.y = device["SavedPos"][1].get<float>();
+        }
+
+        // Parse Females
+        for (const auto& female : device["Females"])
+        {
+            auto in_name = female["Name"].get<string>();
+
+            auto pintype_string = female["PinType"].get<string>();
+            EnumName_Symbol2Underscore(pintype_string);
+
+            auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
+            auto in_pintype = parsed_pintype.value();
+
+            //Can have just pintype, or pintype+protocols, or pintype+protocols+description
+            if (female.find("Protocols") != female.end())
+            {
+                set<WireProtocol> protocols;
+                for (auto protocol : female["Protocols"])
+                {
+                    auto protocol_string = protocol.get<string>();
+                    EnumName_Symbol2Underscore(protocol_string);
+
+                    auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
+                    protocols.insert(parsed_protocol.value());
+                    //TODO handle "sets" of protocols, like the backcompat variables?
+                }
+
+                if (female.find("Description") != female.end())
+                {
+                    auto description = female["Description"].get<string>();
+                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+                }
+                else
+                {
+                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+                }
+            }
+            else
+            {
+                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+            }
+        }
+
+
+        // Parse Males
+        for (const auto& male : device["Males"])
+        {
+            auto in_name = male["Name"].get<string>();
+
+            auto pintype_string = male["PinType"].get<string>();
+            EnumName_Symbol2Underscore(pintype_string);
+
+            auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
+            auto in_pintype = parsed_pintype.value();
+
+            //Can have just pintype, or pintype+protocols, or pintype+protocols+description
+            if (male.find("Protocols") != male.end())
+            {
+                set<WireProtocol> protocols;
+                for (auto protocol : male["Protocols"])
+                {
+                    auto protocol_string = protocol.get<string>();
+                    EnumName_Symbol2Underscore(protocol_string);
+
+                    auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
+                    protocols.insert(parsed_protocol.value());
+                    //TODO handle "sets" of protocols, like the backcompat variables?
+                }
+
+                if (male.find("Description") != male.end())
+                {
+                    auto description = male["Description"].get<string>();
+                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+                }
+                else
+                {
+                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+                }
+            }
+            else
+            {
+                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+            }
+        }
+
+        BuildNode(new_node);
+
+        m_IdNodes[id] = new_node;
+
+        return new_node;
+    }
+
+    Link* SpawnLinkFromJSON(const json& connect)
+    {
+        auto start_p_id = connect[0].get<int>();
+        auto end_p_id = connect[1].get<int>();
+
+        auto start_pin_loc = connect[2].get<int>();
+        auto end_pin_loc = connect[3].get<int>();
+
+        auto startNode = m_IdNodes.at(start_p_id);
+        auto endNode = m_IdNodes.at(end_p_id);
+        auto startPinId = startNode->Males[start_pin_loc].ID;
+        auto endPinId = endNode->Females[end_pin_loc].ID;
+
+        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+
+        m_Links.back().Color = GetIconColor(startNode->Males[start_pin_loc].Type);
+
+        return &m_Links.back();
+    }
+
+    json SerializeLinkToJSON(const Link& link)
+    {
+        json connect;
+
+        auto startPin = FindPin(link.StartPinID);
+        auto endPin = FindPin(link.EndPinID);
+        auto startNode = startPin->Node;
+        auto endNode = endPin->Node;
+        auto start_p_id = startNode->persistentID;
+        auto end_p_id = endNode->persistentID;
+        connect[0] = start_p_id;
+        connect[1] = end_p_id;
+
+
+        vector<Pin>* males = &startNode->Males;
+        // Find index of pin that matches id with the one we have a pointer to
+        auto start_pin_loc = std::find_if(males->begin(), males->end(),
+            [startPin](const Pin& pin) { return startPin->ID == pin.ID; })
+            - males->begin();
+
+        vector<Pin>* females = &endNode->Females;
+        // Find index of pin that matches id with the one we have a pointer to
+        auto end_pin_loc = std::find_if(females->begin(), females->end(),
+            [endPin](const Pin& pin) { return endPin->ID == pin.ID; })
+            - females->begin();
+        connect[2] = int(start_pin_loc);
+        connect[3] = int(end_pin_loc);
+
+        return connect;
+    }
+
+    void SaveProjectToFile(fs::path filepath)
+    {
+        std::ofstream o(filepath);
+        json project;
+
+        project["Devices"] = json::array();
+        auto& devices = project["Devices"];
+
+        for (const auto& node : m_Nodes)
+        {
+            devices.push_back(SerializeDeviceToJSON(node));
+        }
+
+        project["Links"] = json::array();
+        auto& connects = project["Links"];
+
+        for (const auto& link : m_Links)
+        {
+            connects.push_back(SerializeLinkToJSON(link));
+        }
+
+        o << project;
+        o.close();
+    }
+
+    void LoadProjectFromFile(fs::path filepath)
+    {
+        std::ifstream i(filepath);
+        json project;
+        i >> project;
+
+        m_Nodes.clear();
+        m_IdNodes.clear();
+        m_Links.clear();
+
+        const auto& Devices = project["Devices"];
+
+        for (const auto& device : Devices)
+        {
+            auto node = SpawnNodeFromJSON(device);
+
+            ed::SetNodePosition(node->ID, node->SavedPosition);
+        }
+
+        const auto& Connects = project["Links"];
+        for (const auto& connect : Connects)
+        {
+            auto link = SpawnLinkFromJSON(connect);
+        }
+    }
 
     void ShowStyleEditor(bool* show = nullptr)
     {
@@ -1495,7 +1224,7 @@ struct Example:
         ImGui::Spacing();
 
         ImGui::PushItemWidth(-160);
-        for (int i = 0; i < ed::StyleColor_Count; ++i)
+        for (int i = 0; i < static_cast<int>(ed::StyleColor_Count); ++i)
         {
             auto name = ed::GetStyleColorName((ed::StyleColor)i);
             if (!filter.PassFilter(name))
@@ -1521,16 +1250,17 @@ struct Example:
         LoadProjectFromFile(ProjectsPath / "test.con");
     }
 
-    ImGui::Separation();
+    ImGui::Separator();
 
-    if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open File Dialog"))
-    {
-        const char* filters = ".*,.cpp,.h,.hpp";
-        if (/*standardDialogMode*/true)
-            ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
-        else
-            ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
-    }
+    //if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open File Dialog"))
+    //{
+    //    const char* filters = ".*,.cpp,.h,.hpp";
+    //    if (/*standardDialogMode*/true)
+    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
+    //    else
+    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
+    //}
+
     //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open File Dialog with collections of filters"))
     //{
     //    const char* filters = "Source files (*.cpp *.h *.hpp){.cpp,.h,.hpp},Image files (*.png *.gif *.jpg *.jpeg){.png,.gif,.jpg,.jpeg},.md";
@@ -1661,10 +1391,10 @@ struct Example:
         ImGui::Indent();
         for (auto& node : m_Nodes)
         {
-            ImGui::PushID(node.ID.AsPointer());
+            ImGui::PushID(node->ID.AsPointer());
             auto start = ImGui::GetCursorScreenPos();
 
-            if (const auto progress = GetTouchProgress(node.ID))
+            if (const auto progress = GetTouchProgress(node->ID))
             {
                 ImGui::GetWindowDrawList()->AddLine(
                     start + ImVec2(-8, 0),
@@ -1672,25 +1402,25 @@ struct Example:
                     IM_COL32(255, 0, 0, 255 - (int)(255 * progress)), 4.0f);
             }
 
-            bool isSelected = std::find(selectedNodes.begin(), selectedNodes.end(), node.ID) != selectedNodes.end();
-            if (ImGui::Selectable((node.Name + "##" + std::to_string(reinterpret_cast<uintptr_t>(node.ID.AsPointer()))).c_str(), &isSelected))
+            bool isSelected = std::find(selectedNodes.begin(), selectedNodes.end(), node->ID) != selectedNodes.end();
+            if (ImGui::Selectable((node->Name + "##" + std::to_string(reinterpret_cast<uintptr_t>(node->ID.AsPointer()))).c_str(), &isSelected))
             {
                 if (io.KeyCtrl)
                 {
                     if (isSelected)
-                        ed::SelectNode(node.ID, true);
+                        ed::SelectNode(node->ID, true);
                     else
-                        ed::DeselectNode(node.ID);
+                        ed::DeselectNode(node->ID);
                 }
                 else
-                    ed::SelectNode(node.ID, false);
+                    ed::SelectNode(node->ID, false);
 
                 ed::NavigateToSelection();
             }
-            if (ImGui::IsItemHovered() && !node.State.empty())
-                ImGui::SetTooltip("State: %s", node.State.c_str());
+            if (ImGui::IsItemHovered() && !node->State.empty())
+                ImGui::SetTooltip("State: %s", node->State.c_str());
 
-            auto id = std::string("(") + std::to_string(reinterpret_cast<uintptr_t>(node.ID.AsPointer())) + ")";
+            auto id = std::string("(") + std::to_string(reinterpret_cast<uintptr_t>(node->ID.AsPointer())) + ")";
             auto textSize = ImGui::CalcTextSize(id.c_str(), nullptr);
             auto iconPanelPos = start + ImVec2(
                 paneWidth - ImGui::GetStyle().FramePadding.x - ImGui::GetStyle().IndentSpacing - saveIconWidth - restoreIconWidth - ImGui::GetStyle().ItemInnerSpacing.x * 1,
@@ -1702,10 +1432,10 @@ struct Example:
             auto drawList = ImGui::GetWindowDrawList();
             ImGui::SetCursorScreenPos(iconPanelPos);
             ImGui::SetItemAllowOverlap();
-            if (node.SavedState.empty())
+            if (node->SavedState.empty())
             {
                 if (ImGui::InvisibleButton("save", ImVec2((float)saveIconWidth, (float)saveIconHeight)))
-                    node.SavedState = node.State;
+                    node->SavedState = node->State;
 
                 if (ImGui::IsItemActive())
                     drawList->AddImage(m_SaveIcon, ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 96));
@@ -1722,13 +1452,13 @@ struct Example:
 
             ImGui::SameLine(0, ImGui::GetStyle().ItemInnerSpacing.x);
             ImGui::SetItemAllowOverlap();
-            if (!node.SavedState.empty())
+            if (!node->SavedState.empty())
             {
                 if (ImGui::InvisibleButton("restore", ImVec2((float)restoreIconWidth, (float)restoreIconHeight)))
                 {
-                    node.State = node.SavedState;
-                    ed::RestoreNodeState(node.ID);
-                    node.SavedState.clear();
+                    node->State = node->SavedState;
+                    ed::RestoreNodeState(node->ID);
+                    node->SavedState.clear();
                 }
 
                 if (ImGui::IsItemActive())
@@ -1827,60 +1557,60 @@ struct Example:
 
             for (auto& node : m_Nodes)
             {
-                if (node.Type != NodeType::Blueprint && node.Type != NodeType::Simple)
+                if (node->Type != NodeType::Blueprint && node->Type != NodeType::Simple)
                     continue;
 
-                const auto isSimple = node.Type == NodeType::Simple;
+                const auto isSimple = node->Type == NodeType::Simple;
 
             	/*bool hasOutputDelegates = false;
             	for (auto& male : node->Males)
             	    if (male.Type == PinType::Delegate)
              	       hasOutputDelegates = true;*/
 
-                builder.Begin(node.ID);
+                builder.Begin(node->ID);
                     if (!isSimple)
                     {
-                        builder.Header(node.Color);
+                        builder.Header(node->Color);
                             ImGui::Spring(0);
-                            ImGui::TextUnformatted(node.Name.c_str());
+                            ImGui::TextUnformatted(node->Name.c_str());
                             ImGui::Spring(1);
                             ImGui::Dummy(ImVec2(0, 28));
-                            if (hasOutputDelegates)
-                            {
-                                ImGui::BeginVertical("delegates", ImVec2(0, 28));
-                                ImGui::Spring(1, 0);
-                                for (auto& output : node.Outputs)
-                                {
-                                    if (output.Type != PinType::Delegate)
-                                        continue;
+                            //if (hasOutputDelegates)
+                            //{
+                            //    ImGui::BeginVertical("delegates", ImVec2(0, 28));
+                            //    ImGui::Spring(1, 0);
+                            //    for (auto& output : node->Outputs)
+                            //    {
+                            //        if (output.Type != PinType::Delegate)
+                            //            continue;
 
-                                    auto alpha = ImGui::GetStyle().Alpha;
-                                    if (newLinkPin && !CanCreateLink(newLinkPin, &output) && &output != newLinkPin)
-                                        alpha = alpha * (48.0f / 255.0f);
+                            //        auto alpha = ImGui::GetStyle().Alpha;
+                            //        if (newLinkPin && !CanCreateLink(newLinkPin, &output) && &output != newLinkPin)
+                            //            alpha = alpha * (48.0f / 255.0f);
 
-                                    ed::BeginPin(output.ID, ed::PinKind::Output);
-                                    ed::PinPivotAlignment(ImVec2(1.0f, 0.5f));
-                                    ed::PinPivotSize(ImVec2(0, 0));
-                                    ImGui::BeginHorizontal(output.ID.AsPointer());
-                                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-                                    if (!output.Name.empty())
-                                    {
-                                        ImGui::TextUnformatted(output.Name.c_str());
-                                        ImGui::Spring(0);
-                                    }
-                                    DrawPinIcon(output, IsPinLinked(output.ID), (int)(alpha * 255));
-                                    ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
-                                    ImGui::EndHorizontal();
-                                    ImGui::PopStyleVar();
-                                    ed::EndPin();
+                            //        ed::BeginPin(output.ID, ed::PinKind::Output);
+                            //        ed::PinPivotAlignment(ImVec2(1.0f, 0.5f));
+                            //        ed::PinPivotSize(ImVec2(0, 0));
+                            //        ImGui::BeginHorizontal(output.ID.AsPointer());
+                            //        ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                            //        if (!output.Name.empty())
+                            //        {
+                            //            ImGui::TextUnformatted(output.Name.c_str());
+                            //            ImGui::Spring(0);
+                            //        }
+                            //        DrawPinIcon(output, IsPinLinked(output.ID), (int)(alpha * 255));
+                            //        ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
+                            //        ImGui::EndHorizontal();
+                            //        ImGui::PopStyleVar();
+                            //        ed::EndPin();
 
-                                    //DrawItemRect(ImColor(255, 0, 0));
-                                }
-                                ImGui::Spring(1, 0);
-                                ImGui::EndVertical();
-                                ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
-                            }
-                            else
+                            //        //DrawItemRect(ImColor(255, 0, 0));
+                            //    }
+                            //    ImGui::Spring(1, 0);
+                            //    ImGui::EndVertical();
+                            //    ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
+                            //}
+                            //else
                                 ImGui::Spring(0);
                         builder.EndHeader();
                     }
@@ -2118,7 +1848,7 @@ struct Example:
 
             for (auto& node : m_Nodes)
             {
-                if (node.Type != NodeType::Houdini)
+                if (node->Type != NodeType::Houdini)
                     continue;
 
                 const float rounding = 10.0f;
@@ -2194,7 +1924,7 @@ struct Example:
                 ImGui::Dummy(ImVec2(160, 0));
                 ImGui::Spring(1);
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
-                ImGui::TextUnformatted(node.Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::PopStyleColor();
                 ImGui::Spring(1);
                 ImGui::EndVertical();
@@ -2461,7 +2191,7 @@ struct Example:
                     {
                         if (ed::AcceptDeletedItem())
                         {
-                            auto id = std::find_if(m_Nodes.begin(), m_Nodes.end(), [nodeId](auto& node) { return node.ID == nodeId; });
+                            auto id = std::find_if(m_Nodes.begin(), m_Nodes.end(), [nodeId](auto& node) { return node->ID == nodeId; });
                             if (id != m_Nodes.end())
                                 m_Nodes.erase(id);
                         }
@@ -2749,7 +2479,8 @@ struct Example:
 
     int                  m_NextId = 1;
     const int            m_PinIconSize = 24;
-    std::vector<Node>    m_Nodes;
+    std::vector<shared_ptr<Node>>    m_Nodes;
+    std::map<NotUUID, shared_ptr<Node>>    m_IdNodes;
     std::vector<Link>    m_Links;
     ImTextureID          m_HeaderBackground = nullptr;
     ImTextureID          m_SaveIcon = nullptr;
