@@ -2193,7 +2193,47 @@ struct Example:
                         {
                             auto id = std::find_if(m_Nodes.begin(), m_Nodes.end(), [nodeId](auto& node) { return node->ID == nodeId; });
                             if (id != m_Nodes.end())
+                            {
+                                auto found_node = *id;
+
+                                // Wipe Links that have pins on the node being deleted
+                                std::set<ed::PinId> PinsOnDeletingNode;
+                                for (auto& female : found_node->Females)
+                                {
+                                    PinsOnDeletingNode.insert(female.ID);
+                                }
+                                for (auto& male : found_node->Males)
+                                {
+                                    PinsOnDeletingNode.insert(male.ID);
+                                }
+
+                                //std::vector<ed::LinkId> linksToDelete;
+                                std::vector<size_t> linksToDelete;
+                                size_t idx = 0;
+                                for (auto& link : m_Links)
+                                {
+                                    if (PinsOnDeletingNode.find(link.StartPinID) != PinsOnDeletingNode.end())
+                                        //linksToDelete.push_back(link.ID);
+                                        linksToDelete.push_back(idx);
+                                    if (PinsOnDeletingNode.find(link.EndPinID) != PinsOnDeletingNode.end())
+                                        //linksToDelete.push_back(link.ID);
+                                        linksToDelete.push_back(idx);
+                                    idx++;
+                                }
+
+                                // Sort linksToDelete in reverse order
+                                std::sort(linksToDelete.rbegin(),linksToDelete.rend());
+
+                                // Erase at indices
+                                for (auto& linkIdx : linksToDelete)
+                                {
+                                    //ed::DeleteLink(linkId);
+                                    m_Links.erase(m_Links.begin() + linkIdx);
+                                    //m_Links.erase(linkId);
+                                }
+                                
                                 m_Nodes.erase(id);
+                            }
                         }
                     }
                 }
