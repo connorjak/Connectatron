@@ -467,6 +467,11 @@ struct LinkId final: Details::SafePointerType<LinkId>
 struct PinId final: Details::SafePointerType<PinId>
 {
     using SafePointerType::SafePointerType;
+
+    bool operator<(const PinId& other) const
+    {
+        return Get() < other.Get();
+    }
 };
 
 
