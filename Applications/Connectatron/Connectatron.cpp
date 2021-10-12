@@ -2323,51 +2323,46 @@ struct Example:
             //auto drawList = ImGui::GetWindowDrawList();
             //drawList->AddCircleFilled(ImGui::GetMousePosOnOpeningCurrentPopup(), 10.0f, 0xFFFF00FF);
 
-        shared_ptr<Node> node;
+            shared_ptr<Node> node;
 
+            ImGui::Text("Devices");
+            ImGui::Separator();
+            ImGui::Indent();
+            // Iterate through files in Devices and show them as options
+            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath })
+            {
+                if(devicePath.path().extension() == fs::path(".json"))
+                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
+            }
+            ImGui::Unindent();
 
-        ImGui::Text("Devices");
-        ImGui::Separator();
-        // Iterate through files in Devices and show them as options
-        for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath })
-        {
-            if(devicePath.path().extension() == ".json")
-                if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-            //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
-        }
-        /*if (ImGui::MenuItem("Random Wait"))
-            node = SpawnTreeTask2Node();
-        ImGui::Separator();
-        if (ImGui::MenuItem("Message"))
-            node = SpawnMessageNode();
-        ImGui::Separator();
-        if (ImGui::MenuItem("Transform"))
-            node = SpawnHoudiniTransformNode();
-        if (ImGui::MenuItem("Group"))
-            node = SpawnHoudiniGroupNode();*/
+            ImGui::Separator();
+            ImGui::Separator();
+            ImGui::Text("Cables (M-M)");
+            ImGui::Separator();
+            ImGui::Indent();
+            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath/"Cables (M-M)"})
+            {
+                if (devicePath.path().extension() == fs::path(".json"))
+                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+            }
+            ImGui::Unindent();
 
-        ImGui::Separator();
-        ImGui::Separator();
-        ImGui::Text("Cables (M-M)");
-        ImGui::Separator();
-        for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath/"Cables (M-M)"})
-        {
-            if (devicePath.path().extension() == ".json")
-                if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-        }
-
-        ImGui::Separator();
-        ImGui::Separator();
-        ImGui::Text("Adapters (M-F)");
-        ImGui::Separator();
-        for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath / "Adapters (M-F)" })
-        {
-            if (devicePath.path().extension() == ".json")
-                if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-        }
+            ImGui::Separator();
+            ImGui::Separator();
+            ImGui::Text("Adapters (M-F)");
+            ImGui::Separator();
+            ImGui::Indent();
+            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath / "Adapters (M-F)" })
+            {
+                if (devicePath.path().extension() == fs::path(".json"))
+                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+            }
+            ImGui::Unindent();
 
             if (node)
             {
