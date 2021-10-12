@@ -7,6 +7,7 @@ get_filename_component(IMGUI_NODE_EDITOR_ROOT_DIR ${CMAKE_SOURCE_DIR}/.. ABSOLUT
 
 # Enable solution folders in Visual Studio and Folders in Xcode
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY CMP0048 NEW)
 
 # Point CMake where to look for module files.
 list(APPEND CMAKE_MODULE_PATH ${IMGUI_NODE_EDITOR_ROOT_DIR}/misc/cmake-modules)
