@@ -1,24 +1,24 @@
-#include "Application.h"
+#include <application.h>
+#include "utilities/builders.h"
+#include "utilities/widgets.h"
+
+#include <imgui_node_editor.h>
+
+#define IMGUI_DEFINE_MATH_OPERATORS
+#include <imgui_internal.h>
+
+#include "ImGuiFileDialog.h"
+
+//https://stackoverflow.com/questions/201593/is-there-a-simple-way-to-convert-c-enum-to-string/238157#238157
+//https://stackoverflow.com/questions/28828957/enum-to-string-in-modern-c11-c14-c17-and-future-c20
+#include <magic_enum.hpp>
+
 #include <string>
 #include <vector>
 #include <set>
 #include <map>
 #include <algorithm>
 #include <utility>
-#include <imgui_node_editor.h>
-#include "ImGuiFileDialog.h"
-#include <ax/Math2D.h>
-#include <ax/Builders.h>
-#include <ax/Widgets.h>
-
-#define IMGUI_DEFINE_MATH_OPERATORS
-#include <imgui_internal.h>
-
-//https://stackoverflow.com/questions/201593/is-there-a-simple-way-to-convert-c-enum-to-string/238157#238157
-//https://stackoverflow.com/questions/28828957/enum-to-string-in-modern-c11-c14-c17-and-future-c20
-
-#include <magic_enum.hpp>
-
 #include <nlohmann/json.hpp>
 #include <filesystem>
 #include <iostream>
@@ -36,8 +36,6 @@ using std::make_shared;
 
 // placeholder for UUID
 using NotUUID = int;
-
-enum Color { RED = 2, BLUE = 4, GREEN = 8 };
 
 //#define IS_SHIPPING
 
@@ -1077,12 +1075,12 @@ void BuildNodes()
         BuildNode(node);
 }
 
-const char* Application_GetName()
+const char* GetName()
 {
     return "Blueprints";
 }
 
-void Application_Initialize()
+void Initialize()
 {
     ed::Config config;
 
@@ -1123,21 +1121,21 @@ void Application_Initialize()
 
     //NOTE: we can add example node links here if needed
 
-    s_HeaderBackground = Application_LoadTexture("Data/BlueprintBackground.png");
-    s_SaveIcon = Application_LoadTexture("Data/ic_save_white_24dp.png");
-    s_RestoreIcon = Application_LoadTexture("Data/ic_restore_white_24dp.png");
+    s_HeaderBackground = LoadTexture("Data/BlueprintBackground.png");
+    s_SaveIcon = LoadTexture("Data/ic_save_white_24dp.png");
+    s_RestoreIcon = LoadTexture("Data/ic_restore_white_24dp.png");
 
 
     //auto& io = ImGui::GetIO();
 }
 
-void Application_Finalize()
+void Finalize()
 {
     auto releaseTexture = [](ImTextureID& id)
     {
         if (id)
         {
-            Application_DestroyTexture(id);
+            DestroyTexture(id);
             id = nullptr;
         }
     };
@@ -1378,10 +1376,10 @@ void ShowLeftPane(float paneWidth)
     selectedNodes.resize(nodeCount);
     selectedLinks.resize(linkCount);
 
-    int saveIconWidth = Application_GetTextureWidth(s_SaveIcon);
-    int saveIconHeight = Application_GetTextureWidth(s_SaveIcon);
-    int restoreIconWidth = Application_GetTextureWidth(s_RestoreIcon);
-    int restoreIconHeight = Application_GetTextureWidth(s_RestoreIcon);
+    int saveIconWidth = GetTextureWidth(s_SaveIcon);
+    int saveIconHeight = GetTextureWidth(s_SaveIcon);
+    int restoreIconWidth = GetTextureWidth(s_RestoreIcon);
+    int restoreIconHeight = GetTextureWidth(s_RestoreIcon);
 
     ImGui::GetWindowDrawList()->AddRectFilled(
         ImGui::GetCursorScreenPos(),
@@ -1513,7 +1511,7 @@ void ShowLeftPane(float paneWidth)
     ImGui::EndChild();
 }
 
-void Application_Frame()
+void Frame()
 {
     UpdateTouch();
 
@@ -1554,7 +1552,7 @@ void Application_Frame()
     {
         auto cursorTopLeft = ImGui::GetCursorScreenPos();
 
-        util::BlueprintNodeBuilder builder(s_HeaderBackground, Application_GetTextureWidth(s_HeaderBackground), Application_GetTextureHeight(s_HeaderBackground));
+        util::BlueprintNodeBuilder builder(s_HeaderBackground, GetTextureWidth(s_HeaderBackground), GetTextureHeight(s_HeaderBackground));
 
         for (auto& node : s_Nodes)
         {
