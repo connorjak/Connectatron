@@ -1,8 +1,6 @@
 # Node Editor in ImGui
 
-[![Appveyor status](https://ci.appveyor.com/api/projects/status/lm0io3m8mv7avacp/branch/master?svg=true)](https://ci.appveyor.com/project/thedmd/imgui-node-editor/branch/master)
-[![Travis status](https://travis-ci.org/thedmd/imgui-node-editor.svg?branch=master)](https://travis-ci.org/thedmd/imgui-node-editor)
-
+[![build](https://github.com/thedmd/imgui-node-editor/actions/workflows/build.yml/badge.svg)](https://github.com/thedmd/imgui-node-editor/actions/workflows/build.yml)
 
 ## About
 
@@ -53,12 +51,12 @@ Please report issues or questions if something isn't clear.
 
  * Vanilla ImGui 1.72+
  * C++14
- 
+
 ### Dependencies for examples:
  * https://github.com/thedmd/imgui/tree/feature/layout (used in blueprints sample only)
- 
+
 ### Optional extension you can pull into your local copy of ImGui node editor can take advantage of:
- * https://github.com/thedmd/imgui/tree/feature/draw-list-fringe-scale (for sharp rendering, while zooming)
+ * ~~https://github.com/thedmd/imgui/tree/feature/draw-list-fringe-scale (for sharp rendering, while zooming)~~ It is part of ImGui since 1.80 release
  * https://github.com/thedmd/imgui/tree/feature/extra-keys (for extra shortcuts)
 
 ## Building / Installing
@@ -69,13 +67,15 @@ Node Editor sources are located in root project directory. To use it, simply cop
 [Examples](../examples) can be build with CMake:
 ```
 Windows:
-    cmake -Hexamples -Bbuild -G "Visual Studio 15 2017 Win64"
+    cmake -S examples -B build -G "Visual Studio 15 2017 Win64"
+      or
+    cmake -S examples -B build -G "Visual Studio 16 2019" -A x64
 
 macOS:
-    cmake -Hexamples -Bbuild -G "Xcode"
+    cmake -S examples -B build -G "Xcode"
 
 Linux:
-    cmake -Hexamples -Bbuild -G "Unix Makefiles"
+    cmake -S examples -B build -G "Unix Makefiles"
 
 Build:
     cmake --build build --config Release
@@ -89,44 +89,68 @@ Main node editor header is located in [imgui_node_editor.h](../imgui_node_editor
 Minimal example of one node can be found in [simple-example.cpp](../examples/simple-example/simple-example.cpp).
 Press 'F' in editor to focus on editor content if you see only grid.
 ```cpp
-# include <application.h>
+# include <imgui.h>
 # include <imgui_node_editor.h>
+# include <application.h>
 
 namespace ed = ax::NodeEditor;
 
-static ed::EditorContext* g_Context = nullptr;
-
-void Application_Initialize()
+struct Example:
+    public Application
 {
-    g_Context = ed::CreateEditor();
-}
+    using Application::Application;
 
-void Application_Finalize()
+    void OnStart() override
+    {
+        ed::Config config;
+        config.SettingsFile = "Simple.json";
+        m_Context = ed::CreateEditor(&config);
+    }
+
+    void OnStop() override
+    {
+        ed::DestroyEditor(m_Context);
+    }
+
+    void OnFrame(float deltaTime) override
+    {
+        auto& io = ImGui::GetIO();
+
+        ImGui::Text("FPS: %.2f (%.2gms)", io.Framerate, io.Framerate ? 1000.0f / io.Framerate : 0.0f);
+
+        ImGui::Separator();
+
+        ed::SetCurrentEditor(m_Context);
+        ed::Begin("My Editor", ImVec2(0.0, 0.0f));
+        int uniqueId = 1;
+        // Start drawing nodes.
+        ed::BeginNode(uniqueId++);
+            ImGui::Text("Node A");
+            ed::BeginPin(uniqueId++, ed::PinKind::Input);
+                ImGui::Text("-> In");
+            ed::EndPin();
+            ImGui::SameLine();
+            ed::BeginPin(uniqueId++, ed::PinKind::Output);
+                ImGui::Text("Out ->");
+            ed::EndPin();
+        ed::EndNode();
+        ed::End();
+        ed::SetCurrentEditor(nullptr);
+
+        //ImGui::ShowMetricsWindow();
+    }
+
+    ed::EditorContext* m_Context = nullptr;
+};
+
+int Main(int argc, char** argv)
 {
-    ed::DestroyEditor(g_Context);
-}
+    Example exampe("Simple", argc, argv);
 
-void Application_Frame()
-{
-    ed::SetCurrentEditor(g_Context);
+    if (exampe.Create())
+        return exampe.Run();
 
-    ed::Begin("My Editor");
-
-    int uniqueId = 1;
-
-    // Start drawing nodes.
-    ed::BeginNode(uniqueId++);
-        ImGui::Text("Node A");
-        ed::BeginPin(uniqueId++, ed::PinKind::Input);
-            ImGui::Text("-> In");
-        ed::EndPin();
-        ImGui::SameLine();
-        ed::BeginPin(uniqueId++, ed::PinKind::Output);
-            ImGui::Text("Out ->");
-        ed::EndPin();
-    ed::EndNode();
-
-    ed::End();
+    return 0;
 }
 ```
 

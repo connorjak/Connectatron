@@ -1,4 +1,6 @@
 //------------------------------------------------------------------------------
+// VERSION 0.9.1
+//
 // LICENSE
 //   This software is dual-licensed to the public domain and under the following
 //   license: you are granted a perpetual, irrevocable license to copy, modify,
@@ -61,6 +63,10 @@ struct Config
     ConfigSaveNodeSettings  SaveNodeSettings;
     ConfigLoadNodeSettings  LoadNodeSettings;
     void*                   UserPointer;
+    int                     DragButtonIndex;        // Mouse button index drag action will react to (0-left, 1-right, 2-middle)
+    int                     SelectButtonIndex;      // Mouse button index select action will react to (0-left, 1-right, 2-middle)
+    int                     NavigateButtonIndex;    // Mouse button index navigate action will react to (0-left, 1-right, 2-middle)
+    int                     ContextMenuButtonIndex; // Mouse button index context menu action will react to (0-left, 1-right, 2-middle)
 
     Config()
         : SettingsFile("NodeEditor.json")
@@ -71,6 +77,10 @@ struct Config
         , SaveNodeSettings(nullptr)
         , LoadNodeSettings(nullptr)
         , UserPointer(nullptr)
+        , DragButtonIndex(0)
+        , SelectButtonIndex(0)
+        , NavigateButtonIndex(1)
+        , ContextMenuButtonIndex(1)
     {
     }
 };
@@ -81,6 +91,12 @@ enum class PinKind
 {
     Input,
     Output
+};
+
+enum class FlowDirection
+{
+    Forward,
+    Backward
 };
 
 
@@ -184,7 +200,11 @@ struct Style
         PivotAlignment          = ImVec2(0.5f, 0.5f);
         PivotSize               = ImVec2(0.0f, 0.0f);
         PivotScale              = ImVec2(1, 1);
+#if IMGUI_VERSION_NUM > 18101
+        PinCorners              = ImDrawFlags_RoundCornersAll;
+#else
         PinCorners              = ImDrawCornerFlags_All;
+#endif
         PinRadius               = 0.0f;
         PinArrowSize            = 0.0f;
         PinArrowWidth           = 0.0f;
@@ -260,7 +280,7 @@ ImDrawList* GetNodeBackgroundDrawList(NodeId nodeId);
 
 bool Link(LinkId id, PinId startPinId, PinId endPinId, const ImVec4& color = ImVec4(1, 1, 1, 1), float thickness = 1.0f);
 
-void Flow(LinkId linkId);
+void Flow(LinkId linkId, FlowDirection direction = FlowDirection::Forward);
 
 bool BeginCreate(const ImVec4& color = ImVec4(1, 1, 1, 1), float thickness = 1.0f);
 bool QueryNewLink(PinId* startId, PinId* endId);
@@ -276,14 +296,17 @@ void EndCreate();
 bool BeginDelete();
 bool QueryDeletedLink(LinkId* linkId, PinId* startId = nullptr, PinId* endId = nullptr);
 bool QueryDeletedNode(NodeId* nodeId);
-bool AcceptDeletedItem();
+bool AcceptDeletedItem(bool deleteDependencies = true);
 void RejectDeletedItem();
 void EndDelete();
 
 void SetNodePosition(NodeId nodeId, const ImVec2& editorPosition);
+void SetGroupSize(NodeId nodeId, const ImVec2& size);
 ImVec2 GetNodePosition(NodeId nodeId);
 ImVec2 GetNodeSize(NodeId nodeId);
 void CenterNodeOnScreen(NodeId nodeId);
+void SetNodeZPosition(NodeId nodeId, float z); // Sets node z position, nodes with higher value are drawn over nodes with lower value
+float GetNodeZPosition(NodeId nodeId); // Returns node z position, defaults is 0.0f
 
 void RestoreNodeState(NodeId nodeId);
 
@@ -297,6 +320,8 @@ bool HasSelectionChanged();
 int  GetSelectedObjectCount();
 int  GetSelectedNodes(NodeId* nodes, int size);
 int  GetSelectedLinks(LinkId* links, int size);
+bool IsNodeSelected(NodeId nodeId);
+bool IsLinkSelected(LinkId linkId);
 void ClearSelection();
 void SelectNode(NodeId nodeId, bool append = false);
 void SelectLink(LinkId linkId, bool append = false);
@@ -305,6 +330,11 @@ void DeselectLink(LinkId linkId);
 
 bool DeleteNode(NodeId nodeId);
 bool DeleteLink(LinkId linkId);
+
+bool HasAnyLinks(NodeId nodeId); // Returns true if node has any link connected
+bool HasAnyLinks(PinId pinId); // Return true if pin has any link connected
+int BreakLinks(NodeId nodeId); // Break all links connected to this node
+int BreakLinks(PinId pinId); // Break all links connected to this pin
 
 void NavigateToContent(float duration = -1);
 void NavigateToSelection(bool zoomIn = false, float duration = -1);
@@ -330,11 +360,16 @@ void EndShortcut();
 
 float GetCurrentZoom();
 
+NodeId GetHoveredNode();
+PinId GetHoveredPin();
+LinkId GetHoveredLink();
 NodeId GetDoubleClickedNode();
 PinId GetDoubleClickedPin();
 LinkId GetDoubleClickedLink();
 bool IsBackgroundClicked();
 bool IsBackgroundDoubleClicked();
+
+bool GetLinkPins(LinkId linkId, PinId* startPinId, PinId* endPinId); // pass nullptr if particular pin do not interest you
 
 bool PinHadAnyLinks(PinId pinId);
 
@@ -342,8 +377,8 @@ ImVec2 GetScreenSize();
 ImVec2 ScreenToCanvas(const ImVec2& pos);
 ImVec2 CanvasToScreen(const ImVec2& pos);
 
-
-
+int GetNodeCount();                                // Returns number of submitted nodes since Begin() call
+int GetOrderedNodeIds(NodeId* nodes, int size);    // Fills an array with node id's in order they're drawn; up to 'size` elements are set. Returns actual size of filled id's.
 
 
 
