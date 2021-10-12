@@ -30,7 +30,7 @@ macro(add_example_executable name)
     #source_group("" FILES ${_Example_Sources})
     source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${_Example_Sources})
 
-    file(GLOB _Example_CommonResources CONFIGURE_DEPENDS "${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/data/*")
+    file(GLOB _Example_CommonResources CONFIGURE_DEPENDS "${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/data/*")
     file(GLOB _Example_Resources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/data/*")
     #message(FATAL_ERROR "_Example_Resources = ${_Example_Resources}")
 
@@ -38,14 +38,14 @@ macro(add_example_executable name)
     if (WIN32)
         set(_Example_Type WIN32)
 
-        set(ApplicationIcon ${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/Application/Support/Icon.ico)
+        set(ApplicationIcon ${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/Application/Support/Icon.ico)
         file(TO_NATIVE_PATH "${ApplicationIcon}" ApplicationIcon)
         string(REPLACE "\\" "\\\\" ApplicationIcon "${ApplicationIcon}")
         configure_file(
-            ${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/Application/Support/Resource.rc.in
+            ${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/Application/Support/Resource.rc.in
             ${CMAKE_CURRENT_BINARY_DIR}/Resource.rc
         )
-        source_group(TREE "${IMGUI_NODE_EDITOR_ROOT_DIR}/examples" FILES ${_Example_CommonResources})
+        source_group(TREE "${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications" FILES ${_Example_CommonResources})
         source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${_Example_Resources})
         list(APPEND _Example_Resources
             ${CMAKE_CURRENT_BINARY_DIR}/Resource.rc
@@ -58,7 +58,7 @@ macro(add_example_executable name)
         set_source_files_properties(${_Example_Resources} ${_Example_CommonResources} PROPERTIES
             MACOSX_PACKAGE_LOCATION "Resources/Data"
         )
-        set(_Example_Icon "${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/application/support/Icon.icns")
+        set(_Example_Icon "${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/application/support/Icon.icns")
         list(APPEND _Example_Resources ${_Example_Icon})
         set_source_files_properties(${_Example_Icon} PROPERTIES
             MACOSX_PACKAGE_LOCATION "Resources"
@@ -74,7 +74,7 @@ macro(add_example_executable name)
     set(_ExampleBinDir ${CMAKE_BINARY_DIR}/bin)
 
     set_target_properties(${name} PROPERTIES
-        FOLDER "examples"
+        FOLDER "Applications"
         RUNTIME_OUTPUT_DIRECTORY                "${_ExampleBinDir}"
         RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${_ExampleBinDir}"
         RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${_ExampleBinDir}"
@@ -84,7 +84,7 @@ macro(add_example_executable name)
         RELWITHDEBINGO_POSTFIX                  _rd
         MINSIZEREL_POSTFIX                      _r
         VS_DEBUGGER_WORKING_DIRECTORY           ${_ExampleBinDir}
-        MACOSX_BUNDLE_INFO_PLIST                "${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/application/support/Info.plist.in"
+        MACOSX_BUNDLE_INFO_PLIST                "${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/application/support/Info.plist.in"
         MACOSX_BUNDLE_BUNDLE_NAME               "${PACKAGE_NAME}"
         MACOSX_BUNDLE_GUI_IDENTIFIER            "com.sandbox.collisions"
         MACOSX_BUNDLE_LONG_VERSION_STRING       "${PACKAGE_VERSION}"
@@ -99,7 +99,7 @@ macro(add_example_executable name)
     )
 
     set(_ResourceRoot ${CMAKE_CURRENT_SOURCE_DIR})
-    foreach(_Resource ROOT "${IMGUI_NODE_EDITOR_ROOT_DIR}/examples/data" ${_Example_CommonResources} ROOT "${CMAKE_CURRENT_SOURCE_DIR}/data" ${_Example_Resources})
+    foreach(_Resource ROOT "${IMGUI_NODE_EDITOR_ROOT_DIR}/Applications/data" ${_Example_CommonResources} ROOT "${CMAKE_CURRENT_SOURCE_DIR}/data" ${_Example_Resources})
         if (_Resource STREQUAL ROOT)
             set(_ResourceRoot FALSE)
             continue()
@@ -119,9 +119,10 @@ macro(add_example_executable name)
 
 endmacro()
 
-add_subdirectory(Connectatron)add_subdirectory(application)
+add_subdirectory(application)
 
-add_subdirectory(canvas-example)
-add_subdirectory(simple-example)
-add_subdirectory(basic-interaction-example)
+add_subdirectory(Connectatron)
+#add_subdirectory(canvas-example)
+#add_subdirectory(simple-example)
+#add_subdirectory(basic-interaction-example)
 add_subdirectory(blueprints-example)

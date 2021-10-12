@@ -1,10 +1,12 @@
-add_example(Connectatron
+add_example_executable(Connectatron
     Connectatron.cpp
+    utilities/builders.h
+    utilities/drawing.h
+    utilities/widgets.h
+    utilities/builders.cpp
+    utilities/drawing.cpp
+    utilities/widgets.cpp
 )
-
-find_package(blueprint-utilities REQUIRED)
-
-target_link_libraries(Connectatron PRIVATE blueprint-utilities)
 
 find_package(magic_enum CONFIG REQUIRED)
 target_link_libraries(Connectatron PRIVATE magic_enum::magic_enum)
