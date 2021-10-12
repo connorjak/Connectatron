@@ -11,6 +11,9 @@ set(_imgui_Sources
     imstb_rectpack.h
     imstb_textedit.h
     imstb_truetype.h
+    ImguiFileDialog.cpp
+    ImguiFileDialogConfig.h
+    ImguiFileDialog.h
 )
 
 source_group("" FILES ${_imgui_Sources})
