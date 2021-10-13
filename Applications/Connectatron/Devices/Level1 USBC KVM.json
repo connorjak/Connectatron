@@ -24,6 +24,12 @@
             ]
         },
         {
+            "Name": "Power",
+            "PinType": "DC Power Barrel",
+            "Protocols": [
+            ]
+        },
+        {
             "Name": "DP 1.2 Out",
             "PinType": "DisplayPort",
             "Protocols": [
