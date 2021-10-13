@@ -1,0 +1,15 @@
+{
+    "Name": "HDMI to DP",
+    "Females": [
+        {
+            "Name": "DP",
+            "PinType": "DisplayPort"
+        }
+    ],
+    "Males": [
+        {
+            "Name": "HDMI",
+            "PinType": "HDMI"
+        }
+    ]
+}
