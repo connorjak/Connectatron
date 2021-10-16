@@ -1,4 +1,4 @@
-project(imgui VERSION 1.76)
+project(imgui) #VERSION 1.76) #(CMake error with version not allowed unless cmp0048 is set to new)
 
 set(_imgui_Sources
     imconfig.h
