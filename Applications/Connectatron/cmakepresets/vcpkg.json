@@ -1,8 +1,8 @@
 {
-  "name": "Connectatron",
+  "name": "connectatron",
   "version-string": "0.2.0",
   "dependencies": [
     "magic-enum",
-    "nlohmann_json"
+    "nlohmann-json"
   ]
 }
