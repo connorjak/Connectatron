@@ -58,12 +58,12 @@ jobs:
       - name: Prints output of run-vcpkg's action.
         run: echo "root='${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}', triplet='${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_DEFAULT_TRIPLET_OUT }}' "
 
-      - name: Run CMake with Ninja
-        uses: lukka/run-cmake@v10
-        with:
-          cmakeListsTxtPath: '${{ github.workspace }}/cmakepresets/CMakeLists.txt'
-          configurePreset: 'ninja-multi-vcpkg'
-          buildPreset: 'ninja-multi-vcpkg'
+      #- name: Run CMake with Ninja
+      #  uses: lukka/run-cmake@v10
+      #  with:
+      #    cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
+      #    configurePreset: 'ninja-multi-vcpkg'
+      #    buildPreset: 'ninja-multi-vcpkg'
 
       - name: List $RUNNER_WORKSPACE after build
         run: find $RUNNER_WORKSPACE
