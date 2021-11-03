@@ -10,3 +10,4 @@ bin
 *.ini
 Applications/*.json
 !*/CMakeSettings.json
+!*/vcpkg.json
