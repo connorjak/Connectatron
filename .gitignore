@@ -3,9 +3,11 @@
 .build*
 .DS_Store
 bin
-Build
+[Bb]uild
 *.VC.db
 *.VC.opendb
 *.user
 *.ini
-*.json
+Applications/*.json
+!*/CMakeSettings.json
+!*/vcpkg.json

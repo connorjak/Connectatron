@@ -1,0 +1,27 @@
+{
+    "Name": "HP Reverb G2",
+    "Females": [
+        {
+            "Name": "Power",
+            "PinType": "DC Power Barrel",
+            "Protocols": [
+            ]
+        }
+    ],
+    "Males": [
+        {
+            "Name": "USB-C",
+            "PinType": "USB-C",
+            "Protocols": [
+                "USB 3 5g"
+            ]
+        },
+        {
+            "Name": "DisplayPort",
+            "PinType": "DisplayPort",
+            "Protocols": [
+                "DisplayPort 1.4a"
+            ]
+        }
+    ]
+}

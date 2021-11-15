@@ -1,0 +1,15 @@
+{
+    "Name": "Mini DP to DP",
+    "Females": [
+        {
+            "Name": "DP",
+            "PinType": "DisplayPort"
+        }
+    ],
+    "Males": [
+        {
+            "Name": "Mini DP",
+            "PinType": "Mini DisplayPort"
+        }
+    ]
+}
