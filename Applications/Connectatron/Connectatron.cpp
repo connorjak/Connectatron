@@ -627,7 +627,7 @@ static bool Splitter(bool split_vertically, float thickness, float* size1, float
     return SplitterBehavior(bb, id, split_vertically ? ImGuiAxis_X : ImGuiAxis_Y, size1, size2, min_size1, min_size2, 0.0f);
 }
 
-struct Example:
+struct Connectatron:
     public Application
 {
     using Application::Application;
@@ -785,7 +785,7 @@ struct Example:
 
         config.LoadNodeSettings = [](ed::NodeId nodeId, char* data, void* userPointer) -> size_t
         {
-            auto self = static_cast<Example*>(userPointer);
+            auto self = static_cast<Connectatron*>(userPointer);
 
             auto node = self->FindNode(nodeId);
             if (!node)
@@ -798,7 +798,7 @@ struct Example:
 
         config.SaveNodeSettings = [](ed::NodeId nodeId, const char* data, size_t size, ed::SaveReasonFlags reason, void* userPointer) -> bool
         {
-            auto self = static_cast<Example*>(userPointer);
+            auto self = static_cast<Connectatron*>(userPointer);
 
             auto node = self->FindNode(nodeId);
             if (!node)
@@ -1500,6 +1500,8 @@ struct Example:
         ImGui::Text("FPS: %.2f (%.2gms)", io.Framerate, io.Framerate ? 1000.0f / io.Framerate : 0.0f);
 
         ed::SetCurrentEditor(m_Editor);
+
+        SetTitle(string("Connectatron: " + CurrentProjectName).c_str());
 
         //auto& style = ImGui::GetStyle();
 
@@ -2506,10 +2508,10 @@ struct Example:
 
 int Main(int argc, char** argv)
 {
-    Example exampe("Blueprints", argc, argv);
+    Connectatron conn("Connectatron", argc, argv);
 
-    if (exampe.Create())
-        return exampe.Run();
+    if (conn.Create())
+        return conn.Run();
 
     return 0;
 }
