@@ -72,6 +72,8 @@ using ax::Widgets::IconType;
 
 static ed::EditorContext* m_Editor = nullptr;
 
+static string CurrentProjectName = "my_project.con";
+
 //extern "C" __declspec(dllimport) short __stdcall GetAsyncKeyState(int vkey);
 //extern "C" bool Debug_KeyPress(int vkey)
 //{
@@ -1241,107 +1243,84 @@ struct Example:
     {
         auto& io = ImGui::GetIO();
 
-    if (ImGui::Button("Save Project"))
-    {
-        SaveProjectToFile(ProjectsPath / "test.con");
-    }
-    if (ImGui::Button("Load Project"))
-    {
-        LoadProjectFromFile(ProjectsPath / "test.con");
-    }
+        if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Save Project As..."))
+        {
+            const char* filters = ".con";
 
-    ImGui::Separator();
+            ImGuiFileDialogFlags flags = 0;
+            flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_ConfirmOverwrite;
+            flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
-    //if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open File Dialog"))
-    //{
-    //    const char* filters = ".*,.cpp,.h,.hpp";
-    //    if (/*standardDialogMode*/true)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", /*ICON_IGFD_FOLDER_OPEN*/ " Choose a File", filters, ".", "", 1, nullptr, flags);
-    //}
+            if (/*standardDialogMode*/true)
+                ImGuiFileDialog::Instance()->OpenDialog("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+            else
+                ImGuiFileDialog::Instance()->OpenModal("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+        }
 
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open File Dialog with collections of filters"))
-    //{
-    //    const char* filters = "Source files (*.cpp *.h *.hpp){.cpp,.h,.hpp},Image files (*.png *.gif *.jpg *.jpeg){.png,.gif,.jpg,.jpeg},.md";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 1, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 1, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open File Dialog with selection of 5 items"))
-    //{
-    //    const char* filters = ".*,.cpp,.h,.hpp";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 5, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 5, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open File Dialog with infinite selection"))
-    //{
-    //    const char* filters = ".*,.cpp,.h,.hpp";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 0, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, ".", "", 0, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open File Dialog with last file path name"))
-    //{
-    //    const char* filters = ".*,.cpp,.h,.hpp";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, filePathName, 1, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", filters, filePathName, 1, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open All file types with filter .*"))
-    //{
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", ".*", ".", "", 1, nullptr, flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a File", ".*", ".", "", 1, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_SAVE " Save File Dialog with a custom pane"))
-    //{
-    //    const char* filters = "C++ File (*.cpp){.cpp}";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey",
-    //            ICON_IGFD_SAVE " Choose a File", filters,
-    //            ".", "", std::bind(&InfosPane, std::placeholders::_1, std::placeholders::_2,
-    //                std::placeholders::_3), 350, 1, IGFDUserDatas("SaveFile"), flags);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey",
-    //            ICON_IGFD_SAVE " Choose a File", filters,
-    //            ".", "", std::bind(&InfosPane, std::placeholders::_1, std::placeholders::_2,
-    //                std::placeholders::_3), 350, 1, IGFDUserDatas("SaveFile"), flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_SAVE " Save File Dialog with Confirm Dialog For Overwrite File if exist"))
-    //{
-    //    const char* filters = "C/C++ File (*.c *.cpp){.c,.cpp}, Header File (*.h){.h}";
-    //    if (standardDialogMode)
-    //        ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", ICON_IGFD_SAVE " Choose a File", filters, ".", "", 1, IGFDUserDatas("SaveFile"), ImGuiFileDialogFlags_ConfirmOverwrite);
-    //    else
-    //        ImGuiFileDialog::Instance()->OpenModal("ChooseFileDlgKey", ICON_IGFD_SAVE " Choose a File", filters, ".", "", 1, IGFDUserDatas("SaveFile"), ImGuiFileDialogFlags_ConfirmOverwrite);
-    //}
+        // display
+        if (ImGuiFileDialog::Instance()->Display("SaveProjectAs"))
+        {
+            // action if pressed OK
+            if (ImGuiFileDialog::Instance()->IsOk())
+            {
+                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                std::string fileName = fs::path(filePathName).filename().string();
+                // action
 
-    //ImGui::Text("Other Instance (multi dialog demo) :");
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open Directory Dialog"))
-    //{
-    //    // let filters be null for open directory chooser
-    //    if (standardDialogMode)
-    //        fileDialog2.OpenDialog("ChooseDirDlgKey",
-    //            ICON_IGFD_FOLDER_OPEN " Choose a Directory", nullptr, ".", 1, nullptr, flags);
-    //    else
-    //        fileDialog2.OpenModal("ChooseDirDlgKey",
-    //            ICON_IGFD_FOLDER_OPEN " Choose a Directory", nullptr, ".", 1, nullptr, flags);
-    //}
-    //if (ImGui::Button(ICON_IGFD_FOLDER_OPEN " Open Directory Dialog with selection of 5 items"))
-    //{
-    //    // set filters be null for open directory chooser
-    //    if (standardDialogMode)
-    //        fileDialog2.OpenDialog("ChooseDirDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a Directory", nullptr, ".", "", 5, nullptr, flags);
-    //    else
-    //        fileDialog2.OpenModal("ChooseDirDlgKey", ICON_IGFD_FOLDER_OPEN " Choose a Directory", nullptr, ".", "", 5, nullptr, flags);
-    //}
+                CurrentProjectName = fileName;
+
+                std::cout << "Saving Project As:" << std::endl;
+                std::cout << "filePathName: " << filePathName << std::endl;
+                std::cout << "filePath: " << filePath << std::endl;
+                SaveProjectToFile(fs::path(filePathName));
+            }
+
+            // close
+            ImGuiFileDialog::Instance()->Close();
+        }
+
+        ImGui::SameLine();
+
+        if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open Project..."))
+        {
+            //const char* filters = ".*,.con,.dev,.json";
+            const char* filters = ".con";
+
+            ImGuiFileDialogFlags flags = 0;
+            flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
+
+            if (/*standardDialogMode*/true)
+                ImGuiFileDialog::Instance()->OpenDialog("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+            else
+                ImGuiFileDialog::Instance()->OpenModal("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+        }
+
+        // display
+        if (ImGuiFileDialog::Instance()->Display("OpenProject"))
+        {
+            // action if pressed OK
+            if (ImGuiFileDialog::Instance()->IsOk())
+            {
+                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                std::string fileName = fs::path(filePathName).filename().string();
+                // action
+
+                CurrentProjectName = fileName;
+
+                std::cout << "Opening Project:" << std::endl;
+                std::cout << "filePathName: " << filePathName << std::endl;
+                std::cout << "filePath: " << filePath << std::endl;
+                LoadProjectFromFile(fs::path(filePathName));
+            }
+
+            // close
+            ImGuiFileDialog::Instance()->Close();
+        }
+
+        //ImGui::Separator();
+
         ImGui::BeginChild("Selection", ImVec2(paneWidth, 0));
 
         paneWidth = ImGui::GetContentRegionAvail().x;
