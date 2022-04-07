@@ -1542,6 +1542,7 @@ struct Connectatron:
 
             util::BlueprintNodeBuilder builder(m_HeaderBackground, GetTextureWidth(m_HeaderBackground), GetTextureHeight(m_HeaderBackground));
 
+            // Draw all Blueprint and Simple nodes
             for (auto& node : m_Nodes)
             {
                 if (node->Type != NodeType::Blueprint && node->Type != NodeType::Simple)
@@ -1602,6 +1603,7 @@ struct Connectatron:
                     builder.EndHeader();
                 }
 
+                // Draw female pin icons
                 for (auto& female : node->Females)
                 {
                     auto alpha = ImGui::GetStyle().Alpha;
@@ -1635,6 +1637,7 @@ struct Connectatron:
                     ImGui::Spring(1, 0);
                 }
 
+                // Draw male pin icons
                 for (auto& male : node->Males)
                 {
                     /*if (!isSimple && male.Type == PinType::Delegate)
@@ -1680,6 +1683,7 @@ struct Connectatron:
                 builder.End();
             }
 
+            // Draw all tree nodes
             for (auto& node : m_Nodes)
             {
                 if (node->Type != NodeType::Tree)
@@ -1833,6 +1837,7 @@ struct Connectatron:
                 //ImGui::PopStyleVar();
             }
 
+            // Draw all houdini nodes
             for (auto& node : m_Nodes)
             {
                 if (node->Type != NodeType::Houdini)
@@ -2005,6 +2010,7 @@ struct Connectatron:
                 //ImGui::PopStyleVar();
             }
 
+            // Draw all comment nodes
             for (auto& node : m_Nodes)
             {
                 if (node->Type != NodeType::Comment)
@@ -2065,9 +2071,11 @@ struct Connectatron:
                 ed::EndGroupHint();
             }
 
+            // Draw all links
             for (auto& link : m_Links)
                 ed::Link(link.ID, link.StartPinID, link.EndPinID, link.Color, 2.0f);
 
+            // Single-entrance for single Create New Node popup
             if (!createNewNode)
             {
                 if (ed::BeginCreate(ImColor(255, 255, 255), 2.0f))
@@ -2090,6 +2098,7 @@ struct Connectatron:
                         ImGui::TextUnformatted(label);
                     };
 
+                    // Handle new-link, displaying feedback on if the link would work
                     ed::PinId startPinId = 0, endPinId = 0;
                     if (ed::QueryNewLink(&startPinId, &endPinId))
                     {
@@ -2137,6 +2146,7 @@ struct Connectatron:
                         }
                     }
 
+                    // Handle new-node
                     ed::PinId pinId = 0;
                     if (ed::QueryNewNode(&pinId))
                     {
@@ -2160,6 +2170,7 @@ struct Connectatron:
 
                 ed::EndCreate();
 
+                // Handle deletions (including bulk-deletions) of nodes and links
                 if (ed::BeginDelete())
                 {
                     ed::LinkId linkId = 0;
@@ -2399,6 +2410,8 @@ struct Connectatron:
 
                 ed::SetNodePosition(node->ID, newNodePostion);
 
+                // If node was created by dragging off of another node's pin,
+                // create the link if possible.
                 if (auto startPin = newNodeLinkPin)
                 {
                     auto& pins = startPin->Kind == PinKind::Input ? node->Males : node->Females;
