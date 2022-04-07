@@ -32,6 +32,7 @@ using std::string;
 using std::vector;
 using std::set;
 using std::shared_ptr;
+using std::weak_ptr;
 using std::make_shared;
 
 // placeholder for UUID
@@ -2318,10 +2319,13 @@ struct Connectatron:
             ImGui::Separator();
             if (node)
             {
-                ImGui::Text("ID: %p", node->ID.AsPointer());
                 ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Tree ? "Tree" : "Comment"));
                 ImGui::Text("Females: %d", (int)node->Females.size());
                 ImGui::Text("Males: %d", (int)node->Males.size());
+#ifdef _DEBUG
+                ImGui::Separator();
+                ImGui::Text("ID: %p", node->ID.AsPointer());
+#endif
             }
             else
                 ImGui::Text("Unknown node: %p", contextNodeId.AsPointer());
@@ -2364,19 +2368,21 @@ struct Connectatron:
                     }
                 }
                 ImGui::Unindent();
-                ImGui::Separator();
                 if (pin->ExtraInfo.length() != 0)
                 {
+                    ImGui::Separator();
                     ImGui::Text("Extra Info:");
                     ImGui::Separator();
                     ImGui::Text(pin->ExtraInfo.c_str());
-                    ImGui::Separator();
                 }
+#ifdef _DEBUG
+                ImGui::Separator();
                 ImGui::Text("ID: %p", pin->ID.AsPointer());
                 if (pin->Node)
                     ImGui::Text("Node: %p", pin->Node->ID.AsPointer());
                 else
                     ImGui::Text("Node: %s", "<none>");
+#endif
             }
             else
                 ImGui::Text("Unknown pin: %p", contextPinId.AsPointer());
