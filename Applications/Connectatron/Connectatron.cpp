@@ -750,12 +750,14 @@ struct Connectatron:
         {
             female.Node = node;
             female.Kind = PinKind::Input;
+            female.IsFemale = true;
         }
 
         for (auto& male : node->Males)
         {
             male.Node = node;
             male.Kind = PinKind::Output;
+            male.IsFemale = false;
         }
     }
 
