@@ -2350,15 +2350,30 @@ struct Connectatron:
         {
             auto node = FindNode(contextNodeId);
 
-            ImGui::TextUnformatted("Node Context Menu");
+            ImGui::TextUnformatted("Node Information");
             ImGui::Separator();
             if (node)
             {
-                ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Tree ? "Tree" : "Comment"));
-                ImGui::Text("Females: %d", (int)node->Females.size());
-                ImGui::Text("Males: %d", (int)node->Males.size());
+                if (node->Type == NodeType::Blueprint)
+                {
+                    if (ImGui::Button("Edit Node"))
+                    {
+                        node->Type = NodeType::Blueprint_Editing;
+                    }
+                }
+                else if (node->Type == NodeType::Blueprint_Editing)
+                {
+                    if (ImGui::Button("Save Node"))
+                    {
+                        node->Type = NodeType::Blueprint;
+                        //TODO BREAKING do something else, like actually pulling up some file saving logic?
+                    }
+                }
+                ImGui::Text("Female Connectors: %d", (int)node->Females.size());
+                ImGui::Text("Male Connectors: %d", (int)node->Males.size());
 #ifdef _DEBUG
                 ImGui::Separator();
+                ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Tree ? "Tree" : "Comment"));
                 ImGui::Text("ID: %p", node->ID.AsPointer());
 #endif
             }
@@ -2378,28 +2393,56 @@ struct Connectatron:
             ImGui::Separator();
             if (pin)
             {
+                auto on_node = pin->Node.lock();
+
                 auto pin_enum_name = std::string(magic_enum::enum_name(pin->Type));
                 EnumName_Underscore2Symbol(pin_enum_name);
-                auto pin_text = "Pin Type: " + pin_enum_name;
+                auto pin_text = "Connector Type: " + pin_enum_name;
                 ImGui::Text(pin_text.c_str());
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
 
                 ImGui::Separator();
                 ImGui::Text("Supported Protocols:");
                 ImGui::Indent();
-                if (pin->Protocols.size() == 0)
+                if (on_node->Type == NodeType::Blueprint_Editing)
                 {
-                    ImGui::Text("(None specified)");
-                }
-                else
-                {
-                    for (auto supportedProto : pin->Protocols)
+                    for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                     {
-                        std::string proto_name(magic_enum::enum_name(supportedProto));
+                        auto proto_string = string(magic_enum::enum_name(possible_proto));
+                        EnumName_Underscore2Symbol(proto_string);
+                        // Remove metadata enum values
+                        if (proto_string.find(".VERSION.") != string::npos)
+                            continue;
+                        
+                        //TODO could optimize heavily
+                        bool val = pin->Protocols.find(possible_proto) != pin->Protocols.end();
+                        auto pastval = val;
+                        ImGui::Checkbox(proto_string.c_str(), &val);
+                        if (val != pastval)
+                        {
+                            if (val)
+                                pin->Protocols.insert(possible_proto);
+                            else
+                                pin->Protocols.erase(possible_proto);
+                        }
+                    }
+                }
+                else // Not editing
+                {
+                    if (pin->Protocols.size() == 0)
+                    {
+                        ImGui::Text("(None specified)");
+                    }
+                    else
+                    {
+                        for (auto supportedProto : pin->Protocols)
+                        {
+                            std::string proto_name(magic_enum::enum_name(supportedProto));
 
-                        EnumName_Underscore2Symbol(proto_name);
+                            EnumName_Underscore2Symbol(proto_name);
 
-                        ImGui::Text(proto_name.c_str());
+                            ImGui::Text(proto_name.c_str());
+                        }
                     }
                 }
                 ImGui::Unindent();
@@ -2413,11 +2456,26 @@ struct Connectatron:
 #ifdef _DEBUG
                 ImGui::Separator();
                 ImGui::Text("ID: %p", pin->ID.AsPointer());
-                if (pin->Node.lock())
-                    ImGui::Text("Node: %p", pin->Node.lock()->ID.AsPointer());
+                if (on_node)
+                    ImGui::Text("Node: %p", on_node->ID.AsPointer());
                 else
                     ImGui::Text("Node: %s", "<none>");
 #endif
+                if (on_node->Type == NodeType::Blueprint_Editing)
+                {
+                    if (ImGui::Button("Delete Connector"))
+                    {
+                        auto& vec = on_node->Males;
+                        if (pin->IsFemale)
+                            vec = on_node->Females;
+
+                        auto to_del = std::find_if(vec.begin(), vec.end(), [pin](const Pin& test_pin) {
+                            return test_pin.ID == pin->ID;
+                            });
+
+                        vec.erase(to_del);
+                    }
+                }
             }
             else
                 ImGui::Text("Unknown pin: %p", contextPinId.AsPointer());
