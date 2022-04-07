@@ -967,6 +967,16 @@ struct Connectatron:
         }
         new_node->persistentID = id;
 
+        InitNodeFromJSON(device, new_node);
+
+        m_IdNodes[id] = new_node;
+
+        return new_node;
+    }
+
+    // Load node WITHOUT SPAWNING IT IN THE EDITOR!
+    void InitNodeFromJSON(const json& device, shared_ptr<Node>& new_node)
+    {
         if (device.find("SavedPos") != device.end())
         {
             new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
@@ -1057,10 +1067,6 @@ struct Connectatron:
         }
 
         BuildNode(new_node);
-
-        m_IdNodes[id] = new_node;
-
-        return new_node;
     }
 
     Link* SpawnLinkFromJSON(const json& connect)
