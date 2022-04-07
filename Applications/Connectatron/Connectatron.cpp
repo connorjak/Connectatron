@@ -440,7 +440,7 @@ struct Node;
 struct Pin
 {
     ed::PinId   ID;
-    ::shared_ptr<Node> Node;
+    weak_ptr<Node> Node;
     std::string Name;
     // Physical connector type
     PinType     Type;
@@ -451,19 +451,19 @@ struct Pin
     PinKind     Kind;
 
     Pin(int id, const char* name, PinType type):
-        ID(id), Node(nullptr), Name(name), Type(type), Kind(PinKind::Input)
+        ID(id), Name(name), Type(type), Kind(PinKind::Input)
     {
     }
     Pin(int id, const char* name, PinType type, set<WireProtocol> protocols) :
-        ID(id), Node(nullptr), Name(name), Type(type), Protocols(protocols), Kind(PinKind::Input)
+        ID(id), Name(name), Type(type), Protocols(protocols), Kind(PinKind::Input)
     {
     }
     Pin(int id, const char* name, PinType type, set<WireProtocol> protocols, std::string extraInfo) :
-        ID(id), Node(nullptr), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), Kind(PinKind::Input)
+        ID(id), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), Kind(PinKind::Input)
     {
     }
     Pin(int id, const char* name, PinType type, set<WireProtocol> protocols, std::string extraInfo, bool isFemale) :
-        ID(id), Node(nullptr), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), IsFemale(isFemale), Kind(PinKind::Input)
+        ID(id), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), IsFemale(isFemale), Kind(PinKind::Input)
     {
     }
 };
@@ -762,7 +762,7 @@ struct Connectatron:
 
     bool CanCreateLink(Pin* a, Pin* b)
     {
-        if (!a || !b || a == b || a->Kind == b->Kind || a->Type != b->Type || a->Node == b->Node)
+        if (!a || !b || a == b || a->Kind == b->Kind || a->Type != b->Type || a->Node.lock() == b->Node.lock())
             return false;
 
         return true;
@@ -1147,8 +1147,8 @@ struct Connectatron:
 
         auto startPin = FindPin(link.StartPinID);
         auto endPin = FindPin(link.EndPinID);
-        auto startNode = startPin->Node;
-        auto endNode = endPin->Node;
+        auto startNode = startPin->Node.lock();
+        auto endNode = endPin->Node.lock();
         auto start_p_id = startNode->persistentID;
         auto end_p_id = endNode->persistentID;
         connect[0] = start_p_id;
@@ -2378,8 +2378,8 @@ struct Connectatron:
 #ifdef _DEBUG
                 ImGui::Separator();
                 ImGui::Text("ID: %p", pin->ID.AsPointer());
-                if (pin->Node)
-                    ImGui::Text("Node: %p", pin->Node->ID.AsPointer());
+                if (pin->Node.lock())
+                    ImGui::Text("Node: %p", pin->Node.lock()->ID.AsPointer());
                 else
                     ImGui::Text("Node: %s", "<none>");
 #endif
