@@ -1193,7 +1193,7 @@ struct Connectatron:
             connects.push_back(SerializeLinkToJSON(link));
         }
 
-        o << project;
+        o << project.dump(0);
         o.close();
     }
 
