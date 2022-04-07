@@ -953,8 +953,18 @@ struct Connectatron:
 //TODO load position in project?
     shared_ptr<Node> SpawnNodeFromJSON(const json& device)
     {
-        auto name = device["Name"].get<string>();
-        auto new_node = m_Nodes.emplace_back(new Node(GetNextId(), name.c_str(), ImColor(255, 128, 128)));
+        string name = device["Name"].get<string>();
+        auto name_hash = std::hash<string>{}(name);
+        auto name_hash_dbl = name_hash / std::pow(10, 10);
+        auto name_hash_dbl2 = name_hash / std::pow(10, 6);
+        auto hue = std::fmod(name_hash_dbl + HSV_HueFromStringOffset, 360);
+        auto val = std::fmod(name_hash_dbl2 + HSV_ValFromStringOffset, 50) + 25;
+        // *FromStringOffset is for arbitrarily shifting the color selection.
+
+        auto rgb = HSVtoRGB(hue, 100, val);
+        ImColor colFromName(rgb[0], rgb[1], rgb[2]);
+        //ImColor(255, 128, 128)
+        auto new_node = m_Nodes.emplace_back(new Node(GetNextId(), name.c_str(), colFromName));
 
         NotUUID id = -1;
         if (device.find("ID") != device.end())
