@@ -1427,7 +1427,7 @@ struct Connectatron:
             ImGui::GetCursorScreenPos() + ImVec2(paneWidth, ImGui::GetTextLineHeight()),
             ImColor(ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]), ImGui::GetTextLineHeight() * 0.25f);
         ImGui::Spacing(); ImGui::SameLine();
-        ImGui::TextUnformatted("Nodes");
+        ImGui::TextUnformatted("Devices");
         ImGui::Indent();
         for (auto& node : m_Nodes)
         {
@@ -1538,7 +1538,7 @@ struct Connectatron:
             ed::ClearSelection();
         ImGui::EndHorizontal();
         ImGui::Indent();
-        for (int i = 0; i < nodeCount; ++i) ImGui::Text("Node (%p)", selectedNodes[i].AsPointer());
+        for (int i = 0; i < nodeCount; ++i) ImGui::Text("Device (%p)", selectedNodes[i].AsPointer());
         for (int i = 0; i < linkCount; ++i) ImGui::Text("Link (%p)", selectedLinks[i].AsPointer());
         ImGui::Unindent();
 
@@ -2258,7 +2258,7 @@ struct Connectatron:
                     {
                         newLinkPin = FindPin(pinId);
                         if (newLinkPin)
-                            showLabel("+ Create Node", ImColor(32, 45, 32, 180));
+                            showLabel("+ Create Device", ImColor(32, 45, 32, 180));
 
                         if (ed::AcceptNewItem())
                         {
@@ -2369,20 +2369,20 @@ struct Connectatron:
         {
             auto node = FindNode(contextNodeId);
 
-            ImGui::TextUnformatted("Node Information");
+            ImGui::TextUnformatted("Device Information");
             ImGui::Separator();
             if (node)
             {
                 if (node->Type == NodeType::Blueprint)
                 {
-                    if (ImGui::Button("Edit Node"))
+                    if (ImGui::Button("Edit Device"))
                     {
                         node->Type = NodeType::Blueprint_Editing;
                     }
                 }
                 else if (node->Type == NodeType::Blueprint_Editing)
                 {
-                    if (ImGui::Button("Save Node"))
+                    if (ImGui::Button("Save Device"))
                     {
                         node->Type = NodeType::Blueprint;
                         //TODO BREAKING do something else, like actually pulling up some file saving logic?
@@ -2397,7 +2397,7 @@ struct Connectatron:
 #endif
             }
             else
-                ImGui::Text("Unknown node: %p", contextNodeId.AsPointer());
+                ImGui::Text("Unknown Device: %p", contextNodeId.AsPointer());
             ImGui::Separator();
             if (ImGui::MenuItem("Delete"))
                 ed::DeleteNode(contextNodeId);
@@ -2546,6 +2546,13 @@ struct Connectatron:
                 else
                     valid_kind = PinKind::Input;
             }
+
+            if (ImGui::MenuItem("Create New Custom Device"))
+            {
+                node = SpawnNodeFromJSON(GetJSONFromFile(DevicesPath / ".." / "data" / "empty_device.json"));
+                node->Type = NodeType::Blueprint_Editing;
+            }
+            ImGui::Separator();
 
             vector<fs::path> categories = { ".", "Cables (M-M)", "Adapters (M-F)" };
             // Iterate through files in Devices and show them as options
