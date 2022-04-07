@@ -32,12 +32,16 @@ struct BlueprintNodeBuilder
     void EndHeader();
 
     void Input(PinId id);
+    void Input_NoPin(void* id_ptr);
     void EndInput();
+    void EndInput_NoPin();
 
     void Middle();
 
     void Output(PinId id);
+    void Output_NoPin(void* id_ptr);
     void EndOutput();
+    void EndOutput_NoPin();
 
 
 private:

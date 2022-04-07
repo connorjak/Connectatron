@@ -1669,7 +1669,7 @@ struct Connectatron:
                 builder.End();
             }
 
-            // Draw all Blueprint and Simple nodes
+            // Draw all Blueprint_Editing
             for (auto& node : m_Nodes)
             {
                 if (node->Type != NodeType::Blueprint_Editing)
@@ -1726,6 +1726,15 @@ struct Connectatron:
                     builder.EndInput();
                 }
 
+                builder.Input_NoPin(node.get() + 1);
+                if (ImGui::Button("New Connector"))
+                {
+                    auto new_id = GetNextId();
+                    string new_name = "USB2 " + std::to_string(new_id);
+                    node->Females.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                }
+                builder.EndInput_NoPin();
+
                 // Draw male pin icons
                 for (auto& male : node->Males)
                 {
@@ -1766,6 +1775,16 @@ struct Connectatron:
                     builder.EndOutput();
                     ImGui::PopID();
                 }
+
+                builder.Output_NoPin(node.get() + 2);
+                if (ImGui::Button("New Connector"))
+                {
+                    auto new_id = GetNextId();
+                    string new_name = "USB2 " + std::to_string(new_id);
+                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                    BuildNode(node); //NOTE: overkill but effective.
+                }
+                builder.EndOutput_NoPin();
 
                 builder.End();
             }

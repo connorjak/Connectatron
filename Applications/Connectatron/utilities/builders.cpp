@@ -123,11 +123,31 @@ void util::BlueprintNodeBuilder::Input(ed::PinId id)
     ImGui::BeginHorizontal(id.AsPointer());
 }
 
+void util::BlueprintNodeBuilder::Input_NoPin(void* id_ptr)
+{
+    if (CurrentStage == Stage::Begin)
+        SetStage(Stage::Content);
+
+    const auto applyPadding = (CurrentStage == Stage::Input);
+
+    SetStage(Stage::Input);
+
+    if (applyPadding)
+        ImGui::Spring(0);
+
+    ImGui::BeginHorizontal(id_ptr);
+}
+
 void util::BlueprintNodeBuilder::EndInput()
 {
     ImGui::EndHorizontal();
 
     EndPin();
+}
+
+void util::BlueprintNodeBuilder::EndInput_NoPin()
+{
+    ImGui::EndHorizontal();
 }
 
 void util::BlueprintNodeBuilder::Middle()
@@ -155,11 +175,31 @@ void util::BlueprintNodeBuilder::Output(ed::PinId id)
     ImGui::BeginHorizontal(id.AsPointer());
 }
 
+void util::BlueprintNodeBuilder::Output_NoPin(void* id_ptr)
+{
+    if (CurrentStage == Stage::Begin)
+        SetStage(Stage::Content);
+
+    const auto applyPadding = (CurrentStage == Stage::Output);
+
+    SetStage(Stage::Output);
+
+    if (applyPadding)
+        ImGui::Spring(0);
+
+    ImGui::BeginHorizontal(id_ptr);
+}
+
 void util::BlueprintNodeBuilder::EndOutput()
 {
     ImGui::EndHorizontal();
 
     EndPin();
+}
+
+void util::BlueprintNodeBuilder::EndOutput_NoPin()
+{
+    ImGui::EndHorizontal();
 }
 
 bool util::BlueprintNodeBuilder::SetStage(Stage stage)
