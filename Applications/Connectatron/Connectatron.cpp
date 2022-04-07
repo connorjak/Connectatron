@@ -7,6 +7,8 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 
+#include <imgui_stdlib.h>
+
 #include "ImGuiFileDialog.h"
 
 //https://stackoverflow.com/questions/201593/is-there-a-simple-way-to-convert-c-enum-to-string/238157#238157
@@ -429,6 +431,7 @@ enum class PinKind
 enum class NodeType
 {
     Blueprint,
+    Blueprint_Editing,
     Simple,
     Tree,
     Comment,
@@ -1652,13 +1655,60 @@ struct Connectatron:
 
                     ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
                     builder.Output(male.ID);
-                    /*if (male.Type == PinType::String)
+                    if (!male.Name.empty())
                     {
-                        static char buffer[128] = "Edit Me\nMultiline!";
-                        static bool wasActive = false;
+                        ImGui::Spring(0);
+                        ImGui::TextUnformatted(male.Name.c_str());
+                    }
+                    ImGui::Spring(0);
+                    DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
+                    ImGui::PopStyleVar();
+                    builder.EndOutput();
+                }
 
-                        ImGui::PushItemWidth(100.0f);
-                        ImGui::InputText("##edit", buffer, 127);
+                builder.End();
+            }
+
+            // Draw all Blueprint and Simple nodes
+            for (auto& node : m_Nodes)
+            {
+                if (node->Type != NodeType::Blueprint_Editing)
+                    continue;
+
+                builder.Begin(node->ID);
+
+                builder.Header(node->Color);
+                    ImGui::Spring(0);
+                    ImGui::TextUnformatted(node->Name.c_str());
+                    ImGui::Spring(1);
+                    ImGui::Dummy(ImVec2(0, 28));
+                    ImGui::Spring(0);
+                builder.EndHeader();
+
+                int itr = 0;
+
+                // Draw female pin icons
+                for (auto& female : node->Females)
+                {
+                    auto alpha = ImGui::GetStyle().Alpha;
+                    if (newLinkPin && !CanCreateLink(newLinkPin, &female) && &female != newLinkPin)
+                        alpha = alpha * (48.0f / 255.0f);
+
+                    builder.Input(female.ID);
+                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    DrawPinIcon(female, IsPinLinked(female.ID), (int)(alpha * 255));
+                    ImGui::Spring(0);
+                    if (true)
+                    {
+                        static bool wasActive = false;
+                        ImGui::PushItemWidth(ImGui::CalcTextSize(female.Name.c_str()).x + 10.0f);
+
+                        auto val = female.Name;
+                        auto pastval = val;
+                        ImGui::InputText("", &val);
+                        if (pastval != val)
+                            female.Name = val;
+
                         ImGui::PopItemWidth();
                         if (ImGui::IsItemActive() && !wasActive)
                         {
@@ -1671,16 +1721,50 @@ struct Connectatron:
                             wasActive = false;
                         }
                         ImGui::Spring(0);
-                    }*/
-                    if (!male.Name.empty())
+                    }
+                    ImGui::PopStyleVar();
+                    builder.EndInput();
+                }
+
+                // Draw male pin icons
+                for (auto& male : node->Males)
+                {
+                    ImGui::PushID(itr++);
+                    auto alpha = ImGui::GetStyle().Alpha;
+                    if (newLinkPin && !CanCreateLink(newLinkPin, &male) && &male != newLinkPin)
+                        alpha = alpha * (48.0f / 255.0f);
+
+                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    builder.Output(male.ID);
+                    if (true)
                     {
+                        static bool wasActive = false;
+                        ImGui::PushItemWidth(ImGui::CalcTextSize(male.Name.c_str()).x + 10.0f);
+
+                        auto val = male.Name;
+                        auto pastval = val;
+                        ImGui::InputText("", &val);
+                        if (pastval != val)
+                            male.Name = val;
+
+                        //ImGui::PopItemWidth();
+                        if (ImGui::IsItemActive() && !wasActive)
+                        {
+                            ed::EnableShortcuts(false);
+                            wasActive = true;
+                        }
+                        else if (!ImGui::IsItemActive() && wasActive)
+                        {
+                            ed::EnableShortcuts(true);
+                            wasActive = false;
+                        }
                         ImGui::Spring(0);
-                        ImGui::TextUnformatted(male.Name.c_str());
                     }
                     ImGui::Spring(0);
                     DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
                     ImGui::PopStyleVar();
                     builder.EndOutput();
+                    ImGui::PopID();
                 }
 
                 builder.End();
