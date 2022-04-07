@@ -1,4 +1,4 @@
-project(imgui) #VERSION 1.76) #(CMake error with version not allowed unless cmp0048 is set to new)
+project(imgui) #VERSION 1.84) #(CMake error with version not allowed unless cmp0048 is set to new)
 
 set(_imgui_Sources
     imconfig.h
@@ -17,6 +17,8 @@ set(_imgui_Sources
     ImguiFileDialog.cpp
     ImguiFileDialogConfig.h
     ImguiFileDialog.h
+    misc/cpp/imgui_stdlib.cpp
+    misc/cpp/imgui_stdlib.h
 )
 
 add_library(${PROJECT_NAME} STATIC ${_imgui_Sources})
