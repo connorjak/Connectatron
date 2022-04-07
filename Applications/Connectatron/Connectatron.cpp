@@ -1549,134 +1549,134 @@ struct Connectatron:
              	       hasOutputDelegates = true;*/
 
                 builder.Begin(node->ID);
-                    if (!isSimple)
-                    {
-                        builder.Header(node->Color);
+                if (!isSimple)
+                {
+                    builder.Header(node->Color);
+                        ImGui::Spring(0);
+                        ImGui::TextUnformatted(node->Name.c_str());
+                        ImGui::Spring(1);
+                        ImGui::Dummy(ImVec2(0, 28));
+                        //if (hasOutputDelegates)
+                        //{
+                        //    ImGui::BeginVertical("delegates", ImVec2(0, 28));
+                        //    ImGui::Spring(1, 0);
+                        //    for (auto& output : node->Outputs)
+                        //    {
+                        //        if (output.Type != PinType::Delegate)
+                        //            continue;
+
+                        //        auto alpha = ImGui::GetStyle().Alpha;
+                        //        if (newLinkPin && !CanCreateLink(newLinkPin, &output) && &output != newLinkPin)
+                        //            alpha = alpha * (48.0f / 255.0f);
+
+                        //        ed::BeginPin(output.ID, ed::PinKind::Output);
+                        //        ed::PinPivotAlignment(ImVec2(1.0f, 0.5f));
+                        //        ed::PinPivotSize(ImVec2(0, 0));
+                        //        ImGui::BeginHorizontal(output.ID.AsPointer());
+                        //        ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                        //        if (!output.Name.empty())
+                        //        {
+                        //            ImGui::TextUnformatted(output.Name.c_str());
+                        //            ImGui::Spring(0);
+                        //        }
+                        //        DrawPinIcon(output, IsPinLinked(output.ID), (int)(alpha * 255));
+                        //        ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
+                        //        ImGui::EndHorizontal();
+                        //        ImGui::PopStyleVar();
+                        //        ed::EndPin();
+
+                        //        //DrawItemRect(ImColor(255, 0, 0));
+                        //    }
+                        //    ImGui::Spring(1, 0);
+                        //    ImGui::EndVertical();
+                        //    ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
+                        //}
+                        //else
                             ImGui::Spring(0);
-                            ImGui::TextUnformatted(node->Name.c_str());
-                            ImGui::Spring(1);
-                            ImGui::Dummy(ImVec2(0, 28));
-                            //if (hasOutputDelegates)
-                            //{
-                            //    ImGui::BeginVertical("delegates", ImVec2(0, 28));
-                            //    ImGui::Spring(1, 0);
-                            //    for (auto& output : node->Outputs)
-                            //    {
-                            //        if (output.Type != PinType::Delegate)
-                            //            continue;
-
-                            //        auto alpha = ImGui::GetStyle().Alpha;
-                            //        if (newLinkPin && !CanCreateLink(newLinkPin, &output) && &output != newLinkPin)
-                            //            alpha = alpha * (48.0f / 255.0f);
-
-                            //        ed::BeginPin(output.ID, ed::PinKind::Output);
-                            //        ed::PinPivotAlignment(ImVec2(1.0f, 0.5f));
-                            //        ed::PinPivotSize(ImVec2(0, 0));
-                            //        ImGui::BeginHorizontal(output.ID.AsPointer());
-                            //        ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-                            //        if (!output.Name.empty())
-                            //        {
-                            //            ImGui::TextUnformatted(output.Name.c_str());
-                            //            ImGui::Spring(0);
-                            //        }
-                            //        DrawPinIcon(output, IsPinLinked(output.ID), (int)(alpha * 255));
-                            //        ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
-                            //        ImGui::EndHorizontal();
-                            //        ImGui::PopStyleVar();
-                            //        ed::EndPin();
-
-                            //        //DrawItemRect(ImColor(255, 0, 0));
-                            //    }
-                            //    ImGui::Spring(1, 0);
-                            //    ImGui::EndVertical();
-                            //    ImGui::Spring(0, ImGui::GetStyle().ItemSpacing.x / 2);
-                            //}
-                            //else
-                                ImGui::Spring(0);
-                        builder.EndHeader();
-                    }
-
-            for (auto& female : node->Females)
-            {
-                auto alpha = ImGui::GetStyle().Alpha;
-                if (newLinkPin && !CanCreateLink(newLinkPin, &female) && &female != newLinkPin)
-                    alpha = alpha * (48.0f / 255.0f);
-
-                builder.Input(female.ID);
-                ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-                DrawPinIcon(female, IsPinLinked(female.ID), (int)(alpha * 255));
-                ImGui::Spring(0);
-                if (!female.Name.empty())
-                {
-                    ImGui::TextUnformatted(female.Name.c_str());
-                    ImGui::Spring(0);
+                    builder.EndHeader();
                 }
-                /*if (female.Type == PinType::Bool)
+
+                for (auto& female : node->Females)
                 {
-                    ImGui::Button("Hello");
+                    auto alpha = ImGui::GetStyle().Alpha;
+                    if (newLinkPin && !CanCreateLink(newLinkPin, &female) && &female != newLinkPin)
+                        alpha = alpha * (48.0f / 255.0f);
+
+                    builder.Input(female.ID);
+                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    DrawPinIcon(female, IsPinLinked(female.ID), (int)(alpha * 255));
                     ImGui::Spring(0);
-                }*/
-                ImGui::PopStyleVar();
-                builder.EndInput();
-            }
-
-                    if (isSimple)
+                    if (!female.Name.empty())
                     {
-                        builder.Middle();
-
-                ImGui::Spring(1, 0);
-                ImGui::TextUnformatted(node->Name.c_str());
-                ImGui::Spring(1, 0);
-            }
-
-            for (auto& male : node->Males)
-            {
-                /*if (!isSimple && male.Type == PinType::Delegate)
-                    continue;*/
-
-                auto alpha = ImGui::GetStyle().Alpha;
-                if (newLinkPin && !CanCreateLink(newLinkPin, &male) && &male != newLinkPin)
-                    alpha = alpha * (48.0f / 255.0f);
-
-                ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
-                builder.Output(male.ID);
-                /*if (male.Type == PinType::String)
-                {
-                    static char buffer[128] = "Edit Me\nMultiline!";
-                    static bool wasActive = false;
-
-                    ImGui::PushItemWidth(100.0f);
-                    ImGui::InputText("##edit", buffer, 127);
-                    ImGui::PopItemWidth();
-                    if (ImGui::IsItemActive() && !wasActive)
-                    {
-                        ed::EnableShortcuts(false);
-                        wasActive = true;
+                        ImGui::TextUnformatted(female.Name.c_str());
+                        ImGui::Spring(0);
                     }
-                    else if (!ImGui::IsItemActive() && wasActive)
+                    /*if (female.Type == PinType::Bool)
                     {
-                        ed::EnableShortcuts(true);
-                        wasActive = false;
-                    }
-                    ImGui::Spring(0);
-                }*/
-                if (!male.Name.empty())
-                {
-                    ImGui::Spring(0);
-                    ImGui::TextUnformatted(male.Name.c_str());
+                        ImGui::Button("Hello");
+                        ImGui::Spring(0);
+                    }*/
+                    ImGui::PopStyleVar();
+                    builder.EndInput();
                 }
-                ImGui::Spring(0);
-                DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
-                ImGui::PopStyleVar();
-                builder.EndOutput();
-            }
+
+                if (isSimple)
+                {
+                    builder.Middle();
+
+                    ImGui::Spring(1, 0);
+                    ImGui::TextUnformatted(node->Name.c_str());
+                    ImGui::Spring(1, 0);
+                }
+
+                for (auto& male : node->Males)
+                {
+                    /*if (!isSimple && male.Type == PinType::Delegate)
+                        continue;*/
+
+                    auto alpha = ImGui::GetStyle().Alpha;
+                    if (newLinkPin && !CanCreateLink(newLinkPin, &male) && &male != newLinkPin)
+                        alpha = alpha * (48.0f / 255.0f);
+
+                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    builder.Output(male.ID);
+                    /*if (male.Type == PinType::String)
+                    {
+                        static char buffer[128] = "Edit Me\nMultiline!";
+                        static bool wasActive = false;
+
+                        ImGui::PushItemWidth(100.0f);
+                        ImGui::InputText("##edit", buffer, 127);
+                        ImGui::PopItemWidth();
+                        if (ImGui::IsItemActive() && !wasActive)
+                        {
+                            ed::EnableShortcuts(false);
+                            wasActive = true;
+                        }
+                        else if (!ImGui::IsItemActive() && wasActive)
+                        {
+                            ed::EnableShortcuts(true);
+                            wasActive = false;
+                        }
+                        ImGui::Spring(0);
+                    }*/
+                    if (!male.Name.empty())
+                    {
+                        ImGui::Spring(0);
+                        ImGui::TextUnformatted(male.Name.c_str());
+                    }
+                    ImGui::Spring(0);
+                    DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
+                    ImGui::PopStyleVar();
+                    builder.EndOutput();
+                }
 
                 builder.End();
             }
 
             for (auto& node : m_Nodes)
             {
-            if (node->Type != NodeType::Tree)
+                if (node->Type != NodeType::Tree)
                     continue;
 
                 const float rounding = 5.0f;
@@ -1696,36 +1696,36 @@ struct Connectatron:
                 ed::PushStyleVar(ed::StyleVar_LinkStrength, 0.0f);
                 ed::PushStyleVar(ed::StyleVar_PinBorderWidth, 1.0f);
                 ed::PushStyleVar(ed::StyleVar_PinRadius, 5.0f);
-            ed::BeginNode(node->ID);
+                ed::BeginNode(node->ID);
 
-            ImGui::BeginVertical(node->ID.AsPointer());
+                ImGui::BeginVertical(node->ID.AsPointer());
                 ImGui::BeginHorizontal("inputs");
                 ImGui::Spring(0, padding * 2);
 
                 ImRect inputsRect;
                 int inputAlpha = 200;
-            if (!node->Females.empty())
+                if (!node->Females.empty())
                 {
-                auto& pin = node->Females[0];
-                        ImGui::Dummy(ImVec2(0, padding));
-                        ImGui::Spring(1, 0);
-                        inputsRect = ImGui_GetItemRect();
+                    auto& pin = node->Females[0];
+                    ImGui::Dummy(ImVec2(0, padding));
+                    ImGui::Spring(1, 0);
+                    inputsRect = ImGui_GetItemRect();
 
-                        ed::PushStyleVar(ed::StyleVar_PinArrowSize, 10.0f);
-                        ed::PushStyleVar(ed::StyleVar_PinArrowWidth, 10.0f);
+                    ed::PushStyleVar(ed::StyleVar_PinArrowSize, 10.0f);
+                    ed::PushStyleVar(ed::StyleVar_PinArrowWidth, 10.0f);
 #if IMGUI_VERSION_NUM > 18101
-                        ed::PushStyleVar(ed::StyleVar_PinCorners, ImDrawFlags_RoundCornersBottom);
+                    ed::PushStyleVar(ed::StyleVar_PinCorners, ImDrawFlags_RoundCornersBottom);
 #else
-                        ed::PushStyleVar(ed::StyleVar_PinCorners, 12);
+                    ed::PushStyleVar(ed::StyleVar_PinCorners, 12);
 #endif
-                        ed::BeginPin(pin.ID, ed::PinKind::Input);
-                        ed::PinPivotRect(inputsRect.GetTL(), inputsRect.GetBR());
-                        ed::PinRect(inputsRect.GetTL(), inputsRect.GetBR());
-                        ed::EndPin();
-                        ed::PopStyleVar(3);
+                    ed::BeginPin(pin.ID, ed::PinKind::Input);
+                    ed::PinPivotRect(inputsRect.GetTL(), inputsRect.GetBR());
+                    ed::PinRect(inputsRect.GetTL(), inputsRect.GetBR());
+                    ed::EndPin();
+                    ed::PopStyleVar(3);
 
-                        if (newLinkPin && !CanCreateLink(newLinkPin, &pin) && &pin != newLinkPin)
-                            inputAlpha = (int)(255 * ImGui::GetStyle().Alpha * (48.0f / 255.0f));
+                    if (newLinkPin && !CanCreateLink(newLinkPin, &pin) && &pin != newLinkPin)
+                        inputAlpha = (int)(255 * ImGui::GetStyle().Alpha * (48.0f / 255.0f));
                 }
                 else
                     ImGui::Dummy(ImVec2(0, padding));
@@ -1739,7 +1739,7 @@ struct Connectatron:
                 ImGui::BeginVertical("content", ImVec2(0.0f, 0.0f));
                 ImGui::Dummy(ImVec2(160, 0));
                 ImGui::Spring(1);
-            ImGui::TextUnformatted(node->Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::Spring(1);
                 ImGui::EndVertical();
                 auto contentRect = ImGui_GetItemRect();
@@ -1752,9 +1752,9 @@ struct Connectatron:
 
                 ImRect outputsRect;
                 int outputAlpha = 200;
-            if (!node->Males.empty())
+                if (!node->Males.empty())
                 {
-                auto& pin = node->Males[0];
+                    auto& pin = node->Males[0];
                     ImGui::Dummy(ImVec2(0, padding));
                     ImGui::Spring(1, 0);
                     outputsRect = ImGui_GetItemRect();
@@ -1785,7 +1785,7 @@ struct Connectatron:
                 ed::PopStyleVar(7);
                 ed::PopStyleColor(4);
 
-            auto drawList = ed::GetNodeBackgroundDrawList(node->ID);
+                auto drawList = ed::GetNodeBackgroundDrawList(node->ID);
 
                 //const auto fringeScale = ImGui::GetStyle().AntiAliasFringeScale;
                 //const auto unitSize    = 1.0f / fringeScale;
@@ -1850,17 +1850,17 @@ struct Connectatron:
                 ed::PushStyleVar(ed::StyleVar_LinkStrength, 0.0f);
                 ed::PushStyleVar(ed::StyleVar_PinBorderWidth, 1.0f);
                 ed::PushStyleVar(ed::StyleVar_PinRadius, 6.0f);
-            ed::BeginNode(node->ID);
+                ed::BeginNode(node->ID);
 
-            ImGui::BeginVertical(node->ID.AsPointer());
-            if (!node->Females.empty())
+                ImGui::BeginVertical(node->ID.AsPointer());
+                if (!node->Females.empty())
                 {
                     ImGui::BeginHorizontal("inputs");
                     ImGui::Spring(1, 0);
 
                     ImRect inputsRect;
                     int inputAlpha = 200;
-                for (auto& pin : node->Females)
+                    for (auto& pin : node->Females)
                     {
                         ImGui::Dummy(ImVec2(padding, padding));
                         inputsRect = ImGui_GetItemRect();
@@ -1914,14 +1914,14 @@ struct Connectatron:
                 ImGui::Spring(1, padding);
                 ImGui::EndHorizontal();
 
-            if (!node->Males.empty())
+                if (!node->Males.empty())
                 {
                     ImGui::BeginHorizontal("outputs");
                     ImGui::Spring(1, 0);
 
                     ImRect outputsRect;
                     int outputAlpha = 200;
-                for (auto& pin : node->Males)
+                    for (auto& pin : node->Males)
                     {
                         ImGui::Dummy(ImVec2(padding, padding));
                         outputsRect = ImGui_GetItemRect();
@@ -2001,7 +2001,7 @@ struct Connectatron:
 
             for (auto& node : m_Nodes)
             {
-            if (node->Type != NodeType::Comment)
+                if (node->Type != NodeType::Comment)
                     continue;
 
                 const float commentAlpha = 0.75f;
@@ -2009,22 +2009,22 @@ struct Connectatron:
                 ImGui::PushStyleVar(ImGuiStyleVar_Alpha, commentAlpha);
                 ed::PushStyleColor(ed::StyleColor_NodeBg, ImColor(255, 255, 255, 64));
                 ed::PushStyleColor(ed::StyleColor_NodeBorder, ImColor(255, 255, 255, 64));
-            ed::BeginNode(node->ID);
-            ImGui::PushID(node->ID.AsPointer());
+                ed::BeginNode(node->ID);
+                ImGui::PushID(node->ID.AsPointer());
                 ImGui::BeginVertical("content");
                 ImGui::BeginHorizontal("horizontal");
                 ImGui::Spring(1);
-            ImGui::TextUnformatted(node->Name.c_str());
+                ImGui::TextUnformatted(node->Name.c_str());
                 ImGui::Spring(1);
                 ImGui::EndHorizontal();
-            ed::Group(node->Size);
+                ed::Group(node->Size);
                 ImGui::EndVertical();
                 ImGui::PopID();
                 ed::EndNode();
                 ed::PopStyleColor(2);
                 ImGui::PopStyleVar();
 
-            if (ed::BeginGroupHint(node->ID))
+                if (ed::BeginGroupHint(node->ID))
                 {
                     //auto alpha   = static_cast<int>(commentAlpha * ImGui::GetStyle().Alpha * 255);
                     auto bgAlpha = static_cast<int>(ImGui::GetStyle().Alpha * 255);
@@ -2036,7 +2036,7 @@ struct Connectatron:
 
                     ImGui::SetCursorScreenPos(min - ImVec2(-8, ImGui::GetTextLineHeightWithSpacing() + 4));
                     ImGui::BeginGroup();
-                ImGui::TextUnformatted(node->Name.c_str());
+                    ImGui::TextUnformatted(node->Name.c_str());
                     ImGui::EndGroup();
 
                     auto drawList = ed::GetHintBackgroundDrawList();
@@ -2252,8 +2252,8 @@ struct Connectatron:
             {
                 ImGui::Text("ID: %p", node->ID.AsPointer());
                 ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Tree ? "Tree" : "Comment"));
-            ImGui::Text("Females: %d", (int)node->Females.size());
-            ImGui::Text("Males: %d", (int)node->Males.size());
+                ImGui::Text("Females: %d", (int)node->Females.size());
+                ImGui::Text("Males: %d", (int)node->Males.size());
             }
             else
                 ImGui::Text("Unknown node: %p", contextNodeId.AsPointer());
@@ -2267,51 +2267,51 @@ struct Connectatron:
         {
             auto pin = FindPin(contextPinId);
 
-        ImGui::TextUnformatted("Connector Information");
-        ImGui::Separator();
-        if (pin)
-        {
-            auto pin_enum_name = std::string(magic_enum::enum_name(pin->Type));
-            EnumName_Underscore2Symbol(pin_enum_name);
-            auto pin_text = "Pin Type: " + pin_enum_name;
-            ImGui::Text(pin_text.c_str());
-            ImGui::Text(pin->IsFemale ? "Female" : "Male");
-
+            ImGui::TextUnformatted("Connector Information");
             ImGui::Separator();
-            ImGui::Text("Supported Protocols:");
-            ImGui::Indent();
-            if (pin->Protocols.size() == 0)
+            if (pin)
             {
-                ImGui::Text("(None specified)");
-            }
-            else
-            {
-                for (auto supportedProto : pin->Protocols)
+                auto pin_enum_name = std::string(magic_enum::enum_name(pin->Type));
+                EnumName_Underscore2Symbol(pin_enum_name);
+                auto pin_text = "Pin Type: " + pin_enum_name;
+                ImGui::Text(pin_text.c_str());
+                ImGui::Text(pin->IsFemale ? "Female" : "Male");
+
+                ImGui::Separator();
+                ImGui::Text("Supported Protocols:");
+                ImGui::Indent();
+                if (pin->Protocols.size() == 0)
                 {
-                    std::string proto_name(magic_enum::enum_name(supportedProto));
-
-                    EnumName_Underscore2Symbol(proto_name);
-
-                    ImGui::Text(proto_name.c_str());
+                    ImGui::Text("(None specified)");
                 }
-            }
-            ImGui::Unindent();
-            ImGui::Separator();
-            if (pin->ExtraInfo.length() != 0)
-            {
-                ImGui::Text("Extra Info:");
+                else
+                {
+                    for (auto supportedProto : pin->Protocols)
+                    {
+                        std::string proto_name(magic_enum::enum_name(supportedProto));
+
+                        EnumName_Underscore2Symbol(proto_name);
+
+                        ImGui::Text(proto_name.c_str());
+                    }
+                }
+                ImGui::Unindent();
                 ImGui::Separator();
-                ImGui::Text(pin->ExtraInfo.c_str());
-                ImGui::Separator();
+                if (pin->ExtraInfo.length() != 0)
+                {
+                    ImGui::Text("Extra Info:");
+                    ImGui::Separator();
+                    ImGui::Text(pin->ExtraInfo.c_str());
+                    ImGui::Separator();
+                }
+                ImGui::Text("ID: %p", pin->ID.AsPointer());
+                if (pin->Node)
+                    ImGui::Text("Node: %p", pin->Node->ID.AsPointer());
+                else
+                    ImGui::Text("Node: %s", "<none>");
             }
-            ImGui::Text("ID: %p", pin->ID.AsPointer());
-            if (pin->Node)
-                ImGui::Text("Node: %p", pin->Node->ID.AsPointer());
             else
-                ImGui::Text("Node: %s", "<none>");
-        }
-        else
-            ImGui::Text("Unknown pin: %p", contextPinId.AsPointer());
+                ImGui::Text("Unknown pin: %p", contextPinId.AsPointer());
 
             ImGui::EndPopup();
         }
@@ -2395,7 +2395,7 @@ struct Connectatron:
 
                 if (auto startPin = newNodeLinkPin)
                 {
-                auto& pins = startPin->Kind == PinKind::Input ? node->Males : node->Females;
+                    auto& pins = startPin->Kind == PinKind::Input ? node->Males : node->Females;
 
                     for (auto& pin : pins)
                     {
