@@ -2363,44 +2363,91 @@ struct Connectatron:
 
             shared_ptr<Node> node;
 
-            ImGui::Text("Devices");
-            ImGui::Separator();
-            ImGui::Indent();
+            // If node was created by dragging off of another node's pin,
+            // determine what PinType we need to limit the device selection to.
+            bool limitByPinType = false;
+            PinType valid_type;
+            PinKind valid_kind;
+            if (auto startPin = newNodeLinkPin)
+            {
+                limitByPinType = true;
+                valid_type = startPin->Type;
+                if (startPin->IsFemale)
+                    valid_kind = PinKind::Output;
+                else
+                    valid_kind = PinKind::Input;
+            }
+
+            vector<fs::path> categories = { ".", "Cables (M-M)", "Adapters (M-F)" };
             // Iterate through files in Devices and show them as options
-            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath })
+            //TODO use recursive directory iterator instead!
+            for(auto category : categories)
             {
-                if(devicePath.path().extension() == fs::path(".json"))
-                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-                //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
-            }
-            ImGui::Unindent();
+                string category_label = category.generic_string();
+                auto search_dir = DevicesPath / category;
+                if (category_label == ".")
+                    category_label = "Devices";
 
-            ImGui::Separator();
-            ImGui::Separator();
-            ImGui::Text("Cables (M-M)");
-            ImGui::Separator();
-            ImGui::Indent();
-            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath/"Cables (M-M)"})
-            {
-                if (devicePath.path().extension() == fs::path(".json"))
-                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-            }
-            ImGui::Unindent();
+                ImGui::Text(category_label.c_str());
+                ImGui::Separator();
+                ImGui::Indent();
+                bool nothing_shown_yet = true;
+                for (auto const& devicePath : fs::directory_iterator{ search_dir })
+                {
+                    if(devicePath.path().extension() == fs::path(".json"))
+                    {
+                        if (limitByPinType) // Limit selection by pin compatibility
+                        {
+                            bool this_node_is_valid = false;
+                            shared_ptr<Node> temp_node = make_shared<Node>(-1, "TEMP NODE", ImColor(255, 128, 128));
+                            InitNodeFromJSON(GetJSONFromFile(devicePath.path()), temp_node);
+                            switch (valid_kind)
+                            {
+                            case PinKind::Input: // Will be connecting to a female pin on new node
+                                for (const auto& pin : temp_node->Females)
+                                {
+                                    if (pin.Type == valid_type)
+                                    {
+                                        this_node_is_valid = true;
+                                        break;
+                                    }
+                                }
+                                break;
+                            case PinKind::Output: // Will be connecting to a male pin on new node
+                                for (const auto& pin : temp_node->Males)
+                                {
+                                    if (pin.Type == valid_type)
+                                    {
+                                        this_node_is_valid = true;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
 
-            ImGui::Separator();
-            ImGui::Separator();
-            ImGui::Text("Adapters (M-F)");
-            ImGui::Separator();
-            ImGui::Indent();
-            for (auto const& devicePath : std::filesystem::directory_iterator{ DevicesPath / "Adapters (M-F)" })
-            {
-                if (devicePath.path().extension() == fs::path(".json"))
-                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                            if (this_node_is_valid)
+                            {
+                                nothing_shown_yet = false;
+                                if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                    node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                            }
+                        }
+                        else // Any node would be fine
+                        {
+                            nothing_shown_yet = false;
+                            if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                        }
+                    }
+                    //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
+                }
+                if(nothing_shown_yet)
+                    ImGui::Text("(Nothing with a compatible connection)");
+                ImGui::Unindent();
+
+                ImGui::Separator();
+                ImGui::Separator();
             }
-            ImGui::Unindent();
 
             if (node)
             {
