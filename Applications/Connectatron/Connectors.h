@@ -16,13 +16,59 @@ using std::map;
 // ____ : /
 enum class PinType
 {
-    // Power
-    DC__Power__Barrel, //TODO specific
+    // DC Power
+    // https://en.wikipedia.org/wiki/DC_connector
+    // https://en.wikipedia.org/wiki/Coaxial_power_connector
+    DC__Power__Barrel, //This is the generic one; we also have more specific specs
+    // https://en.wikipedia.org/wiki/EIAJ_connector
+    EIAJ___01,
+    EIAJ___02,
+    EIAJ___03,
+    EIAJ___04,  // AKA JSBP 4             
+    EIAJ___05,  // AKA JSBP 5
+    IEC__60130___10__Type__A__2_1mm__ID,
+    IEC__60130___10__Type__A__2_5mm__ID,
+    IEC__60130___10__Type__B__2_1mm__ID,
+    IEC__60130___10__Type__B__2_5mm__ID,
+    IEC__60130___10__Type__C,
+    IEC__60130___10__Type__D,
+    IEC__60130___10__Type__E,
     Molex,
     SATA__Power,
     SATA__Power__Slimline,
+    
+    // AC Power
     // https://en.wikipedia.org/wiki/NEMA_connector
-    //TODO NEMA connectors
+    // 120VAC
+    NEMA__5___15, //Typical outlet, 3 prong
+    NEMA__5___20, 
+    NEMA__5___30,  
+    NEMA__5___50,
+    NEMA__TT___30,
+    NEMA__L5___15,
+    NEMA__L5___20,
+    NEMA__L5___30,
+    NEMA__1___15, //Old outlet, 2 prong
+    // 120/240VAC
+    NEMA__14___20,
+    NEMA__14___30, //Clothes Dryer
+    NEMA__14___50, //Electric Oven
+    NEMA__14___60,
+    NEMA__L14___20,
+    NEMA__L14___30,
+    // 240VAC
+    NEMA__6___15,
+    NEMA__6___20,
+    NEMA__6___30,
+    NEMA__6___50,
+    NEMA__10___30,
+    NEMA__10___50,
+    // Welder or Plasma Cutter
+    NEMA__L6___15,
+    NEMA__L6___20,
+    NEMA__L6___30,
+    NEMA__L6___50,
+    //TODO non-NEMA connectors
 
     // USB          // https://en.wikipedia.org/wiki/USB
     USB___A,
@@ -62,6 +108,8 @@ enum class PinType
     TOSLINK,
     Mini___TOSLINK,
 
+    // DIN          // https://en.wikipedia.org/wiki/DIN_connector
+
     // Mini-DIN     // https://en.wikipedia.org/wiki/Mini-DIN_connector
     PS____2,        // https://en.wikipedia.org/wiki/PS/2_port
     //TODO others from wiki article
@@ -94,7 +142,7 @@ static string NameFromPinType(PinType ptype)
 
 const map<PinType, string> connectorIconFiles
 {
-    // Power
+    // DC Power
     {PinType::DC__Power__Barrel,             ""},
     {PinType::Molex,                         ""},
     {PinType::SATA__Power,                   ""},
@@ -193,9 +241,9 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
 
     switch (maletype)
     {
-        //Power
+        // DC Power
 
-        //USB                               
+        // USB                               
     case PinType::USB___A:
         ret.insert(PinType::USB___A__SuperSpeed);
         break;
@@ -203,15 +251,16 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         ret.insert(PinType::USB___A);
         break;
 
-        //Display                           
+        // Display                           
         //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
         //   but DVI-D male connectors can be inserted into DVI-I female connectors.              
     case PinType::DVI___D:
         ret.insert(PinType::DVI___I);
         break;
-        //Audio                             
 
-        //Other                             
+        // Audio                             
+
+        // Other                             
 
     default:
         break;
