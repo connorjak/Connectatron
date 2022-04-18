@@ -1,0 +1,14 @@
+{
+	"Females": [
+		{
+			"Name": "NEMA 5-15",
+			"PinType": "NEMA 5-15"
+		},
+		{
+			"Name": "NEMA 5-15",
+			"PinType": "NEMA 5-15"
+		}
+	],
+	"Males": [],
+	"Name": "Common Wall Outlet (NEMA 5-15)"
+}

@@ -192,6 +192,13 @@
 				"HDMI 2.0b",
 				"HDMI 2.1"
 			]
+		},
+		{
+			"Name": "PSU C14",
+			"PinType": "C13/C14",
+			"Protocols": [
+				"AC Power"
+			]
 		}
 	],
 	"Males": [],

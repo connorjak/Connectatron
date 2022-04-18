@@ -21,118 +21,6 @@
 {
 "Females": [
 {
-"Name": "Thunderbolt 3",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a",
-"PCIe 1.0 x1",
-"PCIe 1.0 x2",
-"PCIe 1.0 x4",
-"PCIe 2.0 x1",
-"PCIe 2.0 x2",
-"PCIe 2.0 x4",
-"PCIe 3.0 x1",
-"PCIe 3.0 x2",
-"PCIe 3.0 x4",
-"Thunderbolt 3"
-]
-},
-{
-"Name": "USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Mini Displayport",
-"PinType": "Mini DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
-"ID": 5156,
-"Males": [],
-"Name": "Razer Blade 15\" Advanced (2019)",
-"SavedPos": [
-1160.0,
-32.0
-]
-},
-{
-"Females": [
-{
 "Name": "Comp1 USBB In",
 "PinType": "USB-B",
 "Protocols": [
@@ -1152,6 +1040,13 @@
 "HDMI 2.0b",
 "HDMI 2.1"
 ]
+},
+{
+"Name": "PSU C14",
+"PinType": "C13/C14",
+"Protocols": [
+"AC Power"
+]
 }
 ],
 "ID": 93685,
@@ -1181,6 +1076,171 @@
 632.0,
 1532.0
 ]
+},
+{
+"Females": [
+{
+"Name": "AC 100-240V <3.6A C14",
+"PinType": "C13/C14",
+"Protocols": [
+"AC Power"
+]
+}
+],
+"ID": 45930,
+"Males": [
+{
+"Name": "DC 19.5V 11.8A",
+"PinType": "Proprietary",
+"Protocols": [
+"DC Power"
+]
+}
+],
+"Name": "Razer Power Adapter",
+"SavedPos": [
+920.0,
+-308.0
+]
+},
+{
+"Females": [
+{
+"Name": "Thunderbolt 3",
+"PinType": "USB-C",
+"Protocols": [
+"DC Power",
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g",
+"USB 3 20g",
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2",
+"DisplayPort 1.2a",
+"DisplayPort 1.3",
+"DisplayPort 1.4",
+"DisplayPort 1.4a",
+"PCIe 1.0 x1",
+"PCIe 1.0 x2",
+"PCIe 1.0 x4",
+"PCIe 2.0 x1",
+"PCIe 2.0 x2",
+"PCIe 2.0 x4",
+"PCIe 3.0 x1",
+"PCIe 3.0 x2",
+"PCIe 3.0 x4",
+"Thunderbolt 3"
+]
+},
+{
+"Name": "USB-A 1",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "USB-A 2",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "USB-A 3",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Mini Displayport",
+"PinType": "Mini DisplayPort",
+"Protocols": [
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2",
+"DisplayPort 1.2a",
+"DisplayPort 1.3",
+"DisplayPort 1.4",
+"DisplayPort 1.4a"
+]
+},
+{
+"Name": "HDMI",
+"PinType": "HDMI",
+"Protocols": [
+"HDMI 1.0",
+"HDMI 1.1",
+"HDMI 1.2",
+"HDMI 1.2a",
+"HDMI 1.3",
+"HDMI 1.3a",
+"HDMI 1.4",
+"HDMI 1.4a",
+"HDMI 1.4b",
+"HDMI 2.0",
+"HDMI 2.0a",
+"HDMI 2.0b"
+]
+},
+{
+"Name": "Audio/Mic Combo",
+"PinType": "Audio3.5mm",
+"Protocols": [
+"AnalogAudio"
+]
+},
+{
+"Name": "DC Charging Port",
+"PinType": "Proprietary",
+"Protocols": [
+"DC Power"
+]
+}
+],
+"ID": 41532,
+"Males": [],
+"Name": "Razer Blade 15\" Advanced (2019)",
+"SavedPos": [
+1096.0,
+31.0
+]
+},
+{
+"Females": [
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+}
+],
+"ID": 62485,
+"Males": [
+{
+"Name": "C13",
+"PinType": "C13/C14"
+}
+],
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+617.0,
+-324.0
+]
 }
 ],
 "Links": [
@@ -1197,34 +1257,10 @@
 7
 ],
 [
-38804,
-5156,
-0,
-0
-],
-[
-24948,
-5156,
-0,
-1
-],
-[
 24948,
 58879,
 1,
 0
-],
-[
-95146,
-5156,
-0,
-2
-],
-[
-6187,
-5156,
-0,
-4
 ],
 [
 6187,
@@ -1243,12 +1279,6 @@
 95146,
 0,
 0
-],
-[
-17743,
-5156,
-0,
-3
 ],
 [
 42018,
@@ -1386,6 +1416,48 @@
 34806,
 37865,
 1,
+0
+],
+[
+24948,
+41532,
+0,
+1
+],
+[
+95146,
+41532,
+0,
+2
+],
+[
+17743,
+41532,
+0,
+3
+],
+[
+6187,
+41532,
+0,
+4
+],
+[
+38804,
+41532,
+0,
+0
+],
+[
+45930,
+41532,
+0,
+7
+],
+[
+62485,
+45930,
+0,
 0
 ]
 ]

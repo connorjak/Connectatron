@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "C13",
+			"PinType": "C13/C14"
+		},
+		{
+			"Name": "NEMA 5-15",
+			"PinType": "NEMA 5-15"
+		}
+	],
+	"Name": "IEC (C13) Power Cable"
+}

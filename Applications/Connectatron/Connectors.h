@@ -16,6 +16,7 @@ using std::map;
 // ____ : /
 enum class PinType
 {
+    Proprietary, // For connectors that don't match any listed options
     // DC Power
     // https://en.wikipedia.org/wiki/DC_connector
     // https://en.wikipedia.org/wiki/Coaxial_power_connector
@@ -70,7 +71,21 @@ enum class PinType
     NEMA__L6___20,
     NEMA__L6___30,
     NEMA__L6___50,
-    //TODO non-NEMA connectors
+    // https://en.wikipedia.org/wiki/IEC_60320
+    C1____C2,
+    //C3____C4, // has been withdrawn from the standard
+    C5____C6,
+    C7____C8,
+    C9____C10,
+    //C11____C12, // has been withdrawn from the standard
+    C13____C14,
+    C15____C16,
+    C15A____C16A,
+    C17____C18,
+    C19____C20,
+    C21____C22,
+    C23____C24,
+    //TODO other AC connectors
 
     // USB          // https://en.wikipedia.org/wiki/USB
     USB___A,
@@ -149,6 +164,17 @@ const map<PinType, string> connectorIconFiles
     {PinType::Molex,                         ""},
     {PinType::SATA__Power,                   ""},
     {PinType::SATA__Power__Slimline,         ""},
+    {PinType::C1____C2,                      "data/c1c2.png"},
+    {PinType::C5____C6,                      "data/c5c6.png"},
+    {PinType::C7____C8,                      "data/c7c8.png"},
+    {PinType::C9____C10,                      "data/c9c10.png"},
+    {PinType::C13____C14,                      "data/c13c14.png"},
+    {PinType::C15____C16,                      "data/c15c16.png"},
+    {PinType::C15A____C16A,                    "data/c15ac16a.png"},
+    {PinType::C17____C18,                      "data/c17c18.png"},
+    {PinType::C19____C20,                      "data/c19c20.png"},
+    {PinType::C21____C22,                      "data/c21c22.png"},
+    {PinType::C23____C24,                      "data/c23c24.png"},
 
     // USB
     {PinType::USB___A,                       "data/ic_usba.jpg"},
@@ -252,6 +278,7 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     case PinType::USB___A__SuperSpeed:
         ret.insert(PinType::USB___A);
         break;
+        // TODO check if USB-B has the same backwards compatibility
 
         // Display                           
         //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,

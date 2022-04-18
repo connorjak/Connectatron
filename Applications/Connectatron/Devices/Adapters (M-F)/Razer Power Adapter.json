@@ -1,0 +1,21 @@
+{
+	"Females": [
+		{
+			"Name": "AC 100-240V <3.6A C14",
+			"PinType": "C13/C14",
+			"Protocols": [
+				"AC Power"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "DC 19.5V 11.8A",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"DC Power"
+			]
+		}
+	],
+	"Name": "Razer Power Adapter"
+}
