@@ -2484,13 +2484,23 @@ struct Connectatron:
                 {
                     if (ImGui::Button("Delete Connector"))
                     {
-                        auto& vec = on_node->Males;
+                        auto& males_vec = on_node->Males;
+                        auto& females_vec = on_node->Females;
                         if (pin->IsFemale)
-                            vec = on_node->Females;
+                        {
+                            auto to_del = std::find_if(females_vec.begin(), females_vec.end(), [pin](const Pin& test_pin) {
+                                return test_pin.ID == pin->ID;
+                                });
 
-                        auto to_del = std::find_if(vec.begin(), vec.end(), [pin](const Pin& test_pin) {
-                            return test_pin.ID == pin->ID;
-                            });
+                            females_vec.erase(to_del);
+                        }
+                        else
+                        {
+                            auto to_del = std::find_if(males_vec.begin(), males_vec.end(), [pin](const Pin& test_pin) {
+                                return test_pin.ID == pin->ID;
+                                });
+                            males_vec.erase(to_del);
+                        }
 
                         vec.erase(to_del);
                     }
