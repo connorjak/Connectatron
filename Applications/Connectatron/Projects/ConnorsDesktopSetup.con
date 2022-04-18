@@ -1099,8 +1099,8 @@
 ],
 "Name": "Razer Power Adapter",
 "SavedPos": [
-920.0,
--308.0
+808.0,
+-292.0
 ]
 },
 {
@@ -1223,23 +1223,132 @@
 ]
 },
 {
-"Females": [
+"Females": [],
+"ID": 90907,
+"Males": [
+{
+"Name": "C13",
+"PinType": "C13/C14"
+},
 {
 "Name": "NEMA 5-15",
 "PinType": "NEMA 5-15"
 }
 ],
-"ID": 62485,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+552.0,
+-340.0
+]
+},
+{
+"Females": [],
+"ID": 97781,
 "Males": [
 {
 "Name": "C13",
 "PinType": "C13/C14"
+},
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
 }
 ],
 "Name": "IEC (C13) Power Cable",
 "SavedPos": [
-617.0,
--324.0
+888.0,
+1392.0
+]
+},
+{
+"Females": [
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+}
+],
+"ID": 27851,
+"Males": [],
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+872.0,
+-432.0
+]
+},
+{
+"Females": [
+{
+"Name": "Output  1",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  2",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  3",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  4",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  5",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  6",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output  7",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "Output 8",
+"PinType": "NEMA 5-15"
+}
+],
+"ID": 23334,
+"Males": [
+{
+"Name": "Input",
+"PinType": "NEMA 5-15",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+}
+],
+"Name": "Power Strip (8 NEMA 5-15 sockets)",
+"SavedPos": [
+1160.0,
+1468.0
+]
+},
+{
+"Females": [
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+}
+],
+"ID": 87892,
+"Males": [],
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+1512.0,
+1468.0
 ]
 }
 ],
@@ -1455,8 +1564,32 @@
 7
 ],
 [
-62485,
+90907,
 45930,
+0,
+0
+],
+[
+97781,
+93685,
+0,
+17
+],
+[
+90907,
+27851,
+1,
+0
+],
+[
+97781,
+23334,
+1,
+0
+],
+[
+23334,
+87892,
 0,
 0
 ]
