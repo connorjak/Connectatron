@@ -458,10 +458,26 @@ struct Connectatron:
         return false;
     }
 
+
+    /*bool IsCompatiblePin(Pin* a, Pin* b)
+    {
+        if (a->IsFemale)
+            return IsCompatiblePinType(b->Type, a->Type);
+        else
+            return IsCompatiblePinType(b->Type, a->Type);
+    }*/
+
     bool CanCreateLink(Pin* a, Pin* b)
     {
-        if (!a || !b || a == b || a->Kind == b->Kind || a->Type != b->Type || a->Node.lock() == b->Node.lock())
+        if (!a || !b || a == b || a->Kind == b->Kind || a->Node.lock() == b->Node.lock())
             return false;
+
+        if (a->IsFemale)
+            if (!IsCompatiblePinType(b->Type, a->Type))
+                return false;
+        else
+            if(!IsCompatiblePinType(b->Type, a->Type))
+                return false;
 
         return true;
     }
@@ -632,7 +648,9 @@ struct Connectatron:
         case PinType::HDMI:                     return IM_COLOR_MAGENTA;
         case PinType::Mini__HDMI:                 return IM_COLOR_MAGENTA;
         case PinType::Micro__HDMI:                return IM_COLOR_MAGENTA;
-        case PinType::DVI:                      return IM_COLOR_MAGENTA;
+        case PinType::DVI___D:                      return IM_COLOR_MAGENTA;
+        case PinType::DVI___A:                      return IM_COLOR_MAGENTA;
+        case PinType::DVI___I:                      return IM_COLOR_MAGENTA;
         case PinType::VGA:                      return IM_COLOR_MAGENTA;
 
             //Audio                             
@@ -728,7 +746,9 @@ struct Connectatron:
         case PinType::HDMI:                     iconType = IconType::Grid; break;
         case PinType::Mini__HDMI:                 iconType = IconType::Grid; break;
         case PinType::Micro__HDMI:                iconType = IconType::Grid; break;
-        case PinType::DVI:                      iconType = IconType::Grid; break;
+        case PinType::DVI___D:                      iconType = IconType::Grid; break;
+        case PinType::DVI___A:                      iconType = IconType::Grid; break;
+        case PinType::DVI___I:                      iconType = IconType::Grid; break;
         case PinType::VGA:                      iconType = IconType::Grid; break;
 
             //Audio                                 
@@ -1983,6 +2003,7 @@ struct Connectatron:
                             std::swap(startPin, endPin);
                             std::swap(startPinId, endPinId);
                         }
+                        // We ensure that the startPin is output/male
 
                         if (startPin && endPin)
                         {
@@ -2000,7 +2021,7 @@ struct Connectatron:
                             //    showLabel("x Cannot connect to self", ImColor(45, 32, 32, 180));
                             //    ed::RejectNewItem(ImColor(255, 0, 0), 1.0f);
                             //}
-                            else if (endPin->Type != startPin->Type)
+                            else if (!IsCompatiblePinType(startPin->Type, endPin->Type))
                             {
                                 showLabel("x Incompatible Pin Type", ImColor(45, 32, 32, 180));
                                 ed::RejectNewItem(ImColor(255, 128, 128), 1.0f);
@@ -2401,7 +2422,7 @@ struct Connectatron:
                                 case PinKind::Input: // Will be connecting to a female pin on new node
                                     for (const auto& pin : temp_node->Females)
                                     {
-                                        if (pin.Type == valid_type)
+                                        if (IsCompatiblePinType(valid_type, pin.Type))
                                         {
                                             this_node_is_valid = true;
                                             break;
@@ -2411,7 +2432,7 @@ struct Connectatron:
                                 case PinKind::Output: // Will be connecting to a male pin on new node
                                     for (const auto& pin : temp_node->Males)
                                     {
-                                        if (pin.Type == valid_type)
+                                        if (IsCompatiblePinType(pin.Type, valid_type))
                                         {
                                             this_node_is_valid = true;
                                             break;
@@ -2561,16 +2582,6 @@ struct Connectatron:
     ImTextureID          m_RestoreIcon = nullptr;
     // Connector type icons
     map<PinType, ImTextureID> connectorIcons;
-    /*ImTextureID          m_dp = nullptr;
-    ImTextureID          m_mini_dp = nullptr;
-    ImTextureID          m_hdmi = nullptr;
-    ImTextureID          m_mini_dvi = nullptr;
-    ImTextureID          m_vga = nullptr;
-    ImTextureID          m_ps2 = nullptr;
-    ImTextureID          m_rj11 = nullptr;
-    ImTextureID          m_rj25 = nullptr;
-    ImTextureID          m_toslink = nullptr;
-    ImTextureID          m_usb_mini_b = nullptr;*/
 
     const float          m_TouchTime = 1.0f;
     std::map<ed::NodeId, float, NodeIdLess> m_NodeTouchTime;
