@@ -2587,65 +2587,69 @@ struct Connectatron:
                 if (category_label == ".")
                     category_label = "Devices";
 
-                ImGui::Text(category_label.c_str());
+                /*ImGui::Text(category_label.c_str());
                 ImGui::Separator();
-                ImGui::Indent();
-                bool nothing_shown_yet = true;
-                for (auto const& devicePath : fs::directory_iterator{ search_dir })
+                ImGui::Indent();*/
+                auto header_flags = ImGuiTreeNodeFlags_CollapsingHeader | ImGuiTreeNodeFlags_DefaultOpen;
+                if(ImGui::CollapsingHeader(category_label.c_str(), header_flags))
                 {
-                    if(devicePath.path().extension() == fs::path(".json"))
+                    bool nothing_shown_yet = true;
+                    for (auto const& devicePath : fs::directory_iterator{ search_dir })
                     {
-                        if (limitByPinType) // Limit selection by pin compatibility
+                        if(devicePath.path().extension() == fs::path(".json"))
                         {
-                            bool this_node_is_valid = false;
-                            shared_ptr<Node> temp_node = make_shared<Node>(-1, "TEMP NODE", ImColor(255, 128, 128));
-                            InitNodeFromJSON(GetJSONFromFile(devicePath.path()), temp_node);
-                            switch (valid_kind)
+                            if (limitByPinType) // Limit selection by pin compatibility
                             {
-                            case PinKind::Input: // Will be connecting to a female pin on new node
-                                for (const auto& pin : temp_node->Females)
+                                bool this_node_is_valid = false;
+                                shared_ptr<Node> temp_node = make_shared<Node>(-1, "TEMP NODE", ImColor(255, 128, 128));
+                                InitNodeFromJSON(GetJSONFromFile(devicePath.path()), temp_node);
+                                switch (valid_kind)
                                 {
-                                    if (pin.Type == valid_type)
+                                case PinKind::Input: // Will be connecting to a female pin on new node
+                                    for (const auto& pin : temp_node->Females)
                                     {
-                                        this_node_is_valid = true;
-                                        break;
+                                        if (pin.Type == valid_type)
+                                        {
+                                            this_node_is_valid = true;
+                                            break;
+                                        }
                                     }
-                                }
-                                break;
-                            case PinKind::Output: // Will be connecting to a male pin on new node
-                                for (const auto& pin : temp_node->Males)
-                                {
-                                    if (pin.Type == valid_type)
+                                    break;
+                                case PinKind::Output: // Will be connecting to a male pin on new node
+                                    for (const auto& pin : temp_node->Males)
                                     {
-                                        this_node_is_valid = true;
-                                        break;
+                                        if (pin.Type == valid_type)
+                                        {
+                                            this_node_is_valid = true;
+                                            break;
+                                        }
                                     }
+                                    break;
                                 }
-                                break;
-                            }
 
-                            if (this_node_is_valid)
+                                if (this_node_is_valid)
+                                {
+                                    nothing_shown_yet = false;
+                                    if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                        node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                                }
+                            }
+                            else // Any node would be fine
                             {
                                 nothing_shown_yet = false;
                                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
                                     node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
                             }
                         }
-                        else // Any node would be fine
-                        {
-                            nothing_shown_yet = false;
-                            if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
-                                node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-                        }
+                        //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
                     }
-                    //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime
-                }
-                if(nothing_shown_yet)
-                    ImGui::Text("(Nothing with a compatible connection)");
-                ImGui::Unindent();
+                    if(nothing_shown_yet)
+                        ImGui::Text("(Nothing with a compatible connection)");
+                    /*ImGui::Unindent();
 
-                ImGui::Separator();
-                ImGui::Separator();
+                    ImGui::Separator();
+                    ImGui::Separator();*/
+                }
             }
 
             if (node)
