@@ -298,6 +298,22 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     {
         // DC Power
 
+        // AC Power
+        //TODO revise NEMA compatibility
+    case PinType::NEMA__1___15:
+        ret.insert(PinType::NEMA__5___15);
+        ret.insert(PinType::NEMA__5___20);
+        break;
+    case PinType::NEMA__5___15:
+        ret.insert(PinType::NEMA__5___20);
+        break;
+    case PinType::NEMA__14___20:
+        ret.insert(PinType::NEMA__14___30);
+        break;
+    /*case PinType::NEMA__6___15:
+        ret.insert(PinType::NEMA__6___20);
+        break;*/
+
         // USB                               
     case PinType::USB___A:
         ret.insert(PinType::USB___A__SuperSpeed);
