@@ -33,6 +33,8 @@ enum class PinType
     IEC__60130___10__Type__C,
     IEC__60130___10__Type__D,
     IEC__60130___10__Type__E,
+    DIN__45323__5mm__OD,
+    DIN__45323__6mm__OD,
     Molex,
     SATA__Power,
     SATA__Power__Slimline,
