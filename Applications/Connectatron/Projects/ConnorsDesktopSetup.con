@@ -623,210 +623,6 @@
 {
 "Females": [
 {
-"Name": "Rear Panel USBC 1",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g"
-]
-},
-{
-"Name": "Rear Panel USB-A 1",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 4",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 5",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel USB-A 6",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel Ethernet 1",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel Ethernet 2",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2"
-]
-},
-{
-"Name": "Rear Panel HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Rear Panel Audio",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "Rear Panel Mic",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 1",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 2",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 3",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 HDMI 1",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b",
-"HDMI 2.1"
-]
-}
-],
-"ID": 29999,
-"Males": [],
-"Name": "Connors PC (WIP)",
-"SavedPos": [
-1176.0,
-852.0
-]
-},
-{
-"Females": [
-{
 "Name": "HDMI 1",
 "PinType": "HDMI",
 "Protocols": [
@@ -878,8 +674,8 @@
 ],
 "Name": "HDMI",
 "SavedPos": [
--136.0,
-1104.0
+-156.0,
+1100.0
 ]
 },
 {
@@ -1150,6 +946,210 @@
 840.0,
 260.0
 ]
+},
+{
+"Females": [
+{
+"Name": "Rear Panel USBC 1",
+"PinType": "USB-C",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g",
+"USB 3 20g"
+]
+},
+{
+"Name": "Rear Panel USB-A 1",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Rear Panel USB-A 2",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Rear Panel USB-A 3",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Rear Panel USB-A 4",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Rear Panel USB-A 5",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g"
+]
+},
+{
+"Name": "Rear Panel USB-A 6",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g"
+]
+},
+{
+"Name": "Rear Panel Ethernet 1",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "Rear Panel Ethernet 2",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "Rear Panel DisplayPort",
+"PinType": "DisplayPort",
+"Protocols": [
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2"
+]
+},
+{
+"Name": "Rear Panel HDMI",
+"PinType": "HDMI",
+"Protocols": [
+"HDMI 1.0",
+"HDMI 1.1",
+"HDMI 1.2",
+"HDMI 1.2a",
+"HDMI 1.3",
+"HDMI 1.3a",
+"HDMI 1.4",
+"HDMI 1.4a",
+"HDMI 1.4b",
+"HDMI 2.0",
+"HDMI 2.0a",
+"HDMI 2.0b"
+]
+},
+{
+"Name": "Rear Panel Audio",
+"PinType": "Audio3.5mm",
+"Protocols": [
+"AnalogAudio"
+]
+},
+{
+"Name": "Rear Panel Mic",
+"PinType": "Audio3.5mm",
+"Protocols": [
+"AnalogAudio"
+]
+},
+{
+"Name": "RTX 3090 DisplayPort 1",
+"PinType": "DisplayPort",
+"Protocols": [
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2",
+"DisplayPort 1.2a",
+"DisplayPort 1.3",
+"DisplayPort 1.4",
+"DisplayPort 1.4a"
+]
+},
+{
+"Name": "RTX 3090 DisplayPort 2",
+"PinType": "DisplayPort",
+"Protocols": [
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2",
+"DisplayPort 1.2a",
+"DisplayPort 1.3",
+"DisplayPort 1.4",
+"DisplayPort 1.4a"
+]
+},
+{
+"Name": "RTX 3090 DisplayPort 3",
+"PinType": "DisplayPort",
+"Protocols": [
+"DisplayPort 1.0",
+"DisplayPort 1.1",
+"DisplayPort 1.2",
+"DisplayPort 1.2a",
+"DisplayPort 1.3",
+"DisplayPort 1.4",
+"DisplayPort 1.4a"
+]
+},
+{
+"Name": "RTX 3090 HDMI 1",
+"PinType": "HDMI",
+"Protocols": [
+"HDMI 1.0",
+"HDMI 1.1",
+"HDMI 1.2",
+"HDMI 1.2a",
+"HDMI 1.3",
+"HDMI 1.3a",
+"HDMI 1.4",
+"HDMI 1.4a",
+"HDMI 1.4b",
+"HDMI 2.0",
+"HDMI 2.0a",
+"HDMI 2.0b",
+"HDMI 2.1"
+]
+}
+],
+"ID": 93685,
+"Males": [],
+"Name": "Connors PC (WIP)",
+"SavedPos": [
+1192.0,
+849.0
+]
 }
 ],
 "Links": [
@@ -1220,58 +1220,16 @@
 3
 ],
 [
-11472,
-29999,
-0,
-0
-],
-[
-10212,
-29999,
-0,
-1
-],
-[
-9440,
-29999,
-0,
-11
-],
-[
-9440,
-29999,
-0,
-12
-],
-[
 42018,
 79950,
 0,
 0
 ],
 [
-42018,
-29999,
-1,
-16
-],
-[
-34806,
-29999,
-0,
-7
-],
-[
 28155,
 48466,
 0,
 0
-],
-[
-6266,
-29999,
-0,
-13
 ],
 [
 94757,
@@ -1292,28 +1250,10 @@
 4
 ],
 [
-11849,
-29999,
-1,
-14
-],
-[
-88523,
-29999,
-0,
-2
-],
-[
 50635,
 88523,
 0,
 0
-],
-[
-50635,
-29999,
-1,
-15
 ],
 [
 38804,
@@ -1350,6 +1290,66 @@
 47791,
 0,
 3
+],
+[
+11472,
+93685,
+0,
+0
+],
+[
+10212,
+93685,
+0,
+1
+],
+[
+88523,
+93685,
+0,
+2
+],
+[
+34806,
+93685,
+0,
+7
+],
+[
+9440,
+93685,
+0,
+11
+],
+[
+9440,
+93685,
+0,
+12
+],
+[
+6266,
+93685,
+0,
+13
+],
+[
+11849,
+93685,
+1,
+14
+],
+[
+50635,
+93685,
+1,
+15
+],
+[
+42018,
+93685,
+1,
+16
 ]
 ]
 }
