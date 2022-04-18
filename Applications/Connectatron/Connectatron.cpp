@@ -888,6 +888,18 @@ struct Connectatron:
         m_SaveIcon         = LoadTexture("data/ic_save_white_24dp.png");
         m_RestoreIcon      = LoadTexture("data/ic_restore_white_24dp.png");
 
+        // Connector type icons
+        m_dp =          LoadTexture("data/ic_dp.png");
+        m_mini_dp =     LoadTexture("data/ic_mini_dp.png");
+        m_hdmi =        LoadTexture("data/ic_hdmi.png");
+        m_mini_dvi =    LoadTexture("data/ic_mini_dvi.png");
+        m_vga =         LoadTexture("data/ic_vga.png");
+        m_ps2 =         LoadTexture("data/ic_ps2.png");
+        m_rj11 =        LoadTexture("data/ic_rj11.png");
+        m_rj25 =        LoadTexture("data/ic_rj45.png");
+        m_toslink =     LoadTexture("data/ic_toslink.png");
+        m_usb_mini_b =  LoadTexture("data/ic_usb_mini_b.png");
+
 
         //auto& io = ImGui::GetIO();
     }
@@ -907,6 +919,17 @@ struct Connectatron:
         releaseTexture(m_SaveIcon);
         releaseTexture(m_HeaderBackground);
 
+        releaseTexture(m_dp         );
+        releaseTexture(m_mini_dp    );
+        releaseTexture(m_hdmi       );
+        releaseTexture(m_mini_dvi   );
+        releaseTexture(m_vga        );
+        releaseTexture(m_ps2        );
+        releaseTexture(m_rj11       );
+        releaseTexture(m_rj25       );
+        releaseTexture(m_toslink    );
+        releaseTexture(m_usb_mini_b );
+
         if (m_Editor)
         {
             ed::DestroyEditor(m_Editor);
@@ -918,8 +941,6 @@ struct Connectatron:
     {
         switch (type)
         {
-        default:
-
             //Power
         case PinType::DC__Power__Barrel:          return ImColor(255, 255, 255);
         case PinType::Molex:                    return ImColor(255, 255, 255);
@@ -957,6 +978,10 @@ struct Connectatron:
         case PinType::Micro__SATA:                return IM_COLOR_RED;
         case PinType::eSATA:                    return IM_COLOR_RED;
         case PinType::RJ45:                     return IM_COLOR_RED;
+
+        default:
+            //throw std::runtime_error(std::string("Unhandled PinType ") + std::string(magic_enum::enum_name(type)));
+            return ImColor(255, 255, 255);
         }
     };
 
@@ -965,12 +990,44 @@ struct Connectatron:
         DrawPinTypeIcon(pin.Type, connected, alpha);
     }
 
+    void RenderIconInText(ImTextureID tex, ImVec2 max_size)
+    {
+        float height;// = ImGui::CalcTextSize("hi").y;
+        float width;
+
+        auto max_aspect_ratio = max_size.x / max_size.y;
+        auto aspect_ratio = float(GetTextureWidth(tex)) / float(GetTextureHeight(tex));
+        // If image hits sides of bounding box
+        if (aspect_ratio > max_aspect_ratio)
+        {
+            width = max_size.x;
+            height = width / aspect_ratio;
+        }
+        else // Image hits top/bottom of bounding box
+        {
+            height = max_size.y;
+            width = height * aspect_ratio;
+        }
+
+        ImGui::Image(tex, ImVec2(width, height));
+    }
+
     void DrawPinTypeIcon(const PinType type, bool connected, int alpha)
     {
         //Set to a default in case the PinType is not supported (somehow)
         IconType iconType = IconType::Square;
         ImColor  color = GetIconColor(type);
         color.Value.w = alpha / 255.0f;
+
+
+        auto drawList = ImGui::GetWindowDrawList();
+
+        /*  auto iconPanelPos = start + ImVec2(
+            paneWidth - ImGui::GetStyle().FramePadding.x - ImGui::GetStyle().IndentSpacing - saveIconWidth - restoreIconWidth - ImGui::GetStyle().ItemInnerSpacing.x * 1,
+            (ImGui::GetTextLineHeight() - saveIconHeight) / 2);
+        ImGui::SetCursorScreenPos(iconPanelPos);
+        ImGui::SetItemAllowOverlap();*/
+
         switch (type)
         {
 
@@ -986,7 +1043,10 @@ struct Connectatron:
         case PinType::USB___B__SuperSpeed:              iconType = IconType::Circle; break;
         case PinType::USB___C:                           iconType = IconType::Circle; break;
         case PinType::USB__Mini___A:                    iconType = IconType::Circle; break;
-        case PinType::USB__Mini___B:                    iconType = IconType::Circle; break;
+        case PinType::USB__Mini___B:                    
+            RenderIconInText(m_usb_mini_b, ImVec2(m_PinIconSize*2, m_PinIconSize));
+            return;
+            break;
         case PinType::USB__Mini___AB:                   iconType = IconType::Circle; break;
         case PinType::USB__Micro___A:                   iconType = IconType::Circle; break;
         case PinType::USB__Micro___B:                   iconType = IconType::Circle; break;
@@ -1005,6 +1065,8 @@ struct Connectatron:
             //Audio                                 
         case PinType::Audio3_5mm:               iconType = IconType::Diamond; break;
         case PinType::XLR:                      iconType = IconType::Diamond; break;
+        case PinType::TOSLINK:                  iconType = IconType::Diamond; break;
+        case PinType::Mini___TOSLINK:           iconType = IconType::Diamond; break;
 
             //Other                                 
         case PinType::SATA:                     iconType = IconType::Circle; break;
@@ -1014,6 +1076,9 @@ struct Connectatron:
         case PinType::miniSD:                     iconType = IconType::Circle; break;
         case PinType::microSD:                  iconType = IconType::Circle; break;
         case PinType::SFF___8639:                iconType = IconType::Circle; break;
+        case PinType::RJ11:                     iconType = IconType::Circle; break;
+        case PinType::RJ14:                     iconType = IconType::Circle; break;
+        case PinType::RJ25:                     iconType = IconType::Circle; break;
         case PinType::RJ45:                     iconType = IconType::Circle; break;
 
         default:
@@ -2832,6 +2897,18 @@ struct Connectatron:
     ImTextureID          m_HeaderBackground = nullptr;
     ImTextureID          m_SaveIcon = nullptr;
     ImTextureID          m_RestoreIcon = nullptr;
+    // Connector type icons
+    ImTextureID          m_dp = nullptr;
+    ImTextureID          m_mini_dp = nullptr;
+    ImTextureID          m_hdmi = nullptr;
+    ImTextureID          m_mini_dvi = nullptr;
+    ImTextureID          m_vga = nullptr;
+    ImTextureID          m_ps2 = nullptr;
+    ImTextureID          m_rj11 = nullptr;
+    ImTextureID          m_rj25 = nullptr;
+    ImTextureID          m_toslink = nullptr;
+    ImTextureID          m_usb_mini_b = nullptr;
+
     const float          m_TouchTime = 1.0f;
     std::map<ed::NodeId, float, NodeIdLess> m_NodeTouchTime;
     bool                 m_ShowOrdinals = false;
