@@ -26,9 +26,7 @@ enum class PinType
 
     // USB          // https://en.wikipedia.org/wiki/USB
     USB___A,
-    //USB___A__SuperSpeed, 
-    //NOTE: PinType does not discriminate between USB-A and USB-A SuperSpeed, even though they have 
-    //   additional pins, as they physically fit together and have at least some backward compatibility.
+    USB___A__SuperSpeed, // Has more pins for USB3 features. Fits with USB-A.
     USB___B,
     USB___B__SuperSpeed, // Has more pins for USB3 features. Taller than USB-B.
     USB___C,
@@ -48,11 +46,10 @@ enum class PinType
     HDMI,
     Mini__HDMI,
     Micro__HDMI,
-    DVI,            // https://en.wikipedia.org/wiki/Digital_Visual_Interface
-    //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
-    //   but the opposite works fine. For this reason, I keep DVI as one connector
-    //   type for physical compatibility logic. The variants are sorted out in
-    //   the selection of supported protocols.
+    // https://en.wikipedia.org/wiki/Digital_Visual_Interface
+    DVI___D,
+    DVI___A,
+    DVI___I,
     Mini___DVI,     // https://en.wikipedia.org/wiki/Mini-DVI
     Micro___DVI,    // https://en.wikipedia.org/wiki/Micro-DVI
     VGA,
@@ -122,7 +119,9 @@ const map<PinType, string> connectorIconFiles
     {PinType::HDMI,                          "data/ic_hdmi.png"},
     {PinType::Mini__HDMI,                    ""},
     {PinType::Micro__HDMI,                   ""},
-    {PinType::DVI,                           ""},
+    {PinType::DVI___D,                       ""},
+    {PinType::DVI___A,                       ""},
+    {PinType::DVI___I,                       ""},
     {PinType::Mini___DVI,                    "data/ic_mini_dvi.jpg"},
     {PinType::Micro___DVI,                   ""},
     {PinType::VGA,                           "data/ic_vga.jpg"},
@@ -150,3 +149,82 @@ const map<PinType, string> connectorIconFiles
     {PinType::RJ25,                          ""},
     {PinType::RJ45,                          "data/ic_rj45.jpg"},
 };
+
+//TODO reinstate and update this if necessary.
+//static set<PinType> GetCompatibleMalePinTypes(PinType femaletype)
+//{
+//    set<PinType> ret;
+//    ret.insert(femaletype);
+//
+//    switch (femaletype)
+//    {
+//        //Power
+//
+//        //USB                               
+//    case PinType::USB___A:
+//        ret.insert(PinType::USB___A__SuperSpeed);
+//        break;
+//    case PinType::USB___A__SuperSpeed:
+//        ret.insert(PinType::USB___A);
+//        break;
+//
+//        //Display             
+//        //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
+//        //   but the opposite works fine.              
+//    case PinType::DVI___I:
+//        ret.insert(PinType::DVI___D);
+//        break;
+//        //Audio                             
+//
+//        //Other                             
+//
+//    default:
+//        break;
+//    }
+//
+//    return ret;
+//}
+
+static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
+{
+    set<PinType> ret;
+    ret.insert(maletype);
+
+    switch (maletype)
+    {
+        //Power
+
+        //USB                               
+    case PinType::USB___A:
+        ret.insert(PinType::USB___A__SuperSpeed);
+        break;
+    case PinType::USB___A__SuperSpeed:
+        ret.insert(PinType::USB___A);
+        break;
+
+        //Display                           
+        //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
+        //   but DVI-D male connectors can be inserted into DVI-I female connectors.              
+    case PinType::DVI___D:
+        ret.insert(PinType::DVI___I);
+        break;
+        //Audio                             
+
+        //Other                             
+
+    default:
+        break;
+    }
+
+    return ret;
+}
+
+// Order of male vs female inputs matters!
+static bool IsCompatiblePinType(PinType male, PinType female)
+{
+    auto candidates = GetCompatibleFemalePinTypes(male);
+    if (candidates.find(female) != candidates.end())
+        return true;
+    else
+        return false;
+}

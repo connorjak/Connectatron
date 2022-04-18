@@ -253,3 +253,4 @@ static string NameFromProtocol(WireProtocol proto)
     EnumName_Underscore2Symbol(ret);
     return ret;
 }
+
