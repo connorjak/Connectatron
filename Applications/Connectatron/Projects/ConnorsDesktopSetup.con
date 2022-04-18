@@ -688,36 +688,6 @@
 {
 "Females": [
 {
-"Name": "Power",
-"PinType": "DC Power Barrel"
-}
-],
-"ID": 50635,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C",
-"Protocols": [
-"USB 3 5g"
-]
-},
-{
-"Name": "DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.4a"
-]
-}
-],
-"Name": "HP Reverb G2",
-"SavedPos": [
-212.0,
-1356.0
-]
-},
-{
-"Females": [
-{
 "Name": "USB-C",
 "PinType": "USB-C"
 }
@@ -1282,31 +1252,31 @@
 {
 "Females": [
 {
-"Name": "Output  1",
+"Name": "Output 1",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  2",
+"Name": "Output 2",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  3",
+"Name": "Output 3",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  4",
+"Name": "Output 4",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  5",
+"Name": "Output 5",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  6",
+"Name": "Output 6",
 "PinType": "NEMA 5-15"
 },
 {
-"Name": "Output  7",
+"Name": "Output 7",
 "PinType": "NEMA 5-15"
 },
 {
@@ -1379,6 +1349,89 @@
 -1039.0,
 588.0
 ]
+},
+{
+"Females": [],
+"ID": 77148,
+"Males": [
+{
+"Name": "Barrel",
+"PinType": "DC Power Barrel",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+},
+{
+"Name": "Wall Wart",
+"PinType": "NEMA 5-15",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+}
+],
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-1038.0,
+688.0
+]
+},
+{
+"Females": [
+{
+"Name": "Power",
+"PinType": "DC Power Barrel"
+}
+],
+"ID": 38080,
+"Males": [
+{
+"Name": "USB-C",
+"PinType": "USB-C",
+"Protocols": [
+"USB 3 5g"
+]
+},
+{
+"Name": "DisplayPort",
+"PinType": "DisplayPort",
+"Protocols": [
+"DisplayPort 1.4a"
+]
+},
+{
+"Name": "HMD Cable",
+"PinType": "Proprietary",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+}
+],
+"Name": "HP Reverb G2 Cabling",
+"SavedPos": [
+-388.0,
+1484.0
+]
+},
+{
+"Females": [
+{
+"Name": "HMD Cable",
+"PinType": "Proprietary"
+}
+],
+"ID": 71432,
+"Males": [],
+"Name": "HP Reverb G2",
+"SavedPos": [
+-88.0,
+1628.0
+]
 }
 ],
 "Links": [
@@ -1447,12 +1500,6 @@
 58879,
 0,
 4
-],
-[
-50635,
-88523,
-0,
-0
 ],
 [
 38804,
@@ -1537,12 +1584,6 @@
 93685,
 1,
 14
-],
-[
-50635,
-93685,
-1,
-15
 ],
 [
 42018,
@@ -1633,6 +1674,36 @@
 23334,
 1,
 1
+],
+[
+77148,
+23334,
+1,
+2
+],
+[
+38080,
+71432,
+2,
+0
+],
+[
+38080,
+93685,
+1,
+15
+],
+[
+38080,
+88523,
+0,
+0
+],
+[
+77148,
+38080,
+0,
+0
 ]
 ]
 }

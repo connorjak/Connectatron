@@ -1,0 +1,34 @@
+{
+	"Females": [
+		{
+			"Name": "Power",
+			"PinType": "DC Power Barrel"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB-C",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "DisplayPort",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.4a"
+			]
+		},
+		{
+			"Name": "HMD Cable",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Name": "HP Reverb G2 Cabling"
+}
