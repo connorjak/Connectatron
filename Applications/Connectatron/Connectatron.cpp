@@ -1530,8 +1530,8 @@ struct Connectatron:
                 if (ImGui::Button("New Connector"))
                 {
                     auto new_id = GetNextId();
-                    string new_name = "USB2 " + std::to_string(new_id);
-                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                    string new_name = "connector " + std::to_string(new_id);
+                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndInput_NoPin();
@@ -1581,8 +1581,8 @@ struct Connectatron:
                 if (ImGui::Button("New Connector"))
                 {
                     auto new_id = GetNextId();
-                    string new_name = "USB2 " + std::to_string(new_id);
-                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                    string new_name = "connector " + std::to_string(new_id);
+                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndOutput_NoPin();
