@@ -17,6 +17,7 @@ using std::map;
 enum class PinType
 {
     Proprietary, // For connectors that don't match any listed options
+    Wireless,
     // DC Power
     // https://en.wikipedia.org/wiki/DC_connector
     // https://en.wikipedia.org/wiki/Coaxial_power_connector
