@@ -170,34 +170,34 @@ const map<PinType, string> connectorIconFiles
     {PinType::HDMI,                          "data/ic_hdmi.png"},
     {PinType::Mini__HDMI,                    ""},
     {PinType::Micro__HDMI,                   ""},
-    {PinType::DVI___D,                       ""},
-    {PinType::DVI___A,                       ""},
-    {PinType::DVI___I,                       ""},
+    {PinType::DVI___D,                       "data/ic_dvi_d.jpg"},
+    {PinType::DVI___A,                       "data/ic_dvi_d.jpg"}, //TODO WRONG
+    {PinType::DVI___I,                       "data/ic_dvi_d.jpg"}, //TODO WRONG
     {PinType::Mini___DVI,                    "data/ic_mini_dvi.jpg"},
     {PinType::Micro___DVI,                   ""},
     {PinType::VGA,                           "data/ic_vga.jpg"},
     {PinType::Mini___VGA,                    ""},
 
     // Audio
-    {PinType::Audio3_5mm,                    ""},
+    {PinType::Audio3_5mm,                    "data/ic_3x_3.5mm.jpg"}, //TODO (somewhat) WRONG
     {PinType::XLR,                           ""},
     {PinType::TOSLINK,                       "data/ic_toslink.jpg"},
-    {PinType::Mini___TOSLINK,                ""},
+    {PinType::Mini___TOSLINK,                "data/ic_toslink.jpg"}, //TODO WRONG
 
     // Mini-DIN
     {PinType::PS____2,                       "data/ic_ps2.jpg"},
 
     // Other 
-    {PinType::SATA,                          ""},
+    {PinType::SATA,                          "data/ic_sata.jpg"},
     {PinType::Micro__SATA,                   ""},
-    {PinType::eSATA,                         ""},
+    {PinType::eSATA,                         "data/ic_esata.jpg"},
     {PinType::SD,                            ""},
     {PinType::miniSD,                        ""},
     {PinType::microSD,                       ""},
     {PinType::SFF___8639,                    ""},
-    {PinType::RJ11,                          "data/ic_rj11.jpg"},
-    {PinType::RJ14,                          ""},
-    {PinType::RJ25,                          ""},
+    {PinType::RJ11,                          "data/ic_rj11.jpg"}, //TODO check this one
+    {PinType::RJ14,                          "data/ic_rj11.jpg"}, //TODO WRONG
+    {PinType::RJ25,                          "data/ic_rj11.jpg"}, //TODO WRONG
     {PinType::RJ45,                          "data/ic_rj45.jpg"},
 };
 

@@ -52,7 +52,7 @@
 },
 {
 "Name": "USB-A 1",
-"PinType": "USB-A",
+"PinType": "USB-A SuperSpeed",
 "Protocols": [
 "USB 1.0",
 "USB 1.1",
@@ -63,7 +63,7 @@
 },
 {
 "Name": "USB-A 2",
-"PinType": "USB-A",
+"PinType": "USB-A SuperSpeed",
 "Protocols": [
 "USB 1.0",
 "USB 1.1",
@@ -74,7 +74,7 @@
 },
 {
 "Name": "USB-A 3",
-"PinType": "USB-A",
+"PinType": "USB-A SuperSpeed",
 "Protocols": [
 "USB 1.0",
 "USB 1.1",
@@ -100,6 +100,17 @@
 "Name": "HDMI",
 "PinType": "HDMI",
 "Protocols": [
+"HDMI 1.0",
+"HDMI 1.1",
+"HDMI 1.2",
+"HDMI 1.2a",
+"HDMI 1.3",
+"HDMI 1.3a",
+"HDMI 1.4",
+"HDMI 1.4a",
+"HDMI 1.4b",
+"HDMI 2.0",
+"HDMI 2.0a",
 "HDMI 2.0b"
 ]
 },

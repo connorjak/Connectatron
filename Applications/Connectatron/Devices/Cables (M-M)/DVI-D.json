@@ -1,0 +1,23 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "DVI-D",
+			"PinType": "DVI-D",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"DVI-D"
+			]
+		},
+		{
+			"Name": "DVI-D",
+			"PinType": "DVI-D",
+			"Protocols": [
+				"DVI-D"
+			]
+		}
+	],
+	"Name": "DVI-D"
+}
