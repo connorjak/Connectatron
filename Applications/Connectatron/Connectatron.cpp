@@ -1122,10 +1122,10 @@ struct Connectatron:
             {
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string fileName = fs::path(filePathName).filename().string();
+                std::string fileName_stem = fs::path(filePathName).filename().stem().string();
                 // action
 
-                CurrentProjectName = fileName;
+                CurrentProjectName = fileName_stem;
 
                 std::cout << "Saving Project As:" << std::endl;
                 std::cout << "filePathName: " << filePathName << std::endl;
@@ -1161,10 +1161,10 @@ struct Connectatron:
             {
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string fileName = fs::path(filePathName).filename().string();
+                std::string fileName_stem = fs::path(filePathName).filename().stem().string();
                 // action
 
-                CurrentProjectName = fileName;
+                CurrentProjectName = fileName_stem;
 
                 std::cout << "Opening Project:" << std::endl;
                 std::cout << "filePathName: " << filePathName << std::endl;
@@ -1475,7 +1475,11 @@ struct Connectatron:
 
                 builder.Header(node->Color);
                     ImGui::Spring(0);
-                    ImGui::TextUnformatted(node->Name.c_str());
+                    string for_width_calc = node->Name + "  ";
+
+                    ImGui::PushItemWidth(ImGui::CalcTextSize(for_width_calc.c_str()).x);
+                    ImGui::InputText("##NodeName", &node->Name);
+                    ImGui::PopItemWidth();
                     ImGui::Spring(1);
                     ImGui::Dummy(ImVec2(0, 28));
                     ImGui::Spring(0);
@@ -2232,12 +2236,12 @@ struct Connectatron:
                 node_to_save->Type = NodeType::Blueprint;
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string fileName = fs::path(filePathName).filename().string();
+                std::string fileName_stem = fs::path(filePathName).filename().stem().string();
                 // action
 
                 // If still using the name from empty_device.json, change the name to match the filename
                 if(node_to_save->Name == "New Custom Node")
-                    node_to_save->Name = fileName;
+                    node_to_save->Name = fileName_stem;
 
                 std::cout << "Saving Device As:" << std::endl;
                 std::cout << "filePathName: " << filePathName << std::endl;
@@ -2264,9 +2268,9 @@ struct Connectatron:
                 ImGui::Text("Connector Gender: ");
                 ImGui::SameLine();
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
-                ImGui::Text("Connector Type:");
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
+                    ImGui::Text("Connector Type:");
                     auto protocol_width = ImGui::CalcTextSize(LONGEST_CONNECTOR_STR).x * 1.5;
                     auto current_connect_string = NameFromPinType(pin->Type);
                     //ImGui::BeginChild("##Connector Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
@@ -2297,9 +2301,10 @@ struct Connectatron:
                 }
                 else // Not editing
                 {
+                    ImGui::Text("Connector Type: ");
+                    ImGui::SameLine();
                     auto pin_enum_name = NameFromPinType(pin->Type);
-                    auto pin_text = pin_enum_name;
-                    ImGui::Text(pin_text.c_str());
+                    ImGui::Text(pin_enum_name.c_str());
                 }
 
                 ImGui::Separator();

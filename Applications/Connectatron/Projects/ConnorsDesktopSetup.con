@@ -1150,6 +1150,26 @@
 1192.0,
 849.0
 ]
+},
+{
+"Females": [
+{
+"Name": "RJ45",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+}
+],
+"ID": 37865,
+"Males": [],
+"Name": "Ethernet LAN",
+"SavedPos": [
+632.0,
+1532.0
+]
 }
 ],
 "Links": [
@@ -1350,6 +1370,12 @@
 93685,
 1,
 16
+],
+[
+34806,
+37865,
+1,
+0
 ]
 ]
 }
