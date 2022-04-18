@@ -3,8 +3,11 @@
 #include "Connectatron_Utils.h"
 
 #include <set>
+#include <map>
+#include <string>
 
 using std::set;
+using std::map;
 
 // Variable name to string parsing:
 // _    : .
@@ -38,31 +41,40 @@ enum class PinType
     USB__Micro___B__SuperSpeed, // Has more pins for USB3 features. Wider than USB Micro-B.
 
     // Display
+    // https://en.wikipedia.org/wiki/DisplayPort
     DisplayPort,
     Mini__DisplayPort,
+    // https://en.wikipedia.org/wiki/HDMI
     HDMI,
     Mini__HDMI,
     Micro__HDMI,
-    DVI,
+    DVI,            // https://en.wikipedia.org/wiki/Digital_Visual_Interface
+    Mini___DVI,     // https://en.wikipedia.org/wiki/Mini-DVI
+    Micro___DVI,    // https://en.wikipedia.org/wiki/Micro-DVI
     VGA,
+    Mini___VGA,
 
     // Audio
     Audio3_5mm, //Should probably specify stereo/not?
     XLR, //?
-    //https://en.wikipedia.org/wiki/TOSLINK
+    // https://en.wikipedia.org/wiki/TOSLINK
     TOSLINK,
     Mini___TOSLINK,
+
+    // Mini-DIN     // https://en.wikipedia.org/wiki/Mini-DIN_connector
+    PS____2,        // https://en.wikipedia.org/wiki/PS/2_port
+    //TODO others from wiki article
 
     // Other
     SATA,
     Micro__SATA,
     eSATA,
-    //https://en.wikipedia.org/wiki/SD_card
+    // https://en.wikipedia.org/wiki/SD_card
     SD,
     miniSD,
     microSD,
     SFF___8639,
-    //https://en.wikipedia.org/wiki/Registered_jack
+    // https://en.wikipedia.org/wiki/Registered_jack
     RJ11,
     RJ14,
     RJ25,
@@ -77,3 +89,60 @@ static string NameFromPinType(PinType ptype)
     EnumName_Underscore2Symbol(ret);
     return ret;
 }
+
+
+const map<PinType, string> connectorIconFiles
+{
+    // Power
+    {PinType::DC__Power__Barrel,             ""},
+    {PinType::Molex,                         ""},
+    {PinType::SATA__Power,                   ""},
+    {PinType::SATA__Power__Slimline,         ""},
+
+    // USB
+    {PinType::USB___A,                       ""},
+    {PinType::USB___B,                       ""},
+    {PinType::USB___B__SuperSpeed,           ""},
+    {PinType::USB___C,                       ""},
+    {PinType::USB__Mini___A,                 ""},
+    {PinType::USB__Mini___B,                 "data/ic_usb_mini_b.png"},
+    {PinType::USB__Mini___AB,                ""},
+    {PinType::USB__Micro___A,                ""},
+    {PinType::USB__Micro___B,                ""},
+    {PinType::USB__Micro___AB,               ""},
+    {PinType::USB__Micro___B__SuperSpeed,    ""},
+
+    // Display
+    {PinType::DisplayPort,                   "data/ic_dp.png"},
+    {PinType::Mini__DisplayPort,             "data/ic_mini_dp.png"},
+    {PinType::HDMI,                          "data/ic_hdmi.png"},
+    {PinType::Mini__HDMI,                    ""},
+    {PinType::Micro__HDMI,                   ""},
+    {PinType::DVI,                           ""},
+    {PinType::Mini___DVI,                    "data/ic_mini_dvi.jpg"},
+    {PinType::Micro___DVI,                   ""},
+    {PinType::VGA,                           "data/ic_vga.jpg"},
+    {PinType::Mini___VGA,                    ""},
+
+    // Audio
+    {PinType::Audio3_5mm,                    ""},
+    {PinType::XLR,                           ""},
+    {PinType::TOSLINK,                       "data/ic_toslink.jpg"},
+    {PinType::Mini___TOSLINK,                ""},
+
+    // Mini-DIN
+    {PinType::PS____2,                       "data/ic_ps2.jpg"},
+
+    // Other 
+    {PinType::SATA,                          ""},
+    {PinType::Micro__SATA,                   ""},
+    {PinType::eSATA,                         ""},
+    {PinType::SD,                            ""},
+    {PinType::miniSD,                        ""},
+    {PinType::microSD,                       ""},
+    {PinType::SFF___8639,                    ""},
+    {PinType::RJ11,                          "data/ic_rj11.jpg"},
+    {PinType::RJ14,                          ""},
+    {PinType::RJ25,                          ""},
+    {PinType::RJ45,                          "data/ic_rj45.jpg"},
+};

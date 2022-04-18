@@ -563,16 +563,14 @@ struct Connectatron:
         m_RestoreIcon      = LoadTexture("data/ic_restore_white_24dp.png");
 
         // Connector type icons
-        m_dp =          LoadTexture("data/ic_dp.png");
-        m_mini_dp =     LoadTexture("data/ic_mini_dp.png");
-        m_hdmi =        LoadTexture("data/ic_hdmi.png");
-        m_mini_dvi =    LoadTexture("data/ic_mini_dvi.png");
-        m_vga =         LoadTexture("data/ic_vga.png");
-        m_ps2 =         LoadTexture("data/ic_ps2.png");
-        m_rj11 =        LoadTexture("data/ic_rj11.png");
-        m_rj25 =        LoadTexture("data/ic_rj45.png");
-        m_toslink =     LoadTexture("data/ic_toslink.png");
-        m_usb_mini_b =  LoadTexture("data/ic_usb_mini_b.png");
+        for (const auto& icon : connectorIconFiles)
+        {
+            if(icon.second == "")
+                continue;
+            connectorIcons[icon.first] = LoadTexture(icon.second.c_str());
+            if(connectorIcons.at(icon.first) == nullptr)
+                throw std::runtime_error(std::string("Icon failed loading, path: ") + icon.second);
+        }
 
 
         //auto& io = ImGui::GetIO();
@@ -593,16 +591,10 @@ struct Connectatron:
         releaseTexture(m_SaveIcon);
         releaseTexture(m_HeaderBackground);
 
-        releaseTexture(m_dp         );
-        releaseTexture(m_mini_dp    );
-        releaseTexture(m_hdmi       );
-        releaseTexture(m_mini_dvi   );
-        releaseTexture(m_vga        );
-        releaseTexture(m_ps2        );
-        releaseTexture(m_rj11       );
-        releaseTexture(m_rj25       );
-        releaseTexture(m_toslink    );
-        releaseTexture(m_usb_mini_b );
+        for (auto& icon : connectorIcons)
+        {
+            releaseTexture(icon.second);
+        }
 
         if (m_Editor)
         {
@@ -702,6 +694,12 @@ struct Connectatron:
         ImGui::SetCursorScreenPos(iconPanelPos);
         ImGui::SetItemAllowOverlap();*/
 
+        if (connectorIcons.find(type) != connectorIcons.end())
+        {
+            RenderIconInText(connectorIcons.at(type), ImVec2(m_PinIconSize * 2, m_PinIconSize));
+            return; //EARLY RETURN
+        }
+
         switch (type)
         {
 
@@ -717,10 +715,7 @@ struct Connectatron:
         case PinType::USB___B__SuperSpeed:              iconType = IconType::Circle; break;
         case PinType::USB___C:                           iconType = IconType::Circle; break;
         case PinType::USB__Mini___A:                    iconType = IconType::Circle; break;
-        case PinType::USB__Mini___B:                    
-            RenderIconInText(m_usb_mini_b, ImVec2(m_PinIconSize*2, m_PinIconSize));
-            return;
-            break;
+        case PinType::USB__Mini___B:                    iconType = IconType::Circle; break;
         case PinType::USB__Mini___AB:                   iconType = IconType::Circle; break;
         case PinType::USB__Micro___A:                   iconType = IconType::Circle; break;
         case PinType::USB__Micro___B:                   iconType = IconType::Circle; break;
@@ -756,8 +751,8 @@ struct Connectatron:
         case PinType::RJ45:                     iconType = IconType::Circle; break;
 
         default:
-            throw std::runtime_error(std::string("Unhandled PinType ") + NameFromPinType(type));
-            return;
+            //throw std::runtime_error(std::string("Unhandled PinType ") + NameFromPinType(type));
+            iconType = IconType::Circle;
         }
 
         ax::Widgets::Icon(ImVec2(m_PinIconSize, m_PinIconSize), iconType, connected, color, ImColor(32, 32, 32, alpha));
@@ -2235,7 +2230,7 @@ struct Connectatron:
                 {
                     //float protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.5;
                     float protocol_width = 0; //Assuming LONGEST_CONNECTOR_STR stuff above will eliminate the need to specify particular width
-                    ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
+                    ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 15), true);
                     for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                     {
                         auto proto_string = NameFromProtocol(possible_proto);
@@ -2565,7 +2560,8 @@ struct Connectatron:
     ImTextureID          m_SaveIcon = nullptr;
     ImTextureID          m_RestoreIcon = nullptr;
     // Connector type icons
-    ImTextureID          m_dp = nullptr;
+    map<PinType, ImTextureID> connectorIcons;
+    /*ImTextureID          m_dp = nullptr;
     ImTextureID          m_mini_dp = nullptr;
     ImTextureID          m_hdmi = nullptr;
     ImTextureID          m_mini_dvi = nullptr;
@@ -2574,7 +2570,7 @@ struct Connectatron:
     ImTextureID          m_rj11 = nullptr;
     ImTextureID          m_rj25 = nullptr;
     ImTextureID          m_toslink = nullptr;
-    ImTextureID          m_usb_mini_b = nullptr;
+    ImTextureID          m_usb_mini_b = nullptr;*/
 
     const float          m_TouchTime = 1.0f;
     std::map<ed::NodeId, float, NodeIdLess> m_NodeTouchTime;
