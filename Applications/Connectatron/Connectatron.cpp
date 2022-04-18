@@ -337,6 +337,8 @@ enum class WireProtocol
     Thunderbolt__4,
 };
 
+#define LONGEST_PROTOCOL_STR "FireWire S800T 1394c"
+
 const set<WireProtocol> BackCompat_USB2_0 = {
     WireProtocol::USB__1_0, //Low-Speed: 1.5 Mbps
     WireProtocol::USB__1_1, //Full-Speed: 12 Mbps
@@ -1731,7 +1733,8 @@ struct Connectatron:
                 {
                     auto new_id = GetNextId();
                     string new_name = "USB2 " + std::to_string(new_id);
-                    node->Females.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::USB___A, BackCompat_USB2_0, "");
+                    BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndInput_NoPin();
 
@@ -2422,9 +2425,11 @@ struct Connectatron:
 
                 ImGui::Separator();
                 ImGui::Text("Supported Protocols:");
-                ImGui::Indent();
+                //ImGui::Indent();
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
+                    auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.5;
+                    ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                     {
                         auto proto_string = string(magic_enum::enum_name(possible_proto));
@@ -2445,9 +2450,12 @@ struct Connectatron:
                                 pin->Protocols.erase(possible_proto);
                         }
                     }
+                    ImGui::EndChild();
                 }
                 else // Not editing
                 {
+                    auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.1;
+                    ImGui::BeginChild("##Protocol Viewing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     if (pin->Protocols.size() == 0)
                     {
                         ImGui::Text("(None specified)");
@@ -2463,8 +2471,9 @@ struct Connectatron:
                             ImGui::Text(proto_name.c_str());
                         }
                     }
+                    ImGui::EndChild();
                 }
-                ImGui::Unindent();
+                //ImGui::Unindent();
                 if (pin->ExtraInfo.length() != 0)
                 {
                     ImGui::Separator();
@@ -2499,10 +2508,11 @@ struct Connectatron:
                             auto to_del = std::find_if(males_vec.begin(), males_vec.end(), [pin](const Pin& test_pin) {
                                 return test_pin.ID == pin->ID;
                                 });
+
                             males_vec.erase(to_del);
                         }
 
-                        vec.erase(to_del);
+                        ImGui::CloseCurrentPopup();
                     }
                 }
             }
@@ -2528,7 +2538,10 @@ struct Connectatron:
                 ImGui::Text("Unknown link: %p", contextLinkId.AsPointer());
             ImGui::Separator();
             if (ImGui::MenuItem("Delete"))
+            {
                 ed::DeleteLink(contextLinkId);
+                ImGui::CloseCurrentPopup();
+            }
             ImGui::EndPopup();
         }
 
