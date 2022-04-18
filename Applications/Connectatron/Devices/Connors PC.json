@@ -1,5 +1,4 @@
 {
-	"Name": "Connors PC (WIP)",
 	"Females": [
 		{
 			"Name": "Rear Panel USBC 1",
@@ -195,7 +194,6 @@
 			]
 		}
 	],
-	"Males": [
-		
-	]
+	"Males": [],
+	"Name": "Connors PC (WIP)"
 }

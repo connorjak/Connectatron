@@ -260,7 +260,7 @@ static json GetJSONFromFile(fs::path filepath)
     return js;
 }
 
-static json SerializeDeviceToJSON(const shared_ptr<Node> node)
+static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool include_project_data)
 {
     json device;
 
@@ -275,12 +275,15 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node)
     {
         id = Generate_NotUUID();
     }*/
-    device["ID"] = node->persistentID;
+    if (include_project_data)
+    {
+        device["ID"] = node->persistentID;
 
-    auto pos = ed::GetNodePosition(node->ID);
-    device["SavedPos"][0] = pos.x;
-    device["SavedPos"][1] = pos.y;
-    
+        auto pos = ed::GetNodePosition(node->ID);
+        device["SavedPos"][0] = pos.x;
+        device["SavedPos"][1] = pos.y;
+    }
+
     // Parse Females
     device["Females"] = json::array();
     auto& j_Females = device["Females"];
@@ -959,6 +962,15 @@ struct Connectatron:
         return connect;
     }
 
+    void SaveDeviceToFile(shared_ptr<Node> node, fs::path filepath)
+    {
+        std::ofstream o(filepath);
+        json device = SerializeDeviceToJSON(node, false);
+
+        o << device.dump(1,'\t');
+        o.close();
+    }
+
     void SaveProjectToFile(fs::path filepath)
     {
         std::ofstream o(filepath);
@@ -969,7 +981,7 @@ struct Connectatron:
 
         for (const auto& node : m_Nodes)
         {
-            devices.push_back(SerializeDeviceToJSON(node));
+            devices.push_back(SerializeDeviceToJSON(node, true));
         }
 
         project["Links"] = json::array();
@@ -2149,6 +2161,8 @@ struct Connectatron:
         }
         ed::Resume();
 
+        static shared_ptr<Node> node_to_save;
+
         ed::Suspend();
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8, 8));
         if (ImGui::BeginPopup("Node Context Menu"))
@@ -2168,11 +2182,29 @@ struct Connectatron:
                 }
                 else if (node->Type == NodeType::Blueprint_Editing)
                 {
-                    if (ImGui::Button("Save Device"))
+                    //if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ "Save Device"))
+                    //{
+                    //    node->Type = NodeType::Blueprint;
+                    //    
+                    //}
+
+                    if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ "Save Device As..."))
                     {
-                        node->Type = NodeType::Blueprint;
-                        //TODO BREAKING do something else, like actually pulling up some file saving logic?
+                        const char* filters = ".json";
+
+                        node_to_save = node;
+
+                        ImGuiFileDialogFlags flags = 0;
+                        flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_ConfirmOverwrite;
+                        flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
+
+                        if (/*standardDialogMode*/true)
+                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name, 1, nullptr, flags);
+                        else
+                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name, 1, nullptr, flags);
                     }
+
+                    // See below the EndPopup() for the file dialog GUI
                 }
                 ImGui::Text("Female Connectors: %d", (int)node->Females.size());
                 ImGui::Text("Male Connectors: %d", (int)node->Males.size());
@@ -2188,6 +2220,34 @@ struct Connectatron:
             if (ImGui::MenuItem("Delete"))
                 ed::DeleteNode(contextNodeId);
             ImGui::EndPopup();
+        }
+
+
+        // display
+        if (ImGuiFileDialog::Instance()->Display("SaveDeviceAs"))
+        {
+            // action if pressed OK
+            if (ImGuiFileDialog::Instance()->IsOk())
+            {
+                node_to_save->Type = NodeType::Blueprint;
+                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                std::string fileName = fs::path(filePathName).filename().string();
+                // action
+
+                // If still using the name from empty_device.json, change the name to match the filename
+                if(node_to_save->Name == "New Custom Node")
+                    node_to_save->Name = fileName;
+
+                std::cout << "Saving Device As:" << std::endl;
+                std::cout << "filePathName: " << filePathName << std::endl;
+                std::cout << "filePath: " << filePath << std::endl;
+                SaveDeviceToFile(node_to_save, fs::path(filePathName));
+                node_to_save.reset();
+            }
+
+            // close
+            ImGuiFileDialog::Instance()->Close();
         }
 
         if (ImGui::BeginPopup("Pin Context Menu"))
