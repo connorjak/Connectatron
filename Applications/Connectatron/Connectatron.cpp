@@ -424,6 +424,9 @@ enum class PinType
     
 };
 
+#define LONGEST_CONNECTOR_STR "USB Micro-B SuperSpeed"
+
+
 enum class PinKind
 {
     Output,
@@ -943,11 +946,16 @@ struct Connectatron:
 
     void DrawPinIcon(const Pin& pin, bool connected, int alpha)
     {
+        DrawPinTypeIcon(pin.Type, connected, alpha);
+    }
+
+    void DrawPinTypeIcon(const PinType type, bool connected, int alpha)
+    {
         //Set to a default in case the PinType is not supported (somehow)
         IconType iconType = IconType::Square;
-        ImColor  color = GetIconColor(pin.Type);
+        ImColor  color = GetIconColor(type);
         color.Value.w = alpha / 255.0f;
-        switch (pin.Type)
+        switch (type)
         {
 
             //Power
@@ -986,10 +994,14 @@ struct Connectatron:
         case PinType::SATA:                     iconType = IconType::Circle; break;
         case PinType::Micro__SATA:                iconType = IconType::Circle; break;
         case PinType::eSATA:                    iconType = IconType::Circle; break;
+        case PinType::SD:                       iconType = IconType::Circle; break;
+        case PinType::miniSD:                     iconType = IconType::Circle; break;
+        case PinType::microSD:                  iconType = IconType::Circle; break;
+        case PinType::SFF___8639:                iconType = IconType::Circle; break;
         case PinType::RJ45:                     iconType = IconType::Circle; break;
 
         default:
-            throw std::runtime_error(std::string("Unhandled PinType ") + std::string(magic_enum::enum_name(pin.Type)));
+            throw std::runtime_error(std::string("Unhandled PinType ") + std::string(magic_enum::enum_name(type)));
             return;
         }
 
@@ -2417,18 +2429,59 @@ struct Connectatron:
             {
                 auto on_node = pin->Node.lock();
 
-                auto pin_enum_name = std::string(magic_enum::enum_name(pin->Type));
-                EnumName_Underscore2Symbol(pin_enum_name);
-                auto pin_text = "Connector Type: " + pin_enum_name;
-                ImGui::Text(pin_text.c_str());
+                // Connector info //
+                ImGui::Text("Connector Gender: ");
+                ImGui::SameLine();
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
+                ImGui::Text("Connector Type:");
+                if (on_node->Type == NodeType::Blueprint_Editing)
+                {
+                    auto protocol_width = ImGui::CalcTextSize(LONGEST_CONNECTOR_STR).x * 1.5;
+                    auto current_connect_string = string(magic_enum::enum_name(pin->Type));
+                    EnumName_Underscore2Symbol(current_connect_string);
+                    //ImGui::BeginChild("##Connector Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
+                    //https://github.com/ocornut/imgui/issues/1658#issue-302026543
+                    
+                    if (ImGui::BeginCombo("##Connector Editing", current_connect_string.c_str()))
+                    {
+                        for (const auto& possible_connect : magic_enum::enum_values<PinType>())
+                        {
+                            auto connect_string = string(magic_enum::enum_name(possible_connect));
+                            EnumName_Underscore2Symbol(connect_string);
+                            //// Remove metadata enum values
+                            //if (connect_string.find(".VERSION.") != string::npos)
+                            //    continue;
+
+                            DrawPinTypeIcon(possible_connect, false, 255);
+                            ImGui::SameLine();
+
+                            bool is_selected = possible_connect == pin->Type;
+                            if (ImGui::Selectable(connect_string.c_str(), is_selected))
+                                pin->Type = possible_connect;
+                            if (is_selected)
+                                ImGui::SetItemDefaultFocus();
+                        }
+                        ImGui::EndCombo();
+                    }
+                    //ImGui::EndChild();
+                }
+                else // Not editing
+                {
+                    auto pin_enum_name = std::string(magic_enum::enum_name(pin->Type));
+                    EnumName_Underscore2Symbol(pin_enum_name);
+                    auto pin_text = pin_enum_name;
+                    ImGui::Text(pin_text.c_str());
+                }
 
                 ImGui::Separator();
+                
+                // Protocols info //
                 ImGui::Text("Supported Protocols:");
                 //ImGui::Indent();
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
-                    auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.5;
+                    //float protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.5;
+                    float protocol_width = 0; //Assuming LONGEST_CONNECTOR_STR stuff above will eliminate the need to specify particular width
                     ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                     {
@@ -2587,9 +2640,6 @@ struct Connectatron:
                 if (category_label == ".")
                     category_label = "Devices";
 
-                /*ImGui::Text(category_label.c_str());
-                ImGui::Separator();
-                ImGui::Indent();*/
                 auto header_flags = ImGuiTreeNodeFlags_CollapsingHeader | ImGuiTreeNodeFlags_DefaultOpen;
                 if(ImGui::CollapsingHeader(category_label.c_str(), header_flags))
                 {
@@ -2645,10 +2695,6 @@ struct Connectatron:
                     }
                     if(nothing_shown_yet)
                         ImGui::Text("(Nothing with a compatible connection)");
-                    /*ImGui::Unindent();
-
-                    ImGui::Separator();
-                    ImGui::Separator();*/
                 }
             }
 
