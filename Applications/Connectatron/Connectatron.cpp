@@ -173,9 +173,10 @@ struct PowerDelivery
 
 
 // Variable name to string parsing:
-// _   : .
-// __  : (space) 
-// ___ : -
+// _    : .
+// __   : (space) 
+// ___  : -
+// ____ : /
 enum class WireProtocol
 {
     // Power
@@ -193,6 +194,11 @@ enum class WireProtocol
     SPI,
     //https://en.wikipedia.org/wiki/I%C2%B2C
     I2C,
+
+    // Audio
+    S____PIDF, //https://en.wikipedia.org/wiki/S/PDIF
+    ADAT__Lightpipe, //https://en.wikipedia.org/wiki/ADAT_Lightpipe
+    AES3, //https://en.wikipedia.org/wiki/AES3
 
     // USB
     MIN_VERSION_USB,
@@ -408,6 +414,9 @@ enum class PinType
     // Audio
     Audio3_5mm, //Should probably specify stereo/not?
     XLR, //?
+    //https://en.wikipedia.org/wiki/TOSLINK
+    TOSLINK,
+    Mini___TOSLINK,
 
     // Other
     SATA,
@@ -418,7 +427,12 @@ enum class PinType
     miniSD,
     microSD,
     SFF___8639,
+    //https://en.wikipedia.org/wiki/Registered_jack
+    RJ11,
+    RJ14,
+    RJ25,
     RJ45, //AKA 8P8C
+    
 
 
     
@@ -548,15 +562,17 @@ void ReplaceAll(std::string& str, const std::string& from, const std::string& to
     }
 }
 
-static void EnumName_Underscore2Symbol(std::string& symboled)
+static void EnumName_Underscore2Symbol(std::string& underscored)
 {
-    ReplaceAll(symboled, "___", "-");
-    ReplaceAll(symboled, "__", " ");
-    ReplaceAll(symboled, "_", ".");
+    ReplaceAll(underscored, "____", "/");
+    ReplaceAll(underscored, "___", "-");
+    ReplaceAll(underscored, "__", " ");
+    ReplaceAll(underscored, "_", ".");
 }
 
 static void EnumName_Symbol2Underscore(std::string& symboled)
 {
+    ReplaceAll(symboled, "/", "____");
     ReplaceAll(symboled, "-", "___");
     ReplaceAll(symboled, " ", "__");
     ReplaceAll(symboled, ".", "_");
