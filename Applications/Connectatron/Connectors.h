@@ -24,11 +24,11 @@ enum class PinType
     // https://en.wikipedia.org/wiki/NEMA_connector
     //TODO NEMA connectors
 
-    // USB
+    // USB          // https://en.wikipedia.org/wiki/USB
     USB___A,
     //USB___A__SuperSpeed, 
-    // PinType does not discriminate between USB-A and USB-A SuperSpeed, even though they have 
-    // additional pins, as they physically fit together and have at least some backward compatibility.
+    //NOTE: PinType does not discriminate between USB-A and USB-A SuperSpeed, even though they have 
+    //   additional pins, as they physically fit together and have at least some backward compatibility.
     USB___B,
     USB___B__SuperSpeed, // Has more pins for USB3 features. Taller than USB-B.
     USB___C,
@@ -49,6 +49,10 @@ enum class PinType
     Mini__HDMI,
     Micro__HDMI,
     DVI,            // https://en.wikipedia.org/wiki/Digital_Visual_Interface
+    //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
+    //   but the opposite works fine. For this reason, I keep DVI as one connector
+    //   type for physical compatibility logic. The variants are sorted out in
+    //   the selection of supported protocols.
     Mini___DVI,     // https://en.wikipedia.org/wiki/Mini-DVI
     Micro___DVI,    // https://en.wikipedia.org/wiki/Micro-DVI
     VGA,
@@ -100,15 +104,15 @@ const map<PinType, string> connectorIconFiles
     {PinType::SATA__Power__Slimline,         ""},
 
     // USB
-    {PinType::USB___A,                       ""},
+    {PinType::USB___A,                       "data/ic_usba.jpg"},
     {PinType::USB___B,                       ""},
-    {PinType::USB___B__SuperSpeed,           ""},
-    {PinType::USB___C,                       ""},
+    {PinType::USB___B__SuperSpeed,           "data/ic_usbb_ss.jpg"},
+    {PinType::USB___C,                       "data/ic_usbc.jpg"},
     {PinType::USB__Mini___A,                 ""},
     {PinType::USB__Mini___B,                 "data/ic_usb_mini_b.png"},
     {PinType::USB__Mini___AB,                ""},
     {PinType::USB__Micro___A,                ""},
-    {PinType::USB__Micro___B,                ""},
+    {PinType::USB__Micro___B,                "data/ic_usb_micro_b.jpg"},
     {PinType::USB__Micro___AB,               ""},
     {PinType::USB__Micro___B__SuperSpeed,    ""},
 
