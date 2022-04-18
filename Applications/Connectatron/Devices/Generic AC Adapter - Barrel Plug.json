@@ -1,0 +1,24 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "Barrel",
+			"PinType": "DC Power Barrel",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Wall Wart",
+			"PinType": "NEMA 5-15",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Name": "Generic AC Adapter - Barrel Plug"
+}

@@ -1,0 +1,19 @@
+{
+	"Females": [
+		{
+			"Name": "NEMA 1-15",
+			"PinType": "NEMA 1-15"
+		},
+		{
+			"Name": "NEMA 1-15",
+			"PinType": "NEMA 1-15",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "Old Wall Outlet (NEMA 1-15)"
+}
