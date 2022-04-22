@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A SuperSpeed"
+		},
+		{
+			"Name": "USB-B",
+			"PinType": "USB-B SuperSpeed"
+		}
+	],
+	"Name": "USB-A to USB-B SuperSpeed"
+}

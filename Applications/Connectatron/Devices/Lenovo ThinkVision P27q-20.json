@@ -1,0 +1,95 @@
+{
+	"Females": [
+		{
+			"Name": "DisplayPort",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Name": "DisplayPort (Out)",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Name": "HDMI",
+			"PinType": "HDMI",
+			"Protocols": [
+				"HDMI 1.0",
+				"HDMI 1.1",
+				"HDMI 1.2",
+				"HDMI 1.2a",
+				"HDMI 1.3",
+				"HDMI 1.3a",
+				"HDMI 1.4",
+				"HDMI 1.4a",
+				"HDMI 1.4b"
+			]
+		},
+		{
+			"Name": "USB-B Input",
+			"PinType": "USB-B SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "USB3 5g",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "USB3 5g",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "USB3 5g",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "USB3 5g",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "Power",
+			"PinType": "C13/C14"
+		}
+	],
+	"Males": [],
+	"Name": "Lenovo ThinkVision P27q-20"
+}

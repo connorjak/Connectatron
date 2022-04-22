@@ -1,0 +1,19 @@
+{
+	"Females": [
+		{
+			"Name": "USB-C",
+			"PinType": "USB-C"
+		},
+		{
+			"Name": "Headset Input",
+			"PinType": "Proprietary"
+		}
+	],
+	"Males": [
+		{
+			"Name": "Wireless",
+			"PinType": "Wireless"
+		}
+	],
+	"Name": "XBox One Wireless Controller"
+}

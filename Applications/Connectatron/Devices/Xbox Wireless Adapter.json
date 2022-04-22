@@ -1,0 +1,21 @@
+{
+	"Females": [
+		{
+			"Name": "Wireless",
+			"PinType": "Wireless"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		}
+	],
+	"Name": "Xbox Wireless Adapter"
+}

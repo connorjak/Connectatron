@@ -1,35 +1,39 @@
 {
-    "Name": "4k 120Hz TV",
-    "Females": [
-        {
-            "Name": "HDMI 1",
-            "PinType": "HDMI",
-            "Protocols": [
-                "HDMI 2.1"
-            ]
-        },
-        {
-            "Name": "HDMI 2",
-            "PinType": "HDMI",
-            "Protocols": [
-                "HDMI 2.1"
-            ]
-        },
-        {
-            "Name": "HDMI 3",
-            "PinType": "HDMI",
-            "Protocols": [
-                "HDMI 2.1"
-            ]
-        },
-        {
-            "Name": "HDMI 4",
-            "PinType": "HDMI",
-            "Protocols": [
-                "HDMI 2.1"
-            ]
-        }
-    ],
-    "Males": [
-    ]
+	"Females": [
+		{
+			"Name": "HDMI 1",
+			"PinType": "HDMI",
+			"Protocols": [
+				"HDMI 2.1"
+			]
+		},
+		{
+			"Name": "HDMI 2",
+			"PinType": "HDMI",
+			"Protocols": [
+				"HDMI 2.1"
+			]
+		},
+		{
+			"Name": "HDMI 3",
+			"PinType": "HDMI",
+			"Protocols": [
+				"HDMI 2.1"
+			]
+		},
+		{
+			"Name": "HDMI 4",
+			"PinType": "HDMI",
+			"Protocols": [
+				"HDMI 2.1"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "Power",
+			"PinType": "NEMA 1-15"
+		}
+	],
+	"Name": "4k 120Hz TV"
 }
