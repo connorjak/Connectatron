@@ -139,6 +139,23 @@ enum class WireProtocol : unsigned int
     EDID,
 
     // Expansion Slot
+    //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
+    ISA,
+    ISA__DMA, // Direct Memory Access
+    //https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect
+    PCI__1_0,
+    PCI__2_0,
+    PCI__2_1,
+    PCI__2_2,
+    PCI__2_3,
+    PCI__3_0,
+    //https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
+    AGP__1_0__1x,
+    AGP__1_0__2x,
+    AGP__2_0__4x,
+    AGP__3_0__8x,
+    AGP__3_5__8x,
+    // https://en.wikipedia.org/wiki/PCI_Express
     PCIe__1_0__x1,
     PCIe__1_0__x2,
     PCIe__1_0__x4,

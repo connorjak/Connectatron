@@ -116,10 +116,21 @@ enum class PinType : unsigned int
     DVI___I,
     Mini___DVI,     // https://en.wikipedia.org/wiki/Mini-DVI
     Micro___DVI,    // https://en.wikipedia.org/wiki/Micro-DVI
+    Apple__Display__Connector, // https://en.wikipedia.org/wiki/Apple_Display_Connector
     VGA,
     Mini___VGA,
 
     // Expansion Slot
+    ISA,            //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
+    PCI,            //https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect
+    //https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
+    AGP__3_3V,
+    AGP__1_5V,
+    AGP__Universal,
+    AGP__Pro__3_3V,
+    AGP__Pro__1_5V,
+    AGP__Pro__Universal,
+    // https://en.wikipedia.org/wiki/PCI_Express
     PCIe__x1,
     PCIe__x2,
     PCIe__x4,
@@ -362,13 +373,40 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         break;
 
         // Expansion Slot
+
+        /*AGP__3_3V,
+            AGP__1_5V,
+            AGP__Universal,
+            AGP__Pro__3_3V,
+            AGP__Pro__1_5V,
+            AGP__Pro__Universal,*/
+
+    case PinType::AGP__3_3V:
+        ret.insert(PinType::AGP__Universal);
+        ret.insert(PinType::AGP__Pro__3_3V);
+        ret.insert(PinType::AGP__Pro__Universal);
+        break;
+    case PinType::AGP__1_5V:
+        ret.insert(PinType::AGP__Universal);
+        ret.insert(PinType::AGP__Pro__1_5V);
+        ret.insert(PinType::AGP__Pro__Universal);
+        break;
+    case PinType::AGP__Universal:
+        ret.insert(PinType::AGP__Pro__Universal);
+        break;
+    case PinType::AGP__Pro__3_3V:
+        ret.insert(PinType::AGP__Pro__Universal);
+        break;
+    case PinType::AGP__Pro__1_5V:
+        ret.insert(PinType::AGP__Pro__Universal);
+        break;
+
     case PinType::PCIe__x1:
         ret.insert(PinType::PCIe__x2);
         ret.insert(PinType::PCIe__x4);
         ret.insert(PinType::PCIe__x8);
         ret.insert(PinType::PCIe__x16);
         break;
-
     case PinType::PCIe__x2:
         ret.insert(PinType::PCIe__x4);
         ret.insert(PinType::PCIe__x8);
