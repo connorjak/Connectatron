@@ -119,6 +119,14 @@ enum class PinType : unsigned int
     VGA,
     Mini___VGA,
 
+    // Expansion Slot
+    PCIe__x1,
+    PCIe__x2,
+    PCIe__x4,
+    PCIe__x8,
+    PCIe__x16,
+    Mini__PCIe,
+
     // Audio
     Audio3_5mm, //Should probably specify stereo/not?
     XLR, //?
@@ -144,6 +152,12 @@ enum class PinType : unsigned int
     miniSD,
     microSD,
     SFF___8639,
+    //https://en.wikipedia.org/wiki/M.2
+    M_2__M__key,    // AKA Socket 3, usual for PCIe x4 / NVMe devices.
+    M_2__B__M__key, // Usual for SATA devices (fits in Socket 2, 3).
+    M_2__B__key,    // AKA Socket 2, usual for WWAN, GNSS, SSD, etc.
+    M_2__A__E__key, // AKA Socket 1, usual for wireless.
+
     // Mobile
     Lightning,      // https://en.wikipedia.org/wiki/Lightning_(connector)
     //https://en.wikipedia.org/wiki/Dock_connector#30-pin_dock_connector
@@ -347,6 +361,27 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         ret.insert(PinType::DVI___I);
         break;
 
+        // Expansion Slot
+    case PinType::PCIe__x1:
+        ret.insert(PinType::PCIe__x2);
+        ret.insert(PinType::PCIe__x4);
+        ret.insert(PinType::PCIe__x8);
+        ret.insert(PinType::PCIe__x16);
+        break;
+
+    case PinType::PCIe__x2:
+        ret.insert(PinType::PCIe__x4);
+        ret.insert(PinType::PCIe__x8);
+        ret.insert(PinType::PCIe__x16);
+        break;
+    case PinType::PCIe__x4:
+        ret.insert(PinType::PCIe__x8);
+        ret.insert(PinType::PCIe__x16);
+        break;
+    case PinType::PCIe__x8:
+        ret.insert(PinType::PCIe__x16);
+        break;
+
         // Audio                             
 
         // DIN
@@ -356,6 +391,10 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         // Storage Interface
     case PinType::eSATA:
         ret.insert(PinType::eSATAp);
+        break;
+    case PinType::M_2__B__M__key:
+        ret.insert(PinType::M_2__B__key);
+        ret.insert(PinType::M_2__M__key);
         break;
 
         // Mobile
