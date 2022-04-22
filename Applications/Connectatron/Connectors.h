@@ -21,7 +21,11 @@ enum class PinType : unsigned int
 
     // Single-Wire
     Pin__Header,        //https://en.wikipedia.org/wiki/Pin_header
-    Screw_Terminal,     //https://en.wikipedia.org/wiki/Screw_terminal
+    Screw__Terminal,     //https://en.wikipedia.org/wiki/Screw_terminal
+
+    // Two-wire bus
+    Twisted__Pair,
+    Coaxial,
 
     // DC Power
     // https://en.wikipedia.org/wiki/DC_connector
@@ -93,6 +97,10 @@ enum class PinType : unsigned int
     C23____C24,
     //TODO other AC connectors
 
+    // RF
+    // https://en.wikipedia.org/wiki/RF_connector
+    //TODO
+
     // USB          // https://en.wikipedia.org/wiki/USB
     USB___A,
     USB___A__SuperSpeed, // Has more pins for USB3 features. Fits with USB-A.
@@ -124,6 +132,11 @@ enum class PinType : unsigned int
     Apple__Display__Connector, // https://en.wikipedia.org/wiki/Apple_Display_Connector
     VGA,
     Mini___VGA,
+    SCART,          // https://en.wikipedia.org/wiki/SCART
+    //https://en.wikipedia.org/wiki/RCA_connector
+    RCA__Component__Video,
+    RCA__Stereo__Audio,
+    RCA,
 
     // Expansion Slot
     ISA,            //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
@@ -159,7 +172,14 @@ enum class PinType : unsigned int
 
     // Audio
     Audio3_5mm, //Should probably specify stereo/not?
-    XLR, //?
+    //https://en.wikipedia.org/wiki/XLR_connector
+    XLR3, //3-pin, most common
+    XLR4, //4-pin
+    XLR5, //5-pin
+    XLR6, //6-pin
+    XLR7, //7-pin
+    PDN,
+    Mini__XLR, // AKA TQG, TA3/TA4
     // https://en.wikipedia.org/wiki/TOSLINK
     TOSLINK,
     Mini___TOSLINK,
@@ -319,7 +339,7 @@ const map<PinType, string> connectorIconFiles
 
     // Audio
     {PinType::Audio3_5mm,                    "data/ic_3x_3.5mm.jpg"}, //TODO (somewhat) WRONG
-    {PinType::XLR,                           ""},
+    {PinType::XLR3,                          ""},
     {PinType::TOSLINK,                       "data/ic_toslink.jpg"},
     {PinType::Mini___TOSLINK,                "data/ic_toslink.jpg"}, //TODO WRONG
 

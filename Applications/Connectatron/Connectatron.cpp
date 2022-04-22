@@ -660,11 +660,11 @@ struct Connectatron:
 
             //Audio                             
         case PinType::Audio3_5mm:               return IM_COLOR_GREEN;
-        case PinType::XLR:                      return IM_COLOR_GREEN;
+        case PinType::XLR3:                      return IM_COLOR_GREEN;
 
             //Other                             
         case PinType::SATA:                     return IM_COLOR_RED;
-        case PinType::Micro__SATA:                return IM_COLOR_RED;
+        case PinType::Micro___SATA:                return IM_COLOR_RED;
         case PinType::eSATA:                    return IM_COLOR_RED;
         case PinType::RJ45:                     return IM_COLOR_RED;
 
@@ -758,13 +758,13 @@ struct Connectatron:
 
             //Audio                                 
         case PinType::Audio3_5mm:               iconType = IconType::Diamond; break;
-        case PinType::XLR:                      iconType = IconType::Diamond; break;
+        case PinType::XLR3:                      iconType = IconType::Diamond; break;
         case PinType::TOSLINK:                  iconType = IconType::Diamond; break;
         case PinType::Mini___TOSLINK:           iconType = IconType::Diamond; break;
 
             //Other                                 
         case PinType::SATA:                     iconType = IconType::Circle; break;
-        case PinType::Micro__SATA:                iconType = IconType::Circle; break;
+        case PinType::Micro___SATA:                iconType = IconType::Circle; break;
         case PinType::eSATA:                    iconType = IconType::Circle; break;
         case PinType::SD:                       iconType = IconType::Circle; break;
         case PinType::miniSD:                     iconType = IconType::Circle; break;

@@ -129,6 +129,11 @@ enum class WireProtocol : unsigned int
     DVI___A, //Analog
     DVI___I, //Combined
     VGA, //TODO specific specs?
+    HDBaseT,            //https://en.wikipedia.org/wiki/HDBaseT
+    Composite__Video,   //https://en.wikipedia.org/wiki/Composite_video
+    RGB__Video,         //https://en.wikipedia.org/wiki/RGB_color_model#Video_electronics
+    S___Video,          //https://en.wikipedia.org/wiki/S-Video
+    Component__Video,   //https://en.wikipedia.org/wiki/Component_video
 
     // Display Metadata (may be a part of another display cable protocol)
     //https://en.wikipedia.org/wiki/Display_Data_Channel
@@ -286,6 +291,12 @@ enum class WireProtocol : unsigned int
     RS___485,
     //https://en.wikipedia.org/wiki/IEEE_1284
     IEEE__1284, //AKA Centronics Port
+    //https://en.wikipedia.org/wiki/MIL-STD-1553
+    MIL___STD___1553,
+    //https://en.wikipedia.org/wiki/ARINC_429
+    ARINC__429,
+    //https://en.wikipedia.org/wiki/CAN_bus
+    CAN__bus,
 };
 
 #define LONGEST_PROTOCOL_STR "FireWire S800T 1394c"
