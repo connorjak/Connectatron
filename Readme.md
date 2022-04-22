@@ -15,7 +15,7 @@ Defining your own devices (`/Devices`) is quick and easy through an editing mode
 
 See status and try it for yourself on [releases](https://github.com/connorjak/Connectatron/releases).
 
-Was forked from https://github.com/connorjak/imgui-node-editor (fork of https://github.com/thedmd/imgui-node-editor).
+Was forked from https://github.com/thedmd/imgui-node-editor.
 
 --- 
 --- 
