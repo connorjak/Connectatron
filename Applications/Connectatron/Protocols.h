@@ -48,8 +48,10 @@ using std::set;
 // __   : (space) 
 // ___  : -
 // ____ : /
-enum class WireProtocol
+enum class WireProtocol : unsigned int
 {
+    Proprietary,
+
     // Power
     DC__Power,
     AC__Power,
@@ -209,7 +211,42 @@ enum class WireProtocol
     Ethernet__40GBASE___T, //40 Gbps
     MAX_VERSION_Ethernet,
 
+    // Wireless
+    //https://en.wikipedia.org/wiki/Wi-Fi
+    MIN_VERSION_Wi___Fi,
+    Wi___Fi__0__802_11,     //1997
+    Wi___Fi__1__802_11b,    //1999
+    Wi___Fi__2__802_11a,    //1999
+    Wi___Fi__3__802_11g,    //2003
+    Wi___Fi__4__802_11n,    //2008
+    Wi___Fi__5__802_11ac,   //2014
+    Wi___Fi__6__802_11ax,   //2019
+    Wi___Fi__6E__802_11ax,  //2020
+    Wi___Fi__7__802_11be,   //TBA
+    MAX_VERSION_Wi___Fi,
+    //https://en.wikipedia.org/wiki/Bluetooth
+    MIN_VERSION_Bluetooth,
+    Bluetooth__1_0,
+    Bluetooth__1_0B,
+    Bluetooth__1_1,
+    Bluetooth__1_2,
+    Bluetooth__2_0,
+    Bluetooth__2_1,
+    Bluetooth__EDR,
+    Bluetooth__3_0,
+    Bluetooth__HS,
+    Bluetooth__4_0,
+    Bluetooth__4__LowEnergy,
+    Bluetooth__4_1,
+    Bluetooth__4_2,
+    Bluetooth__5_0,
+    Bluetooth__5_1,
+    Bluetooth__5_2,
+    Bluetooth__5_3,
+    MAX_VERSION_Bluetooth,
+
     // Other
+    Thunderbolt__2,
     Thunderbolt__3,
     Thunderbolt__4,
 };

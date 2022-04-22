@@ -14,7 +14,7 @@ using std::map;
 // __   : (space) 
 // ___  : -
 // ____ : /
-enum class PinType
+enum class PinType : unsigned int
 {
     Proprietary, // For connectors that don't match any listed options
     Wireless,
