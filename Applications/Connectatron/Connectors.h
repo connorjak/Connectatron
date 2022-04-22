@@ -122,6 +122,11 @@ enum class PinType : unsigned int
 
     // Expansion Slot
     ISA,            //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
+    //https://en.wikipedia.org/wiki/Parallel_ATA
+    // AKA ATA, IDE
+    PATA__40___pin,
+    PATA__44___pin,
+    PATA__80___pin,
     PCI,            //https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect
     //https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
     AGP__3_3V,
@@ -137,6 +142,15 @@ enum class PinType : unsigned int
     PCIe__x8,
     PCIe__x16,
     Mini__PCIe,
+    // https://en.wikipedia.org/wiki/PC_Card
+    // AKA PCMCIA
+    PC__Card__Type__I, 
+    PC__Card__Type__II,
+    PC__Card__Type__III,
+    PC__Card__Type__IV,
+    // https://en.wikipedia.org/wiki/ExpressCard
+    ExpressCard____34,
+    ExpressCard____54,
 
     // Audio
     Audio3_5mm, //Should probably specify stereo/not?
@@ -158,6 +172,7 @@ enum class PinType : unsigned int
     Mini___SATA, 
     eSATA,
     eSATAp,         //https://en.wikipedia.org/wiki/ESATAp
+    CompactFlash,   // https://en.wikipedia.org/wiki/CompactFlash
     // https://en.wikipedia.org/wiki/SD_card
     SD,
     miniSD,

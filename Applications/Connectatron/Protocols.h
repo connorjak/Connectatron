@@ -142,6 +142,9 @@ enum class WireProtocol : unsigned int
     //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
     ISA,
     ISA__DMA, // Direct Memory Access
+    //https://en.wikipedia.org/wiki/Parallel_ATA
+    // AKA ATA, IDE
+    //TODO
     //https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect
     PCI__1_0,
     PCI__2_0,
@@ -181,6 +184,10 @@ enum class WireProtocol : unsigned int
     PCIe__5_0__x4,
     PCIe__5_0__x8,
     PCIe__5_0__x16,
+    // https://en.wikipedia.org/wiki/PC_Card
+    //TODO
+    // https://en.wikipedia.org/wiki/ExpressCard
+    //TODO
 
     // Storage Interface
     //https://en.wikipedia.org/wiki/Parallel_ATA
