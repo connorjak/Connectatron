@@ -105,7 +105,7 @@ enum class PinType : unsigned int
     // Display
     // https://en.wikipedia.org/wiki/DisplayPort
     DisplayPort,
-    Mini__DisplayPort,
+    Mini__DisplayPort, //Notably also used for Thunderbolt 1 and 2
     // https://en.wikipedia.org/wiki/HDMI
     HDMI,
     Mini__HDMI,
@@ -348,6 +348,17 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         break;
 
         // Audio                             
+
+        // DIN
+
+        // Mini-DIN
+
+        // Storage Interface
+    case PinType::eSATA:
+        ret.insert(PinType::eSATAp);
+        break;
+
+        // Mobile
 
         // Other                             
 
