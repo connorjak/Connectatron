@@ -132,7 +132,6 @@ enum class PinType : unsigned int
     PS____2,        // https://en.wikipedia.org/wiki/PS/2_port
     //TODO others from wiki article
 
-    // Other
     SATA,
     Micro__SATA,
     eSATA,
@@ -141,6 +140,14 @@ enum class PinType : unsigned int
     miniSD,
     microSD,
     SFF___8639,
+    // Mobile
+    Lightning,      // https://en.wikipedia.org/wiki/Lightning_(connector)
+    //https://en.wikipedia.org/wiki/Dock_connector#30-pin_dock_connector
+    Apple__30___pin,     
+    Samsung__30___pin,   
+    PDMI,           // https://en.wikipedia.org/wiki/PDMI
+
+    // Other
     // https://en.wikipedia.org/wiki/Registered_jack
     RJ11,
     RJ14,
