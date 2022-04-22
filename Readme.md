@@ -2,7 +2,7 @@
 
 Connectatron is a node editor for planning and analyzing networks of devices.
 
-Connectatron uses standards-compliant terminology to enable the user to specify a device's connectors and their capabilities. When using the node editor, physical compatibility between connectors is enforced, and protocols are compared across connections (WIP) to ensure electrical/software compatibility.
+Connectatron uses standards-compliant terminology to enable the user to specify a device's connectors and their capabilities. When using the node editor, physical compatibility between connectors is enforced, and protocols are compared across connections (WIP) to ensure electrical/software compatibility. At the time of writing, Connectatron handles about 100 connector types and 150 protocols.
 
 I built this in an effort to make a better way to do things like:
 - Check if I have enough 5Gbps USB 3 ports to support a certain VR setup.
@@ -11,7 +11,7 @@ I built this in an effort to make a better way to do things like:
 - See if new computer hardware I'm about to buy is compatible with existing hardware.
 - Document the connections between devices in my current setup.
 
-Defining your own devices (`/Devices`) is quick and easy through a simple JSON format, and making an editor program for device editing would be very straightforward. Hopefully, if this application gains traction, device manufacturers can supply a device configuration file that is readable by Connectatron. No more diving through manuals to find out if a USB port is USB 3.1 Gen 2 or USB 3.2 Gen 1!
+Defining your own devices (`/Devices`) is quick and easy through an editing mode for making new or editing existing devices. Hopefully, if this application gains traction, device manufacturers and/or reviewers can supply a device configuration file that is readable by Connectatron. No more diving through manuals to find out if a USB port is USB 3.1 Gen 2 or USB 3.2 Gen 1!
 
 See status and try it for yourself on [releases](https://github.com/connorjak/Connectatron/releases).
 
