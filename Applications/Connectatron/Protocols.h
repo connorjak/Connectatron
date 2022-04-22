@@ -244,6 +244,8 @@ enum class WireProtocol : unsigned int
     Bluetooth__5_2,
     Bluetooth__5_3,
     MAX_VERSION_Bluetooth,
+    //https://www.windowscentral.com/xbox-wireless
+    Xbox__Wireless,
 
     // Other
     Thunderbolt__2,

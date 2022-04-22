@@ -2,17 +2,28 @@
 	"Females": [
 		{
 			"Name": "USB-C",
-			"PinType": "USB-C"
+			"PinType": "USB-C",
+			"Protocols": [
+				"DC Power",
+				"USB 2.0"
+			]
 		},
 		{
-			"Name": "Headset Input",
+			"Name": "Expansion Port",
 			"PinType": "Proprietary"
+		},
+		{
+			"Name": "Stereo Audio",
+			"PinType": "Audio3.5mm"
 		}
 	],
 	"Males": [
 		{
 			"Name": "Wireless",
-			"PinType": "Wireless"
+			"PinType": "Wireless",
+			"Protocols": [
+				"Xbox Wireless"
+			]
 		}
 	],
 	"Name": "XBox One Wireless Controller"

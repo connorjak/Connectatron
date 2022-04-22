@@ -1417,24 +1417,35 @@
 "Females": [
 {
 "Name": "USB-C",
-"PinType": "USB-C"
+"PinType": "USB-C",
+"Protocols": [
+"DC Power",
+"USB 2.0"
+]
 },
 {
-"Name": "Headset Input",
+"Name": "Expansion Port",
 "PinType": "Proprietary"
+},
+{
+"Name": "Stereo Audio",
+"PinType": "Audio3.5mm"
 }
 ],
 "ID": 36589,
 "Males": [
 {
 "Name": "Wireless",
-"PinType": "Wireless"
+"PinType": "Wireless",
+"Protocols": [
+"Xbox Wireless"
+]
 }
 ],
 "Name": "XBox One Wireless Controller",
 "SavedPos": [
--472.0,
-1825.0
+-520.0,
+1732.0
 ]
 },
 {
@@ -1641,7 +1652,10 @@
 "Females": [
 {
 "Name": "Wireless",
-"PinType": "Wireless"
+"PinType": "Wireless",
+"Protocols": [
+"Xbox Wireless"
+]
 }
 ],
 "ID": 96270,
@@ -1660,7 +1674,7 @@
 "Name": "Xbox Wireless Adapter",
 "SavedPos": [
 -168.0,
-1836.0
+1724.0
 ]
 }
 ],

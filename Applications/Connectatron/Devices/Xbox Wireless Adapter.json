@@ -2,7 +2,10 @@
 	"Females": [
 		{
 			"Name": "Wireless",
-			"PinType": "Wireless"
+			"PinType": "Wireless",
+			"Protocols": [
+				"Xbox Wireless"
+			]
 		}
 	],
 	"Males": [
