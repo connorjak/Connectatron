@@ -1,0 +1,82 @@
+{
+	"Females": [
+		{
+			"Name": "LAN 1",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 2",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 3",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 4",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 5",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 6",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 7",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 8",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "Power",
+			"PinType": "DC Power Barrel"
+		}
+	],
+	"Males": [],
+	"Name": "Generic Gigabit Switch (8)"
+}

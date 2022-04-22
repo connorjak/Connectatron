@@ -321,8 +321,8 @@
 ],
 "Name": "USBA to Ethernet",
 "SavedPos": [
-440.0,
-12.0
+603.0,
+-36.0
 ]
 },
 {
@@ -359,8 +359,8 @@
 ],
 "Name": "DP",
 "SavedPos": [
-124.0,
-1216.0
+228.0,
+1404.0
 ]
 },
 {
@@ -378,8 +378,8 @@
 ],
 "Name": "Ethernet",
 "SavedPos": [
-450.0,
-1484.0
+-509.0,
+-416.0
 ]
 },
 {
@@ -397,8 +397,8 @@
 ],
 "Name": "Ethernet",
 "SavedPos": [
-82.0,
-16.0
+-381.0,
+-624.0
 ]
 },
 {
@@ -419,8 +419,8 @@
 "Males": [],
 "Name": "ASUS Zenscreen",
 "SavedPos": [
-1256.0,
--132.0
+1640.0,
+-356.0
 ]
 },
 {
@@ -496,8 +496,8 @@
 ],
 "Name": "USBC to DP",
 "SavedPos": [
-1596.0,
-28.0
+1640.0,
+-244.0
 ]
 },
 {
@@ -515,8 +515,8 @@
 ],
 "Name": "HDMI",
 "SavedPos": [
-1493.0,
-192.0
+1667.0,
+-160.0
 ]
 },
 {
@@ -1010,26 +1010,6 @@
 {
 "Females": [
 {
-"Name": "RJ45",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-}
-],
-"ID": 37865,
-"Males": [],
-"Name": "Ethernet LAN",
-"SavedPos": [
-632.0,
-1532.0
-]
-},
-{
-"Females": [
-{
 "Name": "AC 100-240V <3.6A C14",
 "PinType": "C13/C14",
 "Protocols": [
@@ -1162,14 +1142,42 @@
 "Protocols": [
 "DC Power"
 ]
+},
+{
+"Name": "Intel AX200 Wifi",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac",
+"Wi-Fi 6 802.11ax",
+"Wi-Fi 6E 802.11ax"
+]
+},
+{
+"Name": "Intel AX200 Bluetooth",
+"PinType": "Wireless",
+"Protocols": [
+"Bluetooth 3.0",
+"Bluetooth HS",
+"Bluetooth 4.0",
+"Bluetooth 4 LowEnergy",
+"Bluetooth 4.1",
+"Bluetooth 4.2",
+"Bluetooth 5.0",
+"Bluetooth 5.1",
+"Bluetooth 5.2"
+]
 }
 ],
 "ID": 41532,
 "Males": [],
 "Name": "Razer Blade 15\" Advanced (2019)",
 "SavedPos": [
-1096.0,
-31.0
+1224.0,
+-216.0
 ]
 },
 {
@@ -1394,8 +1402,8 @@
 ],
 "Name": "HP Reverb G2 Cabling",
 "SavedPos": [
--388.0,
-1484.0
+-568.0,
+1356.0
 ]
 },
 {
@@ -1409,8 +1417,8 @@
 "Males": [],
 "Name": "HP Reverb G2",
 "SavedPos": [
--88.0,
-1628.0
+-268.0,
+1500.0
 ]
 },
 {
@@ -1544,8 +1552,8 @@
 "Males": [],
 "Name": "Lenovo ThinkVision P27q-20",
 "SavedPos": [
-248.0,
-1214.0
+440.0,
+1406.0
 ]
 },
 {
@@ -1582,8 +1590,8 @@
 ],
 "Name": "USB-A to USB-B SuperSpeed",
 "SavedPos": [
--102.0,
-1296.0
+2.0,
+1484.0
 ]
 },
 {
@@ -1675,6 +1683,411 @@
 "SavedPos": [
 -168.0,
 1724.0
+]
+},
+{
+"Females": [
+{
+"Name": "LAN",
+"PinType": "RJ45"
+}
+],
+"ID": 19520,
+"Males": [
+{
+"Name": "1",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "2",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "3",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "4",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "5",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "6",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "7",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "8",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+}
+],
+"Name": "Generic WiFi 5 Access Point (8)",
+"SavedPos": [
+88.0,
+-284.0
+]
+},
+{
+"Females": [],
+"ID": 6652,
+"Males": [
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+},
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+}
+],
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-208.0
+]
+},
+{
+"Females": [],
+"ID": 96934,
+"Males": [
+{
+"Name": "Barrel",
+"PinType": "DC Power Barrel",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+},
+{
+"Name": "Wall Wart",
+"PinType": "NEMA 5-15",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+}
+],
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-878.0,
+208.0
+]
+},
+{
+"Females": [
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+},
+{
+"Name": "NEMA 5-15",
+"PinType": "NEMA 5-15"
+}
+],
+"ID": 46801,
+"Males": [],
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+-552.0,
+272.0
+]
+},
+{
+"Females": [
+{
+"Name": "WAN",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 1",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 2",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 3",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 4",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "Power",
+"PinType": "DC Power Barrel"
+}
+],
+"ID": 61966,
+"Males": [],
+"Name": "Generic Gigabit Router (4)",
+"SavedPos": [
+-280.0,
+-36.0
+]
+},
+{
+"Females": [],
+"ID": 67749,
+"Males": [
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+},
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+}
+],
+"Name": "Ethernet",
+"SavedPos": [
+-685.0,
+-128.0
+]
+},
+{
+"Females": [
+{
+"Name": "RJ45",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+}
+],
+"ID": 97017,
+"Males": [],
+"Name": "Ethernet Gigabit WAN",
+"SavedPos": [
+-616.0,
+12.0
+]
+},
+{
+"Females": [
+{
+"Name": "LAN 1",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 2",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 3",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 4",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 5",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 6",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 7",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "LAN 8",
+"PinType": "RJ45",
+"Protocols": [
+"Ethernet 10BASE-T",
+"Ethernet 100BASE-T",
+"Ethernet 1000BASE-T"
+]
+},
+{
+"Name": "Power",
+"PinType": "DC Power Barrel"
+}
+],
+"ID": 99332,
+"Males": [],
+"Name": "Generic Gigabit Switch (8)",
+"SavedPos": [
+-200.0,
+-440.0
+]
+},
+{
+"Females": [],
+"ID": 45925,
+"Males": [
+{
+"Name": "Barrel",
+"PinType": "DC Power Barrel",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+},
+{
+"Name": "Wall Wart",
+"PinType": "NEMA 5-15",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0"
+]
+}
+],
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-878.0,
+92.0
+]
+},
+{
+"Females": [],
+"ID": 22687,
+"Males": [
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+},
+{
+"Name": "RJ45",
+"PinType": "RJ45"
+}
+],
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-516.0
 ]
 }
 ],
@@ -1828,12 +2241,6 @@
 93685,
 1,
 16
-],
-[
-34806,
-37865,
-1,
-0
 ],
 [
 24948,
@@ -1996,6 +2403,84 @@
 49907,
 0,
 0
+],
+[
+6652,
+19520,
+0,
+0
+],
+[
+96934,
+46801,
+1,
+0
+],
+[
+6652,
+61966,
+1,
+1
+],
+[
+96934,
+61966,
+0,
+5
+],
+[
+67749,
+61966,
+0,
+0
+],
+[
+67749,
+97017,
+1,
+0
+],
+[
+19520,
+41532,
+0,
+8
+],
+[
+45925,
+99332,
+0,
+8
+],
+[
+45925,
+46801,
+1,
+1
+],
+[
+22687,
+61966,
+0,
+2
+],
+[
+22687,
+99332,
+1,
+0
+],
+[
+34806,
+99332,
+1,
+1
+],
+[
+54554,
+99332,
+1,
+2
 ]
 ]
 }
