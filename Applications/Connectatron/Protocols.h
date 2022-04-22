@@ -138,7 +138,7 @@ enum class WireProtocol : unsigned int
     //https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
     EDID,
 
-    // High-Bandwidth
+    // Expansion Slot
     PCIe__1_0__x1,
     PCIe__1_0__x2,
     PCIe__1_0__x4,
@@ -236,7 +236,7 @@ enum class WireProtocol : unsigned int
     Bluetooth__3_0,
     Bluetooth__HS,
     Bluetooth__4_0,
-    Bluetooth__4__LowEnergy,
+    Bluetooth__4__Low__Energy,
     Bluetooth__4_1,
     Bluetooth__4_2,
     Bluetooth__5_0,
@@ -248,6 +248,8 @@ enum class WireProtocol : unsigned int
     Xbox__Wireless,
 
     // Other
+    //https://en.wikipedia.org/wiki/Thunderbolt_(interface)
+    Thunderbolt__1,
     Thunderbolt__2,
     Thunderbolt__3,
     Thunderbolt__4,
