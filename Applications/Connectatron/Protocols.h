@@ -221,8 +221,12 @@ enum class WireProtocol : unsigned int
     // Ethernet
     //https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
     //https://en.wikipedia.org/wiki/Fast_Ethernet#100BASE-T1
+    //https://en.wikipedia.org/wiki/10BASE5
+    //https://en.wikipedia.org/wiki/Category:Ethernet_standards
     MIN_VERSION_Ethernet,
-    Ethernet__10BASE___T, //10 Mbps
+    Ethernet__10BASE5, //10 Mbps, coax instead of twisted pair
+    Ethernet__10BASE2, //10 Mbps, thinner coax
+    Ethernet__10BASE___T, //10 Mbps, twisted pair
     //Ethernet__10BASE__T1S, //10 Mbps (short distance ~15 meters)
     //Ethernet__10BASE__T1L, //10 Mbps (long distance ~1000 meters)
     //NOTE: not getting into cable details at the moment
