@@ -132,9 +132,13 @@ enum class PinType : unsigned int
     PS____2,        // https://en.wikipedia.org/wiki/PS/2_port
     //TODO others from wiki article
 
+    // Storage Interface
+    //https://en.wikipedia.org/wiki/Serial_ATA
     SATA,
-    Micro__SATA,
+    Micro___SATA,
+    Mini___SATA, 
     eSATA,
+    eSATAp,         //https://en.wikipedia.org/wiki/ESATAp
     // https://en.wikipedia.org/wiki/SD_card
     SD,
     miniSD,
@@ -250,7 +254,7 @@ const map<PinType, string> connectorIconFiles
 
     // Other 
     {PinType::SATA,                          "data/ic_sata.jpg"},
-    {PinType::Micro__SATA,                   ""},
+    {PinType::Micro___SATA,                  ""},
     {PinType::eSATA,                         "data/ic_esata.jpg"},
     {PinType::SD,                            ""},
     {PinType::miniSD,                        ""},
@@ -297,6 +301,9 @@ const map<PinType, string> connectorIconFiles
 //    return ret;
 //}
 
+// For a certain male connector, what female connectors besides its female
+// same-name counterpart does the connector have physical (and maybe 
+// electrical) compatibility with?
 static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
 {
     set<PinType> ret;
@@ -325,9 +332,11 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
         // USB                               
     case PinType::USB___A:
         ret.insert(PinType::USB___A__SuperSpeed);
+        ret.insert(PinType::eSATAp);
         break;
     case PinType::USB___A__SuperSpeed:
         ret.insert(PinType::USB___A);
+        ret.insert(PinType::eSATAp);
         break;
         // TODO check if USB-B has the same backwards compatibility
 
