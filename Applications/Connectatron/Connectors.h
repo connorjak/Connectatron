@@ -18,6 +18,11 @@ enum class PinType : unsigned int
 {
     Proprietary, // For connectors that don't match any listed options
     Wireless,
+
+    // Single-Wire
+    Pin__Header,        //https://en.wikipedia.org/wiki/Pin_header
+    Screw_Terminal,     //https://en.wikipedia.org/wiki/Screw_terminal
+
     // DC Power
     // https://en.wikipedia.org/wiki/DC_connector
     // https://en.wikipedia.org/wiki/Coaxial_power_connector
@@ -191,12 +196,41 @@ enum class PinType : unsigned int
     Samsung__30___pin,   
     PDMI,           // https://en.wikipedia.org/wiki/PDMI
 
+    // D-subminiature
+    // https://en.wikipedia.org/wiki/D-subminiature
+    // Normal Density
+    DA___15,
+    DB___25,    // AKA IEEE 1284 Type A. Mandated by RS-232D.
+    DC___37,
+    DD___50,
+    DE___9,
+    // High Density
+    DA___26,
+    DB___44,
+    DC___62,
+    DD___78,
+    DE___15,
+    DF___104,
+    // Double Density
+    DA___31,
+    DB___52,
+    DC___79,
+    DD___100,
+    DE___19,
     // Other
+    DB13W3,     //https://en.wikipedia.org/wiki/DB13W3
+    // https://en.wikipedia.org/wiki/IEEE_1284
+    Centronics, //AKA "Micro Ribbon", "IEEE 1284 Type B". 36-pin.
+    Mini___Centronics, //AKA "MDR36", "HPCN36", "IEEE 1284 Type C". 36-pin.
+
+    // Other Connectors
     // https://en.wikipedia.org/wiki/Registered_jack
     RJ11,
     RJ14,
     RJ25,
     RJ45, //AKA 8P8C
+    
+
 };
 
 #define LONGEST_CONNECTOR_STR "USB Micro-B SuperSpeed"

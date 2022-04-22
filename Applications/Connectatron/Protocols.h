@@ -271,12 +271,17 @@ enum class WireProtocol : unsigned int
     //https://www.windowscentral.com/xbox-wireless
     Xbox__Wireless,
 
-    // Other
+    // Other Protocols
     //https://en.wikipedia.org/wiki/Thunderbolt_(interface)
     Thunderbolt__1,
     Thunderbolt__2,
     Thunderbolt__3,
     Thunderbolt__4,
+    RS___232,
+    RS___422,
+    RS___485,
+    //https://en.wikipedia.org/wiki/IEEE_1284
+    IEEE__1284, //AKA Centronics Port
 };
 
 #define LONGEST_PROTOCOL_STR "FireWire S800T 1394c"
