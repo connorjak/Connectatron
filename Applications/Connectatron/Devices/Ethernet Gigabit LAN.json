@@ -1,0 +1,15 @@
+{
+	"Females": [
+		{
+			"Name": "RJ45",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "Ethernet Gigabit LAN"
+}

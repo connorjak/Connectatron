@@ -1,0 +1,55 @@
+{
+	"Females": [
+		{
+			"Name": "WAN",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 1",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 2",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 3",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "LAN 4",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		},
+		{
+			"Name": "Power",
+			"PinType": "DC Power Barrel"
+		}
+	],
+	"Males": [],
+	"Name": "Generic Gigabit Router (4)"
+}
