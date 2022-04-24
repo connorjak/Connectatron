@@ -478,11 +478,15 @@ struct Connectatron:
             return false;
 
         if (a->IsFemale)
+        {
             if (!IsCompatiblePinType(b->Type, a->Type))
                 return false;
+        }
         else
-            if(!IsCompatiblePinType(b->Type, a->Type))
+        {
+            if (!IsCompatiblePinType(a->Type, b->Type))
                 return false;
+        }
 
         return true;
     }
