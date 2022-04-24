@@ -16,6 +16,7 @@ using std::map;
 // ____ : /
 enum class PinType : unsigned int
 {
+    UNRECOGNIZED,
     Proprietary, // For connectors that don't match any listed options
     Wireless,
 

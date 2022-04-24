@@ -50,6 +50,7 @@ using std::set;
 // ____ : /
 enum class WireProtocol : unsigned int
 {
+    UNRECOGNIZED,
     Proprietary,
 
     // Power

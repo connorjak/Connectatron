@@ -836,7 +836,7 @@ struct Connectatron:
             EnumName_Symbol2Underscore(pintype_string);
 
             auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value();
+            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
             if (female.find("Protocols") != female.end())
@@ -848,7 +848,7 @@ struct Connectatron:
                     EnumName_Symbol2Underscore(protocol_string);
 
                     auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                    protocols.insert(parsed_protocol.value());
+                    protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
                     //TODO handle "sets" of protocols, like the backcompat variables?
                 }
 
@@ -878,7 +878,7 @@ struct Connectatron:
             EnumName_Symbol2Underscore(pintype_string);
 
             auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value();
+            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
             if (male.find("Protocols") != male.end())
@@ -890,7 +890,7 @@ struct Connectatron:
                     EnumName_Symbol2Underscore(protocol_string);
 
                     auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                    protocols.insert(parsed_protocol.value());
+                    protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
                     //TODO handle "sets" of protocols, like the backcompat variables?
                 }
 
@@ -2282,6 +2282,9 @@ struct Connectatron:
                     {
                         for (const auto& possible_connect : magic_enum::enum_values<PinType>())
                         {
+                            if (possible_connect == PinType::UNRECOGNIZED)
+                                continue;
+
                             auto connect_string = string(magic_enum::enum_name(possible_connect));
                             EnumName_Underscore2Symbol(connect_string);
                             //// Remove metadata enum values
@@ -2321,7 +2324,11 @@ struct Connectatron:
                     ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 15), true);
                     for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                     {
+                        if (possible_proto == WireProtocol::UNRECOGNIZED)
+                            continue;
+                     
                         auto proto_string = NameFromProtocol(possible_proto);
+                        
                         // Remove metadata enum values
                         if (proto_string.find(".VERSION.") != string::npos)
                             continue;
