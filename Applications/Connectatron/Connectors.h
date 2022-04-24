@@ -5,9 +5,11 @@
 #include <set>
 #include <map>
 #include <string>
+#include <vector>
 
 using std::set;
 using std::map;
+using std::vector;
 
 // Variable name to string parsing:
 // _    : .
@@ -571,4 +573,87 @@ static bool IsCompatiblePinType(PinType male, PinType female)
         return true;
     else
         return false;
+}
+
+///////////////////////////////
+/// CATEGORIES
+
+struct ConnectorCategoryInfo : CategoryInfo
+{
+    vector<PinType> connectors;
+};
+
+static vector<PinType> GetUncategorizedConnectors()
+{
+    vector<PinType> ret;
+
+    bool in_category = false;
+    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
+    {
+        if (possible_connect == PinType::UNRECOGNIZED)
+            continue;
+
+        auto connect_string = NameFromPinType(possible_connect);
+        EnumName_Underscore2Symbol(connect_string);
+        auto cat_strpos = connect_string.find(".CATEGORY.");
+        if (cat_strpos != string::npos)
+        {
+            if (!in_category)
+            {
+                in_category = true;
+            }
+            else
+            {
+                in_category = false;
+            }
+        }
+        else
+        {
+            if (!in_category)
+                ret.push_back(possible_connect);
+        }
+    }
+
+    return ret;
+}
+
+static vector<ConnectorCategoryInfo> GetConnectorCategories()
+{
+    vector<ConnectorCategoryInfo> ret;
+
+    bool in_category = false;
+    ConnectorCategoryInfo current_category;
+    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
+    {
+        if (possible_connect == PinType::UNRECOGNIZED)
+            continue;
+
+        auto connect_string = NameFromPinType(possible_connect);
+        EnumName_Underscore2Symbol(connect_string);
+        auto cat_strpos = connect_string.find(".CATEGORY.");
+        if (cat_strpos != string::npos)
+        {
+            if (!in_category)
+            {
+                auto name_strpos = cat_strpos + string(".CATEGORY.").length();
+                current_category.name = connect_string.substr(name_strpos);
+                current_category.index_of_first = magic_enum::enum_index<PinType>(possible_connect).value() + 1;
+                in_category = true;
+            }
+            else
+            {
+                current_category.index_after_last = magic_enum::enum_index<PinType>(possible_connect).value();
+                in_category = false;
+                ret.push_back(current_category);
+                current_category.connectors.clear();
+            }
+        }
+        else
+        {
+            if (in_category)
+                current_category.connectors.push_back(possible_connect);
+        }
+    }
+
+    return ret;
 }

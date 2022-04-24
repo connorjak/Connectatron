@@ -33,3 +33,10 @@ static void EnumName_Symbol2Underscore(std::string& symboled)
     ReplaceAll(symboled, " ", "__");
     ReplaceAll(symboled, ".", "_");
 }
+
+struct CategoryInfo
+{
+    string name;
+    size_t index_of_first;
+    size_t index_after_last;
+};

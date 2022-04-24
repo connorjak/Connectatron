@@ -118,6 +118,9 @@ static ed::EditorContext* m_Editor = nullptr;
 
 static string CurrentProjectName = "my_project.con";
 
+static vector<ConnectorCategoryInfo> ConnectorCategories;
+static vector<PinType> UncategorizedConnectors;
+
 constexpr double HSV_HueFromStringOffset = 90;
 constexpr double HSV_ValFromStringOffset = 0;
 
@@ -542,6 +545,9 @@ struct Connectatron:
 
     void OnStart() override
     {
+        ConnectorCategories = GetConnectorCategories();
+        UncategorizedConnectors = GetUncategorizedConnectors();
+
         ed::Config config;
 
         config.SettingsFile = "Blueprints.json";
@@ -1387,6 +1393,7 @@ struct Connectatron:
 
         static float leftPaneWidth  = 400.0f;
         static float rightPaneWidth = 800.0f;
+
         Splitter(true, 4.0f, &leftPaneWidth, &rightPaneWidth, 50.0f, 50.0f);
 
         ShowLeftPane(leftPaneWidth - 4.0f);
@@ -1999,33 +2006,48 @@ struct Connectatron:
                     //ImGui::BeginChild("##Connector Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     //https://github.com/ocornut/imgui/issues/1658#issue-302026543
                     
-                    if (ImGui::BeginCombo("##Connector Editing", current_connect_string.c_str()))
-                    {
-                        for (const auto& possible_connect : magic_enum::enum_values<PinType>())
-                        {
-                            if (possible_connect == PinType::UNRECOGNIZED)
-                                continue;
+                    string editing_title = current_connect_string + "##Connector Editing";
 
+                    if (ImGui::BeginMenu(editing_title.c_str()))
+                    {
+                        for (const auto& possible_connect : UncategorizedConnectors)
+                        {
                             auto connect_string = NameFromPinType(possible_connect);
                             EnumName_Underscore2Symbol(connect_string);
-                            //// Remove metadata enum values
-                            if (connect_string.find(".CATEGORY.") != string::npos)
-                                continue;
-                            if (connect_string.find(".VERSION.") != string::npos)
-                                continue;
 
                             DrawPinTypeIcon(possible_connect, false, 255);
                             ImGui::SameLine();
 
                             bool is_selected = possible_connect == pin->Type;
-                            if (ImGui::Selectable(connect_string.c_str(), is_selected))
+                            if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                                 pin->Type = possible_connect;
                             if (is_selected)
                                 ImGui::SetItemDefaultFocus();
                         }
-                        ImGui::EndCombo();
+
+                        for (const auto& category : ConnectorCategories)
+                        {
+                            if (ImGui::BeginMenu(category.name.c_str()))
+                            {
+                                for (const auto& possible_connect : category.connectors)
+                                {
+                                    auto connect_string = NameFromPinType(possible_connect);
+                                    EnumName_Underscore2Symbol(connect_string);
+
+                                    DrawPinTypeIcon(possible_connect, false, 255);
+                                    ImGui::SameLine();
+
+                                    bool is_selected = possible_connect == pin->Type;
+                                    if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                                        pin->Type = possible_connect;
+                                    if (is_selected)
+                                        ImGui::SetItemDefaultFocus();
+                                }
+                                ImGui::EndMenu();
+                            }
+                        }
+                        ImGui::EndMenu();
                     }
-                    //ImGui::EndChild();
                 }
                 else // Not editing
                 {
