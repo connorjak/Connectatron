@@ -2006,7 +2006,7 @@ struct Connectatron:
                             if (possible_connect == PinType::UNRECOGNIZED)
                                 continue;
 
-                            auto connect_string = string(magic_enum::enum_name(possible_connect));
+                            auto connect_string = NameFromPinType(possible_connect);
                             EnumName_Underscore2Symbol(connect_string);
                             //// Remove metadata enum values
                             if (connect_string.find(".CATEGORY.") != string::npos)
