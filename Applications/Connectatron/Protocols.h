@@ -63,18 +63,23 @@ enum class WireProtocol : unsigned int
     AnalogAudio, //Placeholder until I get a proper name for this
 
     // Single-Wire
+    START_CATEGORY_Single___Wire,
     //https://en.wikipedia.org/wiki/System_Management_Bus
     UART,
     SPI,
     //https://en.wikipedia.org/wiki/I%C2%B2C
     I2C,
+    END_CATEGORY_Single___Wire,
 
     // Audio
+    START_CATEGORY_Audio,
     S____PIDF, //https://en.wikipedia.org/wiki/S/PDIF
     ADAT__Lightpipe, //https://en.wikipedia.org/wiki/ADAT_Lightpipe
     AES3, //https://en.wikipedia.org/wiki/AES3
+    END_CATEGORY_Audio,
 
     // USB
+    START_CATEGORY_USB,
     MIN_VERSION_USB,
     USB__1_0, //Low-Speed: 1.5 Mbps
     USB__1_1, //Full-Speed: 12 Mbps
@@ -85,8 +90,10 @@ enum class WireProtocol : unsigned int
     USB4__20g, //USB4 20 Gbps
     USB4__40g, //USB4 40 Gbps
     MAX_VERSION_USB,
+    END_CATEGORY_USB,
 
     // FireWire
+    START_CATEGORY_FireWire,
     //https://en.wikipedia.org/wiki/IEEE_1394
     MIN_VERSION_FireWire,
     FireWire__400__1394, //IEEE 1394-1995
@@ -96,8 +103,10 @@ enum class WireProtocol : unsigned int
     FireWire__S1600, //IEEE 1394-2008
     FireWire__S3200, //IEEE 1394-2008
     MAX_VERSION_FireWire,
+    END_CATEGORY_FireWire,
 
     // Display
+    START_CATEGORY_Display,
     // https://en.wikipedia.org/wiki/DisplayPort
     MIN_VERSION_DisplayPort,
     DisplayPort__1_0,
@@ -135,16 +144,20 @@ enum class WireProtocol : unsigned int
     RGB__Video,         //https://en.wikipedia.org/wiki/RGB_color_model#Video_electronics
     S___Video,          //https://en.wikipedia.org/wiki/S-Video
     Component__Video,   //https://en.wikipedia.org/wiki/Component_video
+    END_CATEGORY_Display,
 
     // Display Metadata (may be a part of another display cable protocol)
+    START_CATEGORY_Display__Metadata,
     //https://en.wikipedia.org/wiki/Display_Data_Channel
     DDC1,
     DDC2B,
     E___DDC,
     //https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
     EDID,
+    END_CATEGORY_Display__Metadata,
 
     // Expansion Slot
+    START_CATEGORY_Expansion__Slot,
     //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
     ISA,
     ISA__DMA, // Direct Memory Access
@@ -194,8 +207,10 @@ enum class WireProtocol : unsigned int
     //TODO
     // https://en.wikipedia.org/wiki/ExpressCard
     //TODO
+    END_CATEGORY_Expansion__Slot,
 
     // Storage Interface
+    START_CATEGORY_Storage__Interface,
     //https://en.wikipedia.org/wiki/Parallel_ATA
     //https://en.wikipedia.org/wiki/Advanced_Host_Controller_Interface
     //https://en.wikipedia.org/wiki/Serial_ATA
@@ -223,8 +238,10 @@ enum class WireProtocol : unsigned int
     SD__UHS___II,
     SD__UHS___III,
     SD__Express,
+    END_CATEGORY_Storage__Interface,
 
     // Ethernet
+    START_CATEGORY_Ethernet,
     //https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
     //https://en.wikipedia.org/wiki/Fast_Ethernet#100BASE-T1
     //https://en.wikipedia.org/wiki/10BASE5
@@ -244,8 +261,10 @@ enum class WireProtocol : unsigned int
     Ethernet__25GBASE___T, //25 Gbps
     Ethernet__40GBASE___T, //40 Gbps
     MAX_VERSION_Ethernet,
+    END_CATEGORY_Ethernet,
 
     // Wireless
+    START_CATEGORY_Wireless,
     //https://en.wikipedia.org/wiki/Wi-Fi
     MIN_VERSION_Wi___Fi,
     Wi___Fi__0__802_11,     //1997
@@ -280,6 +299,7 @@ enum class WireProtocol : unsigned int
     MAX_VERSION_Bluetooth,
     //https://www.windowscentral.com/xbox-wireless
     Xbox__Wireless,
+    END_CATEGORY_Wireless,
 
     // Other Protocols
     //https://en.wikipedia.org/wiki/Thunderbolt_(interface)
@@ -340,3 +360,89 @@ static string NameFromProtocol(WireProtocol proto)
     return ret;
 }
 
+///////////////////////////////
+/// CATEGORIES
+
+struct ProtocolCategoryInfo : CategoryInfo
+{
+    vector<WireProtocol> protocols;
+};
+
+static vector<WireProtocol> GetUncategorizedProtocols()
+{
+    vector<WireProtocol> ret;
+
+    bool in_category = false;
+    for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
+    {
+        if (possible_proto == WireProtocol::UNRECOGNIZED)
+            continue;
+
+        auto proto_string = NameFromProtocol(possible_proto);
+        EnumName_Underscore2Symbol(proto_string);
+        auto cat_strpos = proto_string.find(".CATEGORY.");
+        if (cat_strpos != string::npos)
+        {
+            if (!in_category)
+            {
+                in_category = true;
+            }
+            else
+            {
+                in_category = false;
+            }
+        }
+        else
+        {
+            if (!in_category)
+                ret.push_back(possible_proto);
+        }
+    }
+
+    return ret;
+}
+
+static vector<ProtocolCategoryInfo> GetProtocolCategories()
+{
+    vector<ProtocolCategoryInfo> ret;
+
+    bool in_category = false;
+    ProtocolCategoryInfo current_category;
+    for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
+    {
+        if (possible_proto == WireProtocol::UNRECOGNIZED)
+            continue;
+
+        auto proto_string = NameFromProtocol(possible_proto);
+        EnumName_Underscore2Symbol(proto_string);
+
+        if (proto_string.find(".VERSION.") != string::npos)
+            continue;
+
+        auto cat_strpos = proto_string.find(".CATEGORY.");
+        if (cat_strpos != string::npos)
+        {
+            if (!in_category)
+            {
+                auto name_strpos = cat_strpos + string(".CATEGORY.").length();
+                current_category.name = proto_string.substr(name_strpos);
+                current_category.index_of_first = magic_enum::enum_index<WireProtocol>(possible_proto).value() + 1;
+                in_category = true;
+            }
+            else
+            {
+                current_category.index_after_last = magic_enum::enum_index<WireProtocol>(possible_proto).value();
+                in_category = false;
+                ret.push_back(current_category);
+                current_category.protocols.clear();
+            }
+        }
+        else
+        {
+            if (in_category)
+                current_category.protocols.push_back(possible_proto);
+        }
+    }
+
+    return ret;
+}

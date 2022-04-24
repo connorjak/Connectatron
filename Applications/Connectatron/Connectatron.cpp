@@ -120,6 +120,8 @@ static string CurrentProjectName = "my_project.con";
 
 static vector<ConnectorCategoryInfo> ConnectorCategories;
 static vector<PinType> UncategorizedConnectors;
+static vector<ProtocolCategoryInfo> ProtocolCategories;
+static vector<WireProtocol> UncategorizedProtocols;
 
 constexpr double HSV_HueFromStringOffset = 90;
 constexpr double HSV_ValFromStringOffset = 0;
@@ -547,6 +549,8 @@ struct Connectatron:
     {
         ConnectorCategories = GetConnectorCategories();
         UncategorizedConnectors = GetUncategorizedConnectors();
+        ProtocolCategories = GetProtocolCategories();
+        UncategorizedProtocols = GetUncategorizedProtocols();
 
         ed::Config config;
 
@@ -2071,7 +2075,7 @@ struct Connectatron:
 
                     if (ImGui::BeginMenu(editing_title.c_str()))
                     {
-                        for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
+                        for (const auto& possible_proto : UncategorizedProtocols)
                         {
                             auto proto_string = NameFromProtocol(possible_proto);
                             EnumName_Underscore2Symbol(proto_string);
@@ -2092,29 +2096,33 @@ struct Connectatron:
                             }
                         }
 
-                        //TODO protocol categories
-                        //for (const auto& category : ConnectorCategories)
-                        //{
-                        //    if (ImGui::BeginMenu(category.name.c_str()))
-                        //    {
-                        //        for (const auto& possible_connect : category.connectors)
-                        //        {
-                        //            auto connect_string = NameFromPinType(possible_connect);
-                        //            EnumName_Underscore2Symbol(connect_string);
+                        for (const auto& category : ProtocolCategories)
+                        {
+                            if (ImGui::BeginMenu(category.name.c_str()))
+                            {
+                                for (const auto& possible_proto : category.protocols)
+                                {
+                                    auto proto_string = NameFromProtocol(possible_proto);
+                                    EnumName_Underscore2Symbol(proto_string);
 
-                        //            DrawPinTypeIcon(possible_connect, false, 255);
-                        //            ImGui::SameLine();
+                                    //TODO might use icons for protocols later?
+                                    /*DrawPinTypeIcon(possible_proto, false, 255);
+                                    ImGui::SameLine();*/
 
-                        //            bool is_selected = possible_connect == pin->Type;
-                        //            //TODO also try Selectable?
-                        //            if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
-                        //                pin->Type = possible_connect;
-                        //            if (is_selected)
-                        //                ImGui::SetItemDefaultFocus();
-                        //        }
-                        //        ImGui::EndMenu();
-                        //    }
-                        //}
+                                    bool val = pin->Protocols.find(possible_proto) != pin->Protocols.end();
+                                    auto pastval = val;
+                                    ImGui::Checkbox(proto_string.c_str(), &val);
+                                    if (val != pastval)
+                                    {
+                                        if (val)
+                                            pin->Protocols.insert(possible_proto);
+                                        else
+                                            pin->Protocols.erase(possible_proto);
+                                    }
+                                }
+                                ImGui::EndMenu();
+                            }
+                        }
                         ImGui::EndMenu();
                     }
                 }
