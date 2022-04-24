@@ -1917,7 +1917,7 @@ struct Connectatron:
                 ImGui::Text("Male Connectors: %d", (int)node->Males.size());
 #ifdef _DEBUG
                 ImGui::Separator();
-                ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Tree ? "Tree" : "Comment"));
+                ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Blueprint_Editing ? "Blueprint_Editing" : "Comment"));
                 ImGui::Text("ID: %p", node->ID.AsPointer());
 #endif
             }
