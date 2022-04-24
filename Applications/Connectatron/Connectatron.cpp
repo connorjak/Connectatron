@@ -1906,9 +1906,9 @@ struct Connectatron:
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
                         if (/*standardDialogMode*/true)
-                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name, 1, nullptr, flags);
+                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name + ".json", 1, nullptr, flags);
                         else
-                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name, 1, nullptr, flags);
+                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name + ".json", 1, nullptr, flags);
                     }
 
                     // See below the EndPopup() for the file dialog GUI
