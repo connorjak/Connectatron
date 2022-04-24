@@ -160,6 +160,12 @@ enum class PinType : unsigned int
     PCIe__x8,
     PCIe__x16,
     Mini__PCIe,
+    // https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module
+    MXM___I,
+    MXM___II,
+    MXM___III,
+    MXM___A,
+    MXM___B,
     // https://en.wikipedia.org/wiki/PC_Card
     // AKA PCMCIA
     PC__Card__Type__I, 
@@ -488,6 +494,18 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     case PinType::PCIe__x8:
         ret.insert(PinType::PCIe__x16);
         break;
+
+    case PinType::MXM___I:
+        ret.insert(PinType::MXM___II);
+        ret.insert(PinType::MXM___III);
+        break;
+    case PinType::MXM___II:
+        ret.insert(PinType::MXM___III);
+        break;
+    case PinType::MXM___A:
+        ret.insert(PinType::MXM___B);
+        break;
+
 
         // Audio                             
 
