@@ -367,6 +367,17 @@ const map<PinType, string> connectorIconFiles
     {PinType::RJ45,                          "data/ic_rj45.jpg"},
 };
 
+static bool GetConnectorMultiplePerPin(PinType ptype)
+{
+    switch (ptype)
+    {
+    case PinType::Wireless:
+        return true;
+    default:
+        return false;
+    }
+}
+
 //TODO reinstate and update this if necessary.
 //static set<PinType> GetCompatibleMalePinTypes(PinType femaletype)
 //{
