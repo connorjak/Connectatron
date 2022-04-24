@@ -1395,6 +1395,10 @@ struct Connectatron:
 
             util::BlueprintNodeBuilder builder(m_HeaderBackground, GetTextureWidth(m_HeaderBackground), GetTextureHeight(m_HeaderBackground));
 
+            //////////////////////////////////////////////////////
+            /// DRAW NODES
+            ////////////////////////////////////////////////
+
             // Draw all Blueprint and Simple nodes
             for (auto& node : m_Nodes)
             {
@@ -1592,8 +1596,6 @@ struct Connectatron:
                 builder.End();
             }
 
-            
-
             // Draw all comment nodes
             for (auto& node : m_Nodes)
             {
@@ -1656,31 +1658,22 @@ struct Connectatron:
             }
 
 
-
-
-
-
-
-
-
-
+            //////////////////////////////////////////////////////
+            /// DRAW LINKS
+            ////////////////////////////////////////////////
 
             // Draw all links
             for (auto& link : m_Links)
                 ed::Link(link.ID, link.StartPinID, link.EndPinID, link.Color, 2.0f);
 
 
-
-
-
-
-
-
-
-
-            // Single-entrance for single Create New Node popup
+            // Single-entrance flag for single Create New Node popup
+            // (Deactivates
             if (!createNewNode)
             {
+                //////////////////////////////////////////////////////
+                /// PIN-DRAGGING
+                ////////////////////////////////////////////////
                 if (ed::BeginCreate(ImColor(255, 255, 255), 2.0f))
                 {
                     auto showLabel = [](const char* label, ImColor color)
@@ -1774,6 +1767,9 @@ struct Connectatron:
 
                 ed::EndCreate();
 
+                //////////////////////////////////////////////////////
+                /// HANDLE DELETIONS
+                ////////////////////////////////////////////////
                 // Handle deletions (including bulk-deletions) of nodes and links
                 if (ed::BeginDelete())
                 {
@@ -1843,8 +1839,11 @@ struct Connectatron:
             }
 
             ImGui::SetCursorScreenPos(cursorTopLeft);
-        }
+        } // end "Node Editor" UI area
 
+        //////////////////////////////////////////////////////
+        /// TRIGGER MOUSE-CLICK POPUP CONTEXT MENUS
+        ////////////////////////////////////////////////
     # if 1
         auto openPopupPosition = ImGui::GetMousePos();
         ed::Suspend();
@@ -1860,6 +1859,10 @@ struct Connectatron:
             newNodeLinkPin = nullptr;
         }
         ed::Resume();
+
+        //////////////////////////////////////////////////////
+        /// DEVICE INFO POPUP
+        ////////////////////////////////////////////////
 
         static shared_ptr<Node> node_to_save;
 
@@ -1922,6 +1925,9 @@ struct Connectatron:
             ImGui::EndPopup();
         }
 
+        //////////////////////////////////////////////////////
+        /// SAVE-DEVICE-AS FILE DIALOG
+        ////////////////////////////////////////////////
 
         // display
         if (ImGuiFileDialog::Instance()->Display("SaveDeviceAs"))
@@ -1949,6 +1955,10 @@ struct Connectatron:
             // close
             ImGuiFileDialog::Instance()->Close();
         }
+
+        //////////////////////////////////////////////////////
+        /// CONNECTOR INFO POPUP
+        ////////////////////////////////////////////////
 
         if (ImGui::BeginPopup("Pin Context Menu"))
         {
@@ -2130,6 +2140,10 @@ struct Connectatron:
             ImGui::EndPopup();
         }
 
+        //////////////////////////////////////////////////////
+        /// CREATE NEW NODE POPUP
+        ////////////////////////////////////////////////
+
         if (ImGui::BeginPopup("Create New Node"))
         {
             auto newNodePostion = openPopupPosition;
@@ -2234,6 +2248,8 @@ struct Connectatron:
                 }
             }
 
+
+            // If we actually have created a new node this tick
             if (node)
             {
                 BuildNodes();
