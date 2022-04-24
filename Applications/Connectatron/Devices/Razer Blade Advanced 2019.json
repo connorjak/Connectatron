@@ -125,7 +125,6 @@
 			"Name": "Intel AX200 Bluetooth",
 			"PinType": "Wireless",
 			"Protocols": [
-				"UNRECOGNIZED",
 				"Bluetooth 3.0",
 				"Bluetooth HS",
 				"Bluetooth 4.0",
