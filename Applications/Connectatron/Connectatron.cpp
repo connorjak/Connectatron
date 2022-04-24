@@ -1740,8 +1740,21 @@ struct Connectatron:
                                 showLabel("+ Create Link", ImColor(32, 45, 32, 180));
                                 if (ed::AcceptNewItem(ImColor(128, 255, 128), 4.0f))
                                 {
-                                    m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
-                                    m_Links.back().Color = GetIconColor(startPin->Type);
+                                    if (GetConnectorMultiplePerPin(startPin->Type) && GetConnectorMultiplePerPin(startPin->Type))
+                                    {
+                                        // Allow multiple connections per pin
+                                        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+                                        m_Links.back().Color = GetIconColor(startPin->Type);
+                                    }
+                                    else
+                                    {
+                                        // Replace any existing connections with new connection
+
+                                        //TODO BREAKING implement replacement
+
+                                        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+                                        m_Links.back().Color = GetIconColor(startPin->Type);
+                                    }
                                 }
                             }
                         }
