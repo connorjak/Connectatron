@@ -2038,6 +2038,7 @@ struct Connectatron:
                                     ImGui::SameLine();
 
                                     bool is_selected = possible_connect == pin->Type;
+                                    //TODO also try Selectable?
                                     if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                                         pin->Type = possible_connect;
                                     if (is_selected)
@@ -2061,57 +2062,78 @@ struct Connectatron:
                 
                 // Protocols info //
                 ImGui::Text("Supported Protocols:");
-                //ImGui::Indent();
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
                     //float protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.5;
                     float protocol_width = 0; //Assuming LONGEST_CONNECTOR_STR stuff above will eliminate the need to specify particular width
-                    ImGui::BeginChild("##Protocol Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 15), true);
-                    for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
+
+                    string editing_title = "Select Protocols...";
+
+                    if (ImGui::BeginMenu(editing_title.c_str()))
                     {
-                        if (possible_proto == WireProtocol::UNRECOGNIZED)
-                            continue;
-                     
-                        auto proto_string = NameFromProtocol(possible_proto);
-                        
-                        // Remove metadata enum values
-                        if (proto_string.find(".CATEGORY.") != string::npos)
-                            continue;
-                        if (proto_string.find(".VERSION.") != string::npos)
-                            continue;
-                        
-                        //TODO could optimize heavily
-                        bool val = pin->Protocols.find(possible_proto) != pin->Protocols.end();
-                        auto pastval = val;
-                        ImGui::Checkbox(proto_string.c_str(), &val);
-                        if (val != pastval)
+                        for (const auto& possible_proto : magic_enum::enum_values<WireProtocol>())
                         {
-                            if (val)
-                                pin->Protocols.insert(possible_proto);
-                            else
-                                pin->Protocols.erase(possible_proto);
+                            auto proto_string = NameFromProtocol(possible_proto);
+                            EnumName_Underscore2Symbol(proto_string);
+
+                            //TODO might use icons for protocols later?
+                            /*DrawPinTypeIcon(possible_proto, false, 255);
+                            ImGui::SameLine();*/
+
+                            bool val = pin->Protocols.find(possible_proto) != pin->Protocols.end();
+                            auto pastval = val;
+                            ImGui::Checkbox(proto_string.c_str(), &val);
+                            if (val != pastval)
+                            {
+                                if (val)
+                                    pin->Protocols.insert(possible_proto);
+                                else
+                                    pin->Protocols.erase(possible_proto);
+                            }
                         }
+
+                        //TODO protocol categories
+                        //for (const auto& category : ConnectorCategories)
+                        //{
+                        //    if (ImGui::BeginMenu(category.name.c_str()))
+                        //    {
+                        //        for (const auto& possible_connect : category.connectors)
+                        //        {
+                        //            auto connect_string = NameFromPinType(possible_connect);
+                        //            EnumName_Underscore2Symbol(connect_string);
+
+                        //            DrawPinTypeIcon(possible_connect, false, 255);
+                        //            ImGui::SameLine();
+
+                        //            bool is_selected = possible_connect == pin->Type;
+                        //            //TODO also try Selectable?
+                        //            if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                        //                pin->Type = possible_connect;
+                        //            if (is_selected)
+                        //                ImGui::SetItemDefaultFocus();
+                        //        }
+                        //        ImGui::EndMenu();
+                        //    }
+                        //}
+                        ImGui::EndMenu();
                     }
-                    ImGui::EndChild();
                 }
-                else // Not editing
+
+                auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.1;
+                ImGui::BeginChild("##Protocol Viewing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
+                if (pin->Protocols.size() == 0)
                 {
-                    auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.1;
-                    ImGui::BeginChild("##Protocol Viewing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
-                    if (pin->Protocols.size() == 0)
-                    {
-                        ImGui::Text("(None specified)");
-                    }
-                    else
-                    {
-                        for (auto supportedProto : pin->Protocols)
-                        {
-                            ImGui::Text(NameFromProtocol(supportedProto).c_str());
-                        }
-                    }
-                    ImGui::EndChild();
+                    ImGui::Text("(None specified)");
                 }
-                //ImGui::Unindent();
+                else
+                {
+                    for (auto supportedProto : pin->Protocols)
+                    {
+                        ImGui::Text(NameFromProtocol(supportedProto).c_str());
+                    }
+                }
+                ImGui::EndChild();
+
                 if (pin->ExtraInfo.length() != 0)
                 {
                     ImGui::Separator();
