@@ -1718,30 +1718,35 @@ struct Connectatron:
 
                         newLinkPin = startPin ? startPin : endPin;
 
-                        if (startPin->Kind == PinKind::Input)
+                        auto malePin = startPin;
+                        auto malePinId = startPinId;
+                        auto femalePin = endPin;
+                        auto femalePinId = endPinId;
+                        if (malePin->Kind == PinKind::Input)
                         {
-                            std::swap(startPin, endPin);
-                            std::swap(startPinId, endPinId);
+                            std::swap(malePin, femalePin);
+                            std::swap(malePinId, femalePinId);
                         }
-                        // We ensure that the startPin is output/male
+                        // We ensure that the malePin is output/male
 
-                        if (startPin && endPin)
+                        if (malePin && femalePin)
                         {
-                            if (endPin == startPin)
+                            if (femalePin == malePin)
                             {
+                                // Can't loop back to self
                                 ed::RejectNewItem(ImColor(255, 0, 0), 2.0f);
                             }
-                            else if (endPin->Kind == startPin->Kind)
+                            else if (femalePin->Kind == malePin->Kind)
                             {
                                 showLabel("x Incompatible Pin Kind", ImColor(45, 32, 32, 180));
                                 ed::RejectNewItem(ImColor(255, 0, 0), 2.0f);
                             }
-                            //else if (endPin->Node == startPin->Node)
+                            //else if (femalePin->Node == malePin->Node)
                             //{
                             //    showLabel("x Cannot connect to self", ImColor(45, 32, 32, 180));
                             //    ed::RejectNewItem(ImColor(255, 0, 0), 1.0f);
                             //}
-                            else if (!IsCompatiblePinType(startPin->Type, endPin->Type))
+                            else if (!IsCompatiblePinType(malePin->Type, femalePin->Type))
                             {
                                 showLabel("x Incompatible Pin Type", ImColor(45, 32, 32, 180));
                                 ed::RejectNewItem(ImColor(255, 128, 128), 1.0f);
@@ -1751,20 +1756,40 @@ struct Connectatron:
                                 showLabel("+ Create Link", ImColor(32, 45, 32, 180));
                                 if (ed::AcceptNewItem(ImColor(128, 255, 128), 4.0f))
                                 {
-                                    if (GetConnectorMultiplePerPin(startPin->Type) && GetConnectorMultiplePerPin(startPin->Type))
+                                    if (GetConnectorMultiplePerPin(malePin->Type) && GetConnectorMultiplePerPin(femalePin->Type))
                                     {
                                         // Allow multiple connections per pin
-                                        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
-                                        m_Links.back().Color = GetIconColor(startPin->Type);
+                                        m_Links.emplace_back(Link(GetNextId(), malePinId, femalePinId));
+                                        m_Links.back().Color = GetIconColor(malePin->Type);
                                     }
                                     else
                                     {
                                         // Replace any existing connections with new connection
 
-                                        //TODO BREAKING implement replacement
+                                        std::vector<size_t> linksToDelete;
+                                        size_t idx = 0;
+                                        for (auto& link : m_Links)
+                                        {
+                                            if(link.StartPinID == malePinId)
+                                                linksToDelete.push_back(idx);
+                                            if (link.EndPinID == femalePinId)
+                                                linksToDelete.push_back(idx);
+                                            idx++;
+                                        }
 
-                                        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
-                                        m_Links.back().Color = GetIconColor(startPin->Type);
+                                        // Sort linksToDelete in reverse order
+                                        std::sort(linksToDelete.rbegin(), linksToDelete.rend());
+
+                                        // Erase at indices
+                                        for (auto& linkIdx : linksToDelete)
+                                        {
+                                            //ed::DeleteLink(linkId);
+                                            m_Links.erase(m_Links.begin() + linkIdx);
+                                            //m_Links.erase(linkId);
+                                        }
+
+                                        m_Links.emplace_back(Link(GetNextId(), malePinId, femalePinId));
+                                        m_Links.back().Color = GetIconColor(malePin->Type);
                                     }
                                 }
                             }
