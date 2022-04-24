@@ -1996,8 +1996,10 @@ struct Connectatron:
                             auto connect_string = string(magic_enum::enum_name(possible_connect));
                             EnumName_Underscore2Symbol(connect_string);
                             //// Remove metadata enum values
-                            //if (connect_string.find(".VERSION.") != string::npos)
-                            //    continue;
+                            if (connect_string.find(".CATEGORY.") != string::npos)
+                                continue;
+                            if (connect_string.find(".VERSION.") != string::npos)
+                                continue;
 
                             DrawPinTypeIcon(possible_connect, false, 255);
                             ImGui::SameLine();
@@ -2038,6 +2040,8 @@ struct Connectatron:
                         auto proto_string = NameFromProtocol(possible_proto);
                         
                         // Remove metadata enum values
+                        if (proto_string.find(".CATEGORY.") != string::npos)
+                            continue;
                         if (proto_string.find(".VERSION.") != string::npos)
                             continue;
                         
