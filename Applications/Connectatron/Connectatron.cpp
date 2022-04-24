@@ -2274,6 +2274,19 @@ struct Connectatron:
             }
             ImGui::Separator();
 
+            if (limitByPinType) // Limit selection by pin compatibility
+            {
+                auto valid_type_str = NameFromPinType(valid_type);
+                
+                string m_or_f = newNodeLinkPin->IsFemale ? "female" : "male";
+
+                string compat_msg = "Compatible with " + m_or_f + " " + valid_type_str + " connector: ";
+
+                ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(220, 220, 170, 255));
+                ImGui::Text(compat_msg.c_str());
+                ImGui::PopStyleColor();
+            }
+
             vector<fs::path> categories = { ".", "Cables (M-M)", "Adapters (M-F)" };
             // Iterate through files in Devices and show them as options
             //TODO use recursive directory iterator instead!
