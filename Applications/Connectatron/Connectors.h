@@ -161,6 +161,11 @@ enum class PinType : unsigned int
     PCIe__x8,
     PCIe__x16,
     Mini__PCIe,
+    //https://en.wikipedia.org/wiki/M.2
+    M_2__M__key,    // AKA Socket 3, usual for PCIe x4 / NVMe devices.
+    M_2__B__M__key, // Usual for SATA devices (fits in Socket 2, 3).
+    M_2__B__key,    // AKA Socket 2, usual for WWAN, GNSS, SSD, etc.
+    M_2__A__E__key, // AKA Socket 1, usual for wireless.
     // https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module
     MXM___I,
     MXM___II,
@@ -210,11 +215,6 @@ enum class PinType : unsigned int
     miniSD,
     microSD,
     SFF___8639,
-    //https://en.wikipedia.org/wiki/M.2
-    M_2__M__key,    // AKA Socket 3, usual for PCIe x4 / NVMe devices.
-    M_2__B__M__key, // Usual for SATA devices (fits in Socket 2, 3).
-    M_2__B__key,    // AKA Socket 2, usual for WWAN, GNSS, SSD, etc.
-    M_2__A__E__key, // AKA Socket 1, usual for wireless.
 
     // Mobile
     Lightning,      // https://en.wikipedia.org/wiki/Lightning_(connector)
