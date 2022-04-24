@@ -29,6 +29,7 @@ enum class PinType : unsigned int
     Coaxial,
 
     // DC Power
+    START_CATEGORY_DC__Power,
     // https://en.wikipedia.org/wiki/DC_connector
     // https://en.wikipedia.org/wiki/Coaxial_power_connector
     DC__Power__Barrel, //This is the generic one; we also have more specific specs
@@ -50,8 +51,10 @@ enum class PinType : unsigned int
     Molex,
     SATA__Power,
     SATA__Power__Slimline,
+    END_CATEGORY_DC__Power,
     
     // AC Power
+    START_CATEGORY_AC__Power,
     // https://en.wikipedia.org/wiki/NEMA_connector
     // 120VAC
     NEMA__5___15, //Typical outlet, 3 prong
@@ -97,12 +100,14 @@ enum class PinType : unsigned int
     C21____C22,
     C23____C24,
     //TODO other AC connectors
+    END_CATEGORY_AC__Power,
 
     // RF
     // https://en.wikipedia.org/wiki/RF_connector
     //TODO
 
     // USB          // https://en.wikipedia.org/wiki/USB
+    START_CATEGORY_USB,
     USB___A,
     USB___A__SuperSpeed, // Has more pins for USB3 features. Fits with USB-A.
     USB___B,
@@ -115,8 +120,10 @@ enum class PinType : unsigned int
     USB__Micro___B,
     USB__Micro___AB,
     USB__Micro___B__SuperSpeed, // Has more pins for USB3 features. Wider than USB Micro-B.
+    END_CATEGORY_USB,
 
     // Display
+    START_CATEGORY_Display,
     // https://en.wikipedia.org/wiki/DisplayPort
     DisplayPort,
     Mini__DisplayPort, //Notably also used for Thunderbolt 1 and 2
@@ -138,8 +145,10 @@ enum class PinType : unsigned int
     RCA__Component__Video,
     RCA__Stereo__Audio,
     RCA,
+    END_CATEGORY_Display,
 
     // Expansion Slot
+    START_CATEGORY_Expansion__Slot,
     ISA,            //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
     //https://en.wikipedia.org/wiki/Parallel_ATA
     // AKA ATA, IDE
@@ -181,8 +190,10 @@ enum class PinType : unsigned int
     // https://en.wikipedia.org/wiki/ExpressCard
     ExpressCard____34,
     ExpressCard____54,
+    END_CATEGORY_Expansion__Slot,
 
     // Audio
+    START_CATEGORY_Audio,
     Audio3_5mm, //Should probably specify stereo/not?
     //https://en.wikipedia.org/wiki/XLR_connector
     XLR3, //3-pin, most common
@@ -195,6 +206,7 @@ enum class PinType : unsigned int
     // https://en.wikipedia.org/wiki/TOSLINK
     TOSLINK,
     Mini___TOSLINK,
+    END_CATEGORY_Audio,
 
     // DIN          // https://en.wikipedia.org/wiki/DIN_connector
 
@@ -203,6 +215,7 @@ enum class PinType : unsigned int
     //TODO others from wiki article
 
     // Storage Interface
+    START_CATEGORY_Storage__Interface,
     //https://en.wikipedia.org/wiki/Serial_ATA
     SATA,
     Micro___SATA,
@@ -215,15 +228,19 @@ enum class PinType : unsigned int
     miniSD,
     microSD,
     SFF___8639,
+    END_CATEGORY_Storage__Interface,
 
     // Mobile
+    START_CATEGORY_Mobile,
     Lightning,      // https://en.wikipedia.org/wiki/Lightning_(connector)
     //https://en.wikipedia.org/wiki/Dock_connector#30-pin_dock_connector
     Apple__30___pin,     
     Samsung__30___pin,   
     PDMI,           // https://en.wikipedia.org/wiki/PDMI
+    END_CATEGORY_Mobile,
 
     // D-subminiature
+    START_CATEGORY_D___sub,
     // https://en.wikipedia.org/wiki/D-subminiature
     // Normal Density
     DA___15,
@@ -249,6 +266,7 @@ enum class PinType : unsigned int
     // https://en.wikipedia.org/wiki/IEEE_1284
     Centronics, //AKA "Micro Ribbon", "IEEE 1284 Type B". 36-pin.
     Mini___Centronics, //AKA "MDR36", "HPCN36", "IEEE 1284 Type C". 36-pin.
+    END_CATEGORY_D___sub,
 
     // Other Connectors
     // https://en.wikipedia.org/wiki/Registered_jack
