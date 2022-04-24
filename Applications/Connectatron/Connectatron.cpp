@@ -1954,10 +1954,14 @@ struct Connectatron:
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_ConfirmOverwrite;
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
+                        auto os_filename = fs::path(node->Name + ".json");
+
+                        // TODO BREAKING need to sanitize name for os filename compatibility!!!
+
                         if (/*standardDialogMode*/true)
-                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name + ".json", 1, nullptr, flags);
+                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
                         else
-                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), node->Name + ".json", 1, nullptr, flags);
+                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
                     }
 
                     // See below the EndPopup() for the file dialog GUI
