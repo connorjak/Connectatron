@@ -154,6 +154,10 @@ enum class WireProtocol : unsigned int
     E___DDC,
     //https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
     EDID,
+    //https://en.wikipedia.org/wiki/High-dynamic-range_video
+    HDR10,              //https://en.wikipedia.org/wiki/HDR10
+    HDR10__Plus,        //https://en.wikipedia.org/wiki/HDR10%2B
+    Dolby__Vision,      //https://en.wikipedia.org/wiki/Dolby_Vision
     END_CATEGORY_Display__Metadata,
 
     // Expansion Slot
