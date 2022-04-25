@@ -4,7 +4,12 @@
 			"Name": "HDMI 1",
 			"PinType": "HDMI",
 			"Protocols": [
-				"HDMI 2.1"
+				"HDMI 2.1",
+				"E-DDC",
+				"EDID",
+				"HDR10",
+				"HDR10 Plus",
+				"Dolby Vision"
 			]
 		},
 		{
