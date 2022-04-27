@@ -1,0 +1,62 @@
+{
+	"Females": [
+		{
+			"Name": "Left Front USBC",
+			"PinType": "USB-C",
+			"Protocols": [
+				"DC Power",
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g",
+				"Thunderbolt 1",
+				"Thunderbolt 2",
+				"Thunderbolt 3"
+			]
+		},
+		{
+			"Name": "Left Back USBC",
+			"PinType": "USB-C",
+			"Protocols": [
+				"DC Power",
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g",
+				"Thunderbolt 1",
+				"Thunderbolt 2",
+				"Thunderbolt 3"
+			]
+		},
+		{
+			"Name": "Right Front USBC",
+			"PinType": "USB-C"
+		},
+		{
+			"Name": "Right Back USBC",
+			"PinType": "USB-C",
+			"Protocols": [
+				"DC Power",
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g",
+				"Thunderbolt 1",
+				"Thunderbolt 2",
+				"Thunderbolt 3"
+			]
+		},
+		{
+			"Name": "Right Audio",
+			"PinType": "Audio3.5mm"
+		}
+	],
+	"Males": [],
+	"Name": "MacBook Pro 15 inch 2017"
+}
