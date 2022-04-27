@@ -1129,12 +1129,7 @@
 "Males": [
 {
 "Name": "Input",
-"PinType": "NEMA 5-15",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
+"PinType": "NEMA 5-15"
 }
 ],
 "Name": "Power Strip (8 NEMA 5-15 sockets)",
@@ -1536,110 +1531,6 @@
 "SavedPos": [
 -168.0,
 1724.0
-]
-},
-{
-"Females": [
-{
-"Name": "LAN",
-"PinType": "RJ45"
-}
-],
-"ID": 19520,
-"Males": [
-{
-"Name": "1",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "2",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "3",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "4",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "5",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "6",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "7",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "8",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-}
-],
-"Name": "Generic WiFi 5 Access Point (8)",
-"SavedPos": [
-88.0,
--284.0
 ]
 },
 {
@@ -2089,6 +1980,54 @@
 1224.0,
 -188.0
 ]
+},
+{
+"Females": [
+{
+"Name": "LAN",
+"PinType": "RJ45"
+}
+],
+"ID": 47421,
+"Males": [
+{
+"Name": "2.4GHz",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+},
+{
+"Name": "5GHz",
+"PinType": "Wireless",
+"Protocols": [
+"Wi-Fi 1 802.11b",
+"Wi-Fi 2 802.11a",
+"Wi-Fi 3 802.11g",
+"Wi-Fi 4 802.11n",
+"Wi-Fi 5 802.11ac"
+]
+}
+],
+"Name": "Generic WiFi 5 Access Point",
+"SavedPos": [
+104.0,
+-196.0
+]
+},
+{
+"Females": [],
+"ID": 67500,
+"Males": [],
+"Name": "New Custom Node",
+"SavedPos": [
+-65.0,
+7.0
+]
 }
 ],
 "Links": [
@@ -2255,12 +2194,6 @@
 17
 ],
 [
-90907,
-27851,
-1,
-0
-],
-[
 97781,
 23334,
 1,
@@ -2369,12 +2302,6 @@
 0
 ],
 [
-6652,
-19520,
-0,
-0
-],
-[
 96934,
 46801,
 1,
@@ -2441,12 +2368,6 @@
 2
 ],
 [
-19520,
-75168,
-0,
-8
-],
-[
 45930,
 75168,
 0,
@@ -2479,6 +2400,24 @@
 [
 38804,
 75168,
+0,
+0
+],
+[
+90907,
+27851,
+1,
+0
+],
+[
+47421,
+75168,
+1,
+8
+],
+[
+6652,
+47421,
 0,
 0
 ]

@@ -36,12 +36,7 @@
 	"Males": [
 		{
 			"Name": "Input",
-			"PinType": "NEMA 5-15",
-			"Protocols": [
-				"USB 1.0",
-				"USB 1.1",
-				"USB 2.0"
-			]
+			"PinType": "NEMA 5-15"
 		}
 	],
 	"Name": "Power Strip (8 NEMA 5-15 sockets)"
