@@ -270,6 +270,8 @@ enum class WireProtocol : unsigned int
     Fibre__128GFC__Gen__8,
     END_CATEGORY_Fibre__Channel,
 
+    //TODO https://en.wikipedia.org/wiki/Optical_transport_network
+
     // Ethernet
     START_CATEGORY_Ethernet,
     //https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair
