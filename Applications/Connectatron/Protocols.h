@@ -11,6 +11,7 @@ using std::set;
 
 // https://en.wikipedia.org/wiki/List_of_computer_standards
 // https://en.wikipedia.org/wiki/Computer_port_(hardware)#Types_of_ports
+// https://en.wikipedia.org/wiki/Category:Computer_buses
 
 // Storage Interface
 // https://en.wikipedia.org/wiki/Serial_ATA#eSATA
@@ -249,6 +250,25 @@ enum class WireProtocol : unsigned int
     SD__UHS___III,
     SD__Express,
     END_CATEGORY_Storage__Interface,
+
+    // Fibre Channel
+    //https://en.wikipedia.org/wiki/Fibre_Channel
+    START_CATEGORY_Fibre__Channel,
+    Fibre__133__Mbps,
+    Fibre__266__Mbps,
+    Fibre__533__Mbps,
+    Fibre__1GFC,
+    Fibre__2GFC,
+    Fibre__4GFC,
+    Fibre__8GFC,
+    Fibre__10GFC,
+    Fibre__16GFC,
+    Fibre__32GFC__Gen__6,
+    Fibre__64GFC__Gen__7,
+    Fibre__128GFC__Gen__6,
+    Fibre__256GFC__Gen__7,
+    Fibre__128GFC__Gen__8,
+    END_CATEGORY_Fibre__Channel,
 
     // Ethernet
     START_CATEGORY_Ethernet,

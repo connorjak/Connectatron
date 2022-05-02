@@ -253,6 +253,16 @@ enum class PinType : unsigned int
     SlimSAS__SFF___8654,            
     END_CATEGORY_Storage__Interface,
 
+    // Fibre Channel
+    //https://en.wikipedia.org/wiki/Fibre_Channel
+    START_CATEGORY_Fibre__Channel,
+    // https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface
+    HSSDC,
+    HSSDC2,
+    SCA___2,
+    END_CATEGORY_Fibre__Channel,
+
+
     // Mobile
     START_CATEGORY_Mobile,
     Lightning,      // https://en.wikipedia.org/wiki/Lightning_(connector)
