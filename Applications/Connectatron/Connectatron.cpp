@@ -783,7 +783,7 @@ struct Connectatron:
         case PinType::SD:                       iconType = IconType::Circle; break;
         case PinType::miniSD:                     iconType = IconType::Circle; break;
         case PinType::microSD:                  iconType = IconType::Circle; break;
-        case PinType::SFF___8639:                iconType = IconType::Circle; break;
+        case PinType::U_2__SFF___8639:                iconType = IconType::Circle; break;
         case PinType::RJ11:                     iconType = IconType::Circle; break;
         case PinType::RJ14:                     iconType = IconType::Circle; break;
         case PinType::RJ25:                     iconType = IconType::Circle; break;

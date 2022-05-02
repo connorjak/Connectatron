@@ -215,6 +215,12 @@ enum class WireProtocol : unsigned int
 
     // Storage Interface
     START_CATEGORY_Storage__Interface,
+    //https://en.wikipedia.org/wiki/Serial_Attached_SCSI
+    SAS___1,
+    SAS___2,
+    SAS___3,
+    SAS___4,
+    SAS___5,
     //https://en.wikipedia.org/wiki/Parallel_ATA
     //https://en.wikipedia.org/wiki/Advanced_Host_Controller_Interface
     //https://en.wikipedia.org/wiki/Serial_ATA
@@ -253,6 +259,7 @@ enum class WireProtocol : unsigned int
     MIN_VERSION_Ethernet,
     Ethernet__10BASE5, //10 Mbps, coax instead of twisted pair
     Ethernet__10BASE2, //10 Mbps, thinner coax
+    // BASE-T is Twisted-Pair
     Ethernet__10BASE___T, //10 Mbps, twisted pair
     //Ethernet__10BASE__T1S, //10 Mbps (short distance ~15 meters)
     //Ethernet__10BASE__T1L, //10 Mbps (long distance ~1000 meters)
@@ -264,8 +271,12 @@ enum class WireProtocol : unsigned int
     Ethernet__10GBASE___T, //10 Gbps
     Ethernet__25GBASE___T, //25 Gbps
     Ethernet__40GBASE___T, //40 Gbps
+    // BASE-CX4 https://cs-electronics.com/cx4/
+    Ethernet__10GBASE___CX4,    
     MAX_VERSION_Ethernet,
     END_CATEGORY_Ethernet,
+
+    // TODO https://en.wikipedia.org/wiki/SCSI
 
     // Wireless
     START_CATEGORY_Wireless,
