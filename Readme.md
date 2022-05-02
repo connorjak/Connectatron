@@ -13,7 +13,9 @@ I built this in an effort to make a better way to do things like:
 
 Defining your own devices (`/Devices`) is quick and easy through an editing mode for making new or editing existing devices. Hopefully, if this application gains traction, device manufacturers and/or reviewers can supply a device configuration file that is readable by Connectatron. No more diving through manuals to find out if a USB port is USB 3.1 Gen 2 or USB 3.2 Gen 1!
 
-See status and try it for yourself on [releases](https://github.com/connorjak/Connectatron/releases).
+More info on the development direction of Connectatron: [discussion page](https://github.com/connorjak/Connectatron/discussions/26).
+
+See status and try it for yourself on [releases](https://github.com/connorjak/Connectatron/releases) (might be VERY outdated while Actions build is still broken).
 
 Was forked from https://github.com/thedmd/imgui-node-editor.
 
