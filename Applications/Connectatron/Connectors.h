@@ -172,6 +172,9 @@ enum class PinType : unsigned int
     PCIe__x8,
     PCIe__x16,
     Mini__PCIe,
+    // https://en.wikipedia.org/wiki/PCI_Express#PCI_Express_OCuLink
+    // https://blog.fosketts.net/2017/06/22/what-is-oculink/
+    OCuLink,        
     //https://en.wikipedia.org/wiki/M.2
     M_2__M__key,    // AKA Socket 3, usual for PCIe x4 / NVMe devices.
     M_2__B__M__key, // Usual for SATA devices (fits in Socket 2, 3).
