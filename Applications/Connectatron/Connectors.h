@@ -257,11 +257,50 @@ enum class PinType : unsigned int
     //https://en.wikipedia.org/wiki/Fibre_Channel
     START_CATEGORY_Fibre__Channel,
     // https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface
+    //DB9,  // Already in D-sub category  
     HSSDC,
     HSSDC2,
     SCA___2,
+    //SFP__Plus__SFF___8431,      //already in Storage Interface category
     END_CATEGORY_Fibre__Channel,
 
+    // Optical Fiber
+    // https://en.wikipedia.org/wiki/Optical_fiber_connector
+    //TODO https://en.wikipedia.org/wiki/Small_form-factor_pluggable_transceiver
+    START_CATEGORY_Optical__Fiber,
+    Avio____Avim, //Aviation Intermediate Maintenance
+    ADT___UNI,
+    CS,             //Corning/Senko
+    DMI,            //Diamond Micro Interface
+    LSH, //E-2000
+    EC____CF08,
+    ELIO,
+    ESCON,          //Enterprise Systems Connection
+    F07,
+    F___3000,
+    FC,             //Ferrule Connector or Fiber Channel
+    Fibergate,             
+    FJ,      //Fiber-Jack or Opti-Jack
+    LC,      //Common in modern Fibre Channel devices. Lucent Connector, Little Connector, or Local Connector
+    Luxcis,
+    LX___5,
+    M12___FO,
+    MIC____FDDI,    //Media Interface Connnector / https://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface
+    MPO____MTP,    //Multiple-fiber Push-On/Pull-off
+    MT,             //Mechanical Transfer
+    MT___RJ,        //Mechanical Transfer Registered Jack or Media Termination - recommended jack
+    MU,             //Miniature unit
+    SC,             // Common in older 1GFC devices.
+    SC__DC,             
+    SC__QC,             
+    SMA__905____F___SMA__I,             
+    SMA__906____F___SMA__II,             
+    SMC,             
+    ST____BFOC,             //Straight Tip or Bayonet Fiber Optic Connector
+    //TOSLINK (already in Audio section)
+    VF___45____SG,                //Volition Fiber
+    HDTV__1053,             //Broadcast connector interface //NOTE: this is supposed to be 1053 HDTV
+    END_CATEGORY_Optical__Fiber,
 
     // Mobile
     START_CATEGORY_Mobile,
@@ -280,7 +319,7 @@ enum class PinType : unsigned int
     DB___25,    // AKA IEEE 1284 Type A. Mandated by RS-232D.
     DC___37,
     DD___50,
-    DE___9,
+    DE___9,     // AKA DB9  https://edac.net/products/db9-connector/145
     // High Density
     DA___26,
     DB___44,
