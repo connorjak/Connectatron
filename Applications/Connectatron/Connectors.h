@@ -233,17 +233,17 @@ enum class PinType : unsigned int
     miniSD,
     microSD,
     // SAS https://en.wikipedia.org/wiki/Serial_Attached_SCSI
-    Mini__SAS__SFF___8086,
-    Mini__SAS__SFF___8087,      //https://cs-electronics.com/sff-8087/
-    Mini__SAS__SFF___8088,      //https://cs-electronics.com/sff-8088/
+    Mini___SAS__SFF___8086,
+    Mini___SAS__SFF___8087,      //https://cs-electronics.com/sff-8087/
+    Mini___SAS__SFF___8088,      //https://cs-electronics.com/sff-8088/
     SFP__Plus__SFF___8431,      //https://cs-electronics.com/sff-8431/
     Quad__SFP__Plus__SFF___8436,      //https://cs-electronics.com/sff-8436/
     ImfiniBand__SFF___8470,      //https://cs-electronics.com/sff-8470/
     SAS__SFF___8482,      //https://cs-electronics.com/sff-8482/
     SAS__SFF___8484,      //https://cs-electronics.com/sff-8484/
     SAS__SFF___8485,      //https://members.snia.org/document/dl/25923 https://web.archive.org/web/20190626094026/https://members.snia.org/document/dl/25923
-    U_2__Mini__SAS__HD__SFF___8643, // Also SFF-8613    https://cs-electronics.com/sff-8643/
-    Mini__SAS__HD__SFF___8644,      // Also SFF-8614    https://cs-electronics.com/sff-8644/
+    U_2__Mini___SAS__HD__SFF___8643, // Also SFF-8613    https://cs-electronics.com/sff-8643/
+    Mini___SAS__HD__SFF___8644,      // Also SFF-8614    https://cs-electronics.com/sff-8644/
     SAS__Sideband,      
     SAS__SFF___8680,            //https://cs-electronics.com/sff-8680-2/
     U_2__SFF___8639,            //revision of SFF-8680 https://cs-electronics.com/sff-8639/
@@ -252,8 +252,6 @@ enum class PinType : unsigned int
     SAS__SFF___8681,            
     SlimSAS__SFF___8654,            
     END_CATEGORY_Storage__Interface,
-        //https://cs-electronics.com/sff-8087/
-        //https://cs-electronics.com/sff-8482/
 
     // Mobile
     START_CATEGORY_Mobile,
