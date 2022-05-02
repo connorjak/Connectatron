@@ -261,7 +261,8 @@ enum class PinType : unsigned int
     HSSDC,
     HSSDC2,
     SCA___2,
-    //SFP__Plus__SFF___8431,      //already in Storage Interface category
+    //SFP__Plus__SFF___8431,        //already in Storage Interface category
+    //Quad__SFP__Plus__SFF___8436,  //already in Storage Interface category
     END_CATEGORY_Fibre__Channel,
 
     // Optical Fiber
