@@ -91,6 +91,16 @@ std::array<float,3> HSVtoRGB(float H, float S, float V) {
     return { R,G,B };
 }
 
+static string Sanitize_Filename(string str)
+{
+    string illegalChars = "\\/:?\"<>|";
+    //https://stackoverflow.com/a/14475510/11502722
+    str.erase(
+        std::remove_if(str.begin(), str.end(), [&](char chr) { return illegalChars.find(chr) != std::string::npos; }),
+        str.end());
+    return str;
+}
+
 
 static inline ImRect ImGui_GetItemRect()
 {
@@ -210,12 +220,19 @@ struct Node
     // Position saved in project file
     ImVec2 SavedPosition;
 
+    // Whether the node has been edited and not saved to a device file.
+    // https://github.com/connorjak/Connectatron/issues/19
+    bool dirty;
+    // Where this node was last saved
+    fs::path saved_filepath;
+
     std::string State;
     std::string SavedState;
 
     Node(int id, const char* name, ImColor color = ImColor(255, 255, 255)) :
         ID(id), persistentID(-1), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0), SavedPosition(0, 0)
     {
+        dirty = true;
     }
 };
 
@@ -267,7 +284,9 @@ static json GetJSONFromFile(fs::path filepath)
     return js;
 }
 
-static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool include_project_data)
+//NOTE: saving_in_project_file has significant side effects!
+// https://github.com/connorjak/Connectatron/issues/19
+static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_project_file)
 {
     json device;
 
@@ -282,13 +301,24 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool include_proj
     {
         id = Generate_NotUUID();
     }*/
-    if (include_project_data)
+    if (saving_in_project_file)
     {
         device["ID"] = node->persistentID;
 
         auto pos = ed::GetNodePosition(node->ID);
         device["SavedPos"][0] = pos.x;
         device["SavedPos"][1] = pos.y;
+
+        // If the node is not dirty, save as file reference instead of serializing details
+        if (!node->dirty)
+        {
+            device["Dirty"] = false;
+            device["File"] = node->saved_filepath.u8string(); //TODO widestring
+        }
+        else
+        {
+            device["Dirty"] = true;
+        }
     }
 
     // Parse Females
@@ -839,6 +869,22 @@ struct Connectatron:
         {
             new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
             new_node->SavedPosition.y = device["SavedPos"][1].get<float>();
+        }
+
+        // If has field "Dirty"
+        if (device.find("Dirty") != device.end())
+        {
+            // If device is not dirty
+            if (!device["Dirty"].get<bool>())
+            {
+                new_node->saved_filepath = device["File"].get<string>();
+                auto actual_node_data = GetJSONFromFile(new_node->saved_filepath);
+                InitNodeFromJSON(actual_node_data, new_node);
+                //TODO does this miss useful stuff in SpawnNodeFromJSON?
+                //   Might need to refactor...
+
+                return; // EARLY RETURN
+            }
         }
 
         // Parse Females
@@ -1927,6 +1973,8 @@ struct Connectatron:
 
             ImGui::TextUnformatted("Device Information");
             ImGui::Separator();
+            string last_saved_as = "Last Saved As: " + node->saved_filepath.u8string();
+            ImGui::Text(last_saved_as.c_str());
             if (node)
             {
                 if (node->Type == NodeType::Blueprint)
@@ -1954,14 +2002,37 @@ struct Connectatron:
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_ConfirmOverwrite;
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
-                        auto os_filename = fs::path(node->Name + ".json");
+                        
+                        // If previously-saved-as path isn't default
+                        if (node->saved_filepath.u8string() != fs::path())
+                        {
+                            auto saved_filepath = node->saved_filepath;
 
-                        // TODO BREAKING need to sanitize name for os filename compatibility!!!
-
-                        if (/*standardDialogMode*/true)
-                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                            if (/*standardDialogMode*/true)
+                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    saved_filepath.parent_path().string(), 
+                                    saved_filepath.stem().string(),
+                                    1, nullptr, flags);
+                            else
+                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    saved_filepath.parent_path().string(),
+                                    saved_filepath.stem().string(),
+                                    1, nullptr, flags);
+                        }
                         else
-                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                        {
+                            fs::path os_filename;
+                            // Need to come up with a new name for this file
+                            auto unclean = node->Name + ".json";
+                            auto clean = Sanitize_Filename(unclean);
+
+                            os_filename = fs::path(clean);
+
+                            if (/*standardDialogMode*/true)
+                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                            else
+                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                        }
                     }
 
                     // See below the EndPopup() for the file dialog GUI
@@ -1996,7 +2067,10 @@ struct Connectatron:
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
-                // action
+                
+                // Change cached save-location on the node
+                
+                node_to_save->saved_filepath = fs::path(filePathName);
 
                 // If still using the name from empty_device.json, change the name to match the filename
                 if(node_to_save->Name == "New Custom Node")
@@ -2342,14 +2416,20 @@ struct Connectatron:
                                 {
                                     nothing_shown_yet = false;
                                     if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                    {
                                         node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                                        node->saved_filepath = devicePath;
+                                    }
                                 }
                             }
                             else // Any node would be fine
                             {
                                 nothing_shown_yet = false;
                                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                {
                                     node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                                    node->saved_filepath = devicePath;
+                                }
                             }
                         }
                         //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime

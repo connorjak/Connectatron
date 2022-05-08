@@ -1,6 +1,7 @@
 {
 "Devices": [
 {
+"Dirty": true,
 "Females": [],
 "ID": 70590,
 "Males": [
@@ -19,6 +20,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Comp1 USBB In",
@@ -119,6 +121,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 10212,
 "Males": [
@@ -148,6 +151,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 9440,
 "Males": [
@@ -166,6 +170,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 38804,
 "Males": [
@@ -185,6 +190,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 11472,
 "Males": [
@@ -204,6 +210,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 24948,
 "Males": [
@@ -233,6 +240,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 11849,
 "Males": [
@@ -252,6 +260,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 13485,
 "Males": [
@@ -270,6 +279,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 5576,
 "Males": [
@@ -288,6 +298,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 55819,
 "Males": [
@@ -306,6 +317,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Ethernet",
@@ -326,6 +338,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 6187,
 "Males": [
@@ -345,6 +358,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 28155,
 "Males": [
@@ -364,6 +378,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 34806,
 "Males": [
@@ -383,6 +398,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 54554,
 "Males": [
@@ -402,6 +418,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Display / Power",
@@ -424,6 +441,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "USB-A 1",
@@ -481,6 +499,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "DP",
@@ -501,6 +520,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 75951,
 "Males": [
@@ -520,6 +540,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "HDMI 1",
@@ -564,6 +585,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 42018,
 "Males": [
@@ -583,6 +605,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 94757,
 "Males": [
@@ -602,6 +625,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "HDMI",
@@ -622,6 +646,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "DisplayPort",
@@ -647,6 +672,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 20263,
 "Males": [
@@ -666,6 +692,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "USB-C",
@@ -686,6 +713,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Comp1 USBC In",
@@ -797,6 +825,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Rear Panel USBC 1",
@@ -1008,6 +1037,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "AC 100-240V <3.6A C14",
@@ -1034,6 +1064,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 90907,
 "Males": [
@@ -1053,6 +1084,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 97781,
 "Males": [
@@ -1072,6 +1104,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "NEMA 5-15",
@@ -1091,6 +1124,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Output 1",
@@ -1139,6 +1173,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "NEMA 5-15",
@@ -1158,6 +1193,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 68200,
 "Males": [
@@ -1187,6 +1223,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 77148,
 "Males": [
@@ -1216,6 +1253,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Power",
@@ -1255,6 +1293,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "HMD Cable",
@@ -1270,6 +1309,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "USB-C",
@@ -1305,6 +1345,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "DisplayPort",
@@ -1405,6 +1446,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 873,
 "Males": [
@@ -1424,6 +1466,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 11277,
 "Males": [
@@ -1443,6 +1486,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "USB-A 1",
@@ -1505,6 +1549,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Wireless",
@@ -1534,6 +1579,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 6652,
 "Males": [
@@ -1553,6 +1599,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 96934,
 "Males": [
@@ -1582,6 +1629,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "NEMA 5-15",
@@ -1601,6 +1649,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "WAN",
@@ -1661,6 +1710,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 67749,
 "Males": [
@@ -1680,6 +1730,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "RJ45",
@@ -1700,6 +1751,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "LAN 1",
@@ -1787,6 +1839,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 45925,
 "Males": [
@@ -1816,6 +1869,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 22687,
 "Males": [
@@ -1835,6 +1889,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "Thunderbolt 3",
@@ -1982,6 +2037,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [
 {
 "Name": "LAN",
@@ -2020,6 +2076,7 @@
 ]
 },
 {
+"Dirty": true,
 "Females": [],
 "ID": 67500,
 "Males": [],
