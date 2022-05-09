@@ -881,9 +881,9 @@ struct Connectatron:
             // If device is not dirty
             if (!device["Dirty"].get<bool>())
             {
-                new_node->saved_filepath = ConnectatronPath / device["File"].get<string>();
+                new_node->saved_filepath = device["File"].get<string>();
                 new_node->dirty = false;
-                auto actual_node_data = GetJSONFromFile(new_node->saved_filepath);
+                auto actual_node_data = GetJSONFromFile(ConnectatronPath / new_node->saved_filepath);
                 InitNodeFromJSON(actual_node_data, new_node);
                 //TODO does this miss useful stuff in SpawnNodeFromJSON?
                 //   Might need to refactor...
