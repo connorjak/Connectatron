@@ -1200,9 +1200,12 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
+                ProjectDirty = false;
+
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
+                // action
 
                 CurrentProjectName = fileName_stem;
 
@@ -1250,12 +1253,9 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
-                ProjectDirty = false;
-
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
-                // action
 
                 CurrentProjectName = fileName_stem;
 
