@@ -1055,7 +1055,12 @@ struct Connectatron:
 
         for (const auto& node : m_Nodes)
         {
-            devices.push_back(SerializeDeviceToJSON(node, true));
+            if (node->Type == NodeType::Blueprint ||
+                node->Type == NodeType::Blueprint_Editing/* ||
+                node->Type == NodeType::Comment TODO*/)
+            {
+                devices.push_back(SerializeDeviceToJSON(node, true));
+            }
         }
 
         project["Links"] = json::array();
