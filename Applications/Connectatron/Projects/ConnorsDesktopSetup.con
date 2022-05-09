@@ -20,100 +20,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Comp1 USBB In",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp1 DP 1.2 In",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Comp1 Audio In",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "Comp2 USBB In",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp2 DP 1.2 In",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Comp2 Audio In",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "DP 1.2 Out",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Description": "Has Keyboard HID commands",
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Description": "Has Mouse HID commands",
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Audio Out",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\ATEN KVM.json",
 "ID": 58879,
-"Males": [],
 "Name": "ATEN KVM",
 "SavedPos": [
 840.0,
@@ -260,18 +169,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\USB2 Keyboard.json",
 "ID": 13485,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Keyboard",
 "SavedPos": [
 180.0,
@@ -317,20 +217,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Ethernet",
-"PinType": "RJ45"
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USBA to Ethernet.json",
 "ID": 95146,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
 "Name": "USBA to Ethernet",
 "SavedPos": [
 603.0,
@@ -418,22 +307,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Display / Power",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\ASUS Zenscreen.json",
 "ID": 54099,
-"Males": [],
 "Name": "ASUS Zenscreen",
 "SavedPos": [
 1640.0,
@@ -441,57 +317,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "USB-A 1",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 4",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USB2 Hub (4).json",
 "ID": 17743,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Hub (4)",
 "SavedPos": [
 632.0,
@@ -499,44 +327,13 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USBC to DP.json",
 "ID": 89813,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
 "Name": "USBC to DP",
 "SavedPos": [
 1640.0,
 -244.0
-]
-},
-{
-"Dirty": true,
-"Females": [],
-"ID": 75951,
-"Males": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
-"Name": "HDMI",
-"SavedPos": [
-1667.0,
--160.0
 ]
 },
 {
@@ -692,20 +489,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USB-A to USB-C.json",
 "ID": 88523,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
 "Name": "USB-A to USB-C",
 "SavedPos": [
 823.0,
@@ -713,111 +499,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Comp1 USBC In",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp2 USBC In",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-},
-{
-"Name": "DP 1.2 Out",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Description": "Has Keyboard HID commands",
-"Name": "Front USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Front USB3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Audio Out",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Level1 USBC KVM.json",
 "ID": 47791,
-"Males": [],
 "Name": "Level1 USBC KVM",
 "SavedPos": [
 840.0,
@@ -825,238 +509,19 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Rear Panel USBC 1",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g"
-]
-},
-{
-"Name": "Rear Panel USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 4",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 5",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel USB-A 6",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel Ethernet 1",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel Ethernet 2",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2"
-]
-},
-{
-"Name": "Rear Panel HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Rear Panel Audio",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "Rear Panel Mic",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 1",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 2",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 3",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 HDMI 1",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b",
-"HDMI 2.1"
-]
-},
-{
-"Name": "PSU C14",
-"PinType": "C13/C14",
-"Protocols": [
-"AC Power"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Connors PC.json",
 "ID": 93685,
-"Males": [],
-"Name": "Connors PC (WIP)",
+"Name": "Connors PC",
 "SavedPos": [
 1192.0,
 849.0
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "AC 100-240V <3.6A C14",
-"PinType": "C13/C14",
-"Protocols": [
-"AC Power"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\Razer Power Adapter.json",
 "ID": 45930,
-"Males": [
-{
-"Name": "DC 19.5V 11.8A",
-"PinType": "Proprietary",
-"Protocols": [
-"DC Power"
-]
-}
-],
 "Name": "Razer Power Adapter",
 "SavedPos": [
 808.0,
@@ -1064,19 +529,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
 "ID": 90907,
-"Males": [
-{
-"Name": "C13",
-"PinType": "C13/C14"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
 "Name": "IEC (C13) Power Cable",
 "SavedPos": [
 552.0,
@@ -1104,19 +559,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Common Wall Outlet (NEMA 5-15).json",
 "ID": 27851,
-"Males": [],
 "Name": "Common Wall Outlet (NEMA 5-15)",
 "SavedPos": [
 872.0,
@@ -1889,147 +1334,9 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [
-{
-"Name": "Thunderbolt 3",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a",
-"PCIe 1.0 x1",
-"PCIe 1.0 x2",
-"PCIe 1.0 x4",
-"PCIe 2.0 x1",
-"PCIe 2.0 x2",
-"PCIe 2.0 x4",
-"PCIe 3.0 x1",
-"PCIe 3.0 x2",
-"PCIe 3.0 x4",
-"Thunderbolt 3"
-]
-},
-{
-"Name": "USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Mini Displayport",
-"PinType": "Mini DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "DC Charging Port",
-"PinType": "Proprietary",
-"Protocols": [
-"DC Power"
-]
-},
-{
-"Name": "Intel AX200 Wifi",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac",
-"Wi-Fi 6 802.11ax",
-"Wi-Fi 6E 802.11ax"
-]
-},
-{
-"Name": "Intel AX200 Bluetooth",
-"PinType": "Wireless",
-"Protocols": [
-"Bluetooth 3.0",
-"Bluetooth HS",
-"Bluetooth 4.0",
-"Bluetooth 4 Low Energy",
-"Bluetooth 4.1",
-"Bluetooth 4.2",
-"Bluetooth 5.0",
-"Bluetooth 5.1",
-"Bluetooth 5.2"
-]
-}
-],
+"Dirty": false,
+"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Razer Blade Advanced 2019.json",
 "ID": 75168,
-"Males": [],
 "Name": "Razer Blade 15\" Advanced (2019)",
 "SavedPos": [
 1224.0,

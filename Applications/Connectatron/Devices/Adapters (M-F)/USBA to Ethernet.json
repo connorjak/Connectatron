@@ -1,15 +1,15 @@
 {
-    "Name": "USBA to Ethernet",
-    "Females": [
-        {
-            "Name": "Ethernet",
-            "PinType": "RJ45"
-        }
-    ],
-    "Males": [
-        {
-            "Name": "USB-A",
-            "PinType": "USB-A"
-        }
-    ]
+	"Females": [
+		{
+			"Name": "Ethernet",
+			"PinType": "RJ45"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A"
+		}
+	],
+	"Name": "USBA to Ethernet"
 }

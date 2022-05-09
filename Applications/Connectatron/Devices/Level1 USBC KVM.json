@@ -1,110 +1,106 @@
 {
-    "Name": "Level1 USBC KVM",
-    "Females": [
-        {
-            "Name": "Comp1 USBC In",
-            "PinType": "USB-C",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Comp2 USBC In",
-            "PinType": "USB-C",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0",
-                "DisplayPort 1.0",
-                "DisplayPort 1.1",
-                "DisplayPort 1.2",
-                "DisplayPort 1.2a"
-            ]
-        },
-        {
-            "Name": "Power",
-            "PinType": "DC Power Barrel",
-            "Protocols": [
-            ]
-        },
-        {
-            "Name": "DP 1.2 Out",
-            "PinType": "DisplayPort",
-            "Protocols": [
-                "DisplayPort 1.0",
-                "DisplayPort 1.1",
-                "DisplayPort 1.2",
-                "DisplayPort 1.2a"
-            ]
-        },
-        {
-            "Name": "Front USB2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ],
-            "Description": "Has Keyboard HID commands"
-        },
-        {
-            "Name": "Front USB3",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0",
-                "USB 3 5g"
-            ]
-        },
-        {
-            "Name": "Back USB2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Back USB2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Back USB2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Back USB3",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0",
-                "USB 3 5g"
-            ]
-        },
-        {
-            "Name": "Audio Out",
-            "PinType": "Audio3.5mm",
-            "Protocols": [
-                "AnalogAudio"
-            ]
-        }
-    ],
-    "Males": [
-        
-    ]
+	"Females": [
+		{
+			"Name": "Comp1 USBC In",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Comp2 USBC In",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Name": "Power",
+			"PinType": "DC Power Barrel"
+		},
+		{
+			"Name": "DP 1.2 Out",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Description": "Has Keyboard HID commands",
+			"Name": "Front USB2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Front USB3",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "Back USB2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Back USB2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Back USB2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Back USB3",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "Audio Out",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "Level1 USBC KVM"
 }
