@@ -48,9 +48,11 @@ using NotUUID = int;
 //#define IS_SHIPPING
 
 #ifdef IS_SHIPPING
+const fs::path ConnectatronPath = ".";
 const fs::path DevicesPath = "Devices";
 const fs::path ProjectsPath = "Projects";
 #else
+const fs::path ConnectatronPath = "../../../../../Applications/Connectatron";
 const fs::path DevicesPath = "../../../../../Applications/Connectatron/Devices";
 const fs::path ProjectsPath = "../../../../../Applications/Connectatron/Projects";
 #endif
@@ -879,7 +881,7 @@ struct Connectatron:
             // If device is not dirty
             if (!device["Dirty"].get<bool>())
             {
-                new_node->saved_filepath = device["File"].get<string>();
+                new_node->saved_filepath = ConnectatronPath / device["File"].get<string>();
                 new_node->dirty = false;
                 auto actual_node_data = GetJSONFromFile(new_node->saved_filepath);
                 InitNodeFromJSON(actual_node_data, new_node);
@@ -2023,7 +2025,7 @@ struct Connectatron:
                         // If previously-saved-as path isn't default
                         if (node->saved_filepath.u8string() != fs::path())
                         {
-                            auto saved_filepath = node->saved_filepath;
+                            auto saved_filepath = ConnectatronPath / node->saved_filepath;
 
                             if (/*standardDialogMode*/true)
                                 ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
@@ -2046,9 +2048,15 @@ struct Connectatron:
                             os_filename = fs::path(clean);
 
                             if (/*standardDialogMode*/true)
-                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    DevicesPath.string(), 
+                                    os_filename.string(), 
+                                    1, nullptr, flags);
                             else
-                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    DevicesPath.string(), 
+                                    os_filename.string(), 
+                                    1, nullptr, flags);
                         }
                     }
 
@@ -2093,13 +2101,17 @@ struct Connectatron:
             if (ImGuiFileDialog::Instance()->IsOk())
             {
                 node_to_save->Type = NodeType::Blueprint;
-                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string fileName_stem = fs::path(filePathName).filename().stem().string();
+                std::string abs_filePath_withName = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string abs_filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                std::string fileName_stem = fs::path(abs_filePath_withName).filename().stem().string();
+
+                fs::path abs_filepath = fs::path(abs_filePath_withName);
+                auto rel_filepath = fs::relative(abs_filepath, ConnectatronPath);
+                //TODO if not under DevicesPath, do something else???
                 
                 // Change cached save-location on the node
                 
-                node_to_save->saved_filepath = fs::path(filePathName);
+                node_to_save->saved_filepath = rel_filepath;
                 node_to_save->dirty = false;
 
                 // If still using the name from empty_device.json, change the name to match the filename
@@ -2107,9 +2119,10 @@ struct Connectatron:
                     node_to_save->Name = fileName_stem;
 
                 std::cout << "Saving Device As:" << std::endl;
-                std::cout << "filePathName: " << filePathName << std::endl;
-                std::cout << "filePath: " << filePath << std::endl;
-                SaveDeviceToFile(node_to_save, fs::path(filePathName));
+                std::cout << "abs_filePath_withName: " << abs_filePath_withName << std::endl;
+                std::cout << "abs_filePath: " << abs_filePath << std::endl;
+                std::cout << "rel_filepath: " << rel_filepath << std::endl;
+                SaveDeviceToFile(node_to_save, ConnectatronPath / rel_filepath);
                 node_to_save.reset();
             }
 
