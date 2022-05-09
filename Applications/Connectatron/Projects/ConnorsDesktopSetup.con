@@ -12,7 +12,7 @@
 },
 {
 "Dirty": false,
-"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\ATEN KVM.json",
+"File": "Devices\\ATEN KVM.json",
 "ID": 58879,
 "Name": "ATEN KVM",
 "SavedPos": [
@@ -122,7 +122,7 @@
 },
 {
 "Dirty": false,
-"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
 "ID": 17743,
 "Name": "USB2 Hub (4)",
 "SavedPos": [
@@ -192,7 +192,7 @@
 },
 {
 "Dirty": false,
-"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Adapters (M-F)\\USB-A to USB-C.json",
+"File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
 "ID": 88523,
 "Name": "USB-A to USB-C",
 "SavedPos": [
@@ -212,7 +212,7 @@
 },
 {
 "Dirty": false,
-"File": "C:\\Users\\conno\\Documents\\GitHub\\Connectatron\\Applications\\Connectatron\\Devices\\Connors PC.json",
+"File": "Devices\\Connors PC.json",
 "ID": 93685,
 "Name": "Connors PC",
 "SavedPos": [
@@ -412,7 +412,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Ethernet.json",
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
 "ID": 33438,
 "Name": "Ethernet",
 "SavedPos": [
@@ -422,7 +422,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Ethernet.json",
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
 "ID": 47466,
 "Name": "Ethernet",
 "SavedPos": [
@@ -432,7 +432,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Ethernet.json",
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
 "ID": 78732,
 "Name": "Ethernet",
 "SavedPos": [
@@ -442,7 +442,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Ethernet.json",
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
 "ID": 23882,
 "Name": "Ethernet",
 "SavedPos": [
@@ -452,7 +452,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
 "ID": 12823,
 "Name": "IEC (C13) Power Cable",
 "SavedPos": [
@@ -462,7 +462,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\.\\Generic AC Adapter - Barrel Plug.json",
+"File": "Devices\\.\\Generic AC Adapter - Barrel Plug.json",
 "ID": 36618,
 "Name": "Generic AC Adapter - Barrel Plug",
 "SavedPos": [
@@ -472,7 +472,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
 "ID": 74049,
 "Name": "IEC (C13) Power Cable",
 "SavedPos": [
@@ -492,7 +492,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\USBA_to_USBB (2).json",
+"File": "Devices\\Cables (M-M)\\USBA_to_USBB (2).json",
 "ID": 95423,
 "Name": "USBA to USBB",
 "SavedPos": [
@@ -502,7 +502,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Thunderbolt3.json",
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
 "ID": 42679,
 "Name": "Thunderbolt 3",
 "SavedPos": [
@@ -512,7 +512,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Thunderbolt3.json",
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
 "ID": 982,
 "Name": "Thunderbolt 3",
 "SavedPos": [
@@ -522,7 +522,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
 "ID": 68554,
 "Name": "Common Wall Outlet (NEMA 5-15)",
 "SavedPos": [
@@ -532,7 +532,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
 "ID": 67903,
 "Name": "Common Wall Outlet (NEMA 5-15)",
 "SavedPos": [
@@ -542,7 +542,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\HDMI.json",
+"File": "Devices\\Cables (M-M)\\HDMI.json",
 "ID": 34971,
 "Name": "HDMI",
 "SavedPos": [
@@ -552,7 +552,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\HDMI.json",
+"File": "Devices\\Cables (M-M)\\HDMI.json",
 "ID": 97594,
 "Name": "HDMI",
 "SavedPos": [
@@ -562,7 +562,7 @@
 },
 {
 "Dirty": false,
-"File": "../../../../../Applications/Connectatron/Devices\\Cables (M-M)\\Thunderbolt3.json",
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
 "ID": 58275,
 "Name": "Thunderbolt 3",
 "SavedPos": [
