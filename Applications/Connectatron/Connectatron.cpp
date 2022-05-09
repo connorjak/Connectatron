@@ -314,6 +314,8 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_pr
         {
             device["Dirty"] = false;
             device["File"] = node->saved_filepath.u8string(); //TODO widestring
+
+            return device; //EARLY RETURN
         }
         else
         {
@@ -878,6 +880,7 @@ struct Connectatron:
             if (!device["Dirty"].get<bool>())
             {
                 new_node->saved_filepath = device["File"].get<string>();
+                new_node->dirty = false;
                 auto actual_node_data = GetJSONFromFile(new_node->saved_filepath);
                 InitNodeFromJSON(actual_node_data, new_node);
                 //TODO does this miss useful stuff in SpawnNodeFromJSON?
@@ -1476,6 +1479,13 @@ struct Connectatron:
                         ImGui::TextUnformatted(node->Name.c_str());
                         ImGui::Spring(1);
                         ImGui::Dummy(ImVec2(0, 28));
+                        // Dirty-marker
+                        if (node->dirty)
+                        {
+                            ImGui::TextUnformatted("*");
+                            if (ImGui::IsItemHovered())
+                                ImGui::SetTooltip("Device as-is is only saved in project.");
+                        }
                         ImGui::Spring(0);
                     builder.EndHeader();
                 }
@@ -1549,6 +1559,13 @@ struct Connectatron:
                     ImGui::PopItemWidth();
                     ImGui::Spring(1);
                     ImGui::Dummy(ImVec2(0, 28));
+                    // Dirty-marker
+                    if (node->dirty)
+                    {
+                        ImGui::TextUnformatted("*");
+                        if (ImGui::IsItemHovered())
+                            ImGui::SetTooltip("Device as-is is only saved in project.");
+                    }
                     ImGui::Spring(0);
                 builder.EndHeader();
 
@@ -1593,9 +1610,10 @@ struct Connectatron:
                     builder.EndInput();
                 }
 
-                builder.Input_NoPin(node.get() + 1);
+                builder.Input_NoPin(node.get() + 1); //TODO pointer arithmetic? Might be flawed
                 if (ImGui::Button("New Connector"))
                 {
+                    node->dirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -1644,9 +1662,10 @@ struct Connectatron:
                     ImGui::PopID();
                 }
 
-                builder.Output_NoPin(node.get() + 2);
+                builder.Output_NoPin(node.get() + 2); //TODO pointer arithmetic? Might be flawed
                 if (ImGui::Button("New Connector"))
                 {
+                    node->dirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -1973,8 +1992,6 @@ struct Connectatron:
 
             ImGui::TextUnformatted("Device Information");
             ImGui::Separator();
-            string last_saved_as = "Last Saved As: " + node->saved_filepath.u8string();
-            ImGui::Text(last_saved_as.c_str());
             if (node)
             {
                 if (node->Type == NodeType::Blueprint)
@@ -2037,8 +2054,20 @@ struct Connectatron:
 
                     // See below the EndPopup() for the file dialog GUI
                 }
-                ImGui::Text("Female Connectors: %d", (int)node->Females.size());
-                ImGui::Text("Male Connectors: %d", (int)node->Males.size());
+
+                string last_saved_as = node->saved_filepath.u8string(); // TODO widestring
+                if (last_saved_as == fs::path())
+                {
+                    ImGui::Text("Device not yet saved outside of this project.");
+                }
+                else
+                {
+                    string last_saved_as_msg = "Last Saved As: " + last_saved_as;
+                    ImGui::Text(last_saved_as_msg.c_str());
+                }
+
+                ImGui::Text("%d Female Connectors", (int)node->Females.size());
+                ImGui::Text("%d Male Connectors", (int)node->Males.size());
 #ifdef _DEBUG
                 ImGui::Separator();
                 ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Blueprint_Editing ? "Blueprint_Editing" : "Comment"));
@@ -2071,6 +2100,7 @@ struct Connectatron:
                 // Change cached save-location on the node
                 
                 node_to_save->saved_filepath = fs::path(filePathName);
+                node_to_save->dirty = false;
 
                 // If still using the name from empty_device.json, change the name to match the filename
                 if(node_to_save->Name == "New Custom Node")
@@ -2127,7 +2157,10 @@ struct Connectatron:
 
                             bool is_selected = possible_connect == pin->Type;
                             if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                            {
+                                on_node->dirty = true;
                                 pin->Type = possible_connect;
+                            }
                             if (is_selected)
                                 ImGui::SetItemDefaultFocus();
                         }
@@ -2147,7 +2180,10 @@ struct Connectatron:
                                     bool is_selected = possible_connect == pin->Type;
                                     //TODO also try Selectable?
                                     if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                                    {
+                                        on_node->dirty = true;
                                         pin->Type = possible_connect;
+                                    }
                                     if (is_selected)
                                         ImGui::SetItemDefaultFocus();
                                 }
@@ -2192,6 +2228,7 @@ struct Connectatron:
                             ImGui::Checkbox(proto_string.c_str(), &val);
                             if (val != pastval)
                             {
+                                on_node->dirty = true;
                                 if (val)
                                     pin->Protocols.insert(possible_proto);
                                 else
@@ -2217,6 +2254,7 @@ struct Connectatron:
                                     ImGui::Checkbox(proto_string.c_str(), &val);
                                     if (val != pastval)
                                     {
+                                        on_node->dirty = true;
                                         if (val)
                                             pin->Protocols.insert(possible_proto);
                                         else
@@ -2228,7 +2266,7 @@ struct Connectatron:
                         }
                         ImGui::EndMenu();
                     }
-                }
+                } //End Blueprint_Editing-specific stuff
 
                 auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.1;
                 ImGui::BeginChild("##Protocol Viewing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
@@ -2419,6 +2457,7 @@ struct Connectatron:
                                     {
                                         node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
                                         node->saved_filepath = devicePath;
+                                        node->dirty = false;
                                     }
                                 }
                             }
@@ -2429,6 +2468,7 @@ struct Connectatron:
                                 {
                                     node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
                                     node->saved_filepath = devicePath;
+                                    node->dirty = false;
                                 }
                             }
                         }
