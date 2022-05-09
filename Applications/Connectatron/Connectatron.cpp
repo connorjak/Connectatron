@@ -2469,7 +2469,7 @@ struct Connectatron:
                                     if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
                                     {
                                         node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-                                        node->saved_filepath = devicePath;
+                                        node->saved_filepath = fs::relative(devicePath, ConnectatronPath);
                                         node->dirty = false;
                                     }
                                 }
@@ -2480,7 +2480,7 @@ struct Connectatron:
                                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
                                 {
                                     node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
-                                    node->saved_filepath = devicePath;
+                                    node->saved_filepath = fs::relative(devicePath, ConnectatronPath);
                                     node->dirty = false;
                                 }
                             }
