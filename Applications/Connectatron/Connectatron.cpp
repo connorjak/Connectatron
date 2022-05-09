@@ -1449,9 +1449,9 @@ struct Connectatron:
         UpdateTouch();
 
         auto& io = ImGui::GetIO();
-
+#if _DEBUG
         ImGui::Text("FPS: %.2f (%.2gms)", io.Framerate, io.Framerate ? 1000.0f / io.Framerate : 0.0f);
-
+#endif
         ed::SetCurrentEditor(m_Editor);
 
         string title_text = "Connectatron: " + CurrentProjectName;
