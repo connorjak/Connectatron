@@ -1,467 +1,294 @@
 {
 "Devices": [
 {
-"Females": [
-{
-"Name": "Thunderbolt 3",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a",
-"PCIe 1.0 x1",
-"PCIe 1.0 x2",
-"PCIe 1.0 x4",
-"PCIe 2.0 x1",
-"PCIe 2.0 x2",
-"PCIe 2.0 x4",
-"PCIe 3.0 x1",
-"PCIe 3.0 x2",
-"PCIe 3.0 x4",
-"Thunderbolt 3"
-]
-},
-{
-"Name": "USB-A 1",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Mini Displayport",
-"PinType": "Mini DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
-"ID": 5156,
-"Males": [],
+"Dirty": false,
+"File": "Devices\\Razer Blade Advanced 2019.json",
+"ID": 75657,
 "Name": "Razer Blade 15\" Advanced (2019)",
 "SavedPos": [
-1160.0,
-32.0
+1224.0,
+737.0
 ]
 },
 {
-"Females": [],
-"ID": 9440,
-"Males": [
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
+"Dirty": false,
+"File": "Devices\\HP Reverb G2 Cabling.json",
+"ID": 62091,
+"Name": "HP Reverb G2 Cabling",
+"SavedPos": [
+204.0,
+737.0
 ]
-}
-],
+},
+{
+"Dirty": false,
+"File": "Devices\\HP Reverb G2.json",
+"ID": 94510,
+"Name": "HP Reverb G2",
+"SavedPos": [
+520.0,
+844.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
+"ID": 12684,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-254.0,
+592.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 98717,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+56.0,
+928.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Razer Power Adapter.json",
+"ID": 50632,
+"Name": "Razer Power Adapter",
+"SavedPos": [
+616.0,
+1180.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 29148,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-182.0,
+1164.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 15078,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+690.0,
+892.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Joystick.json",
+"ID": 5637,
+"Name": "USB2 Joystick",
+"SavedPos": [
+431.0,
+940.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Throttle.json",
+"ID": 59540,
+"Name": "USB2 Throttle",
+"SavedPos": [
+429.0,
+1036.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic Headset.json",
+"ID": 60031,
 "Name": "Generic Headset",
 "SavedPos": [
-707.0,
-220.0
+363.0,
+1119.0
 ]
 },
 {
-"Females": [],
-"ID": 11472,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Mini DP to DP.json",
+"ID": 74547,
+"Name": "Mini DP to DP",
+"SavedPos": [
+721.0,
+780.0
+]
 },
 {
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBA to Ethernet.json",
+"ID": 48847,
+"Name": "USBA to Ethernet",
+"SavedPos": [
+680.0,
+652.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 71264,
+"Name": "Ethernet",
+"SavedPos": [
+290.0,
+544.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ethernet Gigabit WAN.json",
+"ID": 19505,
+"Name": "Ethernet Gigabit WAN",
+"SavedPos": [
+520.0,
+556.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 29924,
 "Name": "Thunderbolt 3",
 "SavedPos": [
 1068.0,
--144.0
+540.0
 ]
 },
 {
-"Females": [],
-"ID": 5576,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
-"Name": "USB2 Joystick",
-"SavedPos": [
-591.0,
-332.0
-]
-},
-{
-"Females": [],
-"ID": 55819,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
-"Name": "USB2 Throttle",
-"SavedPos": [
-590.0,
-412.0
-]
-},
-{
-"Females": [
-{
-"Name": "Ethernet",
-"PinType": "RJ45"
-}
-],
-"ID": 95146,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
-"Name": "USBA to Ethernet",
-"SavedPos": [
-296.0,
-44.0
-]
-},
-{
-"Females": [],
-"ID": 54554,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
-"Name": "Ethernet",
-"SavedPos": [
-114.0,
-44.0
-]
-},
-{
-"Females": [
-{
-"Name": "Display / Power",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-}
-],
-"ID": 54099,
-"Males": [],
+"Dirty": false,
+"File": "Devices\\ASUS Zenscreen.json",
+"ID": 35200,
 "Name": "ASUS Zenscreen",
 "SavedPos": [
 1304.0,
--148.0
+540.0
 ]
 },
 {
-"Females": [
-{
-"Name": "USB-A 1",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 4",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
-"ID": 17743,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
-"Name": "USB2 Hub (4)",
-"SavedPos": [
-824.0,
-352.0
-]
-},
-{
-"Females": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
-"ID": 89813,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
-"Name": "USBC to DP",
-"SavedPos": [
-696.0,
--180.0
-]
-},
-{
-"Females": [],
-"ID": 75951,
-"Males": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 4057,
 "Name": "HDMI",
 "SavedPos": [
-1208.0,
-332.0
-]
-},
-{
-"Females": [
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-}
-],
-"ID": 50635,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C",
-"Protocols": [
-"USB 3 5g"
-]
-},
-{
-"Name": "DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.4a"
-]
-}
-],
-"Name": "HP Reverb G2",
-"SavedPos": [
-260.0,
--116.0
-]
-},
-{
-"Females": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
-"ID": 88523,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
-"Name": "USB-A to USB-C",
-"SavedPos": [
-696.0,
--100.0
-]
-},
-{
-"Females": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
-"ID": 65715,
-"Males": [
-{
-"Name": "Mini DP",
-"PinType": "Mini DisplayPort"
-}
-],
-"Name": "Mini DP to DP",
-"SavedPos": [
-711.0,
-140.0
+1155.0,
+1248.0
 ]
 }
 ],
 "Links": [
 [
-95146,
-5156,
-0,
-2
-],
-[
-54554,
-95146,
+62091,
+75657,
 0,
 0
 ],
 [
-17743,
-5156,
-0,
-3
+62091,
+94510,
+2,
+0
 ],
 [
-5576,
-17743,
+12684,
+62091,
 0,
 0
 ],
 [
-55819,
-17743,
-0,
-1
-],
-[
-11472,
-54099,
-0,
-0
-],
-[
-65715,
-5156,
-0,
-4
-],
-[
-50635,
-65715,
+12684,
+98717,
 1,
 0
 ],
 [
-9440,
-5156,
+50632,
+75657,
+0,
+7
+],
+[
+29148,
+50632,
+0,
+0
+],
+[
+29148,
+98717,
+1,
+1
+],
+[
+15078,
+75657,
+0,
+3
+],
+[
+5637,
+15078,
+0,
+0
+],
+[
+59540,
+15078,
+0,
+1
+],
+[
+60031,
+75657,
 0,
 6
 ],
 [
-50635,
-5156,
+74547,
+75657,
+0,
+4
+],
+[
+62091,
+74547,
+1,
+0
+],
+[
+48847,
+75657,
+0,
+2
+],
+[
+71264,
+48847,
 0,
 0
+],
+[
+71264,
+19505,
+1,
+0
+],
+[
+29924,
+35200,
+0,
+0
+],
+[
+4057,
+75657,
+0,
+5
 ]
 ]
 }
