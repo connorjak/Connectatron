@@ -281,6 +281,10 @@ struct NodeIdLess
 static json GetJSONFromFile(fs::path filepath)
 {
     std::ifstream i(filepath);
+    if (!i)
+    {
+        throw std::runtime_error("Failed to open file " + filepath.u8string() + " for JSON reading.");
+    }
     json js;
     i >> js;
     return js;

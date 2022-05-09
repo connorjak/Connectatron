@@ -171,26 +171,6 @@
 ]
 },
 {
-"Dirty": true,
-"Females": [],
-"ID": 20263,
-"Males": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-},
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
-"Name": "DP",
-"SavedPos": [
-124.0,
-320.0
-]
-},
-{
 "Dirty": false,
 "File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
 "ID": 88523,
@@ -492,7 +472,7 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\Cables (M-M)\\USBA_to_USBB (2).json",
+"File": "Devices\\Cables (M-M)\\USBA to USBB.json",
 "ID": 95423,
 "Name": "USBA to USBB",
 "SavedPos": [
@@ -569,6 +549,16 @@
 1196.0,
 572.0
 ]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
+"ID": 70785,
+"Name": "DP",
+"SavedPos": [
+100.0,
+321.0
+]
 }
 ],
 "Links": [
@@ -619,12 +609,6 @@
 47791,
 0,
 8
-],
-[
-20263,
-47791,
-0,
-3
 ],
 [
 88523,
@@ -961,6 +945,12 @@
 93685,
 1,
 16
+],
+[
+70785,
+47791,
+0,
+3
 ]
 ]
 }
