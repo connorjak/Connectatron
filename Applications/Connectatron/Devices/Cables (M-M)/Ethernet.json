@@ -1,16 +1,14 @@
 {
-		"Name": "Ethernet",
-		"Females": [
-				
-		],
-		"Males": [
-				{
-						"Name": "RJ45",
-						"PinType": "RJ45"
-				},
-				{
-						"Name": "RJ45",
-						"PinType": "RJ45"
-				}
-		]
+	"Females": [],
+	"Males": [
+		{
+			"Name": "RJ45",
+			"PinType": "RJ45"
+		},
+		{
+			"Name": "RJ45",
+			"PinType": "RJ45"
+		}
+	],
+	"Name": "Ethernet"
 }

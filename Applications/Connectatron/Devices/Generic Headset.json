@@ -1,15 +1,13 @@
 {
-    "Name": "Generic Headset",
-    "Females": [
-        
-    ],
-    "Males": [
-        {
-            "Name": "Audio/Mic Combo",
-            "PinType": "Audio3_5mm",
-            "Protocols": [
-                "AnalogAudio"
-            ]
-        }
-    ]
+	"Females": [],
+	"Males": [
+		{
+			"Name": "Audio/Mic Combo",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Name": "Generic Headset"
 }

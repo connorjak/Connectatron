@@ -1,16 +1,14 @@
 {
-    "Name": "HDMI",
-    "Females": [
-        
-    ],
-    "Males": [
-        {
-            "Name": "HDMI",
-            "PinType": "HDMI"
-        },
-        {
-            "Name": "HDMI",
-            "PinType": "HDMI"
-        }
-    ]
+	"Females": [],
+	"Males": [
+		{
+			"Name": "HDMI",
+			"PinType": "HDMI"
+		},
+		{
+			"Name": "HDMI",
+			"PinType": "HDMI"
+		}
+	],
+	"Name": "HDMI"
 }

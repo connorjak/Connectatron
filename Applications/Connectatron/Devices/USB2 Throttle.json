@@ -1,15 +1,13 @@
 {
-    "Name": "USB2 Throttle",
-    "Females": [
-        
-    ],
-    "Males": [
-        {
-            "Name": "USB-A",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 2.0"
-            ]
-        }
-    ]
+	"Females": [],
+	"Males": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 2.0"
+			]
+		}
+	],
+	"Name": "USB2 Throttle"
 }

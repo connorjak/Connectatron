@@ -48,9 +48,11 @@ using NotUUID = int;
 //#define IS_SHIPPING
 
 #ifdef IS_SHIPPING
+const fs::path ConnectatronPath = ".";
 const fs::path DevicesPath = "Devices";
 const fs::path ProjectsPath = "Projects";
 #else
+const fs::path ConnectatronPath = "../../../../../Applications/Connectatron";
 const fs::path DevicesPath = "../../../../../Applications/Connectatron/Devices";
 const fs::path ProjectsPath = "../../../../../Applications/Connectatron/Projects";
 #endif
@@ -91,6 +93,16 @@ std::array<float,3> HSVtoRGB(float H, float S, float V) {
     return { R,G,B };
 }
 
+static string Sanitize_Filename(string str)
+{
+    string illegalChars = "\\/:?\"<>|";
+    //https://stackoverflow.com/a/14475510/11502722
+    str.erase(
+        std::remove_if(str.begin(), str.end(), [&](char chr) { return illegalChars.find(chr) != std::string::npos; }),
+        str.end());
+    return str;
+}
+
 
 static inline ImRect ImGui_GetItemRect()
 {
@@ -117,6 +129,7 @@ using ax::Widgets::IconType;
 static ed::EditorContext* m_Editor = nullptr;
 
 static string CurrentProjectName = "my_project.con";
+static bool ProjectDirty = false;
 
 static vector<ConnectorCategoryInfo> ConnectorCategories;
 static vector<PinType> UncategorizedConnectors;
@@ -210,12 +223,19 @@ struct Node
     // Position saved in project file
     ImVec2 SavedPosition;
 
+    // Whether the node has been edited and not saved to a device file.
+    // https://github.com/connorjak/Connectatron/issues/19
+    bool dirty;
+    // Where this node was last saved
+    fs::path saved_filepath;
+
     std::string State;
     std::string SavedState;
 
     Node(int id, const char* name, ImColor color = ImColor(255, 255, 255)) :
         ID(id), persistentID(-1), Name(name), Color(color), Type(NodeType::Blueprint), Size(0, 0), SavedPosition(0, 0)
     {
+        dirty = true;
     }
 };
 
@@ -262,12 +282,18 @@ struct NodeIdLess
 static json GetJSONFromFile(fs::path filepath)
 {
     std::ifstream i(filepath);
+    if (!i)
+    {
+        throw std::runtime_error("Failed to open file " + filepath.u8string() + " for JSON reading.");
+    }
     json js;
     i >> js;
     return js;
 }
 
-static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool include_project_data)
+//NOTE: saving_in_project_file has significant side effects!
+// https://github.com/connorjak/Connectatron/issues/19
+static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_project_file)
 {
     json device;
 
@@ -282,13 +308,26 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool include_proj
     {
         id = Generate_NotUUID();
     }*/
-    if (include_project_data)
+    if (saving_in_project_file)
     {
         device["ID"] = node->persistentID;
 
         auto pos = ed::GetNodePosition(node->ID);
         device["SavedPos"][0] = pos.x;
         device["SavedPos"][1] = pos.y;
+
+        // If the node is not dirty, save as file reference instead of serializing details
+        if (!node->dirty)
+        {
+            device["Dirty"] = false;
+            device["File"] = node->saved_filepath.u8string(); //TODO widestring
+
+            return device; //EARLY RETURN
+        }
+        else
+        {
+            device["Dirty"] = true;
+        }
     }
 
     // Parse Females
@@ -801,6 +840,8 @@ struct Connectatron:
 //TODO load position in project?
     shared_ptr<Node> SpawnNodeFromJSON(const json& device)
     {
+        ProjectDirty = true;
+
         string name = device["Name"].get<string>();
         auto name_hash = std::hash<string>{}(name);
         auto name_hash_dbl = name_hash / std::pow(10, 10);
@@ -839,6 +880,23 @@ struct Connectatron:
         {
             new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
             new_node->SavedPosition.y = device["SavedPos"][1].get<float>();
+        }
+
+        // If has field "Dirty"
+        if (device.find("Dirty") != device.end())
+        {
+            // If device is not dirty
+            if (!device["Dirty"].get<bool>())
+            {
+                new_node->saved_filepath = device["File"].get<string>();
+                new_node->dirty = false;
+                auto actual_node_data = GetJSONFromFile(ConnectatronPath / new_node->saved_filepath);
+                InitNodeFromJSON(actual_node_data, new_node);
+                //TODO does this miss useful stuff in SpawnNodeFromJSON?
+                //   Might need to refactor...
+
+                return; // EARLY RETURN
+            }
         }
 
         // Parse Females
@@ -1125,9 +1183,15 @@ struct Connectatron:
             flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
             if (/*standardDialogMode*/true)
-                ImGuiFileDialog::Instance()->OpenDialog("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenDialog("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters,
+                    ProjectsPath.string(), 
+                    CurrentProjectName,
+                    1, nullptr, flags);
             else
-                ImGuiFileDialog::Instance()->OpenModal("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenModal("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters,
+                    ProjectsPath.string(),
+                    CurrentProjectName,
+                    1, nullptr, flags);
         }
 
         // display
@@ -1136,6 +1200,8 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
+                ProjectDirty = false;
+
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
@@ -1157,6 +1223,12 @@ struct Connectatron:
 
         if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open Project..."))
         {
+            if (ProjectDirty)
+            {
+                //TODO warning popup
+            }
+
+
             //const char* filters = ".*,.con,.dev,.json";
             const char* filters = ".con";
 
@@ -1164,9 +1236,15 @@ struct Connectatron:
             flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
             if (/*standardDialogMode*/true)
-                ImGuiFileDialog::Instance()->OpenDialog("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenDialog("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters,
+                    ProjectsPath.string(), 
+                    CurrentProjectName, 
+                    1, nullptr, flags);
             else
-                ImGuiFileDialog::Instance()->OpenModal("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenModal("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, 
+                    ProjectsPath.string(), 
+                    CurrentProjectName, 
+                    1, nullptr, flags);
         }
 
         // display
@@ -1178,7 +1256,6 @@ struct Connectatron:
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
-                // action
 
                 CurrentProjectName = fileName_stem;
 
@@ -1186,6 +1263,9 @@ struct Connectatron:
                 std::cout << "filePathName: " << filePathName << std::endl;
                 std::cout << "filePath: " << filePath << std::endl;
                 LoadProjectFromFile(fs::path(filePathName));
+
+                // Set not-dirty down here because LoadProjectFromFile calls functions that set this to true.
+                ProjectDirty = false;
             }
 
             // close
@@ -1369,12 +1449,17 @@ struct Connectatron:
         UpdateTouch();
 
         auto& io = ImGui::GetIO();
-
+#if _DEBUG
         ImGui::Text("FPS: %.2f (%.2gms)", io.Framerate, io.Framerate ? 1000.0f / io.Framerate : 0.0f);
-
+#endif
         ed::SetCurrentEditor(m_Editor);
 
-        SetTitle(string("Connectatron: " + CurrentProjectName).c_str());
+        string title_text = "Connectatron: " + CurrentProjectName;
+
+        if (ProjectDirty)
+            title_text += " (UNSAVED)";
+
+        SetTitle(title_text.c_str());
 
         //auto& style = ImGui::GetStyle();
 
@@ -1430,6 +1515,13 @@ struct Connectatron:
                         ImGui::TextUnformatted(node->Name.c_str());
                         ImGui::Spring(1);
                         ImGui::Dummy(ImVec2(0, 28));
+                        // Dirty-marker
+                        if (node->dirty)
+                        {
+                            ImGui::TextUnformatted("*");
+                            if (ImGui::IsItemHovered())
+                                ImGui::SetTooltip("Device as-is is only saved in project.");
+                        }
                         ImGui::Spring(0);
                     builder.EndHeader();
                 }
@@ -1503,6 +1595,13 @@ struct Connectatron:
                     ImGui::PopItemWidth();
                     ImGui::Spring(1);
                     ImGui::Dummy(ImVec2(0, 28));
+                    // Dirty-marker
+                    if (node->dirty)
+                    {
+                        ImGui::TextUnformatted("*");
+                        if (ImGui::IsItemHovered())
+                            ImGui::SetTooltip("Device as-is is only saved in project.");
+                    }
                     ImGui::Spring(0);
                 builder.EndHeader();
 
@@ -1547,9 +1646,11 @@ struct Connectatron:
                     builder.EndInput();
                 }
 
-                builder.Input_NoPin(node.get() + 1);
+                builder.Input_NoPin(node.get() + 1); //TODO pointer arithmetic? Might be flawed
                 if (ImGui::Button("New Connector"))
                 {
+                    node->dirty = true;
+                    ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -1598,9 +1699,11 @@ struct Connectatron:
                     ImGui::PopID();
                 }
 
-                builder.Output_NoPin(node.get() + 2);
+                builder.Output_NoPin(node.get() + 2); //TODO pointer arithmetic? Might be flawed
                 if (ImGui::Button("New Connector"))
                 {
+                    node->dirty = true;
+                    ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -1954,20 +2057,61 @@ struct Connectatron:
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_ConfirmOverwrite;
                         flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
-                        auto os_filename = fs::path(node->Name + ".json");
+                        
+                        // If previously-saved-as path isn't default
+                        if (node->saved_filepath.u8string() != fs::path())
+                        {
+                            auto saved_filepath = ConnectatronPath / node->saved_filepath;
 
-                        // TODO BREAKING need to sanitize name for os filename compatibility!!!
-
-                        if (/*standardDialogMode*/true)
-                            ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                            if (/*standardDialogMode*/true)
+                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    saved_filepath.parent_path().string(), 
+                                    saved_filepath.stem().string(),
+                                    1, nullptr, flags);
+                            else
+                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    saved_filepath.parent_path().string(),
+                                    saved_filepath.stem().string(),
+                                    1, nullptr, flags);
+                        }
                         else
-                            ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, DevicesPath.string(), os_filename.string(), 1, nullptr, flags);
+                        {
+                            fs::path os_filename;
+                            // Need to come up with a new name for this file
+                            auto unclean = node->Name + ".json";
+                            auto clean = Sanitize_Filename(unclean);
+
+                            os_filename = fs::path(clean);
+
+                            if (/*standardDialogMode*/true)
+                                ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    DevicesPath.string(), 
+                                    os_filename.string(), 
+                                    1, nullptr, flags);
+                            else
+                                ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
+                                    DevicesPath.string(), 
+                                    os_filename.string(), 
+                                    1, nullptr, flags);
+                        }
                     }
 
                     // See below the EndPopup() for the file dialog GUI
                 }
-                ImGui::Text("Female Connectors: %d", (int)node->Females.size());
-                ImGui::Text("Male Connectors: %d", (int)node->Males.size());
+
+                string last_saved_as = node->saved_filepath.u8string(); // TODO widestring
+                if (last_saved_as == fs::path())
+                {
+                    ImGui::Text("Device not yet saved outside of this project.");
+                }
+                else
+                {
+                    string last_saved_as_msg = "Last Saved As: " + last_saved_as;
+                    ImGui::Text(last_saved_as_msg.c_str());
+                }
+
+                ImGui::Text("%d Female Connectors", (int)node->Females.size());
+                ImGui::Text("%d Male Connectors", (int)node->Males.size());
 #ifdef _DEBUG
                 ImGui::Separator();
                 ImGui::Text("Type: %s", node->Type == NodeType::Blueprint ? "Blueprint" : (node->Type == NodeType::Blueprint_Editing ? "Blueprint_Editing" : "Comment"));
@@ -1992,20 +2136,31 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
+                ProjectDirty = true; //TODO should it?
+
                 node_to_save->Type = NodeType::Blueprint;
-                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string fileName_stem = fs::path(filePathName).filename().stem().string();
-                // action
+                std::string abs_filePath_withName = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string abs_filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+                std::string fileName_stem = fs::path(abs_filePath_withName).filename().stem().string();
+
+                fs::path abs_filepath = fs::path(abs_filePath_withName);
+                auto rel_filepath = fs::relative(abs_filepath, ConnectatronPath);
+                //TODO if not under DevicesPath, do something else???
+                
+                // Change cached save-location on the node
+                
+                node_to_save->saved_filepath = rel_filepath;
+                node_to_save->dirty = false;
 
                 // If still using the name from empty_device.json, change the name to match the filename
                 if(node_to_save->Name == "New Custom Node")
                     node_to_save->Name = fileName_stem;
 
                 std::cout << "Saving Device As:" << std::endl;
-                std::cout << "filePathName: " << filePathName << std::endl;
-                std::cout << "filePath: " << filePath << std::endl;
-                SaveDeviceToFile(node_to_save, fs::path(filePathName));
+                std::cout << "abs_filePath_withName: " << abs_filePath_withName << std::endl;
+                std::cout << "abs_filePath: " << abs_filePath << std::endl;
+                std::cout << "rel_filepath: " << rel_filepath << std::endl;
+                SaveDeviceToFile(node_to_save, ConnectatronPath / rel_filepath);
                 node_to_save.reset();
             }
 
@@ -2053,7 +2208,11 @@ struct Connectatron:
 
                             bool is_selected = possible_connect == pin->Type;
                             if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                            {
+                                ProjectDirty = true;
+                                on_node->dirty = true;
                                 pin->Type = possible_connect;
+                            }
                             if (is_selected)
                                 ImGui::SetItemDefaultFocus();
                         }
@@ -2073,7 +2232,11 @@ struct Connectatron:
                                     bool is_selected = possible_connect == pin->Type;
                                     //TODO also try Selectable?
                                     if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
+                                    {
+                                        ProjectDirty = true;
+                                        on_node->dirty = true;
                                         pin->Type = possible_connect;
+                                    }
                                     if (is_selected)
                                         ImGui::SetItemDefaultFocus();
                                 }
@@ -2118,6 +2281,8 @@ struct Connectatron:
                             ImGui::Checkbox(proto_string.c_str(), &val);
                             if (val != pastval)
                             {
+                                ProjectDirty = true;
+                                on_node->dirty = true;
                                 if (val)
                                     pin->Protocols.insert(possible_proto);
                                 else
@@ -2143,6 +2308,8 @@ struct Connectatron:
                                     ImGui::Checkbox(proto_string.c_str(), &val);
                                     if (val != pastval)
                                     {
+                                        ProjectDirty = true;
+                                        on_node->dirty = true;
                                         if (val)
                                             pin->Protocols.insert(possible_proto);
                                         else
@@ -2154,7 +2321,7 @@ struct Connectatron:
                         }
                         ImGui::EndMenu();
                     }
-                }
+                } //End Blueprint_Editing-specific stuff
 
                 auto protocol_width = ImGui::CalcTextSize(LONGEST_PROTOCOL_STR).x * 1.1;
                 ImGui::BeginChild("##Protocol Viewing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
@@ -2342,14 +2509,22 @@ struct Connectatron:
                                 {
                                     nothing_shown_yet = false;
                                     if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                    {
                                         node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                                        node->saved_filepath = fs::relative(devicePath, ConnectatronPath);
+                                        node->dirty = false;
+                                    }
                                 }
                             }
                             else // Any node would be fine
                             {
                                 nothing_shown_yet = false;
                                 if (ImGui::MenuItem(devicePath.path().stem().string().c_str()))
+                                {
                                     node = SpawnNodeFromJSON(GetJSONFromFile(devicePath.path()));
+                                    node->saved_filepath = fs::relative(devicePath, ConnectatronPath);
+                                    node->dirty = false;
+                                }
                             }
                         }
                         //TODO maybe cache devices for performance? Would require invalidation to keep supporting editing devices at runtime

@@ -1,17 +1,9 @@
 {
 "Devices": [
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\USB2 Mouse.json",
 "ID": 70590,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Mouse",
 "SavedPos": [
 200.0,
@@ -19,99 +11,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Comp1 USBB In",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp1 DP 1.2 In",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Comp1 Audio In",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "Comp2 USBB In",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp2 DP 1.2 In",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Comp2 Audio In",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "DP 1.2 Out",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Description": "Has Keyboard HID commands",
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Description": "Has Mouse HID commands",
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Audio Out",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\ATEN KVM.json",
 "ID": 58879,
-"Males": [],
 "Name": "ATEN KVM",
 "SavedPos": [
 840.0,
@@ -119,46 +21,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 10212,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-B",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
-"Name": "USBA to USBB",
-"SavedPos": [
-440.0,
-608.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Generic Headset.json",
 "ID": 9440,
-"Males": [
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
 "Name": "Generic Headset",
 "SavedPos": [
 179.0,
@@ -166,85 +31,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 38804,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-},
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
-"Name": "Thunderbolt 3",
-"SavedPos": [
-440.0,
-240.0
-]
-},
-{
-"Females": [],
-"ID": 11472,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-},
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
-"Name": "Thunderbolt 3",
-"SavedPos": [
-440.0,
-492.0
-]
-},
-{
-"Females": [],
-"ID": 24948,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-B",
-"PinType": "USB-B",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
-"Name": "USBA to USBB",
-"SavedPos": [
-440.0,
-364.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
 "ID": 11849,
-"Males": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-},
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
 "Name": "DP",
 "SavedPos": [
 492.0,
@@ -252,17 +41,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\USB2 Keyboard.json",
 "ID": 13485,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Keyboard",
 "SavedPos": [
 180.0,
@@ -270,17 +51,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\USB2 Joystick.json",
 "ID": 5576,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Joystick",
 "SavedPos": [
 193.0,
@@ -288,17 +61,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\USB2 Throttle.json",
 "ID": 55819,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Throttle",
 "SavedPos": [
 192.0,
@@ -306,19 +71,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Ethernet",
-"PinType": "RJ45"
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBA to Ethernet.json",
 "ID": 95146,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
 "Name": "USBA to Ethernet",
 "SavedPos": [
 603.0,
@@ -326,18 +81,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Mini DP to DP.json",
 "ID": 6187,
-"Males": [
-{
-"Name": "Mini DP",
-"PinType": "Mini DisplayPort"
-},
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
 "Name": "Mini DP to DP",
 "SavedPos": [
 441.0,
@@ -345,18 +91,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
 "ID": 28155,
-"Males": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-},
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
 "Name": "DP",
 "SavedPos": [
 228.0,
@@ -364,37 +101,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 34806,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
-"Name": "Ethernet",
-"SavedPos": [
--509.0,
--416.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
 "ID": 54554,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
 "Name": "Ethernet",
 "SavedPos": [
 -381.0,
@@ -402,21 +111,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Display / Power",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\ASUS Zenscreen.json",
 "ID": 54099,
-"Males": [],
 "Name": "ASUS Zenscreen",
 "SavedPos": [
 1640.0,
@@ -424,56 +121,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "USB-A 1",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "USB-A 4",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
 "ID": 17743,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "USB2 Hub (4)",
 "SavedPos": [
 632.0,
@@ -481,19 +131,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBC to DP.json",
 "ID": 89813,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
 "Name": "USBC to DP",
 "SavedPos": [
 1640.0,
@@ -501,62 +141,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 75951,
-"Males": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
-"Name": "HDMI",
-"SavedPos": [
-1667.0,
--160.0
-]
-},
-{
-"Females": [
-{
-"Name": "HDMI 1",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 2.1"
-]
-},
-{
-"Name": "HDMI 2",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 2.1"
-]
-},
-{
-"Name": "HDMI 3",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 2.1"
-]
-},
-{
-"Name": "HDMI 4",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 2.1"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\4k 120Hz TV.json",
 "ID": 79950,
-"Males": [
-{
-"Name": "Power",
-"PinType": "NEMA 1-15"
-}
-],
 "Name": "4k 120Hz TV",
 "SavedPos": [
 -24.0,
@@ -564,57 +151,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 42018,
-"Males": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
-"Name": "HDMI",
-"SavedPos": [
--156.0,
-1100.0
-]
-},
-{
-"Females": [],
-"ID": 94757,
-"Males": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
-"Name": "HDMI",
-"SavedPos": [
--488.0,
-1216.0
-]
-},
-{
-"Females": [
-{
-"Name": "HDMI",
-"PinType": "HDMI"
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\DP to HDMI.json",
 "ID": 6266,
-"Males": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
 "Name": "DP to HDMI",
 "SavedPos": [
 -152.0,
@@ -622,24 +161,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.4"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\1440p 144Hz Monitor.json",
 "ID": 5940,
-"Males": [],
 "Name": "1440p 144Hz Monitor",
 "SavedPos": [
 -344.0,
@@ -647,38 +171,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 20263,
-"Males": [
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-},
-{
-"Name": "DP",
-"PinType": "DisplayPort"
-}
-],
-"Name": "DP",
-"SavedPos": [
-124.0,
-320.0
-]
-},
-{
-"Females": [
-{
-"Name": "USB-C",
-"PinType": "USB-C"
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
 "ID": 88523,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A"
-}
-],
 "Name": "USB-A to USB-C",
 "SavedPos": [
 823.0,
@@ -686,110 +181,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Comp1 USBC In",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Comp2 USBC In",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-},
-{
-"Name": "DP 1.2 Out",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Description": "Has Keyboard HID commands",
-"Name": "Front USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Front USB3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB2",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Back USB3",
-"PinType": "USB-A",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Audio Out",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Level1 USBC KVM.json",
 "ID": 47791,
-"Males": [],
 "Name": "Level1 USBC KVM",
 "SavedPos": [
 840.0,
@@ -797,236 +191,19 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Rear Panel USBC 1",
-"PinType": "USB-C",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g"
-]
-},
-{
-"Name": "Rear Panel USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 4",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Rear Panel USB-A 5",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel USB-A 6",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Rear Panel Ethernet 1",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel Ethernet 2",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Rear Panel DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2"
-]
-},
-{
-"Name": "Rear Panel HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Rear Panel Audio",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "Rear Panel Mic",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 1",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 2",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 DisplayPort 3",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "RTX 3090 HDMI 1",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b",
-"HDMI 2.1"
-]
-},
-{
-"Name": "PSU C14",
-"PinType": "C13/C14",
-"Protocols": [
-"AC Power"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Connors PC.json",
 "ID": 93685,
-"Males": [],
-"Name": "Connors PC (WIP)",
+"Name": "Connors PC",
 "SavedPos": [
 1192.0,
 849.0
 ]
 },
 {
-"Females": [
-{
-"Name": "AC 100-240V <3.6A C14",
-"PinType": "C13/C14",
-"Protocols": [
-"AC Power"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Razer Power Adapter.json",
 "ID": 45930,
-"Males": [
-{
-"Name": "DC 19.5V 11.8A",
-"PinType": "Proprietary",
-"Protocols": [
-"DC Power"
-]
-}
-],
 "Name": "Razer Power Adapter",
 "SavedPos": [
 808.0,
@@ -1034,18 +211,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
 "ID": 90907,
-"Males": [
-{
-"Name": "C13",
-"PinType": "C13/C14"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
 "Name": "IEC (C13) Power Cable",
 "SavedPos": [
 552.0,
@@ -1053,37 +221,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 97781,
-"Males": [
-{
-"Name": "C13",
-"PinType": "C13/C14"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
-"Name": "IEC (C13) Power Cable",
-"SavedPos": [
--903.0,
-496.0
-]
-},
-{
-"Females": [
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
 "ID": 27851,
-"Males": [],
 "Name": "Common Wall Outlet (NEMA 5-15)",
 "SavedPos": [
 872.0,
@@ -1091,47 +231,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Output 1",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 2",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 3",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 4",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 5",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 6",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 7",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "Output 8",
-"PinType": "NEMA 5-15"
-}
-],
+"Dirty": false,
+"File": "Devices\\Power Strip (8 NEMA 5-15 sockets).json",
 "ID": 23334,
-"Males": [
-{
-"Name": "Input",
-"PinType": "NEMA 5-15"
-}
-],
 "Name": "Power Strip (8 NEMA 5-15 sockets)",
 "SavedPos": [
 -599.0,
@@ -1139,47 +241,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
-"ID": 87892,
-"Males": [],
-"Name": "Common Wall Outlet (NEMA 5-15)",
-"SavedPos": [
--247.0,
-572.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
 "ID": 68200,
-"Males": [
-{
-"Name": "Barrel",
-"PinType": "DC Power Barrel",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Wall Wart",
-"PinType": "NEMA 5-15",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "Generic AC Adapter - Barrel Plug",
 "SavedPos": [
 -1039.0,
@@ -1187,67 +251,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 77148,
-"Males": [
-{
-"Name": "Barrel",
-"PinType": "DC Power Barrel",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Wall Wart",
-"PinType": "NEMA 5-15",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
-"Name": "Generic AC Adapter - Barrel Plug",
-"SavedPos": [
--1038.0,
-688.0
-]
-},
-{
-"Females": [
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-}
-],
+"Dirty": false,
+"File": "Devices\\HP Reverb G2 Cabling.json",
 "ID": 38080,
-"Males": [
-{
-"Name": "USB-C",
-"PinType": "USB-C",
-"Protocols": [
-"USB 3 5g"
-]
-},
-{
-"Name": "DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "HMD Cable",
-"PinType": "Proprietary",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "HP Reverb G2 Cabling",
 "SavedPos": [
 -568.0,
@@ -1255,14 +261,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "HMD Cable",
-"PinType": "Proprietary"
-}
-],
+"Dirty": false,
+"File": "Devices\\HP Reverb G2.json",
 "ID": 71432,
-"Males": [],
 "Name": "HP Reverb G2",
 "SavedPos": [
 -268.0,
@@ -1270,34 +271,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "USB-C",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"USB 2.0"
-]
-},
-{
-"Name": "Expansion Port",
-"PinType": "Proprietary"
-},
-{
-"Name": "Stereo Audio",
-"PinType": "Audio3.5mm"
-}
-],
+"Dirty": false,
+"File": "Devices\\XBox One Wireless Controller.json",
 "ID": 36589,
-"Males": [
-{
-"Name": "Wireless",
-"PinType": "Wireless",
-"Protocols": [
-"Xbox Wireless"
-]
-}
-],
 "Name": "XBox One Wireless Controller",
 "SavedPos": [
 -520.0,
@@ -1305,99 +281,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "DisplayPort",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "DisplayPort (Out)",
-"PinType": "DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b"
-]
-},
-{
-"Name": "USB-B Input",
-"PinType": "USB-B SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB3 5g",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB3 5g",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB3 5g",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB3 5g",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "Power",
-"PinType": "C13/C14"
-}
-],
+"Dirty": false,
+"File": "Devices\\Lenovo ThinkVision P27q-20.json",
 "ID": 71749,
-"Males": [],
 "Name": "Lenovo ThinkVision P27q-20",
 "SavedPos": [
 440.0,
@@ -1405,37 +291,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 873,
-"Males": [
-{
-"Name": "C13",
-"PinType": "C13/C14"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
-"Name": "IEC (C13) Power Cable",
-"SavedPos": [
--1014.0,
-880.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USB-A to USB-B SuperSpeed.json",
 "ID": 11277,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A SuperSpeed"
-},
-{
-"Name": "USB-B",
-"PinType": "USB-B SuperSpeed"
-}
-],
 "Name": "USB-A to USB-B SuperSpeed",
 "SavedPos": [
 2.0,
@@ -1443,61 +301,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-},
-{
-"Name": "USB-A 4",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB3 Hub (4).json",
 "ID": 49907,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-}
-],
 "Name": "USB3 Hub (4)",
 "SavedPos": [
 194.0,
@@ -1505,28 +311,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "Wireless",
-"PinType": "Wireless",
-"Protocols": [
-"Xbox Wireless"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Xbox Wireless Adapter.json",
 "ID": 96270,
-"Males": [
-{
-"Name": "USB-A",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g"
-]
-}
-],
 "Name": "Xbox Wireless Adapter",
 "SavedPos": [
 -168.0,
@@ -1534,47 +321,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 6652,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
-"Name": "Ethernet",
-"SavedPos": [
--509.0,
--208.0
-]
-},
-{
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
 "ID": 96934,
-"Males": [
-{
-"Name": "Barrel",
-"PinType": "DC Power Barrel",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Wall Wart",
-"PinType": "NEMA 5-15",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "Generic AC Adapter - Barrel Plug",
 "SavedPos": [
 -878.0,
@@ -1582,78 +331,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-},
-{
-"Name": "NEMA 5-15",
-"PinType": "NEMA 5-15"
-}
-],
-"ID": 46801,
-"Males": [],
-"Name": "Common Wall Outlet (NEMA 5-15)",
-"SavedPos": [
--552.0,
-272.0
-]
-},
-{
-"Females": [
-{
-"Name": "WAN",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 1",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 2",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 3",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 4",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-}
-],
+"Dirty": false,
+"File": "Devices\\Generic Gigabit Router (4).json",
 "ID": 61966,
-"Males": [],
 "Name": "Generic Gigabit Router (4)",
 "SavedPos": [
 -280.0,
@@ -1661,38 +341,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 67749,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
-"Name": "Ethernet",
-"SavedPos": [
--685.0,
--128.0
-]
-},
-{
-"Females": [
-{
-"Name": "RJ45",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Ethernet Gigabit WAN.json",
 "ID": 97017,
-"Males": [],
 "Name": "Ethernet Gigabit WAN",
 "SavedPos": [
 -616.0,
@@ -1700,86 +351,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "LAN 1",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 2",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 3",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 4",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 5",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 6",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 7",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "LAN 8",
-"PinType": "RJ45",
-"Protocols": [
-"Ethernet 10BASE-T",
-"Ethernet 100BASE-T",
-"Ethernet 1000BASE-T"
-]
-},
-{
-"Name": "Power",
-"PinType": "DC Power Barrel"
-}
-],
+"Dirty": false,
+"File": "Devices\\Generic Gigabit Switch (8).json",
 "ID": 99332,
-"Males": [],
 "Name": "Generic Gigabit Switch (8)",
 "SavedPos": [
 -200.0,
@@ -1787,28 +361,9 @@
 ]
 },
 {
-"Females": [],
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
 "ID": 45925,
-"Males": [
-{
-"Name": "Barrel",
-"PinType": "DC Power Barrel",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-},
-{
-"Name": "Wall Wart",
-"PinType": "NEMA 5-15",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0"
-]
-}
-],
 "Name": "Generic AC Adapter - Barrel Plug",
 "SavedPos": [
 -878.0,
@@ -1816,165 +371,9 @@
 ]
 },
 {
-"Females": [],
-"ID": 22687,
-"Males": [
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-},
-{
-"Name": "RJ45",
-"PinType": "RJ45"
-}
-],
-"Name": "Ethernet",
-"SavedPos": [
--509.0,
--516.0
-]
-},
-{
-"Females": [
-{
-"Name": "Thunderbolt 3",
-"PinType": "USB-C",
-"Protocols": [
-"DC Power",
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g",
-"USB 3 20g",
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a",
-"PCIe 1.0 x1",
-"PCIe 1.0 x2",
-"PCIe 1.0 x4",
-"PCIe 2.0 x1",
-"PCIe 2.0 x2",
-"PCIe 2.0 x4",
-"PCIe 3.0 x1",
-"PCIe 3.0 x2",
-"PCIe 3.0 x4",
-"Thunderbolt 3"
-]
-},
-{
-"Name": "USB-A 1",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 2",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "USB-A 3",
-"PinType": "USB-A SuperSpeed",
-"Protocols": [
-"USB 1.0",
-"USB 1.1",
-"USB 2.0",
-"USB 3 5g",
-"USB 3 10g"
-]
-},
-{
-"Name": "Mini Displayport",
-"PinType": "Mini DisplayPort",
-"Protocols": [
-"DisplayPort 1.0",
-"DisplayPort 1.1",
-"DisplayPort 1.2",
-"DisplayPort 1.2a",
-"DisplayPort 1.3",
-"DisplayPort 1.4",
-"DisplayPort 1.4a"
-]
-},
-{
-"Name": "HDMI",
-"PinType": "HDMI",
-"Protocols": [
-"HDMI 1.0",
-"HDMI 1.1",
-"HDMI 1.2",
-"HDMI 1.2a",
-"HDMI 1.3",
-"HDMI 1.3a",
-"HDMI 1.4",
-"HDMI 1.4a",
-"HDMI 1.4b",
-"HDMI 2.0",
-"HDMI 2.0a",
-"HDMI 2.0b"
-]
-},
-{
-"Name": "Audio/Mic Combo",
-"PinType": "Audio3.5mm",
-"Protocols": [
-"AnalogAudio"
-]
-},
-{
-"Name": "DC Charging Port",
-"PinType": "Proprietary",
-"Protocols": [
-"DC Power"
-]
-},
-{
-"Name": "Intel AX200 Wifi",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac",
-"Wi-Fi 6 802.11ax",
-"Wi-Fi 6E 802.11ax"
-]
-},
-{
-"Name": "Intel AX200 Bluetooth",
-"PinType": "Wireless",
-"Protocols": [
-"Bluetooth 3.0",
-"Bluetooth HS",
-"Bluetooth 4.0",
-"Bluetooth 4 Low Energy",
-"Bluetooth 4.1",
-"Bluetooth 4.2",
-"Bluetooth 5.0",
-"Bluetooth 5.1",
-"Bluetooth 5.2"
-]
-}
-],
+"Dirty": false,
+"File": "Devices\\Razer Blade Advanced 2019.json",
 "ID": 75168,
-"Males": [],
 "Name": "Razer Blade 15\" Advanced (2019)",
 "SavedPos": [
 1224.0,
@@ -1982,37 +381,9 @@
 ]
 },
 {
-"Females": [
-{
-"Name": "LAN",
-"PinType": "RJ45"
-}
-],
+"Dirty": false,
+"File": "Devices\\Generic WiFi 5 Access Point.json",
 "ID": 47421,
-"Males": [
-{
-"Name": "2.4GHz",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-},
-{
-"Name": "5GHz",
-"PinType": "Wireless",
-"Protocols": [
-"Wi-Fi 1 802.11b",
-"Wi-Fi 2 802.11a",
-"Wi-Fi 3 802.11g",
-"Wi-Fi 4 802.11n",
-"Wi-Fi 5 802.11ac"
-]
-}
-],
 "Name": "Generic WiFi 5 Access Point",
 "SavedPos": [
 104.0,
@@ -2020,34 +391,182 @@
 ]
 },
 {
-"Females": [],
-"ID": 67500,
-"Males": [],
-"Name": "New Custom Node",
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 33438,
+"Name": "Ethernet",
 "SavedPos": [
--65.0,
-7.0
+-509.0,
+-512.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 47466,
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-416.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 78732,
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-244.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 23882,
+"Name": "Ethernet",
+"SavedPos": [
+-717.0,
+-100.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 12823,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-934.0,
+476.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Generic AC Adapter - Barrel Plug.json",
+"ID": 36618,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-1038.0,
+688.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 74049,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-967.0,
+816.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USBA to USBB.json",
+"ID": 62789,
+"Name": "USBA to USBB",
+"SavedPos": [
+444.0,
+604.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USBA to USBB.json",
+"ID": 95423,
+"Name": "USBA to USBB",
+"SavedPos": [
+444.0,
+368.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 42679,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+444.0,
+481.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 982,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+444.0,
+252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 68554,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+-568.0,
+256.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 67903,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+-280.0,
+576.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 34971,
+"Name": "HDMI",
+"SavedPos": [
+-492.0,
+1200.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 97594,
+"Name": "HDMI",
+"SavedPos": [
+-204.0,
+1104.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 58275,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+1196.0,
+572.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
+"ID": 70785,
+"Name": "DP",
+"SavedPos": [
+100.0,
+321.0
 ]
 }
 ],
 "Links": [
 [
-10212,
-58879,
-1,
-3
-],
-[
 70590,
 58879,
 0,
 7
-],
-[
-24948,
-58879,
-1,
-0
 ],
 [
 6187,
@@ -2068,40 +587,10 @@
 0
 ],
 [
-42018,
-79950,
-0,
-0
-],
-[
-94757,
-6266,
-0,
-0
-],
-[
-94757,
-5940,
-1,
-1
-],
-[
 11849,
 58879,
 0,
 4
-],
-[
-38804,
-47791,
-1,
-0
-],
-[
-11472,
-47791,
-1,
-1
 ],
 [
 13485,
@@ -2122,34 +611,10 @@
 8
 ],
 [
-20263,
-47791,
-0,
-3
-],
-[
-11472,
-93685,
-0,
-0
-],
-[
-10212,
-93685,
-0,
-1
-],
-[
 88523,
 93685,
 0,
 2
-],
-[
-34806,
-93685,
-0,
-7
 ],
 [
 9440,
@@ -2176,32 +641,8 @@
 14
 ],
 [
-42018,
-93685,
-1,
-16
-],
-[
 90907,
 45930,
-0,
-0
-],
-[
-97781,
-93685,
-0,
-17
-],
-[
-97781,
-23334,
-1,
-0
-],
-[
-23334,
-87892,
 0,
 0
 ],
@@ -2216,12 +657,6 @@
 23334,
 1,
 1
-],
-[
-77148,
-23334,
-1,
-2
 ],
 [
 38080,
@@ -2242,12 +677,6 @@
 0
 ],
 [
-77148,
-38080,
-0,
-0
-],
-[
 79950,
 23334,
 0,
@@ -2258,18 +687,6 @@
 71749,
 0,
 0
-],
-[
-873,
-71749,
-0,
-8
-],
-[
-873,
-23334,
-1,
-4
 ],
 [
 11277,
@@ -2303,63 +720,15 @@
 ],
 [
 96934,
-46801,
-1,
-0
-],
-[
-6652,
-61966,
-1,
-1
-],
-[
-96934,
 61966,
 0,
 5
-],
-[
-67749,
-61966,
-0,
-0
-],
-[
-67749,
-97017,
-1,
-0
 ],
 [
 45925,
 99332,
 0,
 8
-],
-[
-45925,
-46801,
-1,
-1
-],
-[
-22687,
-61966,
-0,
-2
-],
-[
-22687,
-99332,
-1,
-0
-],
-[
-34806,
-99332,
-1,
-1
 ],
 [
 54554,
@@ -2392,18 +761,6 @@
 2
 ],
 [
-24948,
-75168,
-0,
-1
-],
-[
-38804,
-75168,
-0,
-0
-],
-[
 90907,
 27851,
 1,
@@ -2416,10 +773,184 @@
 8
 ],
 [
-6652,
+33438,
+99332,
+1,
+0
+],
+[
+47466,
+93685,
+0,
+7
+],
+[
+47466,
+99332,
+1,
+1
+],
+[
+23882,
+97017,
+1,
+0
+],
+[
+23882,
+61966,
+0,
+0
+],
+[
+33438,
+61966,
+0,
+2
+],
+[
+78732,
+61966,
+1,
+1
+],
+[
+78732,
 47421,
 0,
 0
+],
+[
+12823,
+93685,
+0,
+17
+],
+[
+12823,
+23334,
+1,
+0
+],
+[
+36618,
+23334,
+1,
+2
+],
+[
+36618,
+38080,
+0,
+0
+],
+[
+74049,
+23334,
+1,
+4
+],
+[
+74049,
+71749,
+0,
+8
+],
+[
+62789,
+58879,
+1,
+3
+],
+[
+62789,
+93685,
+0,
+1
+],
+[
+95423,
+58879,
+1,
+0
+],
+[
+95423,
+75168,
+0,
+1
+],
+[
+42679,
+93685,
+0,
+0
+],
+[
+42679,
+47791,
+1,
+1
+],
+[
+982,
+47791,
+1,
+0
+],
+[
+982,
+75168,
+0,
+0
+],
+[
+96934,
+68554,
+1,
+1
+],
+[
+45925,
+68554,
+1,
+0
+],
+[
+23334,
+67903,
+0,
+0
+],
+[
+34971,
+5940,
+1,
+1
+],
+[
+34971,
+6266,
+0,
+0
+],
+[
+97594,
+79950,
+0,
+0
+],
+[
+97594,
+93685,
+1,
+16
+],
+[
+70785,
+47791,
+0,
+3
 ]
 ]
 }

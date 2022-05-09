@@ -1,97 +1,95 @@
 {
-    "Name": "ATEN KVM",
-    "Females": [
-        {
-            "Name": "Comp1 USBB In",
-            "PinType": "USB-B",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Comp1 DP 1.2 In",
-            "PinType": "DisplayPort",
-            "Protocols": [
-                "DisplayPort 1.0",
-                "DisplayPort 1.1",
-                "DisplayPort 1.2",
-                "DisplayPort 1.2a"
-            ]
-        },
-        {
-            "Name": "Comp1 Audio In",
-            "PinType": "Audio3.5mm",
-            "Protocols": [
-                "AnalogAudio"
-            ]
-        },
-        {
-            "Name": "Comp2 USBB In",
-            "PinType": "USB-B",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ]
-        },
-        {
-            "Name": "Comp2 DP 1.2 In",
-            "PinType": "DisplayPort",
-            "Protocols": [
-                "DisplayPort 1.0",
-                "DisplayPort 1.1",
-                "DisplayPort 1.2",
-                "DisplayPort 1.2a"
-            ]
-        },
-        {
-            "Name": "Comp2 Audio In",
-            "PinType": "Audio3.5mm",
-            "Protocols": [
-                "AnalogAudio"
-            ]
-        },
-        {
-            "Name": "DP 1.2 Out",
-            "PinType": "DisplayPort",
-            "Protocols": [
-                "DisplayPort 1.0",
-                "DisplayPort 1.1",
-                "DisplayPort 1.2",
-                "DisplayPort 1.2a"
-            ]
-        },
-        {
-            "Name": "USB-A 2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ],
-            "Description": "Has Keyboard HID commands"
-        },
-        {
-            "Name": "USB-A 2",
-            "PinType": "USB-A",
-            "Protocols": [
-                "USB 1.0",
-                "USB 1.1",
-                "USB 2.0"
-            ],
-            "Description": "Has Mouse HID commands"
-        },
-        {
-            "Name": "Audio Out",
-            "PinType": "Audio3.5mm",
-            "Protocols": [
-                "AnalogAudio"
-            ]
-        }
-    ],
-    "Males": [
-        
-    ]
+	"Females": [
+		{
+			"Name": "Comp1 USBB In",
+			"PinType": "USB-B",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Comp1 DP 1.2 In",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Name": "Comp1 Audio In",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		},
+		{
+			"Name": "Comp2 USBB In",
+			"PinType": "USB-B",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Comp2 DP 1.2 In",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Name": "Comp2 Audio In",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		},
+		{
+			"Name": "DP 1.2 Out",
+			"PinType": "DisplayPort",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a"
+			]
+		},
+		{
+			"Description": "Has Keyboard HID commands",
+			"Name": "USB-A 2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Description": "Has Mouse HID commands",
+			"Name": "USB-A 2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "Audio Out",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "ATEN KVM"
 }
