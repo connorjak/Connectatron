@@ -1,16 +1,14 @@
 {
-    "Name": "Mini DP to DP",
-    "Females": [
-        
-    ],
-    "Males": [
-        {
-            "Name": "Mini DP",
-            "PinType": "Mini DisplayPort"
-        },
-        {
-            "Name": "DP",
-            "PinType": "DisplayPort"
-        }
-    ]
+	"Females": [],
+	"Males": [
+		{
+			"Name": "Mini DP",
+			"PinType": "Mini DisplayPort"
+		},
+		{
+			"Name": "DP",
+			"PinType": "DisplayPort"
+		}
+	],
+	"Name": "Mini DP to DP"
 }
