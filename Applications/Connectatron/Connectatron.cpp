@@ -129,6 +129,7 @@ using ax::Widgets::IconType;
 static ed::EditorContext* m_Editor = nullptr;
 
 static string CurrentProjectName = "my_project.con";
+static bool ProjectDirty = false;
 
 static vector<ConnectorCategoryInfo> ConnectorCategories;
 static vector<PinType> UncategorizedConnectors;
@@ -839,6 +840,8 @@ struct Connectatron:
 //TODO load position in project?
     shared_ptr<Node> SpawnNodeFromJSON(const json& device)
     {
+        ProjectDirty = true;
+
         string name = device["Name"].get<string>();
         auto name_hash = std::hash<string>{}(name);
         auto name_hash_dbl = name_hash / std::pow(10, 10);
@@ -1180,9 +1183,15 @@ struct Connectatron:
             flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
             if (/*standardDialogMode*/true)
-                ImGuiFileDialog::Instance()->OpenDialog("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenDialog("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters,
+                    ProjectsPath.string(), 
+                    CurrentProjectName,
+                    1, nullptr, flags);
             else
-                ImGuiFileDialog::Instance()->OpenModal("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenModal("SaveProjectAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Project As", filters,
+                    ProjectsPath.string(),
+                    CurrentProjectName,
+                    1, nullptr, flags);
         }
 
         // display
@@ -1194,7 +1203,6 @@ struct Connectatron:
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
-                // action
 
                 CurrentProjectName = fileName_stem;
 
@@ -1212,6 +1220,12 @@ struct Connectatron:
 
         if (ImGui::Button(/*ICON_IGFD_FOLDER_OPEN*/ " Open Project..."))
         {
+            if (ProjectDirty)
+            {
+                //TODO warning popup
+            }
+
+
             //const char* filters = ".*,.con,.dev,.json";
             const char* filters = ".con";
 
@@ -1219,9 +1233,15 @@ struct Connectatron:
             flags |= ImGuiFileDialogFlags_::ImGuiFileDialogFlags_DontShowHiddenFiles;
 
             if (/*standardDialogMode*/true)
-                ImGuiFileDialog::Instance()->OpenDialog("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenDialog("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters,
+                    ProjectsPath.string(), 
+                    CurrentProjectName, 
+                    1, nullptr, flags);
             else
-                ImGuiFileDialog::Instance()->OpenModal("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, ProjectsPath.string(), CurrentProjectName, 1, nullptr, flags);
+                ImGuiFileDialog::Instance()->OpenModal("OpenProject", /*ICON_IGFD_FOLDER_OPEN*/ " Open Project", filters, 
+                    ProjectsPath.string(), 
+                    CurrentProjectName, 
+                    1, nullptr, flags);
         }
 
         // display
@@ -1230,6 +1250,8 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
+                ProjectDirty = false;
+
                 std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
                 std::string fileName_stem = fs::path(filePathName).filename().stem().string();
@@ -1241,6 +1263,9 @@ struct Connectatron:
                 std::cout << "filePathName: " << filePathName << std::endl;
                 std::cout << "filePath: " << filePath << std::endl;
                 LoadProjectFromFile(fs::path(filePathName));
+
+                // Set not-dirty down here because LoadProjectFromFile calls functions that set this to true.
+                ProjectDirty = false;
             }
 
             // close
@@ -1429,7 +1454,12 @@ struct Connectatron:
 
         ed::SetCurrentEditor(m_Editor);
 
-        SetTitle(string("Connectatron: " + CurrentProjectName).c_str());
+        string title_text = "Connectatron: " + CurrentProjectName;
+
+        if (ProjectDirty)
+            title_text += " (UNSAVED)";
+
+        SetTitle(title_text.c_str());
 
         //auto& style = ImGui::GetStyle();
 
@@ -1620,6 +1650,7 @@ struct Connectatron:
                 if (ImGui::Button("New Connector"))
                 {
                     node->dirty = true;
+                    ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -1672,6 +1703,7 @@ struct Connectatron:
                 if (ImGui::Button("New Connector"))
                 {
                     node->dirty = true;
+                    ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
                     auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
@@ -2104,6 +2136,8 @@ struct Connectatron:
             // action if pressed OK
             if (ImGuiFileDialog::Instance()->IsOk())
             {
+                ProjectDirty = true; //TODO should it?
+
                 node_to_save->Type = NodeType::Blueprint;
                 std::string abs_filePath_withName = ImGuiFileDialog::Instance()->GetFilePathName();
                 std::string abs_filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
@@ -2175,6 +2209,7 @@ struct Connectatron:
                             bool is_selected = possible_connect == pin->Type;
                             if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                             {
+                                ProjectDirty = true;
                                 on_node->dirty = true;
                                 pin->Type = possible_connect;
                             }
@@ -2198,6 +2233,7 @@ struct Connectatron:
                                     //TODO also try Selectable?
                                     if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                                     {
+                                        ProjectDirty = true;
                                         on_node->dirty = true;
                                         pin->Type = possible_connect;
                                     }
@@ -2245,6 +2281,7 @@ struct Connectatron:
                             ImGui::Checkbox(proto_string.c_str(), &val);
                             if (val != pastval)
                             {
+                                ProjectDirty = true;
                                 on_node->dirty = true;
                                 if (val)
                                     pin->Protocols.insert(possible_proto);
@@ -2271,6 +2308,7 @@ struct Connectatron:
                                     ImGui::Checkbox(proto_string.c_str(), &val);
                                     if (val != pastval)
                                     {
+                                        ProjectDirty = true;
                                         on_node->dirty = true;
                                         if (val)
                                             pin->Protocols.insert(possible_proto);
