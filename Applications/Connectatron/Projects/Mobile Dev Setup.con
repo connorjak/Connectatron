@@ -1,0 +1,352 @@
+{
+"Devices": [
+{
+"Dirty": false,
+"File": "Devices\\Razer Blade Advanced 2019.json",
+"ID": 75657,
+"Name": "Razer Blade 15\" Advanced (2019)",
+"SavedPos": [
+1224.0,
+737.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 98717,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+56.0,
+928.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Razer Power Adapter.json",
+"ID": 50632,
+"Name": "Razer Power Adapter",
+"SavedPos": [
+328.0,
+1164.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 29148,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-182.0,
+1164.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 15078,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+690.0,
+892.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Joystick.json",
+"ID": 5637,
+"Name": "USB2 Joystick",
+"SavedPos": [
+431.0,
+940.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Throttle.json",
+"ID": 59540,
+"Name": "USB2 Throttle",
+"SavedPos": [
+429.0,
+1036.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Mini DP to DP.json",
+"ID": 74547,
+"Name": "Mini DP to DP",
+"SavedPos": [
+721.0,
+780.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBA to Ethernet.json",
+"ID": 48847,
+"Name": "USBA to Ethernet",
+"SavedPos": [
+680.0,
+652.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 71264,
+"Name": "Ethernet",
+"SavedPos": [
+290.0,
+544.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ethernet Gigabit WAN.json",
+"ID": 19505,
+"Name": "Ethernet Gigabit WAN",
+"SavedPos": [
+520.0,
+556.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 29924,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+1068.0,
+540.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ASUS Zenscreen.json",
+"ID": 35200,
+"Name": "ASUS Zenscreen",
+"SavedPos": [
+1304.0,
+540.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 4057,
+"Name": "HDMI",
+"SavedPos": [
+1155.0,
+1248.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Bose QC35 II.json",
+"ID": 6837,
+"Name": "Bose QC35 II",
+"SavedPos": [
+776.0,
+1356.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USB-A to USB Micro-B.json",
+"ID": 31602,
+"Name": "USB Micro-B to USBA",
+"SavedPos": [
+413.0,
+1420.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 50090,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+1096.0,
+1488.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Generic USB-A AC Adapter.json",
+"ID": 24542,
+"Name": "Generic USB-A AC Adapter",
+"SavedPos": [
+776.0,
+1468.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Proprietary to 3.5mm Audio.json",
+"ID": 90549,
+"Name": "Proprietary to 3.5mm Audio",
+"SavedPos": [
+414.0,
+1311.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Lightning to USB-A Cable.json",
+"ID": 73605,
+"Name": "Lightning to USB-A Cable",
+"SavedPos": [
+352.0,
+1616.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Generic USB-A AC Adapter.json",
+"ID": 18875,
+"Name": "Generic USB-A AC Adapter",
+"SavedPos": [
+780.0,
+1612.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\iPhone Xs.json",
+"ID": 88790,
+"Name": "iPhone Xs",
+"SavedPos": [
+774.0,
+1708.0
+]
+}
+],
+"Links": [
+[
+50632,
+75657,
+0,
+7
+],
+[
+29148,
+50632,
+0,
+0
+],
+[
+29148,
+98717,
+1,
+1
+],
+[
+15078,
+75657,
+0,
+3
+],
+[
+5637,
+15078,
+0,
+0
+],
+[
+59540,
+15078,
+0,
+1
+],
+[
+74547,
+75657,
+0,
+4
+],
+[
+48847,
+75657,
+0,
+2
+],
+[
+71264,
+48847,
+0,
+0
+],
+[
+71264,
+19505,
+1,
+0
+],
+[
+29924,
+35200,
+0,
+0
+],
+[
+4057,
+75657,
+0,
+5
+],
+[
+6837,
+75657,
+0,
+9
+],
+[
+31602,
+6837,
+0,
+0
+],
+[
+24542,
+50090,
+0,
+0
+],
+[
+90549,
+6837,
+1,
+1
+],
+[
+90549,
+75657,
+0,
+6
+],
+[
+31602,
+24542,
+1,
+0
+],
+[
+18875,
+50090,
+0,
+1
+],
+[
+73605,
+18875,
+1,
+0
+],
+[
+73605,
+88790,
+0,
+0
+]
+]
+}
