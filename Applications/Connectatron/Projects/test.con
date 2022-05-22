@@ -56,8 +56,8 @@
 "ID": 50632,
 "Name": "Razer Power Adapter",
 "SavedPos": [
-616.0,
-1180.0
+328.0,
+1164.0
 ]
 },
 {
@@ -98,16 +98,6 @@
 "SavedPos": [
 429.0,
 1036.0
-]
-},
-{
-"Dirty": false,
-"File": "Devices\\Generic Headset.json",
-"ID": 60031,
-"Name": "Generic Headset",
-"SavedPos": [
-363.0,
-1119.0
 ]
 },
 {
@@ -179,6 +169,56 @@
 1155.0,
 1248.0
 ]
+},
+{
+"Dirty": false,
+"File": "Devices\\Bose QC35 II.json",
+"ID": 6837,
+"Name": "Bose QC35 II",
+"SavedPos": [
+776.0,
+1356.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USB-A to USB Micro-B.json",
+"ID": 31602,
+"Name": "USB Micro-B to USBA",
+"SavedPos": [
+413.0,
+1420.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 50090,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+1096.0,
+1488.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Generic USB-A AC Adapter.json",
+"ID": 24542,
+"Name": "Generic USB-A AC Adapter",
+"SavedPos": [
+776.0,
+1468.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Proprietary to 3.5mm Audio.json",
+"ID": 90549,
+"Name": "Proprietary to 3.5mm Audio",
+"SavedPos": [
+414.0,
+1311.0
+]
 }
 ],
 "Links": [
@@ -243,12 +283,6 @@
 1
 ],
 [
-60031,
-75657,
-0,
-6
-],
-[
 74547,
 75657,
 0,
@@ -289,6 +323,42 @@
 75657,
 0,
 5
+],
+[
+6837,
+75657,
+0,
+9
+],
+[
+31602,
+6837,
+0,
+0
+],
+[
+24542,
+50090,
+0,
+0
+],
+[
+31602,
+24542,
+1,
+0
+],
+[
+90549,
+6837,
+1,
+1
+],
+[
+90549,
+75657,
+0,
+6
 ]
 ]
 }
