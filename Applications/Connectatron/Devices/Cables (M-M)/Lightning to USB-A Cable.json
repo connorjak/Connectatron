@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "Lightning",
+			"PinType": "Lightning"
+		},
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A"
+		}
+	],
+	"Name": "Lightning to USB-A Cable"
+}
