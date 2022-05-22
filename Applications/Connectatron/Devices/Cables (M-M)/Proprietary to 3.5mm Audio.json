@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "3.5mm",
+			"PinType": "Audio3.5mm"
+		},
+		{
+			"Name": "Proprietary",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "Proprietary to 3.5mm Audio"
+}

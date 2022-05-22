@@ -1,0 +1,21 @@
+{
+	"Females": [
+		{
+			"Name": "5V USB-A",
+			"PinType": "USB-A",
+			"Protocols": [
+				"DC Power"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "120V AC",
+			"PinType": "NEMA 1-15",
+			"Protocols": [
+				"AC Power"
+			]
+		}
+	],
+	"Name": "Generic USB-A AC Adapter"
+}

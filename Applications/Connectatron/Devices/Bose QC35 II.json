@@ -1,0 +1,37 @@
+{
+	"Females": [
+		{
+			"Name": "Charging",
+			"PinType": "USB Micro-B",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "Audio",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "Bluetooth",
+			"PinType": "Wireless",
+			"Protocols": [
+				"Bluetooth 1.1",
+				"Bluetooth 1.2",
+				"Bluetooth 2.0",
+				"Bluetooth 2.1",
+				"Bluetooth EDR",
+				"Bluetooth 3.0",
+				"Bluetooth HS",
+				"Bluetooth 4.0",
+				"Bluetooth 4 Low Energy",
+				"Bluetooth 4.1"
+			]
+		}
+	],
+	"Name": "Bose QC35 II"
+}
