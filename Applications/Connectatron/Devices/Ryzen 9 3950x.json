@@ -1,0 +1,13 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "AM4 Pins",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"Proprietary"
+			]
+		}
+	],
+	"Name": "Ryzen 9 3950x"
+}

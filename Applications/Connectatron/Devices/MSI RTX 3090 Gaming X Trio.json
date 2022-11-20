@@ -60,21 +60,21 @@
 		},
 		{
 			"Name": "PCIe 8-pin",
-			"PinType": "Proprietary",
+			"PinType": "PCIe 8-pin",
 			"Protocols": [
 				"DC Power"
 			]
 		},
 		{
 			"Name": "PCIe 8-pin",
-			"PinType": "Proprietary",
+			"PinType": "PCIe 8-pin",
 			"Protocols": [
 				"DC Power"
 			]
 		},
 		{
 			"Name": "PCIe 8-pin",
-			"PinType": "Proprietary",
+			"PinType": "PCIe 8-pin",
 			"Protocols": [
 				"DC Power"
 			]

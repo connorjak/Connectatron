@@ -1,0 +1,69 @@
+{
+	"Females": [
+		{
+			"Name": "C14 AC In ",
+			"PinType": "C13/C14",
+			"Protocols": [
+				"AC Power"
+			]
+		},
+		{
+			"Name": "Motherboard",
+			"PinType": "EPS 24-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "CPU 1",
+			"PinType": "EPS 8-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "CPU 2",
+			"PinType": "EPS 8-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "PCIe 1",
+			"PinType": "PCIe 8-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "PCIe 2",
+			"PinType": "PCIe 8-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "SATA 1",
+			"PinType": "PCIe 6-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "SATA 2",
+			"PinType": "PCIe 6-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		},
+		{
+			"Name": "SATA 3",
+			"PinType": "PCIe 6-pin",
+			"Protocols": [
+				"DC Power"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "Rosewill HIVE 750S W"
+}

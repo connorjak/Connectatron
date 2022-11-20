@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "6-pin",
+			"PinType": "PCIe 6-pin"
+		},
+		{
+			"Name": "SATA Power",
+			"PinType": "SATA Power"
+		}
+	],
+	"Name": "SATA Power Cable"
+}

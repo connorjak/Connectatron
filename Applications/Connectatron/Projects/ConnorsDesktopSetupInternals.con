@@ -572,16 +572,6 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\Connors PC Internals.json",
-"ID": 90931,
-"Name": "Connors PC Internals",
-"SavedPos": [
-5544.0,
-376.0
-]
-},
-{
-"Dirty": false,
 "File": "Devices\\NVMe Controller.json",
 "ID": 57380,
 "Name": "NVMe Controller",
@@ -1339,6 +1329,86 @@
 4041.0,
 -324.0
 ]
+},
+{
+"Dirty": false,
+"File": "Devices\\Rosewill HIVE 750S W.json",
+"ID": 87636,
+"Name": "Rosewill HIVE 750S W",
+"SavedPos": [
+3176.0,
+1848.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\EPS 24-pin Cable.json",
+"ID": 85197,
+"Name": "EPS 24-pin Cable",
+"SavedPos": [
+2810.0,
+1824.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ryzen 9 3950x.json",
+"ID": 73698,
+"Name": "Ryzen 9 3950x",
+"SavedPos": [
+5850.0,
+508.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ASUS Pro WS X570-ACE.json",
+"ID": 90994,
+"Name": "ASUS Pro WS X570-ACE",
+"SavedPos": [
+6024.0,
+344.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\EPS 4+4-pin Cable.json",
+"ID": 86895,
+"Name": "EPS 4+4-pin Cable",
+"SavedPos": [
+2802.0,
+1920.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\SATA Power Cable.json",
+"ID": 7605,
+"Name": "SATA Power Cable",
+"SavedPos": [
+2816.0,
+1692.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\PCIe 2x6+2-pin Cable.json",
+"ID": 60213,
+"Name": "PCIe 2x6+2-pin Cable",
+"SavedPos": [
+2798.0,
+2160.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\PCIe 2x6+2-pin Cable.json",
+"ID": 354,
+"Name": "PCIe 2x6+2-pin Cable",
+"SavedPos": [
+2798.0,
+2028.0
+]
 }
 ],
 "Links": [
@@ -1602,12 +1672,6 @@
 ],
 [
 12823,
-93685,
-0,
-17
-],
-[
-12823,
 23334,
 1,
 0
@@ -1731,12 +1795,6 @@
 47791,
 0,
 3
-],
-[
-20181,
-90931,
-0,
-0
 ],
 [
 29353,
@@ -2199,6 +2257,72 @@
 49434,
 0,
 0
+],
+[
+12823,
+87636,
+0,
+0
+],
+[
+85197,
+87636,
+0,
+1
+],
+[
+85197,
+90994,
+1,
+0
+],
+[
+73698,
+90994,
+0,
+6
+],
+[
+20181,
+90994,
+0,
+1
+],
+[
+86895,
+87636,
+0,
+2
+],
+[
+86895,
+90994,
+1,
+7
+],
+[
+7605,
+87636,
+0,
+6
+],
+[
+7605,
+42301,
+1,
+1
+],
+[
+60213,
+87636,
+0,
+5
+],
+[
+354,
+87636,
+0,
+4
 ]
 ]
 }

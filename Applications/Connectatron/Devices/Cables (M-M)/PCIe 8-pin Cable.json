@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		},
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		}
+	],
+	"Name": "PCIe 8-pin Cable"
+}

@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "24-pin",
+			"PinType": "EPS 24-pin"
+		},
+		{
+			"Name": "20+4-pin",
+			"PinType": "EPS 24-pin"
+		}
+	],
+	"Name": "EPS 24-pin Cable"
+}

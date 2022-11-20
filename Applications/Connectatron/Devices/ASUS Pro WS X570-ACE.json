@@ -1,0 +1,41 @@
+{
+	"Females": [
+		{
+			"Name": "24-pin Power",
+			"PinType": "EPS 24-pin"
+		},
+		{
+			"Name": "PCIe Bus",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "DIMM A1",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "DIMM A2",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "DIMM B1",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "DIMM B2",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "AM4 Socket",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"Proprietary"
+			]
+		},
+		{
+			"Name": "CPU 8-pin",
+			"PinType": "EPS 8-pin"
+		}
+	],
+	"Males": [],
+	"Name": "ASUS Pro WS X570-ACE"
+}
