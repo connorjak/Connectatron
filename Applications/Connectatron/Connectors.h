@@ -529,6 +529,13 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     switch (maletype)
     {
         // DC Power
+    case PinType::PCIe__6___pin:
+        ret.insert(PinType::PCIe__8___pin); //Unsure if this is correct?
+        break;
+    case PinType::PCIe__6___2___pin:
+        ret.insert(PinType::PCIe__6___pin);
+        ret.insert(PinType::PCIe__8___pin);
+        break;
 
         // AC Power
         //TODO revise NEMA compatibility
