@@ -591,6 +591,7 @@ struct Connectatron:
     void OnStart() override
     {
         // Initialize connector types & categories
+        connector_categories["UNCATEGORIZED"] = {};
         auto connectors_json = GetJSONFromFile(ConfigurationPath / "Connectors.json");
         for (const auto& connector_j : connectors_json.items())
         {
@@ -598,8 +599,35 @@ struct Connectatron:
             connector->primary_ID = connector_j.key();
             connector->full_info = connector_j.value();
             size_t categories_count = 0;
-            for (const auto& category_j : connector_j.value()["Categories"].items())
+            
+            if(connector->full_info.contains("AKA"))
             {
+                for (const auto& aka_j : connector->full_info["AKA"].items())
+                {
+                    connector->AKA_IDs.push_back(aka_j.value().get<string>());
+                }
+            }
+
+            if (connector->full_info.contains("Links"))
+            {
+                for (const auto& link_j : connector->full_info["Links"].items())
+                {
+                    connector->links.push_back(link_j.value().get<string>());
+                }
+            }
+
+            if (connector->full_info.contains("MaleFitsInto"))
+            {
+                for (const auto& malefits_j : connector->full_info["MaleFitsInto"].items())
+                {
+                    connector->maleFitsInto.push_back(malefits_j.value().get<string>());
+                }
+            }
+
+            // Categories onto connector and connector onto categories
+            for (const auto& category_j : connector->full_info["Categories"].items())
+            {
+                categories_count++;
                 auto category = category_j.value();
                 connector->categories.push_back(category);
                 connector_categories[category].push_back(connector);
@@ -609,7 +637,7 @@ struct Connectatron:
                 connector->categories.push_back("UNCATEGORIZED");
                 connector_categories["UNCATEGORIZED"].push_back(connector);
             }
-            connectors.emplace(connector_j.key(), connector);
+            connectors.emplace(connector->primary_ID, connector);
         }
 
         //ConnectorCategories = GetConnectorCategories();
@@ -799,7 +827,7 @@ struct Connectatron:
     void DrawPinTypeIcon(const Connector_ID type, bool connected, int alpha)
     {
         //Set to a default in case the Connector_ID is not supported (somehow)
-        IconType iconType = IconType::Square;
+        IconType iconType = IconType::Circle;
         ImColor  color = GetIconColor(type);
         color.Value.w = alpha / 255.0f;
 
@@ -2272,13 +2300,13 @@ struct Connectatron:
                 auto on_node = pin->Node.lock();
 
                 // Connector info //
-                ImGui::Text("Connector Gender: ");
+                ImGui::Text("Gender: ");
                 ImGui::SameLine();
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
-                    ImGui::Text("Connector Type:");
-                    auto protocol_width = ImGui::CalcTextSize(LONGEST_CONNECTOR_STR).x * 1.5;
+                    ImGui::Text("Type:");
+                    auto connector_width = ImGui::CalcTextSize(LONGEST_CONNECTOR_STR).x * 1.5;
                     auto current_connect_string = NameFromPinType(pin->Type);
                     //ImGui::BeginChild("##Connector Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     //https://github.com/ocornut/imgui/issues/1658#issue-302026543
@@ -2341,6 +2369,23 @@ struct Connectatron:
                     ImGui::SameLine();
                     auto pin_enum_name = NameFromPinType(pin->Type);
                     ImGui::Text(pin_enum_name.c_str());
+                }
+
+                const auto& aka_ids = connectors.at(pin->Type)->AKA_IDs;
+                if (aka_ids.size() > 0)
+                {
+                    ImGui::Text("AKA:");
+                    string aka_text;
+                    for (const auto& aka : connectors.at(pin->Type)->AKA_IDs)
+                    {
+                        aka_text += "\"" + aka + "\", ";
+                    }
+                
+                    aka_text.pop_back();
+                    aka_text.pop_back();
+                    // Remove last 2 chars.
+                    ImGui::SameLine();
+                    ImGui::Text(aka_text.c_str());
                 }
 
                 ImGui::Separator();

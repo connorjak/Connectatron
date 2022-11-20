@@ -430,7 +430,7 @@
 	"USB Mini-B": {
 		"Categories": [ "USB" ],
 		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
-		"Icon": "data/ic_usb_mini_b.jpg"
+		"Icon": "data/ic_usb_mini_b.png"
 	},
 	"USB Mini-AB": {
 		"Categories": [ "USB" ],
@@ -463,13 +463,13 @@
 	"DisplayPort": {
 		"Categories": [ "Display", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/DisplayPort" ],
-		"Icon": "data/ic_dp.jpg",
+		"Icon": "data/ic_dp.png",
 		"AKA": [ "DP" ]
 	},
 	"Mini DisplayPort": {
 		"Categories": [ "Display", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/DisplayPort" ],
-		"Icon": "data/ic_mini_dp.jpg",
+		"Icon": "data/ic_mini_dp.png",
 		"AKA": [ "Mini DP", "Thunderbolt", "Thunderbolt 1", "Thunderbolt 2" ],
 		"Description": "Miniaturized DisplayPort connector, also used for Thunderbolt 1 and 2."
 	},
@@ -477,7 +477,7 @@
 	"HDMI": {
 		"Categories": [ "Display", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/HDMI" ],
-		"Icon": "data/ic_hdmi.jpg"
+		"Icon": "data/ic_hdmi.png"
 	},
 	"Mini HDMI": {
 		"Categories": [ "Display" ],
