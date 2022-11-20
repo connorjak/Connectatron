@@ -739,141 +739,512 @@
 	},
 
 	// DIN          // https://en.wikipedia.org/wiki/DIN_connector
-
+	//TODO come back to DIN; there are tons of variants and they aren't named succinctly
+	//"DIN 41524 / IEC/DIN EN 60130-9": {
+	//	"Categories": [ "Audio", "Peripheral", "Old" ],
+	//	"Links": [ "https://en.wikipedia.org/wiki/DIN_connector" ]
+	//},
+	//"DIN 45327 / IEC/DIN EN 60130-9": {
+	//	"Categories": [ "Audio", "Peripheral", "Old" ],
+	//	"Links": [ "https://en.wikipedia.org/wiki/DIN_connector" ]
+	//},
+	//Mini-DIN			// https://en.wikipedia.org/wiki/Mini-DIN_connector
+	"Mini-DIN-3": {
+		"Categories": [ "Peripheral", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector", "https://en.wikipedia.org/wiki/LocalTalk" ],
+		"AKA": [ "Apple LocalTalk" ]
+	},
+	"Mini-DIN-4": {
+		"Categories": [ "Video", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector", "https://en.wikipedia.org/wiki/S-Video", "https://en.wikipedia.org/wiki/Apple_Desktop_Bus" ],
+		"AKA": [ "S-video", "Apple Desktop Bus" ]
+	},
 	"Mini-DIN-6": {
-		"Categories": [],
+		"Categories": [ "Peripheral", "Old" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector", "https://en.wikipedia.org/wiki/PS/2_port" ],
 		"AKA": [ "PS/2" ]
 	},
-	//TODO others from wiki article
+	"Mini-DIN-7": {
+		"Categories": [ "Video", "Audio", "Peripheral", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector" ]
+	},
+	"Mini-DIN-8": {
+		"Categories": [ "Peripheral", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector" ]
+	},
+	"Mini-DIN-9": {
+		"Categories": [ "Video", "Audio", "Peripheral", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector" ]
+	},
+
 
 	// Storage Interface
-	"START_CATEGORY_Storage Interface": {},
 	//https://en.wikipedia.org/wiki/Serial_ATA
-	"SATA": {},
-	"Micro-SATA": {},
-	"Mini-SATA": {},
-	"eSATA": {},
-	"eSATAp": {}, //https://en.wikipedia.org/wiki/ESATAp
-	"CompactFlash": {}, // https://en.wikipedia.org/wiki/CompactFlash
+	"SATA": {
+		"Categories": [ "Storage Interface", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+	},
+	"Micro-SATA": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+	},
+	"Mini-SATA": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+	},
+	"eSATA": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+	},
+	"eSATAp": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/ESATAp" ]
+	},
+	"CompactFlash": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/CompactFlash" ]
+	},
 	// https://en.wikipedia.org/wiki/SD_card
-	"SD": {},
-	"miniSD": {},
-	"microSD": {},
+	"SD": {
+		"Categories": [ "Storage Interface", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/SD_card" ]
+	},
+	"miniSD": {
+		"Categories": [ "Storage Interface", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/SD_card" ]
+	},
+	"microSD": {
+		"Categories": [ "Storage Interface", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/SD_card" ]
+	},
 	// SAS https://en.wikipedia.org/wiki/Serial_Attached_SCSI
-	"Mini-SAS SFF-8086": {},
-	"Mini-SAS SFF-8087": {}, //https://cs-electronics.com/sff-8087/
-	"Mini-SAS SFF-8088": {}, //https://cs-electronics.com/sff-8088/
-	"SFP Plus SFF-8431": {}, //https://cs-electronics.com/sff-8431/
-	"Quad SFP Plus SFF-8436": {}, //https://cs-electronics.com/sff-8436/
-	"ImfiniBand SFF-8470": {}, //https://cs-electronics.com/sff-8470/
-	"SAS SFF-8482": {}, //https://cs-electronics.com/sff-8482/
-	"SAS SFF-8484": {}, //https://cs-electronics.com/sff-8484/
-	"SAS SFF-8485": {}, //https://members.snia.org/document/dl/25923 https://web.archive.org/web/20190626094026/https://members.snia.org/document/dl/25923
-	"U.2 Mini-SAS HD SFF-8643": {}, // Also SFF-8613    https://cs-electronics.com/sff-8643/
-	"Mini-SAS HD SFF-8644": {}, // Also SFF-8614    https://cs-electronics.com/sff-8644/
-	"SAS Sideband": {},
-	"SAS SFF-8680": {}, //https://cs-electronics.com/sff-8680-2/
-	"U.2 SFF-8639": {}, //revision of SFF-8680 https://cs-electronics.com/sff-8639/
-	"SAS SFF-8638": {},
-	"SAS SFF-8640": {},
-	"SAS SFF-8681": {},
-	"SlimSAS SFF-8654": {},
-	"END_CATEGORY_Storage Interface": {},
+	"Mini-SAS SFF-8086": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ],
+		"SFF": 8086,
+		"AKA": [ "Internal mini-SAS", "Internal mSAS" ]
+	},
+	"Mini-SAS SFF-8087": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8087/" ],
+		"SFF": 8087,
+		"AKA": [ "Internal mini-SAS", "Internal mSAS", "Internal iSAS", "Internal iPass" ]
+	},
+	"Mini-SAS SFF-8088": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8088/" ],
+		"SFF": 8088,
+		"AKA": [ "External mini-SAS", "External mSAS", "External iSAS", "External iPass" ]
+	},
+	"SFP Plus SFF-8431": {
+		"Categories": [ "Storage Interface", "Fibre Channel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8431/" ],
+		"SFF": 8431,
+		"AKA": [ "SFP+" ]
+	},
+	"Quad SFP Plus SFF-8436": {
+		"Categories": [ "Storage Interface", "Fibre Channel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8436/" ],
+		"SFF": 8436,
+		"AKA": [ "QSFP+", "Quad SFP+" ]
+	},
+	"ImfiniBand SFF-8470": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8470/" ],
+		"SFF": 8470,
+		"AKA": [ "InfiniBand CX4", "Molex LaneLink" ]
+	},
+	"SAS SFF-8482": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8482/" ],
+		"SFF": 8482
+	},
+	"SAS SFF-8484": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8484/" ],
+		"SFF": 8484
+	},
+	"SAS SFF-8485": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://members.snia.org/document/dl/25923", "https://web.archive.org/web/20190626094026/https://members.snia.org/document/dl/25923" ],
+		"SFF": 8485
+	},
+	"U.2 Mini-SAS HD SFF-8643": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8643/" ],
+		"SFF": 8643,
+		"AKA": [ "SFF-8643", "SFF-8613", "Mini-SAS HD", "U.2" ]
+	},
+	"Mini-SAS HD SFF-8644": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8644/" ],
+		"SFF": 8644,
+		"AKA": [ "SFF-8644", "SFF-8614", "external Mini-SAS HD" ]
+	},
+	"SAS Sideband": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ]
+	},
+	"SAS SFF-8680": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8680-2/" ],
+		"SFF": 8680,
+		"AKA": [ "SFF-8680", "external Mini-SAS HD" ]
+	},
+	"U.2 SFF-8639": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI", "https://cs-electronics.com/sff-8639/" ],
+		"SFF": 8639,
+		"AKA": [ "SFF-8639", "U.2" ],
+		"Description": "Revision of SFF-8680."
+	},
+	"SAS SFF-8638": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ],
+		"SFF": 8638,
+		"AKA": [ "SFF-8638" ],
+		"Description": "Revision of SFF-8680."
+	},
+	"SAS SFF-8640": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ],
+		"SFF": 8640,
+		"AKA": [ "SFF-8640" ]
+	},
+	"SAS SFF-8681": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ],
+		"SFF": 8681,
+		"AKA": [ "SFF-8681" ]
+	},
+	"SlimSAS SFF-8654": {
+		"Categories": [ "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_Attached_SCSI" ],
+		"SFF": 8654,
+		"AKA": [ "SFF-8654", "SlimSAS" ]
+	},
 
 	// Fibre Channel
 	//https://en.wikipedia.org/wiki/Fibre_Channel
-	"START_CATEGORY_Fibre Channel": {},
 	// https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface
-	//DB9,  // Already in D-sub category  
-	"HSSDC": {},
-	"HSSDC2": {},
-	"SCA-2": {},
+	//DB9,  // Already in D-sub category
+	"HSSDC": {
+		"Categories": [ "Fibre Channel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Fibre_Channel", "https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface" ],
+		"AKA": [ "High Speed Serial Data Connection" ]
+	},
+	"HSSDC2": {
+		"Categories": [ "Fibre Channel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Fibre_Channel", "https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface" ],
+		"AKA": [ "High Speed Serial Data Connection" ]
+	},
+	"SCA-2": {
+		"Categories": [ "Fibre Channel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Fibre_Channel", "https://en.wikipedia.org/wiki/Fibre_Channel_electrical_interface" ],
+		"AKA": [ "SCA-40" ]
+	},
 	//SFP Plus SFF-8431,        //already in Storage Interface category
 	//Quad SFP Plus SFF-8436,  //already in Storage Interface category
-	"END_CATEGORY_Fibre Channel": {},
 
 	// Optical Fiber
+	// TODO apply more categories on these
 	// https://en.wikipedia.org/wiki/Optical_fiber_connector
 	//TODO https://en.wikipedia.org/wiki/Small_form-factor_pluggable_transceiver
-	"START_CATEGORY_Optical Fiber": {},
-	"Avio/Avim": {}, //Aviation Intermediate Maintenance
-	"ADT-UNI": {},
-	"CS": {}, //Corning/Senko
-	"DMI": {}, //Diamond Micro Interface
-	"LSH": {}, //E-2000
-	"EC/CF08": {},
-	"ELIO": {},
-	"ESCON": {}, //Enterprise Systems Connection
-	"F07": {},
-	"F-3000": {},
-	"FC": {}, //Ferrule Connector or Fiber Channel
-	"Fibergate": {},
-	"FJ": {}, //Fiber-Jack or Opti-Jack
-	"LC": {}, //Common in modern Fibre Channel devices. Lucent Connector, Little Connector, or Local Connector
-	"Luxcis": {},
-	"LX-5": {},
-	"M12-FO": {},
-	"MIC/FDDI": {}, //Media Interface Connnector / https://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface
-	"MPO/MTP": {}, //Multiple-fiber Push-On/Pull-off
-	"MT": {}, //Mechanical Transfer
-	"MT-RJ": {}, //Mechanical Transfer Registered Jack or Media Termination - recommended jack
-	"MU": {}, //Miniature unit
-	"SC": {}, // Common in older 1GFC devices.
-	"SC DC": {},
-	"SC QC": {},
-	"SMA 905/F-SMA I": {},
-	"SMA 906/F-SMA II": {},
-	"SMC": {},
-	"ST/BFOC": {}, //Straight Tip or Bayonet Fiber Optic Connector
+	"Avio/Avim": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Aviation Intermediate Maintenance" ]
+	},
+	"ADT-UNI": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"CS": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Corning/Senko" ]
+	},
+	"DMI": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Diamond Micro Interface" ]
+	},
+	"LSH": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "E-2000" ]
+	},
+	"EC/CF08": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"ELIO": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"ESCON": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Enterprise Systems Connection" ]
+	},
+	"F07": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"F-3000": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"FC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Ferrule Connector", "Fiber Channel" ]
+	},
+	"Fibergate": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"FJ": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Fiber-Jack", "Opti-Jack" ]
+	},
+	"LC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Lucent Connector", "Little Connector", "Local Connector" ]
+	}, //Common in modern Fibre Channel devices.
+	"Luxcis": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"LX-5": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"M12-FO": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ]
+	},
+	"MIC/FDDI": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector", "https://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface" ],
+		"AKA": [ "Media Interface Connnector", "Fiber Distributed Data Interface" ]
+	},
+	"MPO": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "MTP", "Multiple-fiber Push-On/Pull-off" ]
+	},
+	"MT": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Mechanical Transfer" ]
+	},
+	"MT-RJ": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Mechanical Transfer Registered Jack", "Media Termination - Recommended Jack" ]
+	},
+	"MU": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Miniature unit" ]
+	},
+	"SC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Subscriber connector", "square connector", "standard connector" ]
+	}, // Common in older 1GFC devices.
+	"SC DC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "SC-Dual Contact" ]
+	},
+	"SC QC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "SC-Quattro Contact" ]
+	},
+	"SMA 905/F-SMA I": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Sub Miniature A" ]
+	},
+	"SMA 906/F-SMA II": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Sub Miniature A" ]
+	},
+	"SMC": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Sub Miniature C" ]
+	},
+	"ST": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "BFOC", "Straight Tip", "Bayonet Fiber Optic Connector" ]
+	},
 	//TOSLINK (already in Audio section)
-	"VF-45/SG": {}, //Volition Fiber
-	"HDTV 1053": {}, //Broadcast connector interface //NOTE: this is supposed to be 1053 HDTV
-	"END_CATEGORY_Optical Fiber": {},
+	"VF-45/SG": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Volition Fiber" ]
+	},
+	"1053 HDTV": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "Broadcast connector interface" ]
+	},
+	"V-PIN": {
+		"Categories": [ "Optical Fiber" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Optical_fiber_connector" ],
+		"AKA": [ "V-System" ]
+	},
+
 
 	// Mobile
-	"START_CATEGORY_Mobile": {},
-	"Lightning": {}, // https://en.wikipedia.org/wiki/Lightning_(connector)
-	//https://en.wikipedia.org/wiki/Dock_connector#30-pin_dock_connector
-	"Apple 30-pin": {},
-	"Samsung 30-pin": {},
-	"PDMI": {}, // https://en.wikipedia.org/wiki/PDMI
-	"END_CATEGORY_Mobile": {},
+	"Lightning": {
+		"Categories": [ "Mobile", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Lightning_(connector)" ]
+	},
+	//https://en.wikipedia.org/wiki/Dock_connector#Samsung_30-pin_dock_connector
+	"Apple 30-pin": {
+		"Categories": [ "Mobile", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Dock_connector#30-pin_dock_connector" ]
+	},
+	"Samsung 30-pin": {
+		"Categories": [ "Mobile", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Dock_connector#Samsung_30-pin_dock_connector" ]
+	},
+	"PDMI": {
+		"Categories": [ "Mobile", "Automotive" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PDMI" ]
+	},
 
 	// D-subminiature
-	"START_CATEGORY_D-sub": {},
 	// https://en.wikipedia.org/wiki/D-subminiature
 	// Normal Density
-	"DA-15": {},
-	"DB-25": {}, // AKA IEEE 1284 Type A. Mandated by RS-232D.
-	"DC-37": {},
-	"DD-50": {},
-	"DE-9": {}, // AKA DB9  https://edac.net/products/db9-connector/145
+	"DA-15": {
+		"Categories": [ "D-sub", "D-sub Normal Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DB-25": {
+		"Categories": [ "D-sub", "D-sub Normal Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature", "https://en.wikipedia.org/wiki/IEEE_1284" ],
+		"AKA": [ "IEEE 1284 Type A", "RS-232D" ]
+	}, // AKA IEEE 1284 Type A. Mandated by RS-232D.
+	"DC-37": {
+		"Categories": [ "D-sub", "D-sub Normal Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DD-50": {
+		"Categories": [ "D-sub", "D-sub Normal Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DE-9": {
+		"Categories": [ "D-sub", "D-sub Normal Density", "Serial", "Video", "Networking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature", "https://edac.net/products/db9-connector/145", "https://en.wikipedia.org/wiki/RS-422" ],
+		"AKA": [ "DB9", "RS-232", "RS-422" ]
+	},
 	// High Density
-	"DA-26": {},
-	"DB-44": {},
-	"DC-62": {},
-	"DD-78": {},
-	"DE-15": {},
-	"DF-104": {},
+	"DA-26": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DB-44": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DC-62": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DD-78": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DE-15": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DF-104": {
+		"Categories": [ "D-sub", "D-sub High Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
 	// Double Density
-	"DA-31": {},
-	"DB-52": {},
-	"DC-79": {},
-	"DD-100": {},
-	"DE-19": {},
+	"DA-31": {
+		"Categories": [ "D-sub", "D-sub Double Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DB-52": {
+		"Categories": [ "D-sub", "D-sub Double Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DC-79": {
+		"Categories": [ "D-sub", "D-sub Double Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DD-100": {
+		"Categories": [ "D-sub", "D-sub Double Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
+	"DE-19": {
+		"Categories": [ "D-sub", "D-sub Double Density" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature" ]
+	},
 	// Other
-	"DB13W3": {}, //https://en.wikipedia.org/wiki/DB13W3
+	"DB13W3": {
+		"Categories": [ "D-sub", "Video" ],
+		"Links": [ "https://en.wikipedia.org/wiki/DB13W3" ]
+	},
 	// https://en.wikipedia.org/wiki/IEEE_1284
-	"Centronics": {}, //AKA "Micro Ribbon", "IEEE 1284 Type B". 36-pin.
-	"Mini-Centronics": {}, //AKA "MDR36", "HPCN36", "IEEE 1284 Type C". 36-pin.
-	"END_CATEGORY_D-sub": {},
+	"Centronics": {
+		"Categories": [ "D-sub", "Parallel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature", "https://en.wikipedia.org/wiki/IEEE_1284" ],
+		"AKA": [ "IEEE 1284 Type B", "Micro Ribbon" ],
+		"Description": "Device-side connector. 36-pin."
+	},
+	"Mini-Centronics": {
+		"Categories": [ "D-sub", "Parallel" ],
+		"Links": [ "https://en.wikipedia.org/wiki/D-subminiature", "https://en.wikipedia.org/wiki/IEEE_1284" ],
+		"AKA": [ "IEEE 1284 Type C", "MDR36", "HPCN36" ],
+		"Description": "Device-side connector. 36-pin. Half-pitch, smaller alternative for the device connection that has not proven popular."
+	},
 
 	// Other Connectors
+	// https://en.wikipedia.org/wiki/Modular_connector
 	// https://en.wikipedia.org/wiki/Registered_jack
-	"RJ11": {},
-	"RJ14": {},
-	"RJ25": {},
-	"RJ45" //AKA 8P8C
+	"4P4C": {
+		"Categories": [ "Registered Jack" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
+		"AKA": [ "Handset Connector", "RJ9", "RJ10", "RJ22" ]
+	},
+	"6P2C": {
+		"Categories": [ "Registered Jack" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
+		"AKA": [ "RJ11" ]
+	},
+	"6P4C": {
+		"Categories": [ "Registered Jack" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
+		"AKA": [ "RJ14" ]
+	},
+	"6P6C": {
+		"Categories": [ "Registered Jack" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
+		"AKA": [ "RJ25" ]
+	},
+	"8P8C": {
+		"Categories": [ "Registered Jack", "Twisted Pair", "Networking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack", "https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair" ],
+		"AKA": [ "RJ45", "Ethernet" ]
+	},
+	"10P10C": {
+		"Categories": [ "Registered Jack" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
+		"AKA": [ "RJ50", "Ethernet" ]
+	}
 
 }
