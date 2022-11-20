@@ -1264,13 +1264,13 @@
 	"8P8C": {
 		"Categories": [ "Registered Jack", "Twisted Pair", "Networking" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack", "https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair" ],
-		"AKA": [ "RJ45", "Ethernet" ]
+		"AKA": [ "RJ45", "Ethernet" ],
+		"Icon": "data/ic_rj45.jpg"
 	},
 	"10P10C": {
 		"Categories": [ "Registered Jack" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
-		"AKA": [ "RJ50", "Ethernet" ],
-		"Icon": "data/ic_rj45.jpg"
+		"AKA": [ "RJ50", "Ethernet" ]
 	}
 
 }
