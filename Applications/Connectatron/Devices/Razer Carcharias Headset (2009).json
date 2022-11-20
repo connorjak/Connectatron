@@ -1,0 +1,20 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "Headphones",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		},
+		{
+			"Name": "Mic",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Name": "Razer Carcharias Headset (2009)"
+}

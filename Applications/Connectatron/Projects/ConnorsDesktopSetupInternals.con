@@ -622,16 +622,6 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\ADATA SX8200PNP.json",
-"ID": 85465,
-"Name": "ADATA SX8200PNP",
-"SavedPos": [
-4053.0,
--512.0
-]
-},
-{
-"Dirty": false,
 "File": "Devices\\PCI-to-PCI Bridge.json",
 "ID": 24066,
 "Name": "PCI-to-PCI Bridge",
@@ -667,16 +657,6 @@
 "Name": "NVMe Controller",
 "SavedPos": [
 4249.0,
--332.0
-]
-},
-{
-"Dirty": false,
-"File": "Devices\\ADATA SX8200PNP.json",
-"ID": 33907,
-"Name": "ADATA SX8200PNP",
-"SavedPos": [
-4040.0,
 -332.0
 ]
 },
@@ -1186,8 +1166,8 @@
 "ID": 55712,
 "Name": "PCIe x16 Slot",
 "SavedPos": [
-4651.0,
-1820.0
+4728.0,
+1836.0
 ]
 },
 {
@@ -1198,6 +1178,166 @@
 "SavedPos": [
 4296.0,
 1820.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 99502,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+5128.0,
+1888.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 31947,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4969.0,
+2196.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB 3.json",
+"ID": 77801,
+"Name": "USB 3.10 Host Controller",
+"SavedPos": [
+4616.0,
+2196.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 21422,
+"Name": "USB Composite Device",
+"SavedPos": [
+3944.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic USB2 Webcam.json",
+"ID": 76249,
+"Name": "Generic USB2 Webcam",
+"SavedPos": [
+3600.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic USB2 Mic.json",
+"ID": 83538,
+"Name": "Generic USB2 Mic",
+"SavedPos": [
+3638.0,
+2332.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 4141,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+4264.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 33291,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+4264.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 70570,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3986.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 45791,
+"Name": "USB Composite Device",
+"SavedPos": [
+3704.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Mouse.json",
+"ID": 10587,
+"Name": "USB2 Mouse",
+"SavedPos": [
+3463.0,
+2508.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Keyboard.json",
+"ID": 47988,
+"Name": "USB2 Keyboard",
+"SavedPos": [
+3460.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\High Definition Audio Controller.json",
+"ID": 19915,
+"Name": "High Definition Audio Controller",
+"SavedPos": [
+4600.0,
+2588.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Razer Carcharias Headset (2009).json",
+"ID": 32562,
+"Name": "Razer Carcharias Headset (2009)",
+"SavedPos": [
+4300.0,
+2591.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ADATA SX8200PNP.json",
+"ID": 16497,
+"Name": "ADATA SX8200PNP",
+"SavedPos": [
+4039.0,
+-516.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Samsung PM981.json",
+"ID": 16769,
+"Name": "Samsung PM981",
+"SavedPos": [
+4041.0,
+-324.0
 ]
 }
 ],
@@ -1611,12 +1751,6 @@
 1
 ],
 [
-85465,
-46812,
-0,
-0
-],
-[
 24066,
 20181,
 0,
@@ -1643,12 +1777,6 @@
 [
 46812,
 91135,
-0,
-0
-],
-[
-33907,
-49434,
 0,
 0
 ],
@@ -1961,6 +2089,114 @@
 [
 77184,
 55712,
+0,
+0
+],
+[
+25307,
+77184,
+1,
+2
+],
+[
+99502,
+20181,
+0,
+3
+],
+[
+31947,
+20181,
+0,
+4
+],
+[
+77801,
+31947,
+0,
+0
+],
+[
+76249,
+21422,
+0,
+0
+],
+[
+83538,
+21422,
+0,
+1
+],
+[
+4141,
+77801,
+0,
+2
+],
+[
+21422,
+4141,
+0,
+0
+],
+[
+33291,
+77801,
+0,
+3
+],
+[
+70570,
+33291,
+0,
+0
+],
+[
+45791,
+70570,
+0,
+0
+],
+[
+10587,
+45791,
+0,
+1
+],
+[
+47988,
+45791,
+0,
+0
+],
+[
+19915,
+31947,
+0,
+1
+],
+[
+32562,
+19915,
+0,
+1
+],
+[
+32562,
+19915,
+1,
+0
+],
+[
+16497,
+46812,
+0,
+0
+],
+[
+16769,
+49434,
 0,
 0
 ]

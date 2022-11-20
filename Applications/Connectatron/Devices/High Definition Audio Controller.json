@@ -1,0 +1,25 @@
+{
+	"Females": [
+		{
+			"Name": "Mic",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		},
+		{
+			"Name": "Speakers",
+			"PinType": "Audio3.5mm",
+			"Protocols": [
+				"AnalogAudio"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "High Definition Audio Controller"
+}
