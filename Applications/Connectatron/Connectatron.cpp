@@ -286,8 +286,8 @@ static json GetJSONFromFile(fs::path filepath)
     {
         throw std::runtime_error("Failed to open file " + filepath.u8string() + " for JSON reading.");
     }
-    json js;
-    i >> js;
+    json js = json::parse(i,nullptr,true,true);
+    //i >> js;
     return js;
 }
 
