@@ -182,12 +182,14 @@
 	// AC Power
 	// https://en.wikipedia.org/wiki/NEMA_connector
 	// 120VAC
+	//TODO revise NEMA compatibility
 	"NEMA 5-15": {
 		"Categories": [ "AC Power", "Wall", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
 		"Description": "Typical outlet, 3 prong. Typically 120V AC.",
 		"AKA": [ "Power Outlet", "Power Plug", "3-prong plug", "PBG", "U-ground", "Edison", "Hubbell", "Stinger" ],
-		"Icon": "data/nema5-15.jpg"
+		"Icon": "data/nema5-15.jpg",
+		"MaleFitsInto": [ "NEMA 5-20" ]
 	},
 	"NEMA 5-20": {
 		"Categories": [ "AC Power", "Wall" ],
@@ -230,13 +232,15 @@
 		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
 		"Description": "Old outlet, 2 prong. Typically 120V AC.",
 		"AKA": [ "Power Outlet", "Power Plug", "2-prong plug" ],
-		"Icon": "data/nema1-15.jpg"
+		"Icon": "data/nema1-15.jpg",
+		"MaleFitsInto": [ "NEMA 5-15", "NEMA 5-20" ]
 	},
 	// 120/240VAC
 	"NEMA 14-20": {
 		"Categories": [ "AC Power", "Wall" ],
 		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
-		"Icon": "data/nema14-20.jpg"
+		"Icon": "data/nema14-20.jpg",
+		"MaleFitsInto": [ "NEMA 14-30" ]
 	},
 	"NEMA 14-30": {
 		"Categories": [ "AC Power", "Wall", "Common" ],
@@ -390,13 +394,15 @@
 		"Categories": [ "USB", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
 		"Icon": "data/ic_usba.jpg",
-		"Description": "USB Type-A: 4-pin connector for the host-end of a host's connection to a peripheral. Sufficient pins for <= USB 2.0."
+		"Description": "USB Type-A: 4-pin connector for the host-end of a host's connection to a peripheral. Sufficient pins for <= USB 2.0.",
+		"MaleFitsInto": [ "USB-A SuperSpeed", "eSATAp" ]
 	},
 	"USB-A SuperSpeed": {
 		"Categories": [ "USB", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
 		"Icon": "data/ic_usba.jpg",
-		"Description": "USB Type-A SuperSpeed: Has more pins than normal Type-A for USB3 features, like higher data rate. Backwards compatible with USB-A."
+		"Description": "USB Type-A SuperSpeed: Has more pins than normal Type-A for USB3 features, like higher data rate. Backwards compatible with USB-A.",
+		"MaleFitsInto": [ "USB-A", "eSATAp" ]
 	},
 	"USB-B": {
 		"Categories": [ "USB", "Common" ],
@@ -408,7 +414,7 @@
 		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
 		"Icon": "data/ic_usbb_ss.jpg",
 		"Description": "USB Type-B SuperSpeed: Has more pins (and is taller) than normal Type-B for USB3 features, like higher data rate."
-	},
+	}, // TODO check if USB-B has the same backwards compatibility
 	"USB-C": {
 		"Categories": [ "USB", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
@@ -481,21 +487,28 @@
 		"Links": [ "https://en.wikipedia.org/wiki/HDMI" ]
 	},
 	// https://en.wikipedia.org/wiki/Digital_Visual_Interface
+	//NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
+	//   but DVI-D male connectors can be inserted into DVI-I female connectors.
 	"DVI-D": {
 		"Categories": [ "Display", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ],
+		"Icon": "data/ic_dvi_d.jpg"
 	},
 	"DVI-A": {
 		"Categories": [ "Display", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ],
+		"Icon": "data/ic_dvi_d.jpg" //TODO WRONG
 	},
 	"DVI-I": {
 		"Categories": [ "Display", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ],
+		"Icon": "data/ic_dvi_d.jpg", //TODO WRONG
+		"MaleFitsInto": [ "DVI-D" ]
 	},
 	"Mini-DVI": {
 		"Categories": [ "Display", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Mini-DVI", "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DVI", "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ],
+		"Icon": "data/ic_mini_dvi.jpg"
 	},
 	"Micro-DVI": {
 		"Categories": [ "Display", "Old" ],
@@ -507,7 +520,8 @@
 	},
 	"VGA": {
 		"Categories": [ "Display", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Video_Graphics_Array" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Video_Graphics_Array" ],
+		"Icon": "data/ic_vga.jpg"
 	},
 	"Mini-VGA": {
 		"Categories": [ "Display", "Old" ],
@@ -531,6 +545,7 @@
 	},
 	//https://en.wikipedia.org/wiki/Parallel_ATA
 	// AKA ATA, IDE
+	//TODO AGP, PCIe, MXM compatibility
 	"PATA 40-pin": {
 		"Categories": [ "Expansion Slot", "Old" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Parallel_ATA" ],
@@ -553,7 +568,8 @@
 	//https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
 	"AGP 3.3V": {
 		"Categories": [ "Expansion Slot", "Old" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ],
+		"MaleFitsInto": [ "AGP Universal" ]
 	},
 	"AGP 1.5V": {
 		"Categories": [ "Expansion Slot", "Old" ],
@@ -618,7 +634,8 @@
 	"M.2 B M key": {
 		"Categories": [ "Expansion Slot", "Storage Interface" ],
 		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
-		"Description": "Usual for SATA devices (fits in Socket 2, 3)."
+		"Description": "Usual for SATA devices (fits in Socket 2, 3).",
+		"MaleFitsInto": [ "M.2 B key", "M.2 M key" ]
 	},
 	"M.2 B key": {
 		"Categories": [ "Expansion Slot", "Storage Interface" ],
@@ -688,7 +705,8 @@
 	// Audio
 	"Audio3.5mm": {
 		"Categories": [ "Audio", "Common" ],
-		"Links": []
+		"Links": [ "https://en.wikipedia.org/wiki/Phone_connector_(audio)" ],
+		"Icon": "data/ic_3x_3.5mm.jpg" //TODO (somewhat) WRONG
 	}, //Should probably specify stereo/not?
 	//https://en.wikipedia.org/wiki/XLR_connector
 	"XLR3": {
@@ -731,11 +749,13 @@
 	"TOSLINK": {
 		"Categories": [ "Audio" ],
 		"Links": [ "https://en.wikipedia.org/wiki/TOSLINK" ],
-		"AKA": [ "Optical Audio", "EIAJ optical", "S/PDIF" ]
+		"AKA": [ "Optical Audio", "EIAJ optical", "S/PDIF" ],
+		"Icon": "data/ic_toslink.jpg"
 	},
 	"Mini-TOSLINK": {
 		"Categories": [ "Audio" ],
-		"Links": [ "https://en.wikipedia.org/wiki/TOSLINK" ]
+		"Links": [ "https://en.wikipedia.org/wiki/TOSLINK" ],
+		"Icon": "data/ic_toslink.jpg" //TODO WRONG
 	},
 
 	// DIN          // https://en.wikipedia.org/wiki/DIN_connector
@@ -762,7 +782,8 @@
 	"Mini-DIN-6": {
 		"Categories": [ "Peripheral", "Old" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector", "https://en.wikipedia.org/wiki/PS/2_port" ],
-		"AKA": [ "PS/2" ]
+		"AKA": [ "PS/2" ],
+		"Icon": "data/ic_ps2.jpg"
 	},
 	"Mini-DIN-7": {
 		"Categories": [ "Video", "Audio", "Peripheral", "Old" ],
@@ -782,7 +803,8 @@
 	//https://en.wikipedia.org/wiki/Serial_ATA
 	"SATA": {
 		"Categories": [ "Storage Interface", "Common" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ],
+		"Icon": "data/ic_sata.jpg"
 	},
 	"Micro-SATA": {
 		"Categories": [ "Storage Interface" ],
@@ -794,7 +816,9 @@
 	},
 	"eSATA": {
 		"Categories": [ "Storage Interface" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Serial_ATA" ],
+		"Icon": "data/ic_esata.jpg",
+		"MaleFitsInto": [ "eSATAp" ]
 	},
 	"eSATAp": {
 		"Categories": [ "Storage Interface" ],
@@ -1244,7 +1268,8 @@
 	"10P10C": {
 		"Categories": [ "Registered Jack" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Modular_connector", "https://en.wikipedia.org/wiki/Registered_jack" ],
-		"AKA": [ "RJ50", "Ethernet" ]
+		"AKA": [ "RJ50", "Ethernet" ],
+		"Icon": "data/ic_rj45.jpg"
 	}
 
 }
