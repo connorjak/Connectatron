@@ -50,6 +50,20 @@ enum class PinType : unsigned int
     IEC__60130___10__Type__E,
     DIN__45323__5mm__OD,
     DIN__45323__6mm__OD,
+    // PC Internal Connectors
+    // https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors
+    ATX__20___pin,
+    ATX12VO,
+    // https://en.wikipedia.org/wiki/PCI_Express#Power
+    PCIe__6___pin,
+    PCIe__6___2___pin,
+    PCIe__8___pin,
+    PCIe__12___pin,
+    PCIe__16___pin__ATX__3_0,
+    // https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Entry-Level_Power_Supply_Specification
+    EPS__4___pin,
+    EPS__8___pin,
+    EPS__24___pin,
     Molex,
     SATA__Power,
     SATA__Power__Slimline,
