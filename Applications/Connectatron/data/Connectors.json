@@ -6,13 +6,13 @@
 {
 	"UNRECOGNIZED": {
 		"Categories": [ "INTERNAL" ],
-		"Links": [ ]
+		"Links": []
 	},
 	"Proprietary": {
 		"Categories": [ "Other" ],
 		"Links": [],
 		"Description": "For connectors that don't match any listed options"
-	}, 
+	},
 	"Wireless": {
 		"Categories": [ "Single-Wire" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Pin_header" ]
@@ -25,7 +25,7 @@
 	},
 	"Screw Terminal": {
 		"Categories": [ "Single-Wire" ],
-		"Links": ["https://en.wikipedia.org/wiki/Screw_terminal"]
+		"Links": [ "https://en.wikipedia.org/wiki/Screw_terminal" ]
 	},
 
 	// Two-wire bus
@@ -66,7 +66,7 @@
 	"EIAJ-05": {
 		"Categories": [ "DC Power", "Barrel" ],
 		"Links": [ "https://en.wikipedia.org/wiki/EIAJ_connector" ],
-		"AKA":  ["JSBP 5"]
+		"AKA": [ "JSBP 5" ]
 	},
 	"IEC 60130-10 Type A 2.1mm ID": {
 		"Categories": [ "DC Power", "Barrel" ],
@@ -107,7 +107,7 @@
 	// PC Internal Connectors
 	// https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors
 	"ATX 20-pin": {
-		"Categories": [ "DC Power", "PSU", "Motherboard" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "Motherboard" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors" ],
 		"Description": "Motherboard power connector for lower-power ATX standard. 24-pin (which matches EPS standard) is more common for gaming/workstation computers.",
 		"AKA": [ "P1", "ATX Motherboard Power" ]
@@ -119,212 +119,632 @@
 	},
 	// https://en.wikipedia.org/wiki/PCI_Express#Power
 	"PCIe 6-pin": {
-		"Categories": [ "DC Power", "PSU", "PCIe Power" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ]
+		"Categories": [ "DC Power", "PC Internal", "PSU", "PCIe Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ],
+		"MaleFitsInto": [ "PCIe 8-pin" ]
 	},
-	"PCIe 6-2-pin": {
-		"Categories": [ "DC Power", "PSU", "PCIe Power" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ]
+	"PCIe 6+2-pin": {
+		"Categories": [ "DC Power", "PC Internal", "PSU", "PCIe Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ],
+		"MaleFitsInto": [ "PCIe 6-pin", "PCIe 8-pin" ]
 	},
 	"PCIe 8-pin": {
-		"Categories": [ "DC Power", "PSU", "PCIe Power" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "PCIe Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ]
 	},
 	"PCIe 12-pin": {
-		"Categories": [ "DC Power", "PSU", "PCIe Power" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "PCIe Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ]
 	},
 	"PCIe 16-pin ATX 3.0": {
-		"Categories": [ "DC Power", "PSU", "PCIe Power" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ]
+		"Categories": [ "DC Power", "PC Internal", "PSU", "PCIe Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/PCI_Express#Power" ],
 		"AKA": [ "12VHPWR" ]
 	},
 	// https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Entry-Level_Power_Supply_Specification
 	"EPS 4-pin": {
-		"Categories": [ "DC Power", "PSU", "Motherboard" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "Motherboard" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Entry-Level_Power_Supply_Specification" ],
 		"AKA": [ "P4", "ATX12V", "4-pin CPU Power" ],
-		"Description":  "EPS-standard additional power for CPU socket."
+		"Description": "EPS-standard additional power for CPU socket."
 	},
 	"EPS 8-pin": {
-		"Categories": [ "DC Power", "PSU", "Motherboard" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "Motherboard" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Entry-Level_Power_Supply_Specification" ],
-		"AKA": [ "EPS12V", "4-pin CPU Power" ],
-		"Description": "EPS-standard main power for CPU socket. Often split into 4+4"
+		"Description": "EPS-standard main power for CPU socket. Often split into 4+4",
+		"AKA": [ "EPS12V", "4-pin CPU Power" ]
 	},
 	"EPS 24-pin": {
-		"Categories": [ "DC Power", "PSU", "Motherboard" ],
+		"Categories": [ "DC Power", "PC Internal", "PSU", "Motherboard" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Entry-Level_Power_Supply_Specification" ],
 		"Description": "Motherboard power connector for EPS standard. 24-pin or 20+4-pin.",
 		"AKA": [ "P1", "ATX Motherboard Power", "EPS Motherboard Power" ]
 	},
-	"Molex": {},
-	"SATA Power": {},
-	"SATA Power Slimline": {},
-	"END_CATEGORY_DC Power": {},
+	"4-pin Peripheral": {
+		"Categories": [ "DC Power", "PC Internal", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors" ],
+		"Description": "Power connector, mostly used for non-SATA disk drives."
+	},
+	"4-pin Molex": {
+		"Categories": [ "DC Power", "PC Internal", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/Molex_connector" ],
+		"AKA": [ "Mini-connector", "mini-Molex", "Berg connector" ]
+	},
+	"SATA Power": {
+		"Categories": [ "DC Power", "PC Internal", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/SATA#Power_connectors" ]
+	},
+	"SATA Power Slimline": {
+		"Categories": [ "DC Power", "PC Internal", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/SATA#Power_connectors" ]
+	},
 
 	// AC Power
-	"START_CATEGORY_AC Power": {},
 	// https://en.wikipedia.org/wiki/NEMA_connector
 	// 120VAC
-	"NEMA 5-15": {}, //Typical outlet, 3 prong
-	"NEMA 5-20": {},
-	"NEMA 5-30": {},
-	"NEMA 5-50": {},
-	"NEMA TT-30": {},
-	"NEMA L5-15": {},
-	"NEMA L5-20": {},
-	"NEMA L5-30": {},
-	"NEMA 1-15": {}, //Old outlet, 2 prong
+	"NEMA 5-15": {
+		"Categories": [ "AC Power", "Wall", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Description": "Typical outlet, 3 prong. Typically 120V AC.",
+		"AKA": [ "Power Outlet", "Power Plug", "3-prong plug", "PBG", "U-ground", "Edison", "Hubbell", "Stinger" ],
+		"Icon": "data/nema5-15.jpg"
+	},
+	"NEMA 5-20": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema5-20.jpg"
+	},
+	"NEMA 5-30": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema5-30.jpg"
+	},
+	"NEMA 5-50": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema5-50.jpg"
+	},
+	"NEMA TT-30": {
+		"Categories": [ "AC Power", "Automotive" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"AKA": [ "Travel Trailer", "RV" ],
+		"Icon": "data/nemaTT-30.jpg"
+	},
+	"NEMA L5-15": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal5-15.jpg"
+	},
+	"NEMA L5-20": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal5-20.jpg"
+	},
+	"NEMA L5-30": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal5-30.jpg"
+	},
+	"NEMA 1-15": {
+		"Categories": [ "AC Power", "Wall", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Description": "Old outlet, 2 prong. Typically 120V AC.",
+		"AKA": [ "Power Outlet", "Power Plug", "2-prong plug" ],
+		"Icon": "data/nema1-15.jpg"
+	},
 	// 120/240VAC
-	"NEMA 14-20": {},
-	"NEMA 14-30": {}, //Clothes Dryer
-	"NEMA 14-50": {}, //Electric Oven
-	"NEMA 14-60": {},
-	"NEMA L14-20": {},
-	"NEMA L14-30": {},
+	"NEMA 14-20": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema14-20.jpg"
+	},
+	"NEMA 14-30": {
+		"Categories": [ "AC Power", "Wall", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Description": "Typical high voltage connector for electric clothes dryers.",
+		"AKA": [ "Dryer" ],
+		"Icon": "data/nema14-30.jpg"
+	},
+	"NEMA 14-50": {
+		"Categories": [ "AC Power", "Wall", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Description": "Typical high voltage connector for electric cooking ranges / ovens.",
+		"AKA": [ "Oven", "RV" ],
+		"Icon": "data/nema14-50.jpg"
+	},
+	"NEMA 14-60": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema14-60.jpg"
+	},
+	"NEMA L14-20": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal14-20.jpg"
+	},
+	"NEMA L14-30": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal14-30.jpg"
+	},
 	// 240VAC
-	"NEMA 6-15": {},
-	"NEMA 6-20": {},
-	"NEMA 6-30": {},
-	"NEMA 6-50": {},
-	"NEMA 10-30": {},
-	"NEMA 10-50": {},
-	// Welder or Plasma Cutter
-	"NEMA L6-15": {},
-	"NEMA L6-20": {},
-	"NEMA L6-30": {},
-	"NEMA L6-50": {},
+	"NEMA 6-15": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema6-15.jpg"
+	},
+	"NEMA 6-20": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema6-20.jpg"
+	},
+	"NEMA 6-30": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema6-30.jpg"
+	},
+	"NEMA 6-50": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema6-50.jpg"
+	},
+	"NEMA 10-30": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema10-30.jpg"
+	},
+	"NEMA 10-50": {
+		"Categories": [ "AC Power", "Wall" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nema10-50.jpg"
+	},
+	"NEMA L6-15": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal6-15.jpg"
+	},
+	"NEMA L6-20": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal6-20.jpg"
+	},
+	"NEMA L6-30": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal6-30.jpg"
+	},
+	"NEMA L6-50": {
+		"Categories": [ "AC Power", "Wall", "Locking" ],
+		"Links": [ "https://en.wikipedia.org/wiki/NEMA_connector" ],
+		"Icon": "data/nemal6-50.jpg"
+	},
 	// https://en.wikipedia.org/wiki/IEC_60320
-	"C1/C2": {},
+	"C1/C2": {
+		"Categories": [ "AC Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c1c2.jpg"
+	},
 	//C3/C4, // has been withdrawn from the standard
-	"C5/C6": {},
-	"C7/C8": {},
-	"C9/C10": {},
+	"C5/C6": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"AKA": [ "Cloverleaf", "Mickey Mouse" ],
+		"Icon": "data/c5c6.jpg"
+	},
+	"C7/C8": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"AKA": [ "Figure-8", "Infinity", "Shotgun", "Telefunken" ],
+		"Icon": "data/c7c8.jpg"
+	},
+	"C9/C10": {
+		"Categories": [ "AC Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c9c10.jpg"
+	},
 	//C11/C12, // has been withdrawn from the standard
-	"C13/C14": {},
-	"C15/C16": {},
-	"C15A/C16A": {},
-	"C17/C18": {},
-	"C19/C20": {},
-	"C21/C22": {},
-	"C23/C24": {},
-	//TODO other AC connectors
-	"END_CATEGORY_AC Power": {},
+	"C13/C14": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"AKA": [ "IEC Cord", "PSU Plug" ],
+		"Icon": "data/c13c14.jpg"
+	},
+	"C15/C16": {
+		"Categories": [ "AC Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c15c16.jpg"
+	},
+	"C15A/C16A": {
+		"Categories": [ "AC Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c15ac16a.jpg"
+	},
+	"C17/C18": {
+		"Categories": [ "AC Power" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c17c18.jpg"
+	},
+	"C19/C20": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c19c20.jpg"
+	},
+	"C21/C22": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c21c22.jpg"
+	},
+	"C23/C24": {
+		"Categories": [ "AC Power", "PSU" ],
+		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
+		"Icon": "data/c23c24.jpg"
+	},
+	//TODO other AC connectors, esp from other countries
 
 	// RF
 	// https://en.wikipedia.org/wiki/RF_connector
 	//TODO
 
 	// USB          // https://en.wikipedia.org/wiki/USB
-	"START_CATEGORY_USB": {},
-	"USB-A": {},
-	"USB-A SuperSpeed": {}, // Has more pins for USB3 features. Fits with USB-A.
-	"USB-B": {},
-	"USB-B SuperSpeed": {}, // Has more pins for USB3 features. Taller than USB-B.
-	"USB-C": {},
-	"USB Mini-A": {},
-	"USB Mini-B": {},
-	"USB Mini-AB": {},
-	"USB Micro-A": {},
-	"USB Micro-B": {},
-	"USB Micro-AB": {},
-	"USB Micro-B SuperSpeed": {}, // Has more pins for USB3 features. Wider than USB Micro-B.
-	"END_CATEGORY_USB": {},
+	"USB-A": {
+		"Categories": [ "USB", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Icon": "data/ic_usba.jpg",
+		"Description": "USB Type-A: 4-pin connector for the host-end of a host's connection to a peripheral. Sufficient pins for <= USB 2.0."
+	},
+	"USB-A SuperSpeed": {
+		"Categories": [ "USB", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Icon": "data/ic_usba.jpg",
+		"Description": "USB Type-A SuperSpeed: Has more pins than normal Type-A for USB3 features, like higher data rate. Backwards compatible with USB-A."
+	},
+	"USB-B": {
+		"Categories": [ "USB", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Description": "USB Type-B: 4-pin connector for the peripheral-end of a host's connection to a peripheral. Sufficient pins for <= USB 2.0."
+	},
+	"USB-B SuperSpeed": {
+		"Categories": [ "USB", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Icon": "data/ic_usbb_ss.jpg",
+		"Description": "USB Type-B SuperSpeed: Has more pins (and is taller) than normal Type-B for USB3 features, like higher data rate."
+	},
+	"USB-C": {
+		"Categories": [ "USB", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Icon": "data/ic_usbc.jpg",
+		"Description": "USB Type-C: 24-pin reversible connector. Host and Peripheral sides are identical. Made in a wide variety of specifications for different signal integrity.",
+		"AKA": [ "Thunderbolt 3", "Thunderbolt 4", "USB4" ]
+	},
+	"USB Mini-A": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ]
+	},
+	"USB Mini-B": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Icon": "data/ic_usb_mini_b.jpg"
+	},
+	"USB Mini-AB": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ]
+	},
+	"USB Micro-A": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ]
+	},
+	"USB Micro-B": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Description": "USB Micro-B: 5-pin connector. Common on pre-USB-C or low-cost electronic devices.",
+		"Icon": "data/ic_usb_micro_b.jpg"
+	},
+	"USB Micro-AB": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ]
+	},
+	"USB Micro-B SuperSpeed": {
+		"Categories": [ "USB" ],
+		"Links": [ "https://en.wikipedia.org/wiki/USB" ],
+		"Description": "USB Type-B SuperSpeed: Has more pins (and is wider) than normal Micro-B for USB3 features, like higher data rate."
+	}, // Has more pins for USB3 features. Wider than USB Micro-B.
+
 
 	// Display
-	"START_CATEGORY_Display": {},
+	// https://en.wikipedia.org/wiki/Audio_and_video_interfaces_and_connectors
 	// https://en.wikipedia.org/wiki/DisplayPort
-	"DisplayPort": {},
-	"Mini DisplayPort": {}, //Notably also used for Thunderbolt 1 and 2
+	"DisplayPort": {
+		"Categories": [ "Display", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/DisplayPort" ],
+		"Icon": "data/ic_dp.jpg",
+		"AKA": [ "DP" ]
+	},
+	"Mini DisplayPort": {
+		"Categories": [ "Display", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/DisplayPort" ],
+		"Icon": "data/ic_mini_dp.jpg",
+		"AKA": [ "Mini DP", "Thunderbolt", "Thunderbolt 1", "Thunderbolt 2" ],
+		"Description": "Miniaturized DisplayPort connector, also used for Thunderbolt 1 and 2."
+	},
 	// https://en.wikipedia.org/wiki/HDMI
-	"HDMI": {},
-	"Mini HDMI": {},
-	"Micro HDMI": {},
+	"HDMI": {
+		"Categories": [ "Display", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/HDMI" ],
+		"Icon": "data/ic_hdmi.jpg"
+	},
+	"Mini HDMI": {
+		"Categories": [ "Display" ],
+		"Links": [ "https://en.wikipedia.org/wiki/HDMI" ]
+	},
+	"Micro HDMI": {
+		"Categories": [ "Display" ],
+		"Links": [ "https://en.wikipedia.org/wiki/HDMI" ]
+	},
 	// https://en.wikipedia.org/wiki/Digital_Visual_Interface
-	"DVI-D": {},
-	"DVI-A": {},
-	"DVI-I": {},
-	"Mini-DVI": {}, // https://en.wikipedia.org/wiki/Mini-DVI
-	"Micro-DVI": {}, // https://en.wikipedia.org/wiki/Micro-DVI
-	"Apple Display Connector": {}, // https://en.wikipedia.org/wiki/Apple_Display_Connector
-	"VGA": {},
-	"Mini-VGA": {},
-	"SCART": {}, // https://en.wikipedia.org/wiki/SCART
-	//https://en.wikipedia.org/wiki/RCA_connector
-	"RCA Component Video": {},
-	"RCA Stereo Audio": {},
-	"RCA": {},
-	"END_CATEGORY_Display": {},
+	"DVI-D": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+	},
+	"DVI-A": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+	},
+	"DVI-I": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+	},
+	"Mini-DVI": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DVI", "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+	},
+	"Micro-DVI": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Micro-DVI", "https://en.wikipedia.org/wiki/Digital_Visual_Interface" ]
+	},
+	"Apple Display Connector": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Apple_Display_Connector" ]
+	},
+	"VGA": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Video_Graphics_Array" ]
+	},
+	"Mini-VGA": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Video_Graphics_Array" ]
+	},
+	"SCART": {
+		"Categories": [ "Display", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/SCART" ]
+	},
+	"RCA": {
+		"Categories": [ "DC Power", "Display", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/RCA_connector" ]
+	},
+	//"RCA Component Video": {},
+	//"RCA Stereo Audio": {},
 
 	// Expansion Slot
-	"START_CATEGORY_Expansion Slot": {},
-	"ISA": {}, //https://en.wikipedia.org/wiki/Industry_Standard_Architecture
+	"ISA": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Industry_Standard_Architecture" ]
+	},
 	//https://en.wikipedia.org/wiki/Parallel_ATA
 	// AKA ATA, IDE
-	"PATA 40-pin": {},
-	"PATA 44-pin": {},
-	"PATA 80-pin": {},
-	"PCI": {}, //https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect
+	"PATA 40-pin": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Parallel_ATA" ],
+		"AKA": [ "ATA 40-pin", "IDE 40-pin" ]
+	},
+	"PATA 44-pin": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Parallel_ATA" ],
+		"AKA": [ "ATA 44-pin", "IDE 44-pin" ]
+	},
+	"PATA 80-pin": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Parallel_ATA" ],
+		"AKA": [ "ATA 80-pin", "IDE 80-pin" ]
+	},
+	"PCI": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect" ]
+	},
 	//https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
-	"AGP 3.3V": {},
-	"AGP 1.5V": {},
-	"AGP Universal": {},
-	"AGP Pro 3.3V": {},
-	"AGP Pro 1.5V": {},
-	"AGP Pro Universal": {},
+	"AGP 3.3V": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
+	"AGP 1.5V": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
+	"AGP Universal": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
+	"AGP Pro 3.3V": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
+	"AGP Pro 1.5V": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
+	"AGP Pro Universal": {
+		"Categories": [ "Expansion Slot", "Old" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" ]
+	},
 	// https://en.wikipedia.org/wiki/PCI_Express
-	"PCIe x1": {},
-	"PCIe x2": {},
-	"PCIe x4": {},
-	"PCIe x8": {},
-	"PCIe x16": {},
-	"Mini PCIe": {},
+	"PCIe x1": {
+		"Categories": [ "Expansion Slot", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"PCIe x2": {
+		"Categories": [ "Expansion Slot", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"PCIe x4": {
+		"Categories": [ "Expansion Slot", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"PCIe x8": {
+		"Categories": [ "Expansion Slot", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"PCIe x16": {
+		"Categories": [ "Expansion Slot", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"Mini PCIe": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
 	// https://en.wikipedia.org/wiki/PCI_Express#PCI_Express_OCuLink
 	// https://blog.fosketts.net/2017/06/22/what-is-oculink/
-	"OCuLink": {}, //AKA SFF-8612
+	"OCuLink": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express#PCI_Express_OCuLink", "https://blog.fosketts.net/2017/06/22/what-is-oculink/" ],
+		"AKA": [ "SFF-8612" ],
+		"SFF": 8612
+	},
 	//https://en.wikipedia.org/wiki/M.2
-	"M.2 M key": {}, // AKA Socket 3, usual for PCIe x4 / NVMe devices.
-	"M.2 B M key": {}, // Usual for SATA devices (fits in Socket 2, 3).
-	"M.2 B key": {}, // AKA Socket 2, usual for WWAN, GNSS, SSD, etc.
-	"M.2 A E key": {}, // AKA Socket 1, usual for wireless.
+	"M.2 M key": {
+		"Categories": [ "Expansion Slot", "Storage Interface", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
+		"AKA": [ "M.2", "Socket 3" ],
+		"Description": "Usual for PCIe x4 / NVMe devices."
+	},
+	"M.2 B M key": {
+		"Categories": [ "Expansion Slot", "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
+		"Description": "Usual for SATA devices (fits in Socket 2, 3)."
+	},
+	"M.2 B key": {
+		"Categories": [ "Expansion Slot", "Storage Interface" ],
+		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
+		"Description": "Usual for WWAN, GNSS, SSD, etc.",
+		"AKA": [ "Socket 2" ]
+	},
+	"M.2 A E key": {
+		"Categories": [ "Expansion Slot", "Wireless" ],
+		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
+		"Description": "Usual for wireless.",
+		"AKA": [ "Socket 1" ]
+	},
 	// https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module
-	"MXM-I": {},
-	"MXM-II": {},
-	"MXM-III": {},
-	"MXM-A": {},
-	"MXM-B": {},
+	"MXM-I": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module" ]
+	},
+	"MXM-II": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module" ]
+	},
+	"MXM-III": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module" ]
+	},
+	"MXM-A": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module" ]
+	},
+	"MXM-B": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module" ]
+	},
 	// https://en.wikipedia.org/wiki/PC_Card
 	// AKA PCMCIA
-	"PC Card Type I": {},
-	"PC Card Type II": {},
-	"PC Card Type III": {},
-	"PC Card Type IV": {},
+	"PC Card Type I": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PC_Card" ],
+		"AKA": [ "PCMCIA" ]
+	},
+	"PC Card Type II": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PC_Card" ],
+		"AKA": [ "PCMCIA" ]
+	},
+	"PC Card Type III": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PC_Card" ],
+		"AKA": [ "PCMCIA" ]
+	},
+	"PC Card Type IV": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PC_Card" ],
+		"AKA": [ "PCMCIA" ]
+	},
 	// https://en.wikipedia.org/wiki/ExpressCard
-	"ExpressCard/34": {},
-	"ExpressCard/54": {},
-	"END_CATEGORY_Expansion Slot": {},
+	"ExpressCard/34": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/ExpressCard" ]
+	},
+	"ExpressCard/54": {
+		"Categories": [ "Expansion Slot" ],
+		"Links": [ "https://en.wikipedia.org/wiki/ExpressCard" ]
+	},
 
 	// Audio
-	"START_CATEGORY_Audio": {},
-	"Audio3.5mm": {}, //Should probably specify stereo/not?
+	"Audio3.5mm": {
+		"Categories": [ "Audio", "Common" ],
+		"Links": []
+	}, //Should probably specify stereo/not?
 	//https://en.wikipedia.org/wiki/XLR_connector
-	"XLR3": {}, //3-pin, most common
-	"XLR4": {}, //4-pin
-	"XLR5": {}, //5-pin
-	"XLR6": {}, //6-pin
-	"XLR7": {}, //7-pin
-	"PDN": {},
-	"Mini XLR": {}, // AKA TQG, TA3/TA4
+	"XLR3": {
+		"Categories": [ "Audio", "Common" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "3-pin, most common."
+	},
+	"XLR4": {
+		"Categories": [ "DC Power", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "4-pin."
+	},
+	"XLR5": {
+		"Categories": [ "DC Power", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "5-pin."
+	},
+	"XLR6": {
+		"Categories": [ "DC Power", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "6-pin."
+	},
+	"XLR7": {
+		"Categories": [ "DC Power", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "7-pin."
+	},
+	"PDN": {
+		"Categories": [ "DC Power", "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"Description": "7-pin.",
+		"AKA": [ "loudspeaker Cannon" ]
+	},
+	"Mini XLR": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/XLR_connector" ],
+		"AKA": [ "TQG", "TA3", "TA4" ]
+	},
 	// https://en.wikipedia.org/wiki/TOSLINK
-	"TOSLINK": {},
-	"Mini-TOSLINK": {},
-	"END_CATEGORY_Audio": {},
+	"TOSLINK": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/TOSLINK" ],
+		"AKA": [ "Optical Audio", "EIAJ optical", "S/PDIF" ]
+	},
+	"Mini-TOSLINK": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/TOSLINK" ]
+	},
 
 	// DIN          // https://en.wikipedia.org/wiki/DIN_connector
 
-	// Mini-DIN     // https://en.wikipedia.org/wiki/Mini-DIN_connector
-	"PS/2": {}, // https://en.wikipedia.org/wiki/PS/2_port
+	"Mini-DIN-6": {
+		"Categories": [],
+		"Links": [ "https://en.wikipedia.org/wiki/Mini-DIN_connector", "https://en.wikipedia.org/wiki/PS/2_port" ],
+		"AKA": [ "PS/2" ]
+	},
 	//TODO others from wiki article
 
 	// Storage Interface

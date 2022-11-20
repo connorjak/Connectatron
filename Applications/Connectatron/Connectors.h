@@ -424,7 +424,7 @@ const map<PinType, string> connectorIconFiles
     // USB
     {PinType::USB___A,                       "data/ic_usba.jpg"},
     {PinType::USB___A__SuperSpeed,           "data/ic_usba.jpg"},
-    {PinType::USB___B,                       ""},
+    {PinType::USB___B,                       "data/ic_usbb.jpg"},
     {PinType::USB___B__SuperSpeed,           "data/ic_usbb_ss.jpg"},
     {PinType::USB___C,                       "data/ic_usbc.jpg"},
     {PinType::USB__Mini___A,                 ""},
