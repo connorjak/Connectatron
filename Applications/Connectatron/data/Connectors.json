@@ -15,7 +15,8 @@
 	},
 	"Wireless": {
 		"Categories": [ "Single-Wire" ],
-		"Links": [ "https://en.wikipedia.org/wiki/Pin_header" ]
+		"Links": [ "https://en.wikipedia.org/wiki/Pin_header" ],
+		"MultipleConnectPerPin": true
 	},
 
 	// Single-Wire

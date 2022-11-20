@@ -131,8 +131,8 @@ static ed::EditorContext* m_Editor = nullptr;
 static string CurrentProjectName = "my_project.con";
 static bool ProjectDirty = false;
 
-static vector<ConnectorCategoryInfo> ConnectorCategories;
-static vector<PinType> UncategorizedConnectors;
+//static vector<ConnectorCategoryInfo> ConnectorCategories;
+//static vector<PinType> UncategorizedConnectors;
 static vector<ProtocolCategoryInfo> ProtocolCategories;
 static vector<WireProtocol> UncategorizedProtocols;
 
@@ -185,26 +185,26 @@ struct Pin
     weak_ptr<Node> Node;
     std::string Name;
     // Physical connector type
-    PinType     Type;
+    Connector_ID     Type;
     // Protocols available for communication through this connector
     set<WireProtocol> Protocols;
     std::string ExtraInfo;
     bool IsFemale = true;
     PinKind     Kind;
 
-    Pin(int id, const char* name, PinType type):
+    Pin(int id, const char* name, Connector_ID type):
         ID(id), Name(name), Type(type), Kind(PinKind::Input)
     {
     }
-    Pin(int id, const char* name, PinType type, set<WireProtocol> protocols) :
+    Pin(int id, const char* name, Connector_ID type, set<WireProtocol> protocols) :
         ID(id), Name(name), Type(type), Protocols(protocols), Kind(PinKind::Input)
     {
     }
-    Pin(int id, const char* name, PinType type, set<WireProtocol> protocols, std::string extraInfo) :
+    Pin(int id, const char* name, Connector_ID type, set<WireProtocol> protocols, std::string extraInfo) :
         ID(id), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), Kind(PinKind::Input)
     {
     }
-    Pin(int id, const char* name, PinType type, set<WireProtocol> protocols, std::string extraInfo, bool isFemale) :
+    Pin(int id, const char* name, Connector_ID type, set<WireProtocol> protocols, std::string extraInfo, bool isFemale) :
         ID(id), Name(name), Type(type), Protocols(protocols), ExtraInfo(extraInfo), IsFemale(isFemale), Kind(PinKind::Input)
     {
     }
@@ -339,8 +339,9 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_pr
         j_female["Name"] = female.Name;
 
         auto pintype = female.Type;
-        auto pintype_str = string(magic_enum::enum_name(pintype));
-        EnumName_Underscore2Symbol(pintype_str);
+        //auto pintype_str = string(magic_enum::enum_name(pintype));
+        auto pintype_str = string(pintype);
+        //EnumName_Underscore2Symbol(pintype_str);
         j_female["PinType"] = pintype_str;
 
         //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -374,8 +375,9 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_pr
         j_male["Name"] = male.Name;
 
         auto pintype = male.Type;
-        auto pintype_str = string(magic_enum::enum_name(pintype));
-        EnumName_Underscore2Symbol(pintype_str);
+        //auto pintype_str = string(magic_enum::enum_name(pintype));
+        auto pintype_str = string(pintype);
+        //EnumName_Underscore2Symbol(pintype_str);
         j_male["PinType"] = pintype_str;
 
         //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -586,8 +588,32 @@ struct Connectatron:
 
     void OnStart() override
     {
-        ConnectorCategories = GetConnectorCategories();
-        UncategorizedConnectors = GetUncategorizedConnectors();
+        // Initialize connector types & categories
+        auto connectors_json = GetJSONFromFile("data/Connectors.json");
+        for (const auto& connector_j : connectors_json.items())
+        {
+            auto connector = make_shared<ConnectorInfo>();
+            connector->primary_ID = connector_j.key();
+            connector->full_info = connector_j.value();
+            size_t categories_count = 0;
+            for (const auto& category_j : connector_j.value()["Categories"].items())
+            {
+                auto category = category_j.value();
+                connector->categories.push_back(category);
+                connector_categories[category].push_back(connector);
+            }
+            if (categories_count == 0)
+            {
+                connector->categories.push_back("UNCATEGORIZED");
+                connector_categories["UNCATEGORIZED"].push_back(connector);
+            }
+            connectors.emplace(connector_j.key(), connector);
+        }
+
+        //ConnectorCategories = GetConnectorCategories();
+        //UncategorizedConnectors = GetUncategorizedConnectors();
+        
+        // Initialize protocol types
         ProtocolCategories = GetProtocolCategories();
         UncategorizedProtocols = GetUncategorizedProtocols();
 
@@ -636,14 +662,18 @@ struct Connectatron:
         m_SaveIcon         = LoadTexture("data/ic_save_white_24dp.png");
         m_RestoreIcon      = LoadTexture("data/ic_restore_white_24dp.png");
 
+     
         // Connector type icons
-        for (const auto& icon : connectorIconFiles)
+        for (const auto conn : connectors)
         {
-            if(icon.second == "")
-                continue;
-            connectorIcons[icon.first] = LoadTexture(icon.second.c_str());
-            if(connectorIcons.at(icon.first) == nullptr)
-                throw std::runtime_error(std::string("Icon failed loading, path: ") + icon.second);
+            if (conn.second->full_info.contains("Icon"))
+            {
+                auto icon_path = conn.second->full_info["Icon"].get<string>();
+                connectorIcons[conn.first] = LoadTexture(icon_path.c_str());
+
+                if (connectorIcons.at(conn.first) == nullptr)
+                    throw std::runtime_error(std::string("Icon failed loading, path: ") + icon_path);
+            }
         }
 
 
@@ -677,9 +707,19 @@ struct Connectatron:
         }
     }
 
-    ImColor GetIconColor(PinType type)
+    ImColor GetIconColor(Connector_ID type)
     {
-        switch (type)
+        const auto info = connectors.at(type);
+        if(info->full_info.contains("IconColor"))
+        {
+            auto icon_col = info->full_info["IconColor"];
+            return ImColor(icon_col[0].get<int>(), icon_col[1].get<int>(), icon_col[2].get<int>());
+        }
+        else
+            return ImColor(255, 255, 255);
+
+        //TODO add this to the JSON
+        /*switch (type)
         {
             //Power
         case PinType::DC__Power__Barrel:          return ImColor(255, 255, 255);
@@ -724,7 +764,7 @@ struct Connectatron:
         default:
             //throw std::runtime_error(std::string("Unhandled PinType ") + NameFromPinType(type));
             return ImColor(255, 255, 255);
-        }
+        }*/
     };
 
     void DrawPinIcon(const Pin& pin, bool connected, int alpha)
@@ -754,9 +794,9 @@ struct Connectatron:
         ImGui::Image(tex, ImVec2(width, height));
     }
 
-    void DrawPinTypeIcon(const PinType type, bool connected, int alpha)
+    void DrawPinTypeIcon(const Connector_ID type, bool connected, int alpha)
     {
-        //Set to a default in case the PinType is not supported (somehow)
+        //Set to a default in case the Connector_ID is not supported (somehow)
         IconType iconType = IconType::Square;
         ImColor  color = GetIconColor(type);
         color.Value.w = alpha / 255.0f;
@@ -770,13 +810,15 @@ struct Connectatron:
         ImGui::SetCursorScreenPos(iconPanelPos);
         ImGui::SetItemAllowOverlap();*/
 
+        
         if (connectorIcons.find(type) != connectorIcons.end())
         {
             RenderIconInText(connectorIcons.at(type), ImVec2(m_PinIconSize * 2, m_PinIconSize));
             return; //EARLY RETURN
         }
 
-        switch (type)
+        //TODO add to JSON
+        /*switch (type)
         {
 
             //Power
@@ -831,6 +873,32 @@ struct Connectatron:
         default:
             //throw std::runtime_error(std::string("Unhandled PinType ") + NameFromPinType(type));
             iconType = IconType::Circle;
+        }*/
+
+        const auto info = connectors.at(type);
+        if (info->full_info.contains("IconType"))
+        {
+            auto icon_type = info->full_info["IconColor"].get<string>();
+            if(icon_type == "Flow")
+            {
+                iconType = IconType::Flow;
+            }
+            else if (icon_type == "Circle")
+            {
+                iconType = IconType::Circle;
+            }
+            else if (icon_type == "Grid")
+            {
+                iconType = IconType::Grid;
+            }
+            else if (icon_type == "Diamond")
+            {
+                iconType = IconType::Diamond;
+            }
+            else
+            {
+                iconType = IconType::Circle;
+            }
         }
 
         ax::Widgets::Icon(ImVec2(m_PinIconSize, m_PinIconSize), iconType, connected, color, ImColor(32, 32, 32, alpha));
@@ -905,10 +973,17 @@ struct Connectatron:
             auto in_name = female["Name"].get<string>();
 
             auto pintype_string = female["PinType"].get<string>();
-            EnumName_Symbol2Underscore(pintype_string);
+            /*EnumName_Symbol2Underscore(pintype_string);
 
             auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);
+            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);*/
+
+            Connector_ID in_pintype = "UNRECOGNIZED";
+
+            if (connectors.find(pintype_string) != connectors.end())
+            {
+                in_pintype = pintype_string;
+            }
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
             if (female.find("Protocols") != female.end())
@@ -947,10 +1022,17 @@ struct Connectatron:
             auto in_name = male["Name"].get<string>();
 
             auto pintype_string = male["PinType"].get<string>();
-            EnumName_Symbol2Underscore(pintype_string);
+            /*EnumName_Symbol2Underscore(pintype_string);
 
             auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);
+            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);*/
+
+            Connector_ID in_pintype = "UNRECOGNIZED";
+
+            if (connectors.find(pintype_string) != connectors.end())
+            {
+                in_pintype = pintype_string;
+            }
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
             if (male.find("Protocols") != male.end())
@@ -1658,7 +1740,7 @@ struct Connectatron:
                     ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
-                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
+                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), Connector_ID("Proprietary"));
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndInput_NoPin();
@@ -1711,7 +1793,7 @@ struct Connectatron:
                     ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
-                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), PinType::Proprietary);
+                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), Connector_ID("Proprietary"));
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndOutput_NoPin();
@@ -2203,44 +2285,44 @@ struct Connectatron:
 
                     if (ImGui::BeginMenu(editing_title.c_str()))
                     {
-                        for (const auto& possible_connect : UncategorizedConnectors)
+                        for (const auto& possible_connect : connector_categories.at("UNCATEGORIZED"))
                         {
-                            auto connect_string = NameFromPinType(possible_connect);
-                            EnumName_Underscore2Symbol(connect_string);
+                            auto connect_string = NameFromPinType(possible_connect->primary_ID);
+                            /*EnumName_Underscore2Symbol(connect_string);*/
 
-                            DrawPinTypeIcon(possible_connect, false, 255);
+                            DrawPinTypeIcon(possible_connect->primary_ID, false, 255);
                             ImGui::SameLine();
 
-                            bool is_selected = possible_connect == pin->Type;
+                            bool is_selected = possible_connect->primary_ID == pin->Type;
                             if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                             {
                                 ProjectDirty = true;
                                 on_node->dirty = true;
-                                pin->Type = possible_connect;
+                                pin->Type = possible_connect->primary_ID;
                             }
                             if (is_selected)
                                 ImGui::SetItemDefaultFocus();
                         }
 
-                        for (const auto& category : ConnectorCategories)
+                        for (const auto& category : connector_categories)
                         {
-                            if (ImGui::BeginMenu(category.name.c_str()))
+                            if (ImGui::BeginMenu(category.first.c_str()))
                             {
-                                for (const auto& possible_connect : category.connectors)
+                                for (const auto possible_connect : category.second)
                                 {
-                                    auto connect_string = NameFromPinType(possible_connect);
-                                    EnumName_Underscore2Symbol(connect_string);
+                                    auto connect_string = NameFromPinType(possible_connect->primary_ID);
+                                    //EnumName_Underscore2Symbol(connect_string);
 
-                                    DrawPinTypeIcon(possible_connect, false, 255);
+                                    DrawPinTypeIcon(possible_connect->primary_ID, false, 255);
                                     ImGui::SameLine();
 
-                                    bool is_selected = possible_connect == pin->Type;
+                                    bool is_selected = possible_connect->primary_ID == pin->Type;
                                     //TODO also try Selectable?
                                     if (ImGui::MenuItem(connect_string.c_str(), "", is_selected))
                                     {
                                         ProjectDirty = true;
                                         on_node->dirty = true;
-                                        pin->Type = possible_connect;
+                                        pin->Type = possible_connect->primary_ID;
                                     }
                                     if (is_selected)
                                         ImGui::SetItemDefaultFocus();
@@ -2431,7 +2513,7 @@ struct Connectatron:
             // If node was created by dragging off of another node's pin,
             // determine what PinType we need to limit the device selection to.
             bool limitByPinType = false;
-            PinType valid_type;
+            Connector_ID valid_type;
             PinKind valid_kind;
             if (auto startPin = newNodeLinkPin)
             {
@@ -2664,7 +2746,7 @@ struct Connectatron:
     ImTextureID          m_SaveIcon = nullptr;
     ImTextureID          m_RestoreIcon = nullptr;
     // Connector type icons
-    map<PinType, ImTextureID> connectorIcons;
+    map<Connector_ID, ImTextureID> connectorIcons;
 
     const float          m_TouchTime = 1.0f;
     std::map<ed::NodeId, float, NodeIdLess> m_NodeTouchTime;

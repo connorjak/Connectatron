@@ -6,17 +6,42 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <memory>
+
+#include <nlohmann/json.hpp>
 
 using std::set;
 using std::map;
 using std::vector;
+using std::shared_ptr;
 
+using namespace nlohmann;
+
+using Connector_ID = std::string;
+using Connector_AKA = std::string;
+using Category_Name = std::string;
+
+struct ConnectorInfo
+{
+    Connector_ID primary_ID;
+    vector<Connector_AKA> AKA_IDs;
+    vector<Category_Name> categories;
+    vector<string> links;
+    // Connectors besides itself that a male of this connector fits into
+    vector<Connector_ID> maleFitsInto;
+    json full_info = json::object();
+};
+
+static map<Connector_ID, shared_ptr<ConnectorInfo>> connectors;
+static map<Category_Name, vector<shared_ptr<ConnectorInfo>>> connector_categories;
+
+/*
 // Variable name to string parsing:
 // _    : .
 // __   : (space) 
 // ___  : -
 // ____ : /
-enum class PinType : unsigned int
+enum class OLD_PinType : unsigned int
 {
     UNRECOGNIZED,
     Proprietary, // For connectors that don't match any listed options
@@ -364,17 +389,20 @@ enum class PinType : unsigned int
     
 
 };
+*/
+
 
 #define LONGEST_CONNECTOR_STR "USB Micro-B SuperSpeed"
 
-static string NameFromPinType(PinType ptype)
+static string NameFromPinType(Connector_ID ptype)
 {
-    string ret = std::string(magic_enum::enum_name(ptype));
+    /*string ret = std::string(magic_enum::enum_name(ptype));
     EnumName_Underscore2Symbol(ret);
-    return ret;
+    return ret;*/
+    return ptype;
 }
 
-
+/*
 const map<PinType, string> connectorIconFiles
 {
     // DC Power
@@ -471,61 +499,36 @@ const map<PinType, string> connectorIconFiles
     {PinType::RJ25,                          "data/ic_rj11.jpg"}, //TODO WRONG
     {PinType::RJ45,                          "data/ic_rj45.jpg"},
 };
+*/
 
-static bool GetConnectorMultiplePerPin(PinType ptype)
+static bool GetConnectorMultiplePerPin(Connector_ID ptype)
 {
-    switch (ptype)
+    const auto info = connectors.at(ptype);
+    if (info->full_info.contains("MultipleConnectPerPin"))
     {
-    case PinType::Wireless:
-        return true;
-    default:
-        return false;
+        if (info->full_info["MultipleConnectPerPin"].get<bool>())
+        {
+            return true;
+        }
     }
+    return false;
 }
-
-//TODO reinstate and update this if necessary.
-//static set<PinType> GetCompatibleMalePinTypes(PinType femaletype)
-//{
-//    set<PinType> ret;
-//    ret.insert(femaletype);
-//
-//    switch (femaletype)
-//    {
-//        //Power
-//
-//        //USB                               
-//    case PinType::USB___A:
-//        ret.insert(PinType::USB___A__SuperSpeed);
-//        break;
-//    case PinType::USB___A__SuperSpeed:
-//        ret.insert(PinType::USB___A);
-//        break;
-//
-//        //Display             
-//        //NOTE: DVI-I male connectors cannot be inserted into DVI-D female connectors,
-//        //   but the opposite works fine.              
-//    case PinType::DVI___I:
-//        ret.insert(PinType::DVI___D);
-//        break;
-//        //Audio                             
-//
-//        //Other                             
-//
-//    default:
-//        break;
-//    }
-//
-//    return ret;
-//}
 
 // For a certain male connector, what female connectors besides its female
 // same-name counterpart does the connector have physical (and maybe 
 // electrical) compatibility with?
-static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
-{
-    set<PinType> ret;
-    ret.insert(maletype);
 
+static set<Connector_ID> GetCompatibleFemalePinTypes(Connector_ID maletype)
+{
+    set<Connector_ID> ret;
+    ret.insert(maletype);
+    const auto info = connectors.at(maletype);
+    for (const auto& fits : info->maleFitsInto)
+    {
+        ret.insert(fits);
+    }
+
+    /*
     switch (maletype)
     {
         // DC Power
@@ -549,9 +552,9 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     case PinType::NEMA__14___20:
         ret.insert(PinType::NEMA__14___30);
         break;
-    /*case PinType::NEMA__6___15:
-        ret.insert(PinType::NEMA__6___20);
-        break;*/
+    //case PinType::NEMA__6___15:
+    //    ret.insert(PinType::NEMA__6___20);
+    //    break;
 
         // USB                               
     case PinType::USB___A:
@@ -573,12 +576,12 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
 
         // Expansion Slot
 
-        /*AGP__3_3V,
-            AGP__1_5V,
-            AGP__Universal,
-            AGP__Pro__3_3V,
-            AGP__Pro__1_5V,
-            AGP__Pro__Universal,*/
+        //AGP__3_3V,
+        //    AGP__1_5V,
+        //    AGP__Universal,
+        //    AGP__Pro__3_3V,
+        //    AGP__Pro__1_5V,
+        //    AGP__Pro__Universal,
 
     case PinType::AGP__3_3V:
         ret.insert(PinType::AGP__Universal);
@@ -653,12 +656,14 @@ static set<PinType> GetCompatibleFemalePinTypes(PinType maletype)
     default:
         break;
     }
-
+    */
     return ret;
 }
 
+
+
 // Order of male vs female inputs matters!
-static bool IsCompatiblePinType(PinType male, PinType female)
+static bool IsCompatiblePinType(Connector_ID male, Connector_ID female)
 {
     auto candidates = GetCompatibleFemalePinTypes(male);
     if (candidates.find(female) != candidates.end())
@@ -670,82 +675,82 @@ static bool IsCompatiblePinType(PinType male, PinType female)
 ///////////////////////////////
 /// CATEGORIES
 
-struct ConnectorCategoryInfo : CategoryInfo
-{
-    vector<PinType> connectors;
-};
-
-static vector<PinType> GetUncategorizedConnectors()
-{
-    vector<PinType> ret;
-
-    bool in_category = false;
-    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
-    {
-        if (possible_connect == PinType::UNRECOGNIZED)
-            continue;
-
-        auto connect_string = NameFromPinType(possible_connect);
-        EnumName_Underscore2Symbol(connect_string);
-        auto cat_strpos = connect_string.find(".CATEGORY.");
-        if (cat_strpos != string::npos)
-        {
-            if (!in_category)
-            {
-                in_category = true;
-            }
-            else
-            {
-                in_category = false;
-            }
-        }
-        else
-        {
-            if (!in_category)
-                ret.push_back(possible_connect);
-        }
-    }
-
-    return ret;
-}
-
-static vector<ConnectorCategoryInfo> GetConnectorCategories()
-{
-    vector<ConnectorCategoryInfo> ret;
-
-    bool in_category = false;
-    ConnectorCategoryInfo current_category;
-    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
-    {
-        if (possible_connect == PinType::UNRECOGNIZED)
-            continue;
-
-        auto connect_string = NameFromPinType(possible_connect);
-        EnumName_Underscore2Symbol(connect_string);
-        auto cat_strpos = connect_string.find(".CATEGORY.");
-        if (cat_strpos != string::npos)
-        {
-            if (!in_category)
-            {
-                auto name_strpos = cat_strpos + string(".CATEGORY.").length();
-                current_category.name = connect_string.substr(name_strpos);
-                current_category.index_of_first = magic_enum::enum_index<PinType>(possible_connect).value() + 1;
-                in_category = true;
-            }
-            else
-            {
-                current_category.index_after_last = magic_enum::enum_index<PinType>(possible_connect).value();
-                in_category = false;
-                ret.push_back(current_category);
-                current_category.connectors.clear();
-            }
-        }
-        else
-        {
-            if (in_category)
-                current_category.connectors.push_back(possible_connect);
-        }
-    }
-
-    return ret;
-}
+//struct ConnectorCategoryInfo : CategoryInfo
+//{
+//    vector<PinType> connectors;
+//};
+//
+//static vector<PinType> GetUncategorizedConnectors()
+//{
+//    vector<PinType> ret;
+//
+//    bool in_category = false;
+//    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
+//    {
+//        if (possible_connect == PinType::UNRECOGNIZED)
+//            continue;
+//
+//        auto connect_string = NameFromPinType(possible_connect);
+//        EnumName_Underscore2Symbol(connect_string);
+//        auto cat_strpos = connect_string.find(".CATEGORY.");
+//        if (cat_strpos != string::npos)
+//        {
+//            if (!in_category)
+//            {
+//                in_category = true;
+//            }
+//            else
+//            {
+//                in_category = false;
+//            }
+//        }
+//        else
+//        {
+//            if (!in_category)
+//                ret.push_back(possible_connect);
+//        }
+//    }
+//
+//    return ret;
+//}
+//
+//static vector<ConnectorCategoryInfo> GetConnectorCategories()
+//{
+//    vector<ConnectorCategoryInfo> ret;
+//
+//    bool in_category = false;
+//    ConnectorCategoryInfo current_category;
+//    for (const auto& possible_connect : magic_enum::enum_values<PinType>())
+//    {
+//        if (possible_connect == PinType::UNRECOGNIZED)
+//            continue;
+//
+//        auto connect_string = NameFromPinType(possible_connect);
+//        EnumName_Underscore2Symbol(connect_string);
+//        auto cat_strpos = connect_string.find(".CATEGORY.");
+//        if (cat_strpos != string::npos)
+//        {
+//            if (!in_category)
+//            {
+//                auto name_strpos = cat_strpos + string(".CATEGORY.").length();
+//                current_category.name = connect_string.substr(name_strpos);
+//                current_category.index_of_first = magic_enum::enum_index<PinType>(possible_connect).value() + 1;
+//                in_category = true;
+//            }
+//            else
+//            {
+//                current_category.index_after_last = magic_enum::enum_index<PinType>(possible_connect).value();
+//                in_category = false;
+//                ret.push_back(current_category);
+//                current_category.connectors.clear();
+//            }
+//        }
+//        else
+//        {
+//            if (in_category)
+//                current_category.connectors.push_back(possible_connect);
+//        }
+//    }
+//
+//    return ret;
+//}
