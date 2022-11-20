@@ -51,10 +51,12 @@ using NotUUID = int;
 const fs::path ConnectatronPath = ".";
 const fs::path DevicesPath = "Devices";
 const fs::path ProjectsPath = "Projects";
+const fs::path ConfigurationPath = "Configuration";
 #else
 const fs::path ConnectatronPath = "../../../../../Applications/Connectatron";
 const fs::path DevicesPath = "../../../../../Applications/Connectatron/Devices";
 const fs::path ProjectsPath = "../../../../../Applications/Connectatron/Projects";
+const fs::path ConfigurationPath = "../../../../../Applications/Connectatron/Configuration";
 #endif
 
 //https://www.codespeedy.com/hsv-to-rgb-in-cpp/
@@ -589,7 +591,7 @@ struct Connectatron:
     void OnStart() override
     {
         // Initialize connector types & categories
-        auto connectors_json = GetJSONFromFile("data/Connectors.json");
+        auto connectors_json = GetJSONFromFile(ConfigurationPath / "Connectors.json");
         for (const auto& connector_j : connectors_json.items())
         {
             auto connector = make_shared<ConnectorInfo>();
