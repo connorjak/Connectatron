@@ -1,0 +1,51 @@
+{
+	"Females": [
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "PCI-to-PCI Bridge"
+}

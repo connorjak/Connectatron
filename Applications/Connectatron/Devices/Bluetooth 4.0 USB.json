@@ -1,0 +1,21 @@
+{
+	"Females": [
+		{
+			"Name": "BT 4.0",
+			"PinType": "Wireless",
+			"Protocols": [
+				"Bluetooth 2.1",
+				"Bluetooth 3.0",
+				"Bluetooth 4.0",
+				"Bluetooth 4 Low Energy"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB2",
+			"PinType": "USB-A"
+		}
+	],
+	"Name": "Bluetooth 4.0 USB"
+}

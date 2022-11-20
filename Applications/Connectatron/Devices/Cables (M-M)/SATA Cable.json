@@ -1,0 +1,14 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "SATA",
+			"PinType": "SATA"
+		},
+		{
+			"Name": "SATA",
+			"PinType": "SATA"
+		}
+	],
+	"Name": "SATA Cable"
+}

@@ -1,0 +1,10 @@
+{
+	"Females": [
+		{
+			"Name": "PCIE Root Complex",
+			"PinType": "Proprietary"
+		}
+	],
+	"Males": [],
+	"Name": "Connors PC Internals"
+}

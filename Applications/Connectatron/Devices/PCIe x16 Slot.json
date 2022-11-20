@@ -1,0 +1,15 @@
+{
+	"Females": [
+		{
+			"Name": "x16 Slot",
+			"PinType": "PCIe x16"
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Bus",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "PCIe x16 Slot"
+}

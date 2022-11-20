@@ -1,0 +1,22 @@
+{
+	"Females": [
+		{
+			"Name": "Ethernet",
+			"PinType": "RJ45",
+			"Protocols": [
+				"Ethernet 10BASE5",
+				"Ethernet 10BASE2",
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "Intel I211 1Gb NIC"
+}

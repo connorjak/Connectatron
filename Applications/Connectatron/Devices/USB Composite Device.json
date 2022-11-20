@@ -1,0 +1,27 @@
+{
+	"Females": [
+		{
+			"Name": "Device 1",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "Device 2",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "Device 3",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "Device 4",
+			"PinType": "USB-A"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB2",
+			"PinType": "USB-A"
+		}
+	],
+	"Name": "USB Composite Device"
+}

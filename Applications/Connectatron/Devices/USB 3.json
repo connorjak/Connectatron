@@ -1,0 +1,70 @@
+{
+	"Females": [
+		{
+			"Name": "5gb",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "5gb",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "500mb",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "500mb",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "500mb",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "500mb",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCI",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"PCIe 4.0 x1"
+			]
+		}
+	],
+	"Name": "USB 3.10 Host Controller"
+}

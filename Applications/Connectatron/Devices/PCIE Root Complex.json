@@ -1,0 +1,75 @@
+{
+	"Females": [
+		{
+			"Name": "1",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "2",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "3",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "4",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "5",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "6",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "7",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "8",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "9",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "10",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "11",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "12",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "13",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "14",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "15",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "16",
+			"PinType": "Proprietary"
+		}
+	],
+	"Males": [
+		{
+			"Name": "Root",
+			"PinType": "Proprietary"
+		}
+	],
+	"Name": "PCIE Root Complex"
+}

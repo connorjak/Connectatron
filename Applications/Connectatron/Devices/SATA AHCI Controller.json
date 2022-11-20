@@ -1,0 +1,27 @@
+{
+	"Females": [
+		{
+			"Name": "SATA",
+			"PinType": "SATA",
+			"Protocols": [
+				"SATA 3.0",
+				"SATA 3.1",
+				"SATA 3.2",
+				"SATA 3.3",
+				"SATA 3.4",
+				"SATA 3.5"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe 4 x1",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"PCIe 3.0 x1",
+				"PCIe 4.0 x1"
+			]
+		}
+	],
+	"Name": "SATA AHCI Controller"
+}

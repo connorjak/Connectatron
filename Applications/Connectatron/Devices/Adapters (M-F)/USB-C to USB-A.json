@@ -1,0 +1,15 @@
+{
+	"Females": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB-C",
+			"PinType": "USB-C"
+		}
+	],
+	"Name": "USB-C to USB-A"
+}

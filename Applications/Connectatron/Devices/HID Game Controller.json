@@ -1,0 +1,10 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "USB2",
+			"PinType": "USB-A"
+		}
+	],
+	"Name": "HID-compliant game controller"
+}

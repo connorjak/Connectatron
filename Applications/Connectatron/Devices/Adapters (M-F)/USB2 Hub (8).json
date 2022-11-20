@@ -1,0 +1,88 @@
+{
+	"Females": [
+		{
+			"Name": "USB-A 1",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 2",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 3",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 4",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 5",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 6",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 7",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		},
+		{
+			"Name": "USB-A 8",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB-A",
+			"PinType": "USB-A",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0"
+			]
+		}
+	],
+	"Name": "USB2 Hub (8)"
+}

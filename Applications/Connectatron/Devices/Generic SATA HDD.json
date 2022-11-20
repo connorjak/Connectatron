@@ -1,0 +1,20 @@
+{
+	"Females": [
+		{
+			"Name": "Data",
+			"PinType": "SATA",
+			"Protocols": [
+				"SATA 3.5"
+			]
+		},
+		{
+			"Name": "Power",
+			"PinType": "SATA Power",
+			"Protocols": [
+				"DC Power"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "Generic SATA HDD"
+}
