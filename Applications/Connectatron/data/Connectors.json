@@ -327,62 +327,62 @@
 	"C1/C2": {
 		"Categories": [ "AC Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c1c2.jpg"
+		"Icon": "data/c1c2.png"
 	},
 	//C3/C4, // has been withdrawn from the standard
 	"C5/C6": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
 		"AKA": [ "Cloverleaf", "Mickey Mouse" ],
-		"Icon": "data/c5c6.jpg"
+		"Icon": "data/c5c6.png"
 	},
 	"C7/C8": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
 		"AKA": [ "Figure-8", "Infinity", "Shotgun", "Telefunken" ],
-		"Icon": "data/c7c8.jpg"
+		"Icon": "data/c7c8.png"
 	},
 	"C9/C10": {
 		"Categories": [ "AC Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c9c10.jpg"
+		"Icon": "data/c9c10.png"
 	},
 	//C11/C12, // has been withdrawn from the standard
 	"C13/C14": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
 		"AKA": [ "IEC Cord", "PSU Plug" ],
-		"Icon": "data/c13c14.jpg"
+		"Icon": "data/c13c14.png"
 	},
 	"C15/C16": {
 		"Categories": [ "AC Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c15c16.jpg"
+		"Icon": "data/c15c16.png"
 	},
 	"C15A/C16A": {
 		"Categories": [ "AC Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c15ac16a.jpg"
+		"Icon": "data/c15ac16a.png"
 	},
 	"C17/C18": {
 		"Categories": [ "AC Power" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c17c18.jpg"
+		"Icon": "data/c17c18.png"
 	},
 	"C19/C20": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c19c20.jpg"
+		"Icon": "data/c19c20.png"
 	},
 	"C21/C22": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c21c22.jpg"
+		"Icon": "data/c21c22.png"
 	},
 	"C23/C24": {
 		"Categories": [ "AC Power", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/IEC_60320" ],
-		"Icon": "data/c23c24.jpg"
+		"Icon": "data/c23c24.png"
 	},
 	//TODO other AC connectors, esp from other countries
 
