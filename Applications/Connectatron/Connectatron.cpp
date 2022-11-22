@@ -193,6 +193,8 @@ struct Pin
     std::string ExtraInfo;
     bool IsFemale = true;
     PinKind     Kind;
+    // Whether this pin is for an external connection on this project
+    bool external_exposed = false;
 
     Pin(int id, const char* name, Connector_ID type):
         ID(id), Name(name), Type(type), Kind(PinKind::Input)
@@ -293,6 +295,19 @@ static json GetJSONFromFile(fs::path filepath)
     return js;
 }
 
+
+static ordered_json GetOrderedJSONFromFile(fs::path filepath)
+{
+    std::ifstream i(filepath);
+    if (!i)
+    {
+        throw std::runtime_error("Failed to open file " + filepath.u8string() + " for JSON reading.");
+    }
+    ordered_json js = ordered_json::parse(i, nullptr, true, true);
+    //i >> js;
+    return js;
+}
+
 //NOTE: saving_in_project_file has significant side effects!
 // https://github.com/connorjak/Connectatron/issues/19
 static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_project_file)
@@ -341,9 +356,7 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_pr
         j_female["Name"] = female.Name;
 
         auto pintype = female.Type;
-        //auto pintype_str = string(magic_enum::enum_name(pintype));
-        auto pintype_str = string(pintype);
-        //EnumName_Underscore2Symbol(pintype_str);
+        auto pintype_str = NameFromPinType(pintype);
         j_female["PinType"] = pintype_str;
 
         //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -377,9 +390,7 @@ static json SerializeDeviceToJSON(const shared_ptr<Node> node, bool saving_in_pr
         j_male["Name"] = male.Name;
 
         auto pintype = male.Type;
-        //auto pintype_str = string(magic_enum::enum_name(pintype));
-        auto pintype_str = string(pintype);
-        //EnumName_Underscore2Symbol(pintype_str);
+        auto pintype_str = NameFromPinType(pintype);
         j_male["PinType"] = pintype_str;
 
         //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -522,7 +533,8 @@ struct Connectatron:
 
     bool CanCreateLink(Pin* a, Pin* b)
     {
-        if (!a || !b || a == b || a->Kind == b->Kind || a->Node.lock() == b->Node.lock())
+        if (!a || !b || a == b || a->Kind == b->Kind || a->Node.lock() == b->Node.lock()
+            || a->external_exposed || b->external_exposed)
             return false;
 
         if (a->IsFemale)
@@ -592,11 +604,13 @@ struct Connectatron:
     {
         // Initialize connector types & categories
         connector_categories["UNCATEGORIZED"] = {};
-        auto connectors_json = GetJSONFromFile(ConfigurationPath / "Connectors.json");
+        auto connectors_json = GetOrderedJSONFromFile(ConfigurationPath / "Connectors.json");
+        unsigned int connector_ID_iter = 0; // 0 is always UNRECOGNIZED
         for (const auto& connector_j : connectors_json.items())
         {
             auto connector = make_shared<ConnectorInfo>();
-            connector->primary_ID = connector_j.key();
+            connector->primary_ID = connector_ID_iter++;
+            connector->name = connector_j.key();
             connector->full_info = connector_j.value();
             size_t categories_count = 0;
             
@@ -616,14 +630,6 @@ struct Connectatron:
                 }
             }
 
-            if (connector->full_info.contains("MaleFitsInto"))
-            {
-                for (const auto& malefits_j : connector->full_info["MaleFitsInto"].items())
-                {
-                    connector->maleFitsInto.push_back(malefits_j.value().get<string>());
-                }
-            }
-
             // Categories onto connector and connector onto categories
             for (const auto& category_j : connector->full_info["Categories"].items())
             {
@@ -638,6 +644,19 @@ struct Connectatron:
                 connector_categories["UNCATEGORIZED"].push_back(connector);
             }
             connectors.emplace(connector->primary_ID, connector);
+            connectorsByName.emplace(connector->name, connector->primary_ID);
+        }
+
+        // Second pass to resolve MaleFitsInto
+        for (const auto connector : connectors)
+        {
+            if (connector.second->full_info.contains("MaleFitsInto"))
+            {
+                for (const auto& malefits_j : connector.second->full_info["MaleFitsInto"].items())
+                {
+                    connector.second->maleFitsInto.push_back(connectorsByName.at(malefits_j.value().get<string>()));
+                }
+            }
         }
 
         //ConnectorCategories = GetConnectorCategories();
@@ -966,6 +985,30 @@ struct Connectatron:
 
         InitNodeFromJSON(device, new_node);
 
+        if (device.find("ExternalPins") != device.end())
+        {
+            for (const auto& ext : device["ExternalPins"].items())
+            {
+                //format:
+                /*
+                ExternalPins: [
+                [true, 1],
+                [false, 0],
+                // ^ isFemale, pin number
+                ]
+                */
+
+                bool isFemale = ext.value()[0].get<bool>();
+                bool pinNum = ext.value()[1].get<int>();
+
+                if (isFemale)
+                    new_node->Females[pinNum].external_exposed = true;
+                else
+                    new_node->Males[pinNum].external_exposed = true;
+
+            }
+        }
+
         m_IdNodes[id] = new_node;
 
         return new_node;
@@ -1003,16 +1046,11 @@ struct Connectatron:
             auto in_name = female["Name"].get<string>();
 
             auto pintype_string = female["PinType"].get<string>();
-            /*EnumName_Symbol2Underscore(pintype_string);
 
-            auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);*/
-
-            Connector_ID in_pintype = "UNRECOGNIZED";
-
-            if (connectors.find(pintype_string) != connectors.end())
+            Connector_ID in_pintype = 0;// "UNRECOGNIZED";
+            if (connectorsByName.find(pintype_string) != connectorsByName.end())
             {
-                in_pintype = pintype_string;
+                in_pintype = connectorsByName.at(pintype_string);
             }
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -1052,16 +1090,11 @@ struct Connectatron:
             auto in_name = male["Name"].get<string>();
 
             auto pintype_string = male["PinType"].get<string>();
-            /*EnumName_Symbol2Underscore(pintype_string);
 
-            auto parsed_pintype = magic_enum::enum_cast<PinType>(pintype_string);
-            auto in_pintype = parsed_pintype.value_or(PinType::UNRECOGNIZED);*/
-
-            Connector_ID in_pintype = "UNRECOGNIZED";
-
-            if (connectors.find(pintype_string) != connectors.end())
+            Connector_ID in_pintype = 0;// "UNRECOGNIZED";
+            if (connectorsByName.find(pintype_string) != connectorsByName.end())
             {
-                in_pintype = pintype_string;
+                in_pintype = connectorsByName.at(pintype_string);
             }
 
             //Can have just pintype, or pintype+protocols, or pintype+protocols+description
@@ -1652,6 +1685,10 @@ struct Connectatron:
 
                     builder.Input(female.ID);
                     ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    if (female.external_exposed)
+                    {
+                        ImGui::TextUnformatted("EX");
+                    }
                     DrawPinIcon(female, IsPinLinked(female.ID), (int)(alpha * 255));
                     ImGui::Spring(0);
                     if (!female.Name.empty())
@@ -1679,8 +1716,8 @@ struct Connectatron:
                     if (newLinkPin && !CanCreateLink(newLinkPin, &male) && &male != newLinkPin)
                         alpha = alpha * (48.0f / 255.0f);
 
-                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
                     builder.Output(male.ID);
+                    ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
                     if (!male.Name.empty())
                     {
                         ImGui::Spring(0);
@@ -1688,6 +1725,10 @@ struct Connectatron:
                     }
                     ImGui::Spring(0);
                     DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
+                    if (male.external_exposed)
+                    {
+                        ImGui::TextUnformatted("EX");
+                    }
                     ImGui::PopStyleVar();
                     builder.EndOutput();
                 }
@@ -1733,6 +1774,10 @@ struct Connectatron:
 
                     builder.Input(female.ID);
                     ImGui::PushStyleVar(ImGuiStyleVar_Alpha, alpha);
+                    if (female.external_exposed)
+                    {
+                        ImGui::TextUnformatted("EX");
+                    }
                     DrawPinIcon(female, IsPinLinked(female.ID), (int)(alpha * 255));
                     ImGui::Spring(0);
                     if (true)
@@ -1770,7 +1815,7 @@ struct Connectatron:
                     ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
-                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), Connector_ID("Proprietary"));
+                    auto& new_connector = node->Females.emplace_back(new_id, new_name.c_str(), connectorsByName.at("Proprietary"));
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndInput_NoPin();
@@ -1811,6 +1856,10 @@ struct Connectatron:
                     }
                     ImGui::Spring(0);
                     DrawPinIcon(male, IsPinLinked(male.ID), (int)(alpha * 255));
+                    if (male.external_exposed)
+                    {
+                        ImGui::TextUnformatted("EX");
+                    }
                     ImGui::PopStyleVar();
                     builder.EndOutput();
                     ImGui::PopID();
@@ -1823,7 +1872,7 @@ struct Connectatron:
                     ProjectDirty = true;
                     auto new_id = GetNextId();
                     string new_name = "connector " + std::to_string(new_id);
-                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), Connector_ID("Proprietary"));
+                    auto& new_pin = node->Males.emplace_back(new_id, new_name.c_str(), connectorsByName.at("Proprietary"));
                     BuildNode(node); //NOTE: overkill but effective.
                 }
                 builder.EndOutput_NoPin();
@@ -2305,9 +2354,12 @@ struct Connectatron:
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
                 if (on_node->Type == NodeType::Blueprint_Editing)
                 {
-                    ImGui::Text("Type:");
                     auto connector_width = ImGui::CalcTextSize(LONGEST_CONNECTOR_STR).x * 1.5;
                     auto current_connect_string = NameFromPinType(pin->Type);
+
+                    string ex_exp_title = "External Exposed";
+                    ImGui::Checkbox(ex_exp_title.c_str(), &pin->external_exposed);
+                    ImGui::Text("Type:");
                     //ImGui::BeginChild("##Connector Editing", ImVec2(protocol_width, ImGui::GetTextLineHeightWithSpacing() * 10), true);
                     //https://github.com/ocornut/imgui/issues/1658#issue-302026543
                     
@@ -2365,6 +2417,9 @@ struct Connectatron:
                 }
                 else // Not editing
                 {
+                    string ex_exp_title = "External Exposed";
+                    bool dummy = pin->external_exposed;
+                    ImGui::Checkbox(ex_exp_title.c_str(), &dummy);
                     ImGui::Text("Connector Type: ");
                     ImGui::SameLine();
                     auto pin_enum_name = NameFromPinType(pin->Type);

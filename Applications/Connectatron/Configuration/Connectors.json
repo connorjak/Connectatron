@@ -32,7 +32,8 @@
 	// Two-wire bus
 	"Twisted Pair": {
 		"Categories": [ "Two-Wire Bus" ],
-		"Links": []
+		"Links": [],
+		"MultipleConnectPerPin": true
 	},
 	"Coaxial": {
 		"Categories": [ "Two-Wire Bus" ],

@@ -17,13 +17,15 @@ using std::shared_ptr;
 
 using namespace nlohmann;
 
-using Connector_ID = std::string;
+using Connector_ID = unsigned int;
+using Connector_Name = std::string;
 using Connector_AKA = std::string;
 using Category_Name = std::string;
 
 struct ConnectorInfo
 {
     Connector_ID primary_ID;
+    Connector_Name name;
     vector<Connector_AKA> AKA_IDs;
     vector<Category_Name> categories;
     vector<string> links;
@@ -33,6 +35,7 @@ struct ConnectorInfo
 };
 
 static map<Connector_ID, shared_ptr<ConnectorInfo>> connectors;
+static map<Connector_Name, Connector_ID> connectorsByName;
 static map<Category_Name, vector<shared_ptr<ConnectorInfo>>> connector_categories;
 
 /*
@@ -399,7 +402,7 @@ static string NameFromPinType(Connector_ID ptype)
     /*string ret = std::string(magic_enum::enum_name(ptype));
     EnumName_Underscore2Symbol(ret);
     return ret;*/
-    return ptype;
+    return connectors.at(ptype)->name;
 }
 
 /*
