@@ -1,8 +1,8 @@
 {
 	"Females": [
 		{
-			"Name": "5gb Hub",
-			"PinType": "Proprietary",
+			"Name": "5gb",
+			"PinType": "USB-A SuperSpeed",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -11,8 +11,8 @@
 			]
 		},
 		{
-			"Name": "5gb Hub",
-			"PinType": "Proprietary",
+			"Name": "5gb",
+			"PinType": "USB-A SuperSpeed",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -21,8 +21,8 @@
 			]
 		},
 		{
-			"Name": "500mb Hub",
-			"PinType": "Proprietary",
+			"Name": "500mb",
+			"PinType": "USB-A",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -30,8 +30,8 @@
 			]
 		},
 		{
-			"Name": "500mb Hub",
-			"PinType": "Proprietary",
+			"Name": "500mb",
+			"PinType": "USB-A",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -39,8 +39,8 @@
 			]
 		},
 		{
-			"Name": "500mb Hub",
-			"PinType": "Proprietary",
+			"Name": "500mb",
+			"PinType": "USB-A",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -48,8 +48,8 @@
 			]
 		},
 		{
-			"Name": "500mb Hub",
-			"PinType": "Proprietary",
+			"Name": "500mb",
+			"PinType": "USB-A",
 			"Protocols": [
 				"USB 1.0",
 				"USB 1.1",
@@ -60,7 +60,10 @@
 	"Males": [
 		{
 			"Name": "PCI",
-			"PinType": "Proprietary"
+			"PinType": "Proprietary",
+			"Protocols": [
+				"PCIe 4.0 x1"
+			]
 		}
 	],
 	"Name": "USB 3.10 Host Controller"

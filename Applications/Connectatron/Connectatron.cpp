@@ -2178,17 +2178,17 @@ struct Connectatron:
                         // If previously-saved-as path isn't default
                         if (node->saved_filepath.u8string() != fs::path())
                         {
-                            auto saved_filepath = ConnectatronPath / node->saved_filepath;
+                            auto starting_filepath = ConnectatronPath / node->saved_filepath;
 
                             if (/*standardDialogMode*/true)
                                 ImGuiFileDialog::Instance()->OpenDialog("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
-                                    saved_filepath.parent_path().string(), 
-                                    saved_filepath.stem().string(),
+                                    starting_filepath.parent_path().string(),
+                                    starting_filepath.stem().string(),
                                     1, nullptr, flags);
                             else
                                 ImGuiFileDialog::Instance()->OpenModal("SaveDeviceAs", /*ICON_IGFD_FOLDER_OPEN*/ " Save Device As", filters, 
-                                    saved_filepath.parent_path().string(),
-                                    saved_filepath.stem().string(),
+                                    starting_filepath.parent_path().string(),
+                                    starting_filepath.stem().string(),
                                     1, nullptr, flags);
                         }
                         else

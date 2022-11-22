@@ -712,7 +712,7 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\USB 3.json",
+"File": "Devices\\USB 3.10 Host Controller.json",
 "ID": 24130,
 "Name": "USB 3.10 Host Controller",
 "SavedPos": [
@@ -912,7 +912,7 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\USB 3.json",
+"File": "Devices\\USB 3.10 Host Controller.json",
 "ID": 41893,
 "Name": "USB 3.10 Host Controller",
 "SavedPos": [
@@ -1192,7 +1192,7 @@
 },
 {
 "Dirty": false,
-"File": "Devices\\USB 3.json",
+"File": "Devices\\USB 3.10 Host Controller.json",
 "ID": 77801,
 "Name": "USB 3.10 Host Controller",
 "SavedPos": [
