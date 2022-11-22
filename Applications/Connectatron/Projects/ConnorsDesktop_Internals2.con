@@ -1,0 +1,2345 @@
+{
+"Devices": [
+{
+"Dirty": false,
+"File": "Devices\\USB2 Mouse.json",
+"ID": 70590,
+"Name": "USB2 Mouse",
+"SavedPos": [
+200.0,
+764.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ATEN KVM.json",
+"ID": 58879,
+"Name": "ATEN KVM",
+"SavedPos": [
+840.0,
+620.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic Headset.json",
+"ID": 9440,
+"Name": "Generic Headset",
+"SavedPos": [
+179.0,
+1004.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
+"ID": 11849,
+"Name": "DP",
+"SavedPos": [
+492.0,
+716.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Keyboard.json",
+"ID": 13485,
+"Name": "USB2 Keyboard",
+"SavedPos": [
+180.0,
+684.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Joystick.json",
+"ID": 5576,
+"Name": "USB2 Joystick",
+"SavedPos": [
+193.0,
+844.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Throttle.json",
+"ID": 55819,
+"Name": "USB2 Throttle",
+"SavedPos": [
+192.0,
+924.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBA to Ethernet.json",
+"ID": 95146,
+"Name": "USBA to Ethernet",
+"SavedPos": [
+603.0,
+-36.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Mini DP to DP.json",
+"ID": 6187,
+"Name": "Mini DP to DP",
+"SavedPos": [
+441.0,
+128.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
+"ID": 28155,
+"Name": "DP",
+"SavedPos": [
+228.0,
+1404.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 54554,
+"Name": "Ethernet",
+"SavedPos": [
+-381.0,
+-624.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ASUS Zenscreen.json",
+"ID": 54099,
+"Name": "ASUS Zenscreen",
+"SavedPos": [
+1640.0,
+-356.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 17743,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+632.0,
+-208.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USBC to DP.json",
+"ID": 89813,
+"Name": "USBC to DP",
+"SavedPos": [
+1640.0,
+-244.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\4k 120Hz TV.json",
+"ID": 79950,
+"Name": "4k 120Hz TV",
+"SavedPos": [
+-24.0,
+1092.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\DP to HDMI.json",
+"ID": 6266,
+"Name": "DP to HDMI",
+"SavedPos": [
+-152.0,
+1004.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\1440p 144Hz Monitor.json",
+"ID": 5940,
+"Name": "1440p 144Hz Monitor",
+"SavedPos": [
+-344.0,
+1228.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
+"ID": 88523,
+"Name": "USB-A to USB-C",
+"SavedPos": [
+823.0,
+1052.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Level1 USBC KVM.json",
+"ID": 47791,
+"Name": "Level1 USBC KVM",
+"SavedPos": [
+840.0,
+260.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Connors PC.json",
+"ID": 93685,
+"Name": "Connors PC",
+"SavedPos": [
+1192.0,
+849.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\Razer Power Adapter.json",
+"ID": 45930,
+"Name": "Razer Power Adapter",
+"SavedPos": [
+808.0,
+-292.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 90907,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+552.0,
+-340.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 27851,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+872.0,
+-432.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Power Strip (8 NEMA 5-15 sockets).json",
+"ID": 23334,
+"Name": "Power Strip (8 NEMA 5-15 sockets)",
+"SavedPos": [
+-599.0,
+572.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
+"ID": 68200,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-1039.0,
+588.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HP Reverb G2 Cabling.json",
+"ID": 38080,
+"Name": "HP Reverb G2 Cabling",
+"SavedPos": [
+-568.0,
+1356.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HP Reverb G2.json",
+"ID": 71432,
+"Name": "HP Reverb G2",
+"SavedPos": [
+-268.0,
+1500.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\XBox One Wireless Controller.json",
+"ID": 36589,
+"Name": "XBox One Wireless Controller",
+"SavedPos": [
+-520.0,
+1732.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Lenovo ThinkVision P27q-20.json",
+"ID": 71749,
+"Name": "Lenovo ThinkVision P27q-20",
+"SavedPos": [
+440.0,
+1406.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USB-A to USB-B SuperSpeed.json",
+"ID": 11277,
+"Name": "USB-A to USB-B SuperSpeed",
+"SavedPos": [
+2.0,
+1484.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB3 Hub (4).json",
+"ID": 49907,
+"Name": "USB3 Hub (4)",
+"SavedPos": [
+194.0,
+1720.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Xbox Wireless Adapter.json",
+"ID": 96270,
+"Name": "Xbox Wireless Adapter",
+"SavedPos": [
+-168.0,
+1724.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
+"ID": 96934,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-878.0,
+208.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic Gigabit Router (4).json",
+"ID": 61966,
+"Name": "Generic Gigabit Router (4)",
+"SavedPos": [
+-280.0,
+-36.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ethernet Gigabit WAN.json",
+"ID": 97017,
+"Name": "Ethernet Gigabit WAN",
+"SavedPos": [
+-616.0,
+12.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic Gigabit Switch (8).json",
+"ID": 99332,
+"Name": "Generic Gigabit Switch (8)",
+"SavedPos": [
+-200.0,
+-440.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic AC Adapter - Barrel Plug.json",
+"ID": 45925,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-878.0,
+92.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Razer Blade Advanced 2019.json",
+"ID": 75168,
+"Name": "Razer Blade 15\" Advanced (2019)",
+"SavedPos": [
+1224.0,
+-188.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic WiFi 5 Access Point.json",
+"ID": 47421,
+"Name": "Generic WiFi 5 Access Point",
+"SavedPos": [
+104.0,
+-196.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 33438,
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-512.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 47466,
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-416.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 78732,
+"Name": "Ethernet",
+"SavedPos": [
+-509.0,
+-244.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Ethernet.json",
+"ID": 23882,
+"Name": "Ethernet",
+"SavedPos": [
+-717.0,
+-100.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 12823,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-934.0,
+476.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Generic AC Adapter - Barrel Plug.json",
+"ID": 36618,
+"Name": "Generic AC Adapter - Barrel Plug",
+"SavedPos": [
+-1038.0,
+688.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\IEC (C13) Power Cable.json",
+"ID": 74049,
+"Name": "IEC (C13) Power Cable",
+"SavedPos": [
+-967.0,
+816.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USBA to USBB.json",
+"ID": 62789,
+"Name": "USBA to USBB",
+"SavedPos": [
+444.0,
+604.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\USBA to USBB.json",
+"ID": 95423,
+"Name": "USBA to USBB",
+"SavedPos": [
+444.0,
+368.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 42679,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+444.0,
+481.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 982,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+444.0,
+252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 68554,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+-568.0,
+256.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\.\\Common Wall Outlet (NEMA 5-15).json",
+"ID": 67903,
+"Name": "Common Wall Outlet (NEMA 5-15)",
+"SavedPos": [
+-280.0,
+576.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 34971,
+"Name": "HDMI",
+"SavedPos": [
+-492.0,
+1200.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\HDMI.json",
+"ID": 97594,
+"Name": "HDMI",
+"SavedPos": [
+-204.0,
+1104.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\Thunderbolt3.json",
+"ID": 58275,
+"Name": "Thunderbolt 3",
+"SavedPos": [
+1196.0,
+572.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\DP.json",
+"ID": 70785,
+"Name": "DP",
+"SavedPos": [
+100.0,
+321.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCIE Root Complex.json",
+"ID": 20181,
+"Name": "PCIE Root Complex",
+"SavedPos": [
+5320.0,
+368.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\NVMe Controller.json",
+"ID": 57380,
+"Name": "NVMe Controller",
+"SavedPos": [
+4665.0,
+-680.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Corsair Force MP600.json",
+"ID": 29353,
+"Name": "Corsair Force MP600",
+"SavedPos": [
+4417.0,
+-680.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 58266,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4952.0,
+476.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\NVMe Controller.json",
+"ID": 46812,
+"Name": "NVMe Controller",
+"SavedPos": [
+4246.0,
+-512.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 24066,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4938.0,
+-732.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 56436,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4761.0,
+476.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 91135,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4521.0,
+-508.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\NVMe Controller.json",
+"ID": 49434,
+"Name": "NVMe Controller",
+"SavedPos": [
+4249.0,
+-332.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 42199,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4521.0,
+-336.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 44308,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4522.0,
+-168.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 34758,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4522.0,
+8.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Intel I211 1Gb NIC.json",
+"ID": 27158,
+"Name": "Intel I211 1Gb NIC",
+"SavedPos": [
+4169.0,
+4.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Intel I211 1Gb NIC.json",
+"ID": 57635,
+"Name": "Intel I211 1Gb NIC",
+"SavedPos": [
+4169.0,
+-172.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 47521,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4533.0,
+484.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+5
+]
+],
+"File": "Devices\\USB 3.10 Host Controller.json",
+"ID": 24130,
+"Name": "USB 3.10 Host Controller",
+"SavedPos": [
+4152.0,
+252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Rudder Pedals.json",
+"ID": 61748,
+"Name": "USB2 Rudder Pedals",
+"SavedPos": [
+3566.0,
+-64.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 40909,
+"Name": "USB Composite Device",
+"SavedPos": [
+3188.0,
+-68.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 57089,
+"Name": "Generic HID device",
+"SavedPos": [
+2826.0,
+-128.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 5105,
+"Name": "Generic HID device",
+"SavedPos": [
+2826.0,
+-48.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 70262,
+"Name": "Generic HID device",
+"SavedPos": [
+2906.0,
+80.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 89869,
+"Name": "USB Composite Device",
+"SavedPos": [
+3188.0,
+108.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 73586,
+"Name": "Generic HID device",
+"SavedPos": [
+2906.0,
+160.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HID Game Controller.json",
+"ID": 13703,
+"Name": "HID-compliant game controller",
+"SavedPos": [
+3173.0,
+352.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HID Game Controller.json",
+"ID": 24162,
+"Name": "HID-compliant game controller",
+"SavedPos": [
+3173.0,
+272.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 63443,
+"Name": "USB Composite Device",
+"SavedPos": [
+3524.0,
+440.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 89254,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3508.0,
+16.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 74491,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3814.0,
+-48.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 98841,
+"Name": "Generic HID device",
+"SavedPos": [
+3306.0,
+440.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 72801,
+"Name": "Generic HID device",
+"SavedPos": [
+3306.0,
+520.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 32019,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3822.0,
+644.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 41813,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3524.0,
+644.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Xbox Wireless Adapter.json",
+"ID": 75098,
+"Name": "Xbox Wireless Adapter",
+"SavedPos": [
+3220.0,
+640.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\XBox One Wireless Controller.json",
+"ID": 84076,
+"Name": "XBox One Wireless Controller",
+"SavedPos": [
+2900.0,
+636.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\TrackIR.json",
+"ID": 81959,
+"Name": "TrackIR",
+"SavedPos": [
+3942.0,
+396.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB 3.10 Host Controller.json",
+"ID": 41893,
+"Name": "USB 3.10 Host Controller",
+"SavedPos": [
+4152.0,
+804.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Bose QC35 II.json",
+"ID": 94938,
+"Name": "Bose QC35 II",
+"SavedPos": [
+3527.0,
+800.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Bluetooth 4.0 USB.json",
+"ID": 30236,
+"Name": "Bluetooth 4.0 USB",
+"SavedPos": [
+3816.0,
+812.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB3 Hub (4).json",
+"ID": 40140,
+"Name": "USB3 Hub (4)",
+"SavedPos": [
+3816.0,
+892.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 31500,
+"Name": "USB Composite Device",
+"SavedPos": [
+3048.0,
+906.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HP Reverb G2 Cabling.json",
+"ID": 25307,
+"Name": "HP Reverb G2 Cabling",
+"SavedPos": [
+2284.0,
+902.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 91596,
+"Name": "Generic HID device",
+"SavedPos": [
+2782.0,
+982.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
+"ID": 17319,
+"Name": "USB-A to USB-C",
+"SavedPos": [
+3544.0,
+902.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB-C to USB-A.json",
+"ID": 58478,
+"Name": "USB-C to USB-A",
+"SavedPos": [
+3308.0,
+902.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Adapters (M-F)\\USB-A to USB-C.json",
+"ID": 35060,
+"Name": "USB-A to USB-C",
+"SavedPos": [
+2779.0,
+902.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\HP Reverb G2.json",
+"ID": 40514,
+"Name": "HP Reverb G2",
+"SavedPos": [
+2424.0,
+1094.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 70972,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3816.0,
+1080.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 96848,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3512.0,
+1080.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 67514,
+"Name": "USB Composite Device",
+"SavedPos": [
+3240.0,
+1080.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Realtek USB2.json",
+"ID": 26890,
+"Name": "Realtek USB2.0 Audio",
+"SavedPos": [
+2824.0,
+1081.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 17869,
+"Name": "Generic HID device",
+"SavedPos": [
+3006.0,
+1212.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic HID device.json",
+"ID": 2850,
+"Name": "Generic HID device",
+"SavedPos": [
+3310.0,
+1244.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 48388,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4520.0,
+1012.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\SATA AHCI Controller.json",
+"ID": 26989,
+"Name": "SATA AHCI Controller",
+"SavedPos": [
+4171.0,
+1024.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\SATA AHCI Controller.json",
+"ID": 28241,
+"Name": "SATA AHCI Controller",
+"SavedPos": [
+4235.0,
+1340.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\SATA Cable.json",
+"ID": 40794,
+"Name": "SATA Cable",
+"SavedPos": [
+4031.0,
+1356.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic SATA HDD.json",
+"ID": 42301,
+"Name": "Generic SATA HDD",
+"SavedPos": [
+4235.0,
+1424.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 11125,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4521.0,
+1348.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 60831,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4969.0,
+1832.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCIe x16 Slot.json",
+"ID": 55712,
+"Name": "PCIe x16 Slot",
+"SavedPos": [
+4728.0,
+1836.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+],
+[
+true,
+2
+],
+[
+true,
+3
+]
+],
+"File": "Devices\\MSI RTX 3090 Gaming X Trio.json",
+"ID": 77184,
+"Name": "MSI RTX 3090 Gaming X Trio",
+"SavedPos": [
+4296.0,
+1820.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 99502,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+5128.0,
+1888.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\PCI-to-PCI Bridge.json",
+"ID": 31947,
+"Name": "PCI-to-PCI Bridge",
+"SavedPos": [
+4969.0,
+2196.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB 3.10 Host Controller.json",
+"ID": 77801,
+"Name": "USB 3.10 Host Controller",
+"SavedPos": [
+4616.0,
+2196.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 21422,
+"Name": "USB Composite Device",
+"SavedPos": [
+3944.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic USB2 Webcam.json",
+"ID": 76249,
+"Name": "Generic USB2 Webcam",
+"SavedPos": [
+3600.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic USB2 Mic.json",
+"ID": 83538,
+"Name": "Generic USB2 Mic",
+"SavedPos": [
+3638.0,
+2332.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 4141,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+4264.0,
+2252.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 33291,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+4264.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Adapters (M-F)\\USB2 Hub (4).json",
+"ID": 70570,
+"Name": "USB2 Hub (4)",
+"SavedPos": [
+3986.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB Composite Device.json",
+"ID": 45791,
+"Name": "USB Composite Device",
+"SavedPos": [
+3704.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Mouse.json",
+"ID": 10587,
+"Name": "USB2 Mouse",
+"SavedPos": [
+3463.0,
+2508.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\USB2 Keyboard.json",
+"ID": 47988,
+"Name": "USB2 Keyboard",
+"SavedPos": [
+3460.0,
+2428.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+]
+],
+"File": "Devices\\High Definition Audio Controller.json",
+"ID": 19915,
+"Name": "High Definition Audio Controller",
+"SavedPos": [
+4600.0,
+2588.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Razer Carcharias Headset (2009).json",
+"ID": 32562,
+"Name": "Razer Carcharias Headset (2009)",
+"SavedPos": [
+4300.0,
+2591.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ADATA SX8200PNP.json",
+"ID": 16497,
+"Name": "ADATA SX8200PNP",
+"SavedPos": [
+4039.0,
+-516.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Samsung PM981.json",
+"ID": 16769,
+"Name": "Samsung PM981",
+"SavedPos": [
+4041.0,
+-324.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Rosewill HIVE 750S W.json",
+"ID": 87636,
+"Name": "Rosewill HIVE 750S W",
+"SavedPos": [
+3176.0,
+1848.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\EPS 24-pin Cable.json",
+"ID": 85197,
+"Name": "EPS 24-pin Cable",
+"SavedPos": [
+2810.0,
+1824.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ryzen 9 3950x.json",
+"ID": 73698,
+"Name": "Ryzen 9 3950x",
+"SavedPos": [
+5850.0,
+508.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\ASUS Pro WS X570-ACE.json",
+"ID": 90994,
+"Name": "ASUS Pro WS X570-ACE",
+"SavedPos": [
+6024.0,
+344.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\EPS 4+4-pin Cable.json",
+"ID": 86895,
+"Name": "EPS 4+4-pin Cable",
+"SavedPos": [
+2802.0,
+1920.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\SATA Power Cable.json",
+"ID": 7605,
+"Name": "SATA Power Cable",
+"SavedPos": [
+2816.0,
+1692.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\PCIe 2x6+2-pin Cable.json",
+"ID": 60213,
+"Name": "PCIe 2x6+2-pin Cable",
+"SavedPos": [
+2798.0,
+2160.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Cables (M-M)\\PCIe 2x6+2-pin Cable.json",
+"ID": 354,
+"Name": "PCIe 2x6+2-pin Cable",
+"SavedPos": [
+2798.0,
+2028.0
+]
+}
+],
+"Links": [
+[
+70590,
+58879,
+0,
+7
+],
+[
+6187,
+58879,
+1,
+1
+],
+[
+28155,
+58879,
+1,
+6
+],
+[
+54554,
+95146,
+0,
+0
+],
+[
+11849,
+58879,
+0,
+4
+],
+[
+13485,
+47791,
+0,
+6
+],
+[
+5576,
+47791,
+0,
+7
+],
+[
+55819,
+47791,
+0,
+8
+],
+[
+88523,
+93685,
+0,
+2
+],
+[
+9440,
+93685,
+0,
+11
+],
+[
+9440,
+93685,
+0,
+12
+],
+[
+90907,
+45930,
+0,
+0
+],
+[
+68200,
+47791,
+0,
+2
+],
+[
+68200,
+23334,
+1,
+1
+],
+[
+38080,
+71432,
+2,
+0
+],
+[
+38080,
+93685,
+1,
+15
+],
+[
+38080,
+88523,
+0,
+0
+],
+[
+79950,
+23334,
+0,
+3
+],
+[
+28155,
+71749,
+0,
+0
+],
+[
+11277,
+71749,
+1,
+3
+],
+[
+11277,
+93685,
+0,
+3
+],
+[
+49907,
+71749,
+0,
+4
+],
+[
+36589,
+96270,
+0,
+0
+],
+[
+96270,
+49907,
+0,
+0
+],
+[
+96934,
+61966,
+0,
+5
+],
+[
+45925,
+99332,
+0,
+8
+],
+[
+54554,
+99332,
+1,
+2
+],
+[
+45930,
+75168,
+0,
+7
+],
+[
+6187,
+75168,
+0,
+4
+],
+[
+17743,
+75168,
+0,
+3
+],
+[
+95146,
+75168,
+0,
+2
+],
+[
+90907,
+27851,
+1,
+0
+],
+[
+47421,
+75168,
+1,
+8
+],
+[
+33438,
+99332,
+1,
+0
+],
+[
+47466,
+93685,
+0,
+7
+],
+[
+47466,
+99332,
+1,
+1
+],
+[
+23882,
+97017,
+1,
+0
+],
+[
+23882,
+61966,
+0,
+0
+],
+[
+33438,
+61966,
+0,
+2
+],
+[
+78732,
+61966,
+1,
+1
+],
+[
+78732,
+47421,
+0,
+0
+],
+[
+12823,
+23334,
+1,
+0
+],
+[
+36618,
+23334,
+1,
+2
+],
+[
+74049,
+23334,
+1,
+4
+],
+[
+74049,
+71749,
+0,
+8
+],
+[
+62789,
+58879,
+1,
+3
+],
+[
+62789,
+93685,
+0,
+1
+],
+[
+95423,
+58879,
+1,
+0
+],
+[
+95423,
+75168,
+0,
+1
+],
+[
+42679,
+93685,
+0,
+0
+],
+[
+42679,
+47791,
+1,
+1
+],
+[
+982,
+47791,
+1,
+0
+],
+[
+982,
+75168,
+0,
+0
+],
+[
+96934,
+68554,
+1,
+1
+],
+[
+45925,
+68554,
+1,
+0
+],
+[
+23334,
+67903,
+0,
+0
+],
+[
+34971,
+5940,
+1,
+1
+],
+[
+34971,
+6266,
+0,
+0
+],
+[
+97594,
+79950,
+0,
+0
+],
+[
+97594,
+93685,
+1,
+16
+],
+[
+70785,
+47791,
+0,
+3
+],
+[
+29353,
+57380,
+0,
+0
+],
+[
+58266,
+20181,
+0,
+1
+],
+[
+24066,
+20181,
+0,
+0
+],
+[
+57380,
+24066,
+0,
+0
+],
+[
+56436,
+58266,
+0,
+0
+],
+[
+91135,
+56436,
+0,
+0
+],
+[
+46812,
+91135,
+0,
+0
+],
+[
+42199,
+56436,
+0,
+1
+],
+[
+49434,
+42199,
+0,
+0
+],
+[
+44308,
+56436,
+0,
+2
+],
+[
+34758,
+56436,
+0,
+3
+],
+[
+27158,
+34758,
+0,
+0
+],
+[
+57635,
+44308,
+0,
+0
+],
+[
+47521,
+56436,
+0,
+4
+],
+[
+24130,
+47521,
+0,
+0
+],
+[
+57089,
+40909,
+0,
+0
+],
+[
+5105,
+40909,
+0,
+1
+],
+[
+70262,
+89869,
+0,
+0
+],
+[
+73586,
+89869,
+0,
+1
+],
+[
+40909,
+89254,
+0,
+0
+],
+[
+89869,
+89254,
+0,
+1
+],
+[
+24162,
+89254,
+0,
+2
+],
+[
+13703,
+89254,
+0,
+3
+],
+[
+74491,
+24130,
+0,
+2
+],
+[
+61748,
+74491,
+0,
+0
+],
+[
+89254,
+74491,
+0,
+1
+],
+[
+63443,
+74491,
+0,
+2
+],
+[
+98841,
+63443,
+0,
+0
+],
+[
+72801,
+63443,
+0,
+1
+],
+[
+32019,
+24130,
+0,
+3
+],
+[
+41813,
+32019,
+0,
+0
+],
+[
+75098,
+41813,
+0,
+0
+],
+[
+84076,
+75098,
+0,
+0
+],
+[
+41893,
+47521,
+0,
+1
+],
+[
+30236,
+41893,
+0,
+0
+],
+[
+94938,
+30236,
+0,
+0
+],
+[
+40140,
+41893,
+0,
+1
+],
+[
+91596,
+31500,
+0,
+1
+],
+[
+17319,
+40140,
+0,
+0
+],
+[
+58478,
+17319,
+0,
+0
+],
+[
+31500,
+58478,
+0,
+0
+],
+[
+35060,
+31500,
+0,
+0
+],
+[
+25307,
+40514,
+2,
+0
+],
+[
+70972,
+41893,
+0,
+2
+],
+[
+96848,
+70972,
+0,
+0
+],
+[
+67514,
+96848,
+0,
+0
+],
+[
+17869,
+67514,
+0,
+1
+],
+[
+2850,
+96848,
+0,
+1
+],
+[
+48388,
+56436,
+0,
+5
+],
+[
+26989,
+48388,
+0,
+0
+],
+[
+40794,
+28241,
+0,
+0
+],
+[
+40794,
+42301,
+1,
+0
+],
+[
+11125,
+56436,
+0,
+6
+],
+[
+28241,
+11125,
+0,
+0
+],
+[
+60831,
+20181,
+0,
+2
+],
+[
+55712,
+60831,
+0,
+0
+],
+[
+77184,
+55712,
+0,
+0
+],
+[
+99502,
+20181,
+0,
+3
+],
+[
+31947,
+20181,
+0,
+4
+],
+[
+77801,
+31947,
+0,
+0
+],
+[
+76249,
+21422,
+0,
+0
+],
+[
+83538,
+21422,
+0,
+1
+],
+[
+4141,
+77801,
+0,
+2
+],
+[
+33291,
+77801,
+0,
+3
+],
+[
+45791,
+70570,
+0,
+0
+],
+[
+10587,
+45791,
+0,
+1
+],
+[
+47988,
+45791,
+0,
+0
+],
+[
+19915,
+31947,
+0,
+1
+],
+[
+16497,
+46812,
+0,
+0
+],
+[
+16769,
+49434,
+0,
+0
+],
+[
+85197,
+87636,
+0,
+1
+],
+[
+85197,
+90994,
+1,
+0
+],
+[
+73698,
+90994,
+0,
+6
+],
+[
+20181,
+90994,
+0,
+1
+],
+[
+86895,
+87636,
+0,
+2
+],
+[
+86895,
+90994,
+1,
+7
+],
+[
+7605,
+87636,
+0,
+6
+],
+[
+7605,
+42301,
+1,
+1
+],
+[
+60213,
+87636,
+0,
+5
+],
+[
+354,
+87636,
+0,
+4
+],
+[
+36618,
+25307,
+0,
+0
+],
+[
+354,
+77184,
+1,
+4
+],
+[
+354,
+77184,
+2,
+5
+],
+[
+60213,
+77184,
+1,
+6
+]
+],
+"Name": "ConnorsDesktop_Internals2"
+}
