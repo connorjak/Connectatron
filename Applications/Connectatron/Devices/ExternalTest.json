@@ -1,0 +1,23 @@
+{
+	"Females": [
+		{
+			"Name": "ExtTest1",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "ExtTest2",
+			"PinType": "Proprietary"
+		}
+	],
+	"Males": [
+		{
+			"Name": "ExtTest3",
+			"PinType": "SATA Power"
+		},
+		{
+			"Name": "ExtTest4",
+			"PinType": "NEMA 5-15"
+		}
+	],
+	"Name": "ExternalTest"
+}

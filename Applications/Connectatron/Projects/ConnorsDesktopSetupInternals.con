@@ -1409,6 +1409,34 @@
 2798.0,
 2028.0
 ]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+],
+[
+false,
+0
+],
+[
+false,
+1
+]
+],
+"File": "Devices\\ExternalTest.json",
+"ID": 83449,
+"Name": "ExternalTest",
+"SavedPos": [
+1856.0,
+16.0
+]
 }
 ],
 "Links": [
@@ -2342,5 +2370,6 @@
 1,
 6
 ]
-]
+],
+"Name": "ConnorsDesktopSetupInternals"
 }
