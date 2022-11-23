@@ -180,6 +180,91 @@
 		"Categories": [ "DC Power", "PC Internal", "PSU" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Power_supply_unit_(computer)#Connectors", "https://en.wikipedia.org/wiki/SATA#Power_connectors" ]
 	},
+	// RAM
+	"DIP 16-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SIPP 30-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SIMM 30-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SIMM 72-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DIMM 100-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"RIMM 184-pin": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SDR DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR2 DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR3 DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR4 DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR5 DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SDR SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR2 SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR3 SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR4 SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR5 SO-DIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"SDR MicroDIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR MicroDIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
+	"DDR2 MicroDIMM": {
+		"Categories": [ "PC Internal", "RAM" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Memory_module", "https://en.wikipedia.org/wiki/DIMM#Variants" ]
+	},
 
 	// AC Power
 	// https://en.wikipedia.org/wiki/NEMA_connector
