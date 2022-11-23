@@ -156,22 +156,6 @@ true,
 [
 true,
 1
-],
-[
-true,
-2
-],
-[
-true,
-3
-],
-[
-true,
-4
-],
-[
-true,
-5
 ]
 ],
 "File": "Devices\\USB 3.10 Host Controller.json",
@@ -382,22 +366,6 @@ true,
 [
 true,
 1
-],
-[
-true,
-2
-],
-[
-true,
-3
-],
-[
-true,
-4
-],
-[
-true,
-5
 ]
 ],
 "File": "Devices\\USB 3.10 Host Controller.json",
@@ -634,6 +602,14 @@ true,
 [
 true,
 1
+],
+[
+true,
+2
+],
+[
+true,
+3
 ]
 ],
 "File": "Devices\\MSI RTX 3090 Gaming X Trio.json",
@@ -666,6 +642,16 @@ true,
 },
 {
 "Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+]
+],
 "File": "Devices\\USB 3.10 Host Controller.json",
 "ID": 77801,
 "Name": "USB 3.10 Host Controller",
@@ -857,11 +843,7 @@ true,
 "ExternalPins": [
 [
 true,
-8
-],
-[
-true,
-9
+1
 ]
 ],
 "File": "Devices\\ASUS Pro WS X570-ACE.json",
@@ -1261,18 +1243,6 @@ true,
 1
 ],
 [
-4141,
-77801,
-0,
-2
-],
-[
-33291,
-77801,
-0,
-3
-],
-[
 45791,
 70570,
 0,
@@ -1393,5 +1363,5 @@ true,
 0
 ]
 ],
-"Name": "ConnorsDesktop_Internals2"
+"Name": "Connor's 3950x PC"
 }

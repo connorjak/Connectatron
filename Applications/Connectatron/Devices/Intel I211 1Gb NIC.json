@@ -2,7 +2,7 @@
 	"Females": [
 		{
 			"Name": "Ethernet",
-			"PinType": "RJ45",
+			"PinType": "8P8C",
 			"Protocols": [
 				"Ethernet 10BASE5",
 				"Ethernet 10BASE2",

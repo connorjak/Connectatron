@@ -34,6 +34,14 @@
 		{
 			"Name": "CPU 8-pin",
 			"PinType": "EPS 8-pin"
+		},
+		{
+			"Name": "Rear Panel HDMI",
+			"PinType": "HDMI"
+		},
+		{
+			"Name": "Rear Panel DP",
+			"PinType": "DisplayPort"
 		}
 	],
 	"Males": [],

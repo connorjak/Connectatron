@@ -985,29 +985,29 @@ struct Connectatron:
 
         InitNodeFromJSON(device, new_node);
 
-        //if (device.find("ExternalPins") != device.end())
-        //{
-        //    for (const auto& ext : device["ExternalPins"].items())
-        //    {
-        //        //format:
-        //        /*
-        //        ExternalPins: [
-        //        [true, 1],
-        //        [false, 0],
-        //        // ^ isFemale, pin number
-        //        ]
-        //        */
+        if (device.find("ExternalPins") != device.end())
+        {
+            for (const auto& ext : device["ExternalPins"].items())
+            {
+                //format:
+                /*
+                ExternalPins: [
+                [true, 1],
+                [false, 0],
+                // ^ isFemale, pin number
+                ]
+                */
 
-        //        bool isFemale = ext.value()[0].get<bool>();
-        //        bool pinNum = ext.value()[1].get<int>();
+                bool isFemale = ext.value()[0].get<bool>();
+                bool pinNum = ext.value()[1].get<int>();
 
-        //        if (isFemale)
-        //            new_node->Females[pinNum].external_exposed = true;
-        //        else
-        //            new_node->Males[pinNum].external_exposed = true;
+                if (isFemale)
+                    new_node->Females[pinNum].external_exposed = true;
+                else
+                    new_node->Males[pinNum].external_exposed = true;
 
-        //    }
-        //}
+            }
+        }
 
         m_IdNodes[id] = new_node;
 
@@ -1325,7 +1325,9 @@ struct Connectatron:
                 node->Type == NodeType::Blueprint_Editing/* ||
                 node->Type == NodeType::Comment TODO*/)
             {
-                devices.push_back(SerializeDeviceToJSON(node, true));
+                json device = SerializeDeviceToJSON(node, true);
+
+                // Record which pins are external
                 int iter = 0;
                 bool once = false;
                 for (const auto& female : node->Females)
@@ -1333,14 +1335,14 @@ struct Connectatron:
                     if(female.external_exposed)
                     {
                         if (!once)
-                            devices.back()["ExternalPins"] = json::array();
+                            device["ExternalPins"] = json::array();
                         once = true;
 
                         json exposed = json::array();
                         exposed.push_back(true);
                         exposed.push_back(iter);
 
-                        devices.back()["ExternalPins"].push_back(exposed);
+                        device["ExternalPins"].push_back(exposed);
                     }
                     iter++;
                 }
@@ -1350,17 +1352,20 @@ struct Connectatron:
                     if (male.external_exposed)
                     {
                         if (!once)
-                            devices.back()["ExternalPins"] = json::array();
+                            device["ExternalPins"] = json::array();
                         once = true;
 
                         json exposed = json::array();
                         exposed.push_back(false);
                         exposed.push_back(iter);
 
-                        devices.back()["ExternalPins"].push_back(exposed);
+                        device["ExternalPins"].push_back(exposed);
                     }
                     iter++;
                 }
+
+
+                devices.push_back(device);
             }
         }
 
