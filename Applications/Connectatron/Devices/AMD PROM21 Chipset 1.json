@@ -65,7 +65,31 @@
 		},
 		{
 			"Name": "PCIe Gen3 x1",
-			"PinType": "PCIe Internal Bus"
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		},
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		},
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		},
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
 		}
 	],
 	"Males": [
