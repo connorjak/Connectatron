@@ -1,0 +1,81 @@
+{
+	"Females": [
+		{
+			"Name": "Rear USB4 1",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g",
+				"USB4 20g",
+				"USB4 40g",
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4",
+				"DisplayPort 1.4a"
+			]
+		},
+		{
+			"Name": "Rear USB4 2",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g",
+				"USB4 20g",
+				"USB4 40g",
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4",
+				"DisplayPort 1.4a"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Bus",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 5.0 x4"
+			]
+		},
+		{
+			"Name": "DP 1",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4"
+			]
+		},
+		{
+			"Name": "DP 2",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4",
+				"DisplayPort 1.4a"
+			]
+		}
+	],
+	"Name": "Intel USB4 Controller (Maple Ridge)"
+}

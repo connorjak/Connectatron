@@ -232,6 +232,8 @@ struct Node
     bool dirty;
     // Where this node was last saved
     fs::path saved_filepath;
+    // Whether this node was loaded as a representation of the external exposed connections of a project
+    bool is_project = false;
 
     std::string State;
     std::string SavedState;
@@ -1019,12 +1021,64 @@ struct Connectatron:
         return device.find("Devices") != device.end();
     }
 
+    void NewConnectorFromJSON(const json& connector, shared_ptr<Node>& new_node, bool isFemale)
+    {
+        auto in_name = connector["Name"].get<string>();
+
+        auto pintype_string = connector["PinType"].get<string>();
+
+        Connector_ID in_pintype = 0;// "UNRECOGNIZED";
+        if (connectorsByName.find(pintype_string) != connectorsByName.end())
+        {
+            in_pintype = connectorsByName.at(pintype_string);
+        }
+
+        //Can have just pintype, or pintype+protocols, or pintype+protocols+description
+        if (connector.find("Protocols") != connector.end())
+        {
+            set<WireProtocol> protocols;
+            for (auto protocol : connector["Protocols"])
+            {
+                auto protocol_string = protocol.get<string>();
+                EnumName_Symbol2Underscore(protocol_string);
+
+                auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
+                protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
+                //TODO handle "sets" of protocols, like the backcompat variables?
+            }
+
+            if (connector.find("Description") != connector.end())
+            {
+                auto description = connector["Description"].get<string>();
+                if(isFemale)
+                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+                else
+                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
+            }
+            else
+            {
+                if (isFemale)
+                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+                else
+                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
+            }
+        }
+        else
+        {
+            if (isFemale)
+                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+            else
+                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+        }
+    }
+
     // Load node WITHOUT SPAWNING IT IN THE EDITOR!
     void InitNodeFromJSON(const json& device, shared_ptr<Node>& new_node)
     {
         if (DeviceHasSubDevices(device))
         {
             // This is a project-as-a-device
+            new_node->is_project = true;
             if (device.find("SavedPos") != device.end())
             {
                 new_node->SavedPosition.x = device["SavedPos"][0].get<float>();
@@ -1037,99 +1091,32 @@ struct Connectatron:
             {
                 if (subdevice.find("ExternalPins") != subdevice.end())
                 {
-                    auto subdevice_data_filepath = subdevice["File"].get<string>();
-                    auto subdevice_data = GetJSONFromFile(ConnectatronPath / subdevice_data_filepath);
-                    for (const auto& ext : subdevice["ExternalPins"].items())
+                    if (subdevice.find("File") != subdevice.end())
                     {
-                        auto ext_val = ext.value();
-                        bool isFemale = ext_val[0].get<bool>();
-                        int pinNum = ext_val[1].get<int>();
-
-                        if(isFemale)
+                        auto subdevice_data_filepath = subdevice["File"].get<string>();
+                        auto subdevice_data = GetJSONFromFile(ConnectatronPath / subdevice_data_filepath);
+                        for (const auto& ext : subdevice["ExternalPins"].items())
                         {
-                            const auto& female = subdevice_data["Females"][pinNum];
-                            auto in_name = female["Name"].get<string>();
+                            auto ext_val = ext.value();
+                            bool isFemale = ext_val[0].get<bool>();
+                            int pinNum = ext_val[1].get<int>();
 
-                            auto pintype_string = female["PinType"].get<string>();
-
-                            Connector_ID in_pintype = 0;// "UNRECOGNIZED";
-                            if (connectorsByName.find(pintype_string) != connectorsByName.end())
+                            if (isFemale)
                             {
-                                in_pintype = connectorsByName.at(pintype_string);
-                            }
-
-                            //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-                            if (female.find("Protocols") != female.end())
-                            {
-                                set<WireProtocol> protocols;
-                                for (auto protocol : female["Protocols"])
-                                {
-                                    auto protocol_string = protocol.get<string>();
-                                    EnumName_Symbol2Underscore(protocol_string);
-
-                                    auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                                    protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
-                                    //TODO handle "sets" of protocols, like the backcompat variables?
-                                }
-
-                                if (female.find("Description") != female.end())
-                                {
-                                    auto description = female["Description"].get<string>();
-                                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-                                }
-                                else
-                                {
-                                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-                                }
+                                const auto& female = subdevice_data["Females"][pinNum];
+                                NewConnectorFromJSON(female, new_node, true);
                             }
                             else
                             {
-                                new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
+                                const auto& male = subdevice_data["Males"][pinNum];
+                                NewConnectorFromJSON(male, new_node, false);
                             }
+
                         }
-                        else
-                        {
-                            const auto& male = subdevice_data["Males"][pinNum];
-                            auto in_name = male["Name"].get<string>();
-
-                            auto pintype_string = male["PinType"].get<string>();
-
-                            Connector_ID in_pintype = 0;// "UNRECOGNIZED";
-                            if (connectorsByName.find(pintype_string) != connectorsByName.end())
-                            {
-                                in_pintype = connectorsByName.at(pintype_string);
-                            }
-
-                            //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-                            if (male.find("Protocols") != male.end())
-                            {
-                                set<WireProtocol> protocols;
-                                for (auto protocol : male["Protocols"])
-                                {
-                                    auto protocol_string = protocol.get<string>();
-                                    EnumName_Symbol2Underscore(protocol_string);
-
-                                    auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                                    protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
-                                    //TODO handle "sets" of protocols, like the backcompat variables?
-                                }
-
-                                if (male.find("Description") != male.end())
-                                {
-                                    auto description = male["Description"].get<string>();
-                                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-                                }
-                                else
-                                {
-                                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-                                }
-                            }
-                            else
-                            {
-                                new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
-                            }
-                        }
-
+                    }
+                    else
+                    {
+                        //TODO BREAKING
                     }
                 }
             }
@@ -1163,88 +1150,13 @@ struct Connectatron:
             // Parse Females
             for (const auto& female : device["Females"])
             {
-                auto in_name = female["Name"].get<string>();
-
-                auto pintype_string = female["PinType"].get<string>();
-
-                Connector_ID in_pintype = 0;// "UNRECOGNIZED";
-                if (connectorsByName.find(pintype_string) != connectorsByName.end())
-                {
-                    in_pintype = connectorsByName.at(pintype_string);
-                }
-
-                //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-                if (female.find("Protocols") != female.end())
-                {
-                    set<WireProtocol> protocols;
-                    for (auto protocol : female["Protocols"])
-                    {
-                        auto protocol_string = protocol.get<string>();
-                        EnumName_Symbol2Underscore(protocol_string);
-
-                        auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                        protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
-                        //TODO handle "sets" of protocols, like the backcompat variables?
-                    }
-
-                    if (female.find("Description") != female.end())
-                    {
-                        auto description = female["Description"].get<string>();
-                        new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-                    }
-                    else
-                    {
-                        new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-                    }
-                }
-                else
-                {
-                    new_node->Females.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
-                }
+                NewConnectorFromJSON(female, new_node, true);
             }
-
 
             // Parse Males
             for (const auto& male : device["Males"])
             {
-                auto in_name = male["Name"].get<string>();
-
-                auto pintype_string = male["PinType"].get<string>();
-
-                Connector_ID in_pintype = 0;// "UNRECOGNIZED";
-                if (connectorsByName.find(pintype_string) != connectorsByName.end())
-                {
-                    in_pintype = connectorsByName.at(pintype_string);
-                }
-
-                //Can have just pintype, or pintype+protocols, or pintype+protocols+description
-                if (male.find("Protocols") != male.end())
-                {
-                    set<WireProtocol> protocols;
-                    for (auto protocol : male["Protocols"])
-                    {
-                        auto protocol_string = protocol.get<string>();
-                        EnumName_Symbol2Underscore(protocol_string);
-
-                        auto parsed_protocol = magic_enum::enum_cast<WireProtocol>(protocol_string);
-                        protocols.insert(parsed_protocol.value_or(WireProtocol::UNRECOGNIZED));
-                        //TODO handle "sets" of protocols, like the backcompat variables?
-                    }
-
-                    if (male.find("Description") != male.end())
-                    {
-                        auto description = male["Description"].get<string>();
-                        new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols, description);
-                    }
-                    else
-                    {
-                        new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype, protocols);
-                    }
-                }
-                else
-                {
-                    new_node->Males.emplace_back(GetNextId(), in_name.c_str(), in_pintype);
-                }
+                NewConnectorFromJSON(male, new_node, false);
             }
         }
         BuildNode(new_node);
@@ -1252,20 +1164,39 @@ struct Connectatron:
 
     Link* SpawnLinkFromJSON(const json& connect)
     {
-        auto start_p_id = connect[0].get<int>();
-        auto end_p_id = connect[1].get<int>();
+        try
+        {
+            auto start_p_id = connect[0].get<int>();
+            auto end_p_id = connect[1].get<int>();
 
-        auto start_pin_loc = connect[2].get<int>();
-        auto end_pin_loc = connect[3].get<int>();
+            auto start_pin_loc = connect[2].get<int>();
+            auto end_pin_loc = connect[3].get<int>();
 
-        auto startNode = m_IdNodes.at(start_p_id);
-        auto endNode = m_IdNodes.at(end_p_id);
-        auto startPinId = startNode->Males[start_pin_loc].ID;
-        auto endPinId = endNode->Females[end_pin_loc].ID;
+            if(m_IdNodes.find(start_p_id) == m_IdNodes.end())
+                return nullptr;
+            if (m_IdNodes.find(end_p_id) == m_IdNodes.end())
+                return nullptr;
 
-        m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+            auto startNode = m_IdNodes.at(start_p_id);
+            auto endNode = m_IdNodes.at(end_p_id);
 
-        m_Links.back().Color = GetIconColor(startNode->Males[start_pin_loc].Type);
+            if (startNode->Males.size() < start_pin_loc)
+                return nullptr;
+            if (endNode->Females.size() < end_pin_loc)
+                return nullptr;
+
+            auto startPinId = startNode->Males[start_pin_loc].ID;
+            auto endPinId = endNode->Females[end_pin_loc].ID;
+
+            m_Links.emplace_back(Link(GetNextId(), startPinId, endPinId));
+
+            m_Links.back().Color = GetIconColor(startNode->Males[start_pin_loc].Type);
+        }
+        catch (std::exception& e)
+        {
+            return nullptr;
+        }
+        
 
         return &m_Links.back();
     }
@@ -1427,6 +1358,7 @@ struct Connectatron:
         const auto& Connects = project["Links"];
         for (const auto& connect : Connects)
         {
+            //NOTE: returns nullptr upon failure
             auto link = SpawnLinkFromJSON(connect);
         }
     }
@@ -2385,9 +2317,17 @@ struct Connectatron:
             {
                 if (node->Type == NodeType::Blueprint)
                 {
-                    if (ImGui::Button("Edit Device"))
+                    if (node->is_project)
                     {
-                        node->Type = NodeType::Blueprint_Editing;
+                        string msg = "Edit project file " + node->saved_filepath.string() + " to change this node.";
+                        ImGui::Text(msg.c_str());
+                    }
+                    else
+                    {
+                        if (ImGui::Button("Edit Device"))
+                        {
+                            node->Type = NodeType::Blueprint_Editing;
+                        }
                     }
                 }
                 else if (node->Type == NodeType::Blueprint_Editing)
@@ -2537,6 +2477,28 @@ struct Connectatron:
                 ImGui::Text("Gender: ");
                 ImGui::SameLine();
                 ImGui::Text(pin->IsFemale ? "Female" : "Male");
+
+                if (ImGui::Button("Duplicate Connector"))
+                {
+                    on_node->dirty = true;
+                    ProjectDirty = true;
+                    auto new_id = GetNextId();
+                    string new_name = pin->Name + " copy";
+                    if(pin->IsFemale)
+                    {
+                        auto& new_connector = on_node->Females.emplace_back(new_id, new_name.c_str(), pin->Type);
+                        BuildNode(on_node); //NOTE: overkill but effective.
+                        new_connector.Protocols = pin->Protocols;
+                    }
+                    else
+                    {
+                        auto& new_connector = on_node->Males.emplace_back(new_id, new_name.c_str(), pin->Type);
+                        BuildNode(on_node); //NOTE: overkill but effective.
+                        new_connector.Protocols = pin->Protocols;
+
+                    }
+                }
+
                 string ex_exp_title = "External Exposed";
                 bool changed = ImGui::Checkbox(ex_exp_title.c_str(), &pin->external_exposed);
                 if (changed)

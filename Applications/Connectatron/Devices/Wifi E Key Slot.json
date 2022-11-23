@@ -1,0 +1,18 @@
+{
+	"Females": [
+		{
+			"Name": "Wifi E-Key",
+			"PinType": "M.2 A E key"
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		}
+	],
+	"Name": "Wifi E Key Slot"
+}

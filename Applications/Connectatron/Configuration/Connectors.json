@@ -680,28 +680,33 @@
 	},
 	// https://en.wikipedia.org/wiki/PCI_Express
 	"PCIe x1": {
-		"Categories": [ "Expansion Slot", "Common" ],
+		"Categories": [ "PC Internal", "Expansion Slot", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
 	},
 	"PCIe x2": {
-		"Categories": [ "Expansion Slot", "Common" ],
+		"Categories": [ "PC Internal", "Expansion Slot", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
 	},
 	"PCIe x4": {
-		"Categories": [ "Expansion Slot", "Common" ],
+		"Categories": [ "PC Internal", "Expansion Slot", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
 	},
 	"PCIe x8": {
-		"Categories": [ "Expansion Slot", "Common" ],
+		"Categories": [ "PC Internal", "Expansion Slot", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
 	},
 	"PCIe x16": {
-		"Categories": [ "Expansion Slot", "Common" ],
+		"Categories": [ "PC Internal", "Expansion Slot", "Common" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
 	},
 	"Mini PCIe": {
-		"Categories": [ "Expansion Slot" ],
+		"Categories": [ "PC Internal", "Expansion Slot" ],
 		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ]
+	},
+	"PCIe Internal Bus": {
+		"Categories": [ "PC Internal" ],
+		"Links": [ "https://en.wikipedia.org/wiki/PCI_Express" ],
+		"MultipleConnectPerPin": true
 	},
 	// https://en.wikipedia.org/wiki/PCI_Express#PCI_Express_OCuLink
 	// https://blog.fosketts.net/2017/06/22/what-is-oculink/

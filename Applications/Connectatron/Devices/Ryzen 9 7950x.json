@@ -1,0 +1,13 @@
+{
+	"Females": [],
+	"Males": [
+		{
+			"Name": "LGA1718",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"Proprietary"
+			]
+		}
+	],
+	"Name": "Ryzen 9 7950x"
+}

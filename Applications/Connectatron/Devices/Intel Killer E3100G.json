@@ -1,0 +1,24 @@
+{
+	"Females": [
+		{
+			"Name": "2.5Gb LAN",
+			"PinType": "8P8C",
+			"Protocols": [
+				"Ethernet 10BASE-T",
+				"Ethernet 100BASE-T",
+				"Ethernet 1000BASE-T",
+				"Ethernet 2.5GBASE-T"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		}
+	],
+	"Name": "Intel Killer E3100G"
+}

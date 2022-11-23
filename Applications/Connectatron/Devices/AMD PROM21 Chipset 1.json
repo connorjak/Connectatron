@@ -1,0 +1,81 @@
+{
+	"Females": [
+		{
+			"Name": "PCIe Gen4 x4 BUS",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 4.0 x4"
+			]
+		},
+		{
+			"Name": "Front USB3 20gb",
+			"PinType": "USB-C",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g",
+				"USB 3 20g"
+			]
+		},
+		{
+			"Name": "Rear USB3 10gb 3",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g"
+			]
+		},
+		{
+			"Name": "Rear USB3 5gb 1 (Flashback)",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g"
+			]
+		},
+		{
+			"Name": "Front USB3 5gb 1/2",
+			"PinType": "USB-A SuperSpeed"
+		},
+		{
+			"Name": "Front USB3 5gb 2/2",
+			"PinType": "USB-A SuperSpeed"
+		},
+		{
+			"Name": "Front USB2 480mb 1/2",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "Front USB2 480mb 2/2",
+			"PinType": "USB-A"
+		},
+		{
+			"Name": "PCIe Gen4 x4",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 4.0 x4"
+			]
+		},
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus"
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Gen4 x4 BUS",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 4.0 x4"
+			]
+		}
+	],
+	"Name": "AMD PROM21 Chipset 1"
+}

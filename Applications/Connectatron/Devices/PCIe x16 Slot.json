@@ -8,7 +8,7 @@
 	"Males": [
 		{
 			"Name": "PCIe Bus",
-			"PinType": "Proprietary"
+			"PinType": "PCIe Internal Bus"
 		}
 	],
 	"Name": "PCIe x16 Slot"

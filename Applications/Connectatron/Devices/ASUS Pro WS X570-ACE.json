@@ -10,19 +10,19 @@
 		},
 		{
 			"Name": "DIMM A1",
-			"PinType": "Proprietary"
+			"PinType": "DDR4 DIMM"
 		},
 		{
 			"Name": "DIMM A2",
-			"PinType": "Proprietary"
+			"PinType": "DDR4 DIMM"
 		},
 		{
 			"Name": "DIMM B1",
-			"PinType": "Proprietary"
+			"PinType": "DDR4 DIMM"
 		},
 		{
 			"Name": "DIMM B2",
-			"PinType": "Proprietary"
+			"PinType": "DDR4 DIMM"
 		},
 		{
 			"Name": "AM4 Socket",

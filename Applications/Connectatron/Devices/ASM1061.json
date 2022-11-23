@@ -1,0 +1,28 @@
+{
+	"Females": [
+		{
+			"Name": "SATA 6Gb",
+			"PinType": "SATA",
+			"Protocols": [
+				"SATA 3.0"
+			]
+		},
+		{
+			"Name": "SATA 6Gb",
+			"PinType": "SATA",
+			"Protocols": [
+				"SATA 3.0"
+			]
+		}
+	],
+	"Males": [
+		{
+			"Name": "PCIe Gen3 x1",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 3.0 x1"
+			]
+		}
+	],
+	"Name": "ASM1061"
+}

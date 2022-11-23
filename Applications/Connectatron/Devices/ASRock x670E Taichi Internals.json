@@ -1,0 +1,97 @@
+{
+	"Females": [
+		{
+			"Name": "LGA1718",
+			"PinType": "Proprietary"
+		},
+		{
+			"Name": "DIMM A1",
+			"PinType": "DDR5 DIMM"
+		},
+		{
+			"Name": "DIMM A2",
+			"PinType": "DDR5 DIMM"
+		},
+		{
+			"Name": "DIMM B1",
+			"PinType": "DDR5 DIMM"
+		},
+		{
+			"Name": "DIMM B2",
+			"PinType": "DDR5 DIMM"
+		},
+		{
+			"Name": "Onboard HDMI (DP)",
+			"PinType": "HDMI"
+		},
+		{
+			"Name": "Rear USB3 10gb 1/2",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g"
+			]
+		},
+		{
+			"Name": "Rear USB3 10gb 2/2",
+			"PinType": "USB-A SuperSpeed",
+			"Protocols": [
+				"USB 1.0",
+				"USB 1.1",
+				"USB 2.0",
+				"USB 3 5g",
+				"USB 3 10g"
+			]
+		},
+		{
+			"Name": "PCIe Gen5 x16",
+			"PinType": "PCIe Internal Bus"
+		},
+		{
+			"Name": "PCIe Gen5 x4",
+			"PinType": "PCIe Internal Bus"
+		},
+		{
+			"Name": "PCIe Gen5 x4",
+			"PinType": "PCIe Internal Bus"
+		},
+		{
+			"Name": "DP 1",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4",
+				"DisplayPort 1.4a"
+			]
+		},
+		{
+			"Name": "DP 2",
+			"PinType": "Proprietary",
+			"Protocols": [
+				"DisplayPort 1.0",
+				"DisplayPort 1.1",
+				"DisplayPort 1.2",
+				"DisplayPort 1.2a",
+				"DisplayPort 1.3",
+				"DisplayPort 1.4",
+				"DisplayPort 1.4a"
+			]
+		},
+		{
+			"Name": "PCIe Gen4 x4 BUS",
+			"PinType": "PCIe Internal Bus",
+			"Protocols": [
+				"PCIe 4.0 x4"
+			]
+		}
+	],
+	"Males": [],
+	"Name": "ASRock x670E Taichi Internals"
+}

@@ -1,0 +1,440 @@
+{
+"Devices": [
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+],
+[
+true,
+2
+],
+[
+true,
+3
+],
+[
+true,
+4
+],
+[
+true,
+5
+],
+[
+true,
+6
+],
+[
+true,
+7
+]
+],
+"File": "Devices\\ASRock x670E Taichi Internals.json",
+"ID": 56398,
+"Name": "ASRock x670E Taichi Internals",
+"SavedPos": [
+1128.0,
+544.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Ryzen 9 7950x.json",
+"ID": 18420,
+"Name": "Ryzen 9 7950x",
+"SavedPos": [
+778.0,
+396.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\PCIe x16 Slot.json",
+"ID": 39583,
+"Name": "PCIe x16 Slot",
+"SavedPos": [
+792.0,
+588.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\MSI RTX 4090 Gaming Trio.json",
+"ID": 85927,
+"Name": "MSI RTX 4090 Gaming Trio",
+"SavedPos": [
+360.0,
+572.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\PCIe x16 Slot.json",
+"ID": 38948,
+"Name": "PCIe x16 Slot",
+"SavedPos": [
+792.0,
+668.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Gen5 NVMe Controller.json",
+"ID": 49300,
+"Name": "Gen5 NVMe Controller",
+"SavedPos": [
+848.0,
+748.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+]
+],
+"File": "Devices\\Intel USB4 Controller (Maple Ridge).json",
+"ID": 20912,
+"Name": "Intel USB4 Controller (Maple Ridge)",
+"SavedPos": [
+754.0,
+833.0
+]
+},
+{
+"Dirty": true,
+"ExternalPins": [
+[
+true,
+1
+],
+[
+true,
+2
+],
+[
+true,
+3
+],
+[
+true,
+4
+],
+[
+true,
+5
+],
+[
+true,
+6
+],
+[
+true,
+7
+]
+],
+"Females": [
+{
+"Name": "PCIe Gen4 x4 BUS",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 4.0 x4"
+]
+},
+{
+"Name": "Front USB3 20gb",
+"PinType": "USB-C",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g",
+"USB 3 20g"
+]
+},
+{
+"Name": "Rear USB3 10gb 3",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g",
+"USB 3 10g"
+]
+},
+{
+"Name": "Rear USB3 5gb 1 (Flashback)",
+"PinType": "USB-A SuperSpeed",
+"Protocols": [
+"USB 1.0",
+"USB 1.1",
+"USB 2.0",
+"USB 3 5g"
+]
+},
+{
+"Name": "Front USB3 5gb 1/2",
+"PinType": "USB-A SuperSpeed"
+},
+{
+"Name": "Front USB3 5gb 2/2",
+"PinType": "USB-A SuperSpeed"
+},
+{
+"Name": "Front USB2 480mb 1/2",
+"PinType": "USB-A"
+},
+{
+"Name": "Front USB2 480mb 2/2",
+"PinType": "USB-A"
+},
+{
+"Name": "PCIe Gen4 x4",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 4.0 x4"
+]
+},
+{
+"Name": "PCIe Gen3 x1",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 3.0 x1"
+]
+},
+{
+"Name": "PCIe Gen3 x1",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 3.0 x1"
+]
+},
+{
+"Name": "PCIe Gen3 x1",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 3.0 x1"
+]
+},
+{
+"Name": "PCIe Gen3 x1",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 3.0 x1"
+]
+}
+],
+"ID": 10147,
+"Males": [
+{
+"Name": "PCIe Gen4 x4 BUS",
+"PinType": "PCIe Internal Bus",
+"Protocols": [
+"PCIe 4.0 x4"
+]
+}
+],
+"Name": "AMD PROM21 Chipset 1",
+"SavedPos": [
+1128.0,
+1084.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Gen4 NVMe Controller.json",
+"ID": 42147,
+"Name": "Gen4 NVMe Controller",
+"SavedPos": [
+744.0,
+1260.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+]
+],
+"File": "Devices\\ASM1061.json",
+"ID": 30736,
+"Name": "ASM1061",
+"SavedPos": [
+664.0,
+1344.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+],
+[
+true,
+1
+]
+],
+"File": "Devices\\ASM1061.json",
+"ID": 33247,
+"Name": "ASM1061",
+"SavedPos": [
+664.0,
+1452.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Wifi E Key Slot.json",
+"ID": 68810,
+"Name": "Wifi E Key Slot",
+"SavedPos": [
+701.0,
+1564.0
+]
+},
+{
+"Dirty": false,
+"ExternalPins": [
+[
+true,
+0
+]
+],
+"File": "Devices\\Intel Killer E3100G.json",
+"ID": 88393,
+"Name": "Intel Killer E3100G",
+"SavedPos": [
+680.0,
+1644.0
+]
+}
+],
+"Links": [
+[
+39583,
+56398,
+0,
+8
+],
+[
+38948,
+56398,
+0,
+8
+],
+[
+49300,
+56398,
+0,
+9
+],
+[
+20912,
+56398,
+0,
+10
+],
+[
+20912,
+56398,
+1,
+11
+],
+[
+20912,
+56398,
+2,
+12
+],
+[
+10147,
+56398,
+0,
+13
+],
+[
+42147,
+10147,
+0,
+8
+],
+[
+30736,
+10147,
+0,
+9
+],
+[
+33247,
+10147,
+0,
+10
+],
+[
+68810,
+10147,
+0,
+11
+],
+[
+88393,
+10147,
+0,
+12
+]
+],
+"Name": "ASRock x670E Taichi"
+}
