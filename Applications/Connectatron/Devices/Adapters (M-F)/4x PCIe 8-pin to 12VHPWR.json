@@ -1,0 +1,27 @@
+{
+	"Females": [
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		},
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		},
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		},
+		{
+			"Name": "8-pin",
+			"PinType": "PCIe 8-pin"
+		}
+	],
+	"Males": [
+		{
+			"Name": "12VHPWR",
+			"PinType": "PCIe 16-pin ATX 3.0"
+		}
+	],
+	"Name": "4x PCIe 8-pin to 12VHPWR"
+}
