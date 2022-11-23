@@ -999,7 +999,7 @@ struct Connectatron:
                 */
 
                 bool isFemale = ext.value()[0].get<bool>();
-                bool pinNum = ext.value()[1].get<int>();
+                int pinNum = ext.value()[1].get<int>();
 
                 if (isFemale)
                     new_node->Females[pinNum].external_exposed = true;
@@ -1411,7 +1411,7 @@ struct Connectatron:
                     */
 
                     bool isFemale = ext.value()[0].get<bool>();
-                    bool pinNum = ext.value()[1].get<int>();
+                    int pinNum = ext.value()[1].get<int>();
 
                     if (isFemale)
                         node->Females[pinNum].external_exposed = true;
