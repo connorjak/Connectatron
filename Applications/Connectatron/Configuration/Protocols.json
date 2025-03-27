@@ -1,0 +1,134 @@
+// Variable name to string parsing:
+// _    : .
+// __   : (space) 
+// ___  : -
+// ____ : /
+{
+	"UNRECOGNIZED": {
+		"Categories": [ "INTERNAL" ],
+		"Links": []
+	},
+	"Proprietary": {
+		"Categories": [ "Other" ],
+		"Links": [],
+		"Description": "For protocols that don't match any listed options"
+	},
+
+
+	"DC Power": {
+		"Categories": [ "Power", "Common" ],
+		"Links": [],
+		"Description": "Direct Current",
+		"AKA": []
+	},
+
+	"AC Power": {
+		"Categories": [ "Power", "Common" ],
+		"Links": [],
+		"Description": "Alternating Current",
+		"AKA": []
+	},
+
+	//NOTE: used to be no-space
+	"Generic Analog": {
+		"Categories": [ "Analog", "Single-Wire" ],
+		"Links": [],
+		"Description": "",
+		"AKA": []
+	},
+	"Analog Audio": {
+		"Categories": [ "Analog", "Single-Wire", "Audio" ],
+		"Links": [],
+		"Description": "Placeholder until I get a proper name for this",
+		"AKA": []
+	},
+
+
+	"UART": {
+		"Categories": [ "Single-Wire" ],
+		"Links": [ "https://en.wikipedia.org/wiki/System_Management_Bus" ],
+		"Description": "",
+		"AKA": []
+	},
+	"SPI": {
+		"Categories": [ "Single-Wire" ],
+		"Links": [ "https://en.wikipedia.org/wiki/System_Management_Bus" ],
+		"Description": "",
+		"AKA": []
+	},
+	"I2C": {
+		"Categories": [ "Single-Wire" ],
+		"Links": [ "https://en.wikipedia.org/wiki/I%C2%B2C" ],
+		"Description": "",
+		"AKA": [ "I-Squared-C" ]
+	},
+
+	"S/PIDF": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/S/PDIF" ],
+		"Description": "",
+		"AKA": [ "SPIDF", "TOSLINK" ]
+	},
+	"ADAT Lightpipe": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/ADAT_Lightpipe" ],
+		"Description": "",
+		"AKA": []
+	},
+	"AES3": {
+		"Categories": [ "Audio" ],
+		"Links": [ "https://en.wikipedia.org/wiki/AES3" ],
+		"Description": "",
+		"AKA": []
+	},
+
+	// USB
+	"USB 1.0": {
+		"Categories": [ "USB" ],
+		"Links": [],
+		"Description": "USB Low-Speed: 1.5 Mbps",
+		"AKA": [ "USB Low-Speed" ]
+	},
+	"USB 1.1": {
+		"Categories": [ "USB" ],
+		"Links": [],
+		"Description": "USB Full-Speed: 12 Mbps",
+		"AKA": [ "USB Full-Speed" ]
+	},
+
+	"START_CATEGORY_USB",
+	"MIN_VERSION_USB",
+	"USB 1.0", //Low-Speed: 1.5 Mbps
+	"USB 1.1", //Full-Speed: 12 Mbps
+	"USB 2.0", //Hi-Speed: 480 Mbps
+	"USB 3 5g", //SuperSpeed 5 Gbps
+	"USB 3 10g", //SuperSpeed+ 10 Gbps
+	"USB 3 20g", //SuperSpeed+ 20 Gbps (Dual-lane, requiring USB-C connector)
+	"USB4 20g", //USB4 20 Gbps
+	"USB4 40g", //USB4 40 Gbps
+	"MAX_VERSION_USB",
+	"END_CATEGORY_USB",
+
+
+	// FireWire
+	"START_CATEGORY_FireWire",
+	//https://en.wikipedia.org/wiki/IEEE_1394
+	"MIN_VERSION_FireWire",
+	"FireWire 400 1394", //IEEE 1394-1995
+	"FireWire 400 1394a", //IEEE 1394a-2000
+	"FireWire 800 1394b", //IEEE 1394b-2002
+	"FireWire S800T 1394c", //IEEE 1394c-2006
+	"FireWire S1600", //IEEE 1394-2008
+	"FireWire S3200", //IEEE 1394-2008
+	"MAX_VERSION_FireWire",
+	"END_CATEGORY_FireWire",
+
+
+
+	"N": {
+		"Categories": [ "N" ],
+		"Links": [],
+		"Description": "",
+		"AKA": []
+	}
+}
