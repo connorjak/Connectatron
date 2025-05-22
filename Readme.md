@@ -19,6 +19,8 @@ See status and try it for yourself on [releases](https://github.com/connorjak/Co
 
 Was forked from https://github.com/thedmd/imgui-node-editor.
 
+Make sure to do `vcpkg integrate install` to have Visual Studio recognize the correct vcpkg toolchain.
+
 --- 
 --- 
 --- 
