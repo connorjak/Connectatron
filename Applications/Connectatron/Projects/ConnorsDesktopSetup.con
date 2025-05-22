@@ -286,8 +286,8 @@
 "ID": 71749,
 "Name": "Lenovo ThinkVision P27q-20",
 "SavedPos": [
-440.0,
-1406.0
+456.0,
+1414.0
 ]
 },
 {
@@ -568,6 +568,16 @@
 "SavedPos": [
 1736.0,
 824.0
+]
+},
+{
+"Dirty": false,
+"File": "Devices\\Generic Qi Charger.json",
+"ID": 36146,
+"Name": "Generic Qi Charger",
+"SavedPos": [
+1608.0,
+540.0
 ]
 }
 ],
@@ -955,12 +965,6 @@
 47791,
 0,
 3
-],
-[
-12823,
-75204,
-0,
-28
 ]
 ],
 "Name": "ConnorsDesktopSetup"

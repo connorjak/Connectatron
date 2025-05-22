@@ -1,0 +1,18 @@
+{
+	"Females": [
+		{
+			"Name": "Charger",
+			"PinType": "Qi"
+		}
+	],
+	"Males": [
+		{
+			"Name": "USB",
+			"PinType": "USB-A",
+			"Protocols": [
+				"DC Power"
+			]
+		}
+	],
+	"Name": "Generic Qi Charger"
+}

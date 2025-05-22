@@ -29,6 +29,14 @@
 		"AKA": []
 	},
 
+	"Qi": {
+		"Categories": [ "Power", "Induction" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Qi_(standard)", "https://en.wikipedia.org/wiki/Inductive_charging" ],
+		"Description": "TWireless charging standard for mobile devices through induction coils.",
+		"AKA": [ "Qi Charging" ],
+		"Icon": "data/qi.png"
+	},
+
 	//NOTE: used to be no-space
 	"Generic Analog": {
 		"Categories": [ "Analog", "Single-Wire" ],

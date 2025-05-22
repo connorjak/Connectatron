@@ -14,7 +14,7 @@
 		"Description": "For connectors that don't match any listed options"
 	},
 	"Wireless": {
-		"Categories": [ "Single-Wire" ],
+		"Categories": [ "Wireless" ],
 		"Links": [ "https://en.wikipedia.org/wiki/Pin_header" ],
 		"MultipleConnectPerPin": true
 	},
@@ -38,6 +38,20 @@
 	"Coaxial": {
 		"Categories": [ "Two-Wire Bus" ],
 		"Links": []
+	},
+
+	// Induction
+	"Induction Coil": {
+		"Categories": [ "Induction" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Inductive_charging" ],
+		"Description": "This is the generic one; we also have more specific specs"
+	},
+	"Qi": {
+		"Categories": [ "Induction", "Mobile" ],
+		"Links": [ "https://en.wikipedia.org/wiki/Qi_(standard)", "https://en.wikipedia.org/wiki/Inductive_charging" ],
+		"Description": "Wireless charging standard for mobile devices through induction coils.",
+		"AKA": [ "Qi Charging" ],
+		"Icon": "data/qi.png"
 	},
 
 	// DC Power
@@ -736,9 +750,9 @@
 		"AKA": [ "Socket 2" ]
 	},
 	"M.2 A E key": {
-		"Categories": [ "Expansion Slot", "Wireless" ],
+		"Categories": [ "Expansion Slot", "Network Interface" ],
 		"Links": [ "https://en.wikipedia.org/wiki/M.2" ],
-		"Description": "Usual for wireless.",
+		"Description": "Usual for WiFi / Bluetooth.",
 		"AKA": [ "Socket 1" ]
 	},
 	// https://en.wikipedia.org/wiki/Mobile_PCI_Express_Module
